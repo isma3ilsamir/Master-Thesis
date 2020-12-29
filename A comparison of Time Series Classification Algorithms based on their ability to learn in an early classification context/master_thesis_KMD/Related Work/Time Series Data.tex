@@ -1,0 +1,24 @@
+A time series is a finite sequence of ordered observations, either based on time or another aspect \cite{abanda2019review,bagnall2017great}.
+The existence of the time component makes time series an abundant form of data that covers various domains like; medicine, finance, engineering and biology \cite{lines2018time}.
+A time series dataset is a collection of time series instances.
+\begin{definition}
+A set T of n time series instances, T = \{$T\textsubscript{1}$,$T\textsubscript{2}$,...,$T\textsubscript{n}$\}.
+\end{definition}
+Each of the time series instances $T\textsubscript{i}$ consists of a sequence of observations.
+\begin{definition}
+A time series $T\textsubscript{i}$, of length L is represented as $T\textsubscript{i}$ = [$t\textsubscript{i1}$,$t\textsubscript{i2}$,...$t\textsubscript{iL}$].
+\end{definition}
+Time series data can come in different forms. It is important to comprehend what different forms the data can take and what implicit assumptions they convey; to be able to choose the suitable algorithms and tools to deal with it.\newline
+The first form is when the observations of instances capture a singular value, this is referred to as univariate time series.
+\begin{definition}
+Univariate time series $T\textsubscript{i}$, of length L is represented as $T\textsubscript{i}$ = [$t\textsubscript{i1}$,$t\textsubscript{i2}$,...$t\textsubscript{iL}$]. With $t\textsubscript{ij}$ as a real valued number.
+\end{definition}
+While the other form is when multiple measurments are captured by the observations.
+According to \cite{loning2019sktime}, it is essential to differentiate between the two ways multiple time series can be generated; panel data and multivariate time series data.\newline
+If more than one variable is being observed during a single experiment, with each variable representing a different measurement; this is called multivariate time series.
+\begin{definition}
+Multivariate time series $T\textsubscript{i}$, of length L is represented as $T\textsubscript{i}$ = [$t\textsubscript{i1}$,$t\textsubscript{i2}$,...$t\textsubscript{iL}$]. With $t\textsubscript{ij}$ having M dimensions, each is a univariate time series.
+\end{definition}
+While panel data is when the same kind of measurments is collected from independent instances; like different patients or diverse industrial processes.\newline
+For panel data, it is possible to assume that the different instances are i.i.d, but this assumption doesn't hold for observation of a single instance.
+The same goes for multivariate time series, individual univariate observations are assumed to be statistically dependant.

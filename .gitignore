@@ -127,3 +127,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Data files
+datasets/
+analysis/
+
+# Studying Folders
+other*master*thesis
+Ismail*Wahba*Master*Thesis*Registration.pdf
+Registration*Form*for*the*Topic*of*the*Master's*Thesis.pdf
+Selbstständigkeitserklärung _*Statement*of*Authorship*of*the*Student.pdf
+Working*Notes/

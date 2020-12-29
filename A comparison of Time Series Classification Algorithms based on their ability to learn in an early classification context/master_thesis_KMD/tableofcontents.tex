@@ -1,0 +1,74 @@
+% !TEX root = main.tex
+\renewcommand*\contentsname{Table of Contents}
+\tableofcontents
+\thispagestyle{empty}
+ 
+ \null\newpage
+\pagenumbering{roman} 
+\addcontentsline{toc}{section}{List of Figures} 
+%\section{List of Figures}
+\input{ListOfFigures.tex}
+
+\addcontentsline{toc}{section}{List of Tables} 
+\input{ListOfTable.tex}
+
+\addcontentsline{toc}{section}{List of Abbreviations} 
+\input{ListOfAbbreviations.tex}
+
+\thispagestyle{empty}
+\null\newpage
+\pagenumbering{arabic} 
+\section{Introduction}
+\input{Introduction/Introduction.tex}
+\subsection{Goal of the Thesis}
+\input{Introduction/Goals_Thesis.tex}
+\subsection{Structure of the Thesis}
+\input{Introduction/Structure_Thesis.tex}
+
+% \null\newpage
+
+% \section{Lorem ipsum dolor sit amet}
+% \subsection{consectetur adipiscing elit.}
+% \input{Lorem ipsum/lorem ipsum}
+
+\null\newpage
+
+\section{Concepts and Terminology}
+\input{Related Work/Concepts_intro.tex}
+\subsection{Time Series Data}
+\input{Related Work/Time Series Data.tex}
+\subsubsection{Nature of Time Series Data}
+\input{Related Work/Nature of Time Series Data.tex}
+\subsection{Time Series Classification}
+\input{Related Work/Time Series Classification Problem.tex}
+\subsection{Early Time Series Classification}
+\input{Related Work/Early Time Series Classification Problem.tex}
+\subsection{notes}
+\input{Related Work/concepts_and_terminology}
+\input{Related Work/related_work.tex}
+
+
+\null\newpage
+
+
+\section{Appendix}
+%\appendix
+
+\null\newpage
+
+%\section*{List of Cited Literature}
+% \input{List_of_Cited_Literature.bib}
+\printbibliography
+
+\newpage
+
+\section{Declaration of Authorship}
+I hereby declare that I have written this thesis "TITLE TITLE TITLE"
+without any help from others and without the use of documents and aids
+other than those stated above. Furthermore, I have mentioned all used
+sources and have cited them correctly according to the citation rules.
+Moreover, I confirm that the paper at hand was not submitted in this or
+similar form at another examination office, nor has it been published
+before.
+\\
+Magdeburg, DATE, SIGNATURE

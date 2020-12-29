@@ -1,0 +1,1 @@
+# A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context

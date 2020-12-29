@@ -1,0 +1,12 @@
+Time series classification is a subtype of the general classification problem, which considers the the unique property of dependency between adjacent features of instances \cite{Bostrom2017}.
+The main goal of time series classification is to learn a function f,
+which given a training dataset T = \{$T\textsubscript{1}$,$T\textsubscript{2}$,...,$T\textsubscript{n}$\} of time series instances
+along with their corresponding class labels Y=\{$y\textsubscript{1}$,$y\textsubscript{2}$,...$y\textsubscript{n}$\} where $y\textsubscript{i}$ $\in$ \{1,2,...C\},
+can predict class labels for unseen instances \cite{deng2013time}.\newline
+Time series classification has been studied with different objectives, some papers focused on attaining the highest accuracy of classification as the main goal \cite{kate2016using,jeong2011weighted,bostrom2017shapelet,lines2018time,schafer2017multivariate,fawaz2020inceptiontime},
+while other papers focused on attaining lower time complexity \cite{ratanamahatana2004making,bagnall2017great,tan2020fastee,petitjean2016faster,schafer2017fast}.\newline
+In this master thesis, we are more interested in assessing the results in terms of accuracy than time complexity. We define accuracy like \cite{schafer2020teaser}; 
+as the percentage of correctly classified instances for a given dataset D, either being a training or testing dataset.
+\begin{definition}
+$Accuracy = \frac{number of correct classifications}{|D|}$
+\end{definition}

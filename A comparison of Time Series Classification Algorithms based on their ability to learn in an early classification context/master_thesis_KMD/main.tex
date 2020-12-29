@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{footnote}
+\usepackage{graphicx} %allows including graphics
+%\usepackage[ngerman]{babel}
+% \usepackage[automark]{scrpage2}
+\usepackage[automark]{scrlayer-scrpage}
+\usepackage{biblatex}
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{textgreek}
+\usepackage{amsmath}
+\newtheorem{definition}{Definition}
+\graphicspath{{figures/}}
+\addbibresource{List_of_Cited_Literature.bib}
+
+\begin{document}
+\input{title_page.tex}
+%\pagenumbering{gobble}
+\small
+\vspace*{\fill}
+{\raggedright
+Wahba, Ismail:\\
+A comparison of Time Series Classification Algorithms based on their
+ability to learn on diminishing time series \\ Master Thesis, Otto-von-Guericke-University Magdeburg, year. 
+}
+
+\thispagestyle{empty}
+\null\newpage
+\input{abstract.tex}
+\null\newpage
+\input{tableofcontents.tex}
+\null\newpage
+
+
+%\mainmatter
+
+
+
+
+\end{document}

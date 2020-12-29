@@ -1,0 +1,17 @@
+This master thesis had two main goals.
+The first goal was to create a testbed for comparing different algorithms on a non-public dataset.
+While the second one was to study the relationship between the two families of algorithms; TSCAs and eTSCAs.\newline
+
+The first goal was motivated by \{reference to the great bake-off\}, one of the most comprehensive review papers in the time series field.
+With it's release, Bagnall et. al has set the foundation methodology for accurately benchmarking the performance of TSCAs for the ,at that time, currently existing and for algorithms that will be developed in the future.
+In their experiment, they have used 85 datasets publicly available from UCR and UEA, the biggest two data archives.
+Our goal was to offer a testbed, which can be used on private datasets. It runs state of the art algorithms, then provides analysis about their classification performance.
+The provided analysis can help, based on empirical evidence, choose the best fitting algorithm in accordance with the problem at hand.\newline
+
+As for the second goal, we extended the study of relationship between TSCAs and eTSCAs.
+Both families offer a wide variety of algorithms, but have different objectives and thus have different approaches in their learning processes.
+TSCAs focus primarily on the accuracy of the classification. In order to achieve this goal, full utilization of the whole time series data is done to achieve the highest possible accurate results.
+While eTSCAs objective tries to maximize both accuracy and earliness together, which is hard to attain because of the contradicting nature between both\{reference\}.
+This is why eTSCAs try to learn with as least possible data points as possible while maintaining classification accuracy.
+This study investigated the ability of TSCAs to perform in a simulated early classification context.
+TSCAs were trained on shortened training data, while keeping record of models' accuracy measure in comparison to a baseline utilizing complete training data points.

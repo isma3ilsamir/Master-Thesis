@@ -1,0 +1,48 @@
+1. A time series forest for classification and feature extraction:
+\newline Deng, Houtao, et al. "A time series forest for classification and feature extraction." Information Sciences 239 (2013): 142-153.
+\newline The paper introduces a new Tree ensemble classifier for time series data called the Time Series Forest (TSF).
+\newline It tries to overcome the shortcomings of time-series instance based classifiers; like 1-NN with Euclidean distance and Nearest Neighbor with Dynamic Time Warping (NNDTW) because they provide few insights on the temporal features which are important for distinguishing different time series classes.
+\newline It uses simple summary statistics features (mean, std, slope) but outperforms the others.
+\newline It introduces a new technique for choosing the best split called Entrance gain (Entropy \& distance) which is better than and cheaper than previous techniques.
+\newline It has lower computational complexity of O(M) instead of O(M2) from the previous methods.
+\newline Can be extended by using more complex features like wavelets.
+\newline It assumes that input time series are of the same length, so it can be extended by using techniques that align time series with different lengths like Dynamic Time Warping (DTW)
+\newline
+2. A Shapelet Transform for Time Series Classification
+\newline Lines, Jason, et al. "A shapelet transform for time series classification." Proceedings of the 18th ACM SIGKDD international conference on Knowledge discovery and data mining. 2012.
+\newline The paper tries to improve using shapelets for time series classification
+\newline Shapelets are subsequences of a time series that are considered representatives
+\newline Shapelets are easily interpretable, compact and classify new instaces fastly, allow for the detection of phase-independent shape-based similarity of subsequences.
+\newline It proposes a shapelet transformation. Which is separating the process of finding shapelets from the classification step (this is how it is done in the original technique). This allows for using any classifier.
+\newline Shapelet transform, tries to reduce complexity of original algorithm by choosing top K candidate shapelets instead of keeping all of them.
+\newline Then the candidate shapelets are used to transform data instances into a number of features, that can be used with any classifier.
+\newline It also proposes a new shapelet evaluation method to use with multi class problems (Compare F-Statistic with Information gain)
+\newline Can be extended by doing clustering for the extracted shapelets and not using top K, because there were a lot of similar shapelets.
+\newline
+3. Early Prediction on Time Series: A Nearest Neighbor Approach
+\newline Xing, Zhengzheng, Jian Pei, and S. Yu Philip. "Early prediction on time series: a nearest neighbor approach." Twenty-First International Joint Conference on Artificial Intelligence. 2009.
+\newline The paper introduces a new concept called Minimum Prediction Length (MPL), which allows for Early Classification of Time Series (ECTS) using 1-Nearest Neighbor
+\newline ECTS should be able to make earlier predictions using shorter time series than normal 1-NN on Time series data using full-length time series. While retaining accuracy.
+\newline It compares to 1-NN with Euclidean distance as distance measure, because it has proved itself to be one of the best techniques in Time Series clustering.
+\newline It keeps using shorter subsequences as long as they give the same accuracy of the full time series.
+\newline Using 1NN and 1RNN (reverse nearest neighbor) they try to identify the most confident minimum prediction length (MPL) for early prediction
+\newline Can be extended for streaming data
+\newline
+4. Faster and More Accurate Classification of Time Series by Exploiting a Novel Dynamic Time Warping Averaging Algorithm
+\newline Petitjean, François, et al. "Faster and more accurate classification of time series by exploiting a novel dynamic time warping averaging algorithm." Knowledge and Information Systems 47.1 (2016): 1-26.
+\newline The paper tries to extend 1NN with Dynamic Time Warping (DTW)
+\newline It uses the Nearest Centroid Classifier (NCC), an algorithm that generalizes Nearest Neighbor by introducing representative prototype (center of mass) for each class. This allows for way cheaper and faster classification O(1) instead of O(N).
+\newline NCC in some scenarios offer higher accuracy than 1NN. So NCC is prefered in cases of similar or higher accuracy due to it's less resource requirements
+\newline The problem with creating centroid using the traditional DTW is that the resulting average can be a value that is not even a representative of any existing instance
+\newline Instead the paper uses DTW Barycenter Averaging (DBA), one of the best averaging algorithm for time series. It defines an average sequence and iteratively refines it following an expectation maximization scheme
+\newline
+5. TS-CHIEF: a scalable and accurate forest algorithm for time series classification
+\newline Shifaz, Ahmed, et al. "Ts-chief: A scalable and accurate forest algorithm for time series classification." Data Mining and Knowledge Discovery (2020): 1-34.
+\newline A very recent technique
+\newline The new state of the art in time series classification
+\newline An ensemble classifier that competes with the previous HIVE-COTE and FLAT-COTE ensenble algorithms, but defeats them in time
+\newline It starts by using Proximity Forest, dictionary-based and interval-based algorithms to build an esnsemble of classification trees. The splits of these trees are a set of time series references, an object would go down the path of the most similar reference.
+\newline At each node candidate splits are created, then the best split is selected using weighted Gini index
+\newline For classification, After a time series instance is passed down to the leaf nodes of the trees. The final classification of instance is made using a majority vote of K trees.
+\newline TS-CHIEF has an overall almost linear complexity in respect to training size
+\newline Can be extended for multivariate time series data and variable length datasets

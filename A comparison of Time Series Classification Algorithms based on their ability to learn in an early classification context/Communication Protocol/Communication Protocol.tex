@@ -1,0 +1,268 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[super]{nth}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem,amssymb}
+\newlist{todolist}{itemize}{3}
+\setlist[todolist]{label=$\square$}
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\done}{\rlap{$\square$}{\raisebox{2pt}{\large\hspace{1pt}\cmark}}%
+\hspace{-2.5pt}}
+\newcommand{\wontfix}{\rlap{$\square$}{\large\hspace{1pt}\xmark}}
+
+
+\title{Communication Protocol}
+\author{Ismail Wahba }
+\date{July 2020}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	This document is a communication protocol for the master thesis. It includes a dated log for all the communication events that have happened through the course of the master thesis. This includes meeting minutes, email discussions, questions that come up in between periodic appointments and also a documentation of their statuses and their answers.
+\end{abstract}
+
+\section*{\texorpdfstring{\nth{26}}. August 2020, Reply to mail of Aug 23}
+Dear Ismail Wahba.\newline
+I hope I did not miss much from the communication. It seems you have some difficulties with WEASEL, you need time for it.\newline
+Concerning ANOVA, I suggest that you find a tutorial with code and some hands-on exercise, nothing very complicated, so that you can walk through it and understand how it works.\newline
+Meeting: Sept 1, 16:30 via skype?\newline
+Best regards,
+Myra Spiliopoulou
+
+\section*{\texorpdfstring{\nth{26}}. August 2020, Reply to mail of July 27}
+Dear Ismail Wahba.
+I have traced two documents in overleaf, the communication protocol and the literature overview. if there are more masterfiles, I did not findi them...\newline
+The literature work is progressing well.
+You do not need to go into deep details of the papers you read, but you must understand
+	\begin{itemize}
+		\item how they work and
+		\item how you should apply them when you start "shortening" the time series.
+	\end{itemize}
+In that sense, below are a few remarks on the papers you ask questions about:
+	\begin{todolist}
+		\item [\done] Paper by Bagattini et al: I didn't understand the part of handling missing values from the timeseries
+			\begin{itemize}
+				\item [\done] They use a symbolic representation, where the timestamps are mapped to an ordering scheme (as in SAX). Then, they build the s-shapelets. For your thesis, please consider whether the construction of this symbolic representation and the generation of the shapelets demands that the algorithm has seen the whole timeseries. If yes, then each time you shorten the timeseries you need to derive the symbolic representation anew and then generate the shapelets. An implication is that the size of the alphabet (for the symbolic representation) may shrunk substantially, unless all symbols are equiprobable anywhere in the timeseries.
+			\end{itemize}
+		\item Paper by Baydogan et al: I did't understand how did they discretize the CPE and created the histograms
+			\begin{itemize}
+				\item Unfortunately, I cannot get this paper from outside the faculty. But my suggestions for the previous paper may also apply here: do they build the histogramms over the whole time series? If yes, then when the time series is shortened, the histogramms change.
+			\end{itemize}
+		\item [\done] For now, do I have to read the details about complexity and understand the details of the algorithm ? or is it enough to understand how it works ?
+			\begin{itemize}
+				\item Issues (a) and (b), as said in the beginning.
+			\end{itemize}
+	\end{todolist}
+
+\section*{\texorpdfstring{\nth{26}}. August 2020, Follow up emails after vacation and Parental Leave}
+Dear Ismail Wahba.
+Sorry for being so slow, I am now going to catch up. I marked the overleaf project. It is fine.
+	\begin{todolist}
+		\item [\done] I recommend that you continue filling it, but most recent communication first.
+	\end{todolist}
+all the best,
+Myra Spiliopoulou
+
+\section*{\texorpdfstring{\nth{27}}. July 2020, Communication Protocol and Literature Overview Document}
+Dear Prof Spiliopoulou,
+Here is my update for the week 21 jul - 27 jul:
+The link for the overleaf repository: https://www.overleaf.com/read/frpfdfwhgkgc
+Actions from last week:
+ \begin{todolist}
+		\item [\done] Finish reading the papers of Ulf Leser and Bagattini et al
+		\begin{todolist}
+			\item [\done] Finished reading the papers by 1)Ulf Leser 2)Bagattini et al. and 3)Baydogan et al. I also added them to the literature overview document
+		\end{todolist}
+		\item Check literature for correlated time series it might have some points useful to our problem
+		\item [\done] Collect broader literature regarding Multivariate Time Series Classification
+			\begin{todolist}
+				\item [\done] started reading the WEASEL paper of Ulf leser 2017
+			\end{todolist}
+		\item [\done] Collect more Review Papers
+			\begin{todolist}
+				\item [\done] Included the literature review of the paper by Ulf leser into the review folder
+			\end{todolist}
+\end{todolist}
+
+Actions till next week:
+\begin{itemize}
+	\item Check literature for correlated time series it might have some points useful to our problem
+	\item Collect broader literature regarding Multivariate Time Series Classification
+	\item Collect more Review Papers
+	\item I need to update the communication protocol document with the recent update emails
+\end{itemize}
+
+Questions that I have:
+\begin{itemize}
+	\item Paper by Bagattini et al: I didn't understand the part of handling missing values from the timeseries
+	\item Paper by Baydogan et al: I did't understand how did they discretize the CPE and created the histograms
+	\item For now, do I have to read the details about complexity and understand the details of the algorithm ? or is it enough to understand how it works ?
+\end{itemize}
+
+ \section*{\texorpdfstring{\nth{20}}. July 2020, Communication Protocol and Literature Overview Document}
+ Dear Prof Spiliopoulou,\newline
+I am sending an update for the week 13 jul - 20 jul:
+For the sake of easier communication, I created a project on overleaf where all my weekly work and updated documents will be. This way the latest version of everything I do will be there and we will not have to maintain different copies of documents sent via email.\newline
+Please use this link for the project: https://www.overleaf.com/read/frpfdfwhgkgc
+Updates for the week:
+ \begin{todolist}
+	\item [\done] Datasets: Added information and summary about candidate datasets that I found along with a table describing each
+	\item [\done] Libraries: Added the names of the 3 candidate libraries and a table describing the algorithms they implement
+	\item [\done] Literature Overview: Got the papers of Ulf Leser and Bagattini et al, started reading them and adding summary points (haven't finished reading yet)
+	\item [\done] Notes: Added some notes on distance measures for time series like Frechet, Edit distance and DTW. Also included old notes about stationarity of time series data
+	\item [\done] TSCA Review: Included my summarization for the TS Bakeoff review paper.
+ \end{todolist}
+ Actions till next week:
+\begin{itemize}
+	\item Finish reading the papers of Ulf Leser and Bagattini et al
+	\item Check literature for correlated time series it might have some points useful to our problem
+	\item Collect broader literature regarding Multivariate Time Series Classification
+	\item Collect more Review Papers
+\end{itemize}
+Best Regards,
+Ismail Wahba
+
+\section*{\texorpdfstring{\nth{9}}. July 2020, Communication Protocol and Literature Overview Document}
+Dear Ismail Wahba.\newline
+Last part of my feedback before we meet in person, it concerns mode of communication and the literature overview document.\newline
+\begin{itemize}
+	\item Mode of communication:
+		\begin{itemize}
+			\item I suggest that we exchange two documents:
+				\begin{itemize}
+					\item your thesis draft (please pick the template from the KMD website)
+					\item a docx protocoll document (can be also latex, of course), where you write what we discuss at each date (do not forget to write the date), the points you wrote below for example. Then, my answers come and you incorporate them. And when an issue is closed, you mark it in gray. Questions from you also go to this document.
+				\end{itemize}
+			\item Some students use overleaf for their thesis document and googledoc for
+				  the protocol document. Depends on how much you trust google. You can
+				  consider alternatives.	  
+		\end{itemize}
+	\item The literature overview document contains two parts - the concepts and the papers.
+		\begin{itemize}
+			\item The concepts are fine, you have understood the terminology well.
+				\begin{todolist}
+					\item I suggest that you create a separate document, sort of list-of-terms with explanations. It will become an appendix of your thesis.
+				\end{todolist}
+			\item The literature overview is a very good start, one paper per area. This will become part of the related work chapter.
+				\begin{todolist}
+					\item So, I suggest that you start incorporating it into the thesis document.
+				\end{todolist}
+			\item Some of the papers are a bit old, there is a surge of publications in the recent years. Especially for early classification in TS: the 2009 paper is very old, there is a 2020 publication and two at least after 2018. So, keep these papers as basis, since you read and understood them.
+				\begin{todolist}
+					\item [\done] but now go to the literature overviews and in scholar.google and similar fora and collect also newer literature.
+				\end{todolist}
+			\item You need a concept for doing literature research, eg what keywords you use, how you exclude papers, for which papers you follow citations, for which old papers you look for new citations to them; in the thesis, you must write down how you did that.
+				\begin{todolist}
+					\item [\done] There is an instrument called PRISMA. Please consider it.
+				\end{todolist}
+		\end{itemize}
+\end{itemize}
+
+Best regards,
+Myra Spiliopoulou
+
+\section*{\texorpdfstring{\nth{7}}. July 2020, Follow up on Literature Overview and preparing for first meeting}
+Dear Ismail Wahba.\newline
+We can indeed shift our meeting to earlier, to 15:00, same date 13. July (Monday). I am replying on some of the issues below, a more extensive mail comes later.
+ \begin{itemize}
+	\item As for the term "static data" I included in my notes, I actually myself did not really understand what it means in TS context and though about asking about it when we have our meeting to clarify what it means. From my readings, I understood that in order to predict future values for TS we need to "stationarize" data but I wasn't sure if this is related or not.
+		\begin{todolist}
+			\item [\done]Oh, it does not have to do with "stationary". Much simpler: when we study individuals (patients for example), we have their dynamic data, eg body temperature, blood sugar levels etc, recorded at each time point. These data constitute the multivariate time series. But we have also static data, eg the patient's birthdate. For the patients in the applications we investigate, there are questionnaires with several questions that are answered only once, since they do not change. Individuals can be deemed similar on the basis of these static data.
+		\end{todolist}
+	\item I added the papers' citations in the overview document under each title (attached to this email)\newline
+		  I have found 2 recent review papers, one of them is by Bagnall et al (2017) and the other is by students (2020) in Indian Institute of Technology (BHU). Is it better to go with more recent or more cited?\newline
+		  I found 2 libraries that implement TS classification (pyts and sktime)\newline
+		  I found a website which is dedicated for TS classification (Prof. Bagnall's team). It has datasets of different characteristics, I wonder what are the things I should focus on when choosing the dataset ?
+			\begin{todolist}
+				\item [\done] That it contains TRUE time series and multivariate ones. Sounds odd, but many of the datasets in the collections are not time series, they are images. Under \url{https://www.cs.ucr.edu/\%7Eeamonn/time\_series\_data\_2018/} you will find in the 2nd column the type of the dataset. Ignore all that is called "Image", "Simulated", "Spectro" or "Device". I recommend that you concentrate on the type "Sensor" and look for multivariate ones.
+			\end{todolist}
+ \end{itemize}
+
+\section*{\texorpdfstring{\nth{5}}. July 2020 Preparation for first meeting}
+Dear Prof Spiliopoulou,\newline
+Thank you so much for the encouraging reply, I am really happy that my beginning was good enough and I hope to keep it up this way till the end.\newline
+July 13th at 16:00 is fine for me and I have no problem with the time of the meeting whether it is made earlier or not.\newline
+I will also send a reminder on that day in the morning as you requested.\newline
+As for the term "static data" I included in my notes, I actually myself did not really understand what it means in TS context and though about asking about it when we have our meeting to clarify what it means. From my readings, I understood that in order to predict future values for TS we need to "stationarize" data but I wasn't sure if this is related or not.\newline
+I also had some updates and questions regarding the todos for our next meeting:\newline
+\begin{todolist}
+	\item [\done] I added the papers' citations in the overview document under each title (attached to this email)
+	\item I have found 2 recent review papers, one of them is by Bagnall et al (2017) and the other is by students (2020) in Indian Institute of Technology (BHU).
+		\begin{todolist}
+			\item Is it better to go with more recent or more cited?
+		\end{todolist}
+		\begin{itemize}
+			\item Bagnall, Anthony, et al. "The great time series classification bake off: a review and experimental evaluation of recent algorithmic advances." Data Mining and Knowledge Discovery 31.3 (2017): 606-660
+			\item Gupta, Ashish, et al. "Approaches and Applications of Early Classification of Time Series: A Review." arXiv preprint arXiv:2005.02595 (2020).
+		\end{itemize}
+	\item [\done] I found 2 libraries that implement TS classification (pyts and sktime)
+	\item [\done] I found a website which is dedicated for TS classification (Prof. Bagnall's team). It has datasets of different characteristics, I wonder what are the things I should focus on when choosing the dataset ?
+\end{todolist}
+Thank you in advance and I hope I am on the right track for this milestone\newline
+Best Regards,
+Ismail Wahba
+
+\section*{\texorpdfstring{\nth{29}}. June 2020 Literature Overview Feeback}
+Dear Ismail Wahba.
+Very good start! You interpreted the problem correctly, and your choice of papers is to the point. The overview of terminology at the beginning is good; just the term "static data" I did not understand in that context.\newline
+Some todos till then:
+\begin{todolist}
+	\item [\done] I need also the citations of the papers, to know from where they are: the research field is very active and very mature, there show up many papers every couple of months. You will need to go for the state-of-theart only.
+	\item [\done] Add the citations to the papers
+	\item [\done] Find a survey that compares algorithms, so that you can choose the state of the art
+	\item [\done] Find libraries with installed ts classification algorithms (the one by Bagnall et al?), so that you can use the library instead of developing the algorithms per se
+	\item [\done] Find a TIMESERIES dataset that you can use for tasks 2 and 4, and for which you know the ground truth. In the donor's dataset we do not.
+\end{todolist}
+All the best,
+Myra Spiliopoulou
+
+\section*{\texorpdfstring{\nth{24}}. June 2020 Literature Overview}
+Dear Prof. Myra Spiliopoulou,\newline
+Please find in the attachment my literature overview.\newline
+I have included in this document some notes regarding time series classification problem in general and summary points for some papers that I skimmed through.\newline
+This is not a comprehensive list of all the papers I found or the algorithms that were mentioned in literature, but I tried to tackle the ones that sounded most important from my quick reading.\newline
+I have to say that TSCA is a completely new topic for me. I spent most of the time trying to understand what type of problem usually it is and familiarize myself with the different techniques that have been used for it, rather than digging deep into the the algorithms and understanding them in details.\newline
+But I believe that now I have somehow an overview of it and hope that things will get more clear while exploring more literature and also understanding the problem we have at hand.\newline
+I hope that what I have included in the document is enough to carry out our first appointment.\newline
+I would appreciate if you can send me the possible appointment time(s), so that I can coordinate things with my boss at work if there will be a conflict of times.\newline
+I also believe that due to the COVID-19 situation, the meeting might be on an online platform, so this is my Skypeid (isma3il.samir) in that case. If there is another platform/application that I should download, please just communicate it with me.\newline
+Best Regards,
+Ismail Wahba
+
+\section*{\texorpdfstring{\nth{16}}. June 2020, Topic Introduction Email}
+"Performance degradation of time series classification algorithms (TSCAs) as the length of the time series diminishes".
+\begin{todolist}
+	\item Goal is to build a testbed that compares TSCAs on a small set of ts, while shrinking the ts length.
+	\item The testbed should encompass:
+		 \begin{todolist}
+			\item An algorithm that shrinks the length of the input time series
+			 in a non-random manner.\newline
+			 We have algos from master theses, on which you can build.
+			\item A time series management tool that incorporates the algorithm 1
+			 and stores the ts in a database.\newline
+			 There are ready testbeds for time series classification, so an existing tool may be extended.
+			\item A collection of TSCAs
+			\item An evaluation utility that assesses degradation of the TSCAs across
+			 two dimensions:
+				\begin{todolist}
+					\item model quality, assuming skewed distribution in an n-class problem
+					\item ranking of the variables that contribute to class separation.\newline
+					variables:= segments, shapelets or whatever the TSCAs use
+				\end{todolist}
+			\item A baseline for the donor's data-set:
+				\begin{todolist}
+					\item It uses (latency,amplitude)\_\{ij\}, for i in \{leftear, rightear\} and for j in \{wave1, wave3, wave5\} to separate across n=3 classes.
+				\end{todolist}
+		 \end{todolist}
+	\item The core work is on tasks 4 and 5.
+	\item The thesis also demands a literature overview of TCSAs for multivariate time series and the implementation of a choice of TCSAs in task 3.
+	\item The first tasks are (i) collection of literature on multi-var time series segmentation and classification, (ii) time-plan and (iii) preparation of a thesis proposal. Once you are midway in task (i), we make our first appointment.
+	\item The donor's data-set is not available yet, we hope that it will be there within a couple  of weeks. But as you see, there are further tasks to perform, so there is plenty of work to start with.
+ \end{todolist}
+
+\end{document}
