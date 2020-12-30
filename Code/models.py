@@ -83,6 +83,7 @@ class Model:
         self.best_estimator_ = search.best_estimator_
         self.best_params = search.best_params_
         self.best_estimator_analysis = self.get_best_estimator_analysis()
+        self.train_time= self.best_estimator_analysis['mean_fit_time']
 
     def predict(self, X_test, y_test=None):
         self.logger.info(f'{self.clf_name}: Testing started')
@@ -130,7 +131,7 @@ class Model:
             score = self.get_score_cv(X_test, y_test)
         else:
             score = self.get_score_no_cv(X_test, y_test)
-        self.score = score
+        self.test_ds_score = score
         self.logger.info(f'{self.clf_name}: Accuracy Finished')
         # return score
 
@@ -138,14 +139,14 @@ class Model:
         score_start = process_time()
         score = self.clf.score(X=X_test, y=y_test)
         score_stop = process_time()
-        self.score_time = score_stop - score_start
+        self.test_ds_score_time = score_stop - score_start
         return score
 
     def get_score_cv(self, X_test, y_test):
         score_start = process_time()
         score = self.best_estimator_.score(X=X_test, y=y_test)
         score_stop = process_time()
-        self.score_time = score_stop - score_start
+        self.test_ds_score_time = score_stop - score_start
         return score
 
     def get_best_estimator_analysis(self):
@@ -255,7 +256,7 @@ class pytsModel(Model):
             score = self.get_score_cv(X_test, y_test)
         else:
             score = self.get_score_no_cv(X_test, y_test)
-        self.score = score
+        self.test_ds_score = score
         self.logger.info(f'{self.clf_name}: Accuracy Finished')
         # return score
 

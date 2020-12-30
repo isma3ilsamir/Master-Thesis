@@ -65,11 +65,11 @@ def tsc(logger, args, X_train, X_test, y_train, y_test):
             # #   'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             #   'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             #   'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-              'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            #   'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             #   'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             #   'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             #   'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-            'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset'])
+            # 'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset'])
             # 'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset'])
               }
 
@@ -82,20 +82,32 @@ def tsc(logger, args, X_train, X_test, y_train, y_test):
     
     analysis = pd.DataFrame(analysis_data)
     analysis['dataset'] = args['dataset']
-    analysis['rank_test_score']= analysis['mean_test_score'].rank(ascending= False,method='dense')
-    analysis['rank_fit_time']= analysis['mean_fit_time'].rank(ascending= True,method='dense')
-    analysis['rank_score_time']= analysis['mean_score_time'].rank(ascending= True,method='dense')
+    analysis['rank_test_score']= analysis['test_ds_score'].rank(ascending= False,method='dense')
+    analysis['rank_train_time']= analysis['train_time'].rank(ascending= True,method='dense')
+    analysis['rank_score_time']= analysis['test_ds_score_time'].rank(ascending= True,method='dense')
 
     return analysis, models
 
 def tsc_cv(logger, models, X_train, X_test, y_train, y_test):
-    # combine training and testing datasets
-    X = X_train.append(X_test, ignore_index=True)
-    y = np.concatenate((y_train, y_test), axis=0)
+    # # combine training and testing datasets
+    # X = X_train.append(X_test, ignore_index=True)
+    # y = np.concatenate((y_train, y_test), axis=0)
 
     logger.info(f"===== Step: Running Cross Validation =====")
     for m in models.values():
-        m.fit(X, y)
+        m.fit(X_train, y_train)
+        m.best_estimator_analysis['train_time']= m.train_time
+    
+    logger.info(f"===== Step: Labeling Testing Dataset =====")
+    for m in models.values():
+        m.predict(X_test)
+
+    logger.info(f"===== Step: Calculating Accuracy scores =====")
+    for m in models.values():
+        m.get_score(X_test, y_test)
+        m.best_estimator_analysis['test_ds_score']= m.test_ds_score
+        m.best_estimator_analysis['test_ds_score_time']= m.test_ds_score_time
+
 
     logger.info(f"===== Step: Prepare Analysis Results =====")
     analysis_data = [m.best_estimator_analysis for m in models.values()]
@@ -118,11 +130,13 @@ def tsc_no_cv(logger, models, X_train, X_test, y_train, y_test):
         m.get_score(X_test, y_test)
 
     logger.info(f"===== Step: Prepare Analysis Results =====")
-    idx = ['classifier', 'mean_fit_time', 'mean_score_time', 'mean_test_score', 'params']
-    analysis_data = [pd.Series([m.clf_name, m.train_time, m.score_time,
-                                m.score, m.clf.get_params()],index= idx) for m in models.values()]
+    idx = ['classifier', 'train_time', 'test_ds_score_time', 'test_ds_score', 'params']
+    analysis_data = [pd.Series([m.clf_name, m.train_time, m.test_ds_score_time,
+                                m.test_ds_score, m.clf.get_params()],index= idx) for m in models.values()]
     logger.info("Analysis metrics: score, fitting time, testing time")
     logger.info("models are ranked based on each of the metrics")
+    import IPython
+    IPython.embed()
     return analysis_data
 
 
@@ -140,8 +154,8 @@ def etsc(logger, args, X_train, X_test, y_train, y_test):
               'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             #   'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             #   'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-              'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-            'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset'])
+            #   'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            # 'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset'])
             # 'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset'])
               }
 
@@ -166,10 +180,10 @@ def etsc(logger, args, X_train, X_test, y_train, y_test):
 
         df = pd.DataFrame(analysis_data)
         df['revealed_pct']= (100/ args["split"])*(i+1)
-        df['harmonic_mean']= (2 * (1- df['revealed_pct']) * df['test_score'])/((1- df['revealed_pct']) + df['test_score'])
+        df['harmonic_mean']= (2 * (1- df['revealed_pct']) * df['test_ds_score'])/((1- df['revealed_pct']) + df['test_ds_score'])
         df['rank_hm']= df['harmonic_mean'].rank(ascending= False,method='dense')
-        df['rank_fit_time']= df['fit_time'].rank(ascending= True,method='dense')
-        df['rank_score_time']= df['score_time'].rank(ascending= True,method='dense')
+        df['rank_train_time']= df['train_time'].rank(ascending= True,method='dense')
+        df['rank_score_time']= df['test_ds_score_time'].rank(ascending= True,method='dense')
         dfs.append(df)
     analysis = pd.concat(dfs, axis=0,ignore_index= True)
     analysis['dataset'] = args['dataset']
@@ -184,7 +198,7 @@ def etsc_cv(logger, models, X_train, X_test, y_train, y_test):
     logger.info(f"===== Step: Running Cross Validation =====")
     for m in models.values():
         m.fit(X, y)
-        m.best_estimator_analysis['fit_time']= m.best_estimator_analysis['mean_fit_time']
+        m.best_estimator_analysis['train_time']= m.train_time
 
     logger.info(f"===== Step: Labeling Testing Dataset =====")
     for m in models.values():
@@ -193,8 +207,8 @@ def etsc_cv(logger, models, X_train, X_test, y_train, y_test):
     logger.info(f"===== Step: Calculating Accuracy scores =====")
     for m in models.values():
         m.get_score(X_test, y_test)
-        m.best_estimator_analysis['test_score']= m.score
-        m.best_estimator_analysis['score_time']= m.score_time
+        m.best_estimator_analysis['test_ds_score']= m.test_ds_score
+        m.best_estimator_analysis['test_ds_score_time']= m.test_ds_score_time
 
     logger.info(f"===== Step: Prepare Analysis Results =====")
     analysis_data = [m.best_estimator_analysis for m in models.values()]
@@ -216,9 +230,9 @@ def etsc_no_cv(logger, models, X_train, X_test, y_train, y_test):
         m.get_score(X_test, y_test)
 
     logger.info(f"===== Step: Prepare Analysis Results =====")
-    idx = ['classifier', 'fit_time', 'score_time', 'test_score', 'params']
-    analysis_data = [pd.Series([m.clf_name, m.train_time, m.score_time,
-                                m.score, m.clf.get_params()],index= idx) for m in models.values()]
+    idx = ['classifier', 'train_time', 'test_ds_score_time', 'test_ds_score', 'params']
+    analysis_data = [pd.Series([m.clf_name, m.train_time, m.test_ds_score_time,
+                                m.test_ds_score, m.clf.get_params()],index= idx) for m in models.values()]
     logger.info("Analysis metrics: score, fitting time, testing time")
     logger.info("models are ranked based on each of the metrics")
     return analysis_data
