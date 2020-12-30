@@ -217,7 +217,6 @@ class pytsModel(Model):
         if self.dim > 1:
             self.hyper_param = self.get_params_dict()
             self.clf = MultivariateClassifier(self.clf)
-
         else:
             pass
 
