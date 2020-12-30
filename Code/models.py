@@ -87,67 +87,39 @@ class Model:
 
     def predict(self, X_test, y_test=None):
         self.logger.info(f'{self.clf_name}: Testing started')
+        predict_start = process_time()
         if self.cv:
-            y_pred = self.predict_cv(X_test, y_test)
+            y_pred = self.best_estimator_.predict(X=X_test)
         else:
-            y_pred = self.predict_no_cv(X_test, y_test)
+            y_pred = self.clf.predict(X=X_test)
+        predict_stop = process_time()
+        self.predict_time = predict_stop - predict_start
         self.y_pred = y_pred
         self.logger.info(f'{self.clf_name}: Testing Finished')
         # return y_pred
 
-    def predict_no_cv(self, X_test, y_test=None):
-        predict_start = process_time()
-        y_pred = self.clf.predict(X=X_test)
-        predict_stop = process_time()
-        self.predict_time = predict_stop - predict_start
-        return y_pred
-
-    def predict_cv(self, X_test, y_test=None):
-        predict_start = process_time()
-        y_pred = self.best_estimator_.predict(X=X_test)
-        predict_stop = process_time()
-        self.predict_time = predict_stop - predict_start
-        return y_pred
-
     def predict_proba(self, X_test, y_test=None):
         self.logger.info(f'{self.clf_name}: Predicting Class Probabilities')
         if self.cv:
-            proba = self.predict_proba_cv(X_test, y_test)
+            proba = self.best_estimator_.predict_proba(X=X_test)
         else:
-            proba = self.predict_proba_no_cv(X_test, y_test)
+            proba = self.clf.predict_proba(X=X_test)
         self.proba = proba
         self.logger.info(f'{self.clf_name}: Class Probabilities Finished')
         # return proba
 
-    def predict_proba_no_cv(self, X_test, y_test=None):
-        return self.clf.predict_proba(X=X_test)
-
-    def predict_proba_cv(self, X_test, y_test=None):
-        return self.best_estimator_.predict_proba(X=X_test)
-
     def get_score(self, X_test, y_test):
         self.logger.info(f'{self.clf_name}: Calculating Accuracy Score')
+        score_start = process_time()
         if self.cv:
-            score = self.get_score_cv(X_test, y_test)
+            score = self.best_estimator_.score(X=X_test, y=y_test)
         else:
-            score = self.get_score_no_cv(X_test, y_test)
+            score = self.clf.score(X=X_test, y=y_test)
+        score_stop = process_time()
+        self.test_ds_score_time = score_stop - score_start
         self.test_ds_score = score
         self.logger.info(f'{self.clf_name}: Accuracy Finished')
         # return score
-
-    def get_score_no_cv(self, X_test, y_test):
-        score_start = process_time()
-        score = self.clf.score(X=X_test, y=y_test)
-        score_stop = process_time()
-        self.test_ds_score_time = score_stop - score_start
-        return score
-
-    def get_score_cv(self, X_test, y_test):
-        score_start = process_time()
-        score = self.best_estimator_.score(X=X_test, y=y_test)
-        score_stop = process_time()
-        self.test_ds_score_time = score_stop - score_start
-        return score
 
     def get_best_estimator_analysis(self):
         name = pd.Series({'classifier': self.clf_name})
@@ -217,47 +189,24 @@ class pytsModel(Model):
     def fit(self, X, y):
         X_train = self.from_sktime_to_pyts(X)
         y_train = y
-        self.logger.info(f'{self.clf_name}: Training started')
-        if self.cv:
-            self.fit_cv(X_train, y_train)
-        else:
-            self.fit_no_cv(X_train, y_train)
-        self.logger.info(f'{self.clf_name}: Training Finished')
+        Model.fit(self, X_train, y_train)
 
     def predict(self, X, y=None):
         X_test = self.from_sktime_to_pyts(X)
         y_test = y
-        self.logger.info(f'{self.clf_name}: Testing started')
-        if self.cv:
-            y_pred = self.predict_cv(X_test, y_test)
-        else:
-            y_pred = self.predict_no_cv(X_test, y_test)
-        self.y_pred = y_pred
-        self.logger.info(f'{self.clf_name}: Testing Finished')
+        Model.predict(self, X_test, y_test)
         # return y_pred
 
     def predict_proba(self, X, y=None):
         X_test = self.from_sktime_to_pyts(X)
         y_test = y
-        self.logger.info(f'{self.clf_name}: Predicting Class Probabilities')
-        if self.cv:
-            proba = self.predict_proba_cv(X_test, y_test)
-        else:
-            proba = self.predict_proba_no_cv(X_test, y_test)
-        self.proba = proba
-        self.logger.info(f'{self.clf_name}: Class Probabilities Finished')
+        Model.predict(self, X_test, y_test)
         # return proba
 
     def get_score(self, X, y):
         X_test = self.from_sktime_to_pyts(X)
         y_test = y
-        self.logger.info(f'{self.clf_name}: Calculating Accuracy Score')
-        if self.cv:
-            score = self.get_score_cv(X_test, y_test)
-        else:
-            score = self.get_score_no_cv(X_test, y_test)
-        self.test_ds_score = score
-        self.logger.info(f'{self.clf_name}: Accuracy Finished')
+        Model.get_score(self, X_test, y_test)
         # return score
 
     def initialize_model(self, ds):
