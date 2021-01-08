@@ -163,7 +163,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortingtemplatename</bcf:key>
-      <bcf:value>nty</bcf:value>
+      <bcf:value>anyt</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortsets</bcf:key>
@@ -2182,82 +2182,3 @@
     <bcf:datasource type="file" datatype="bibtex">List_of_Cited_Literature.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1">bagnall2017great</bcf:citekey>
-    <bcf:citekey order="2">bagnall2017great</bcf:citekey>
-    <bcf:citekey order="3">abanda2019review</bcf:citekey>
-    <bcf:citekey order="3">bagnall2017great</bcf:citekey>
-    <bcf:citekey order="4">lines2018time</bcf:citekey>
-    <bcf:citekey order="5">loning2019sktime</bcf:citekey>
-    <bcf:citekey order="6">loning2019sktime</bcf:citekey>
-    <bcf:citekey order="7">Bostrom2017</bcf:citekey>
-    <bcf:citekey order="8">deng2013time</bcf:citekey>
-    <bcf:citekey order="9">kate2016using</bcf:citekey>
-    <bcf:citekey order="9">jeong2011weighted</bcf:citekey>
-    <bcf:citekey order="9">bostrom2017shapelet</bcf:citekey>
-    <bcf:citekey order="9">lines2018time</bcf:citekey>
-    <bcf:citekey order="9">schafer2017multivariate</bcf:citekey>
-    <bcf:citekey order="9">fawaz2020inceptiontime</bcf:citekey>
-    <bcf:citekey order="10">ratanamahatana2004making</bcf:citekey>
-    <bcf:citekey order="10">bagnall2017great</bcf:citekey>
-    <bcf:citekey order="10">tan2020fastee</bcf:citekey>
-    <bcf:citekey order="10">petitjean2016faster</bcf:citekey>
-    <bcf:citekey order="10">schafer2017fast</bcf:citekey>
-    <bcf:citekey order="11">schafer2020teaser</bcf:citekey>
-    <bcf:citekey order="12">xing2009early</bcf:citekey>
-    <bcf:citekey order="13">mori2019early</bcf:citekey>
-    <bcf:citekey order="13">tavenard2016cost</bcf:citekey>
-    <bcf:citekey order="13">xing2012early</bcf:citekey>
-    <bcf:citekey order="13">mori2017reliable</bcf:citekey>
-    <bcf:citekey order="14">mori2017early</bcf:citekey>
-    <bcf:citekey order="14">parrish2013classifying</bcf:citekey>
-    <bcf:citekey order="14">lin2015reliable</bcf:citekey>
-    <bcf:citekey order="15">griffin2001toward</bcf:citekey>
-    <bcf:citekey order="15">ghalwash2012early</bcf:citekey>
-    <bcf:citekey order="16">bernaille2006traffic</bcf:citekey>
-    <bcf:citekey order="17">yazdanbakhsh2019multivariate</bcf:citekey>
-    <bcf:citekey order="17">gupta2020fault</bcf:citekey>
-    <bcf:citekey order="18">ghalwash2014utilizing</bcf:citekey>
-    <bcf:citekey order="19">schafer2020teaser</bcf:citekey>
-    <bcf:citekey order="20">ghalwash2012early</bcf:citekey>
-    <bcf:citekey order="20">schafer2020teaser</bcf:citekey>
-  </bcf:section>
-  <!-- SORTING TEMPLATES -->
-  <bcf:sortingtemplate name="nty">
-    <bcf:sort order="1">
-      <bcf:sortitem order="1">presort</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="2" final="1">
-      <bcf:sortitem order="1">sortkey</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="3">
-      <bcf:sortitem order="1">sortname</bcf:sortitem>
-      <bcf:sortitem order="2">author</bcf:sortitem>
-      <bcf:sortitem order="3">editor</bcf:sortitem>
-      <bcf:sortitem order="4">translator</bcf:sortitem>
-      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="6">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="4">
-      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
-      <bcf:sortitem order="2">title</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="5">
-      <bcf:sortitem order="1">sortyear</bcf:sortitem>
-      <bcf:sortitem order="2">year</bcf:sortitem>
-    </bcf:sort>
-    <bcf:sort order="6">
-      <bcf:sortitem order="1">volume</bcf:sortitem>
-      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
-    </bcf:sort>
-  </bcf:sortingtemplate>
-  <!-- DATALISTS -->
-  <bcf:datalist section="0"
-                name="nty/global//global/global"
-                type="entry"
-                sortingtemplatename="nty"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
-</bcf:controlfile>

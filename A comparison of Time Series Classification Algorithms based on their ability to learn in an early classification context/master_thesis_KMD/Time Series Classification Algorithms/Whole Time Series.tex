@@ -1,0 +1,17 @@
+Whole time series similarity algorithms, also called distance-based algorithms, are methods that compare pairs of time series instances.
+An unlabeled time series instance is given the class label of the nearest instance in a training data set \cite{kate2016using}.
+There are two main techniques for carrying out the comparison;
+either by comparing vector representations of the time series instances,
+or by combining a defined distance function with a classifier, KNN being the most common one \cite{lines2018time}.
+Whole time series algorithms are best suited for problems where the unique features can exist anywhere along the whole time series\cite{bagnall2017great}.\newline
+One of the simplest forms of whole time series is 1-NN with Euclidean Distance \cite{faloutsos1994fast}, yet it can suprisingly attain high accuracy compared to other distance measures \cite{xing2010brief}.
+But Nearest Neighbor with Euclidean Distance (KNNED) is an easy to beat baseline, due to it's sensitivity for distortion and inability to handle time series of unequal lengths \cite{xing2010brief,kate2016using,lines2018time}.
+This lead many of the researchers to focus on defining more advanced and elastic distance measures that can compensate for misalignment between time series \cite{abanda2019review}.
+The standard and most common baseline classifier utilizing elastic distance measures is 1-NN with Dynamic Time Warping (DTW) \cite{bagnall2017great}.
+In contrast to the idea that more powerful machine learning algorithms will be able to defeat the simple KNN and an elastic measure,
+DTW has proved to be a very tough opponent to other algorithms and other elastic distance measures as well \cite{kate2016using,lines2015time,wang2013experimental}.
+But there were also other distance metrics that have been introduced in literature, these inlcude extensions of DTW on one hand like; Weighted Dynamic Time Warping (WDTW) which penalizes large warpings based on distance \cite{jeong2011weighted}
+and Derivative Dynamic Time Warping (DDTW) \cite{keogh2001derivative,gorecki2013using} which uses derivatives of sequences as features rather than raw data to avoid singularities.
+On the other hand, Edit Distance with Real Penalty (ERP) \cite{chen2004marriage}, Time Warp Edit (TWE) \cite{marteau2008time}, Longest Common Subsequence (LCSS) \cite{das1997finding} and Move-Split-Merge (MSM) \cite{stefan2012move}
+are all alternatives for distance measures, yet multiple experiments have considered DTW to be relatively unbeatable \cite{bagnall2017great,abanda2019review,bostrom2017shapelet}.
+To the extend of our knowledge, the most powerful whole time series classifiers are Elastic Ensemble (EE) \cite{lines2015time} and Proximity Forest (PF) \cite{lucas2019proximity}.\newline

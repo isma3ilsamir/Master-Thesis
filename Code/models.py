@@ -19,7 +19,8 @@ from tslearn.utils import from_sktime_dataset, to_pyts_dataset
 from sktime.classification.compose import ColumnEnsembleClassifier
 from sktime.classification.distance_based._time_series_neighbors import KNeighborsTimeSeriesClassifier
 from sktime.classification.compose import TimeSeriesForestClassifier
-# from sktime.classification.distance_based import ElasticEnsemble
+from sktime.classification.distance_based import ElasticEnsemble
+from sktime.classification.distance_based import ProximityForest
 from sktime.classification.shapelet_based import ShapeletTransformClassifier
 from sktime.classification.dictionary_based import WEASEL
 from sktime.classification.dictionary_based import ContractableBOSS
@@ -83,7 +84,7 @@ class Model:
         self.best_estimator_ = search.best_estimator_
         self.best_params = search.best_params_
         self.best_estimator_analysis = self.get_best_estimator_analysis()
-        self.train_time= self.best_estimator_analysis['mean_fit_time']
+        self.train_time = self.best_estimator_analysis['mean_fit_time']
 
     def predict(self, X_test, y_test=None):
         self.logger.info(f'{self.clf_name}: Testing started')
@@ -157,7 +158,7 @@ class Model:
 
     def get_params_dict(self):
         estimators = []
-        params_dict= None
+        params_dict = None
         for i in range(self.dim):
             temp = f"{self.clf_name}_{i}__"
 
@@ -169,13 +170,13 @@ class Model:
             params_dict = {temp + str(key): val for key,
                            val in self.hyper_param.items()}
         return estimators, params_dict
-    
+
     def export_model(self, exp):
-        cv= 'cv' if self.cv else 'no_cv'
-        fname= os.path.join(self.models_folder,f'{exp}_{self.clf_name}_{cv}.sav')
+        cv = 'cv' if self.cv else 'no_cv'
+        fname = os.path.join(self.models_folder,
+                             f'{exp}_{self.clf_name}_{cv}.sav')
         joblib.dump(self.clf, fname)
         self.logger.info(f'Model exported to {fname}')
-
 
 
 class pytsModel(Model):
@@ -221,7 +222,7 @@ class pytsModel(Model):
             pass
 
     def get_params_dict(self):
-        params_dict= None
+        params_dict = None
         for i in range(self.dim):
             temp = f"estimator__"
             params_dict = {temp + str(key): val for key,
@@ -267,15 +268,35 @@ class KNNMSM(Model):
     clf_name = "1NN-MSM"
     hyper_param = {
         'algorithm': ['brute'],
-        'weights': ['uniform', 'distance']
+        'weights': ['uniform', 'distance'],
+        'metric_params': [{'c': 0.01},{'c': 0.1},{'c': 1},{'c': 10},{'c': 100}]
+    }
+
+class EE(Model):
+    clf= ElasticEnsemble(verbose=0)
+    clf_name= 'EE'
+    hyper_param = {
+        'distance_measures': ['all']
+    }
+
+class PFOREST(Model):
+    clf = ProximityForest(n_jobs= -1,
+    get_distance_measure= None,
+    max_depth= 10,
+    verbosity= 3)
+    clf_name = 'PForest'
+    hyper_param = {
+        'n_estimators': [1, 10, 100, 250, 500, 1000]
     }
 
 
 class TSF(Model):
     clf = TimeSeriesForestClassifier(verbose=0,
-                                     n_jobs=-1)
+                                     n_jobs=-1,
+                                     oob_score= True,
+                                     bootstrap= True)
     clf_name = 'TSF'
-    hyper_param = {'n_estimators': [1, 10, 100, 250, 500],
+    hyper_param = {'n_estimators': [1, 10, 100, 250, 500, 1000],
                    'max_features': ['sqrt', 'log2']
                    }
 
@@ -341,7 +362,8 @@ class INCEPTION(Model):
     }
 
     def export_model(self, exp):
-        cv= 'cv' if self.cv else 'no_cv'
-        fname= os.path.join(self.models_folder,f'{exp}_{self.clf_name}_{cv}.h5')
-        self.clf.model.save(fname)  
+        cv = 'cv' if self.cv else 'no_cv'
+        fname = os.path.join(self.models_folder,
+                             f'{exp}_{self.clf_name}_{cv}.h5')
+        self.clf.model.save(fname)
         self.logger.info(f'Model exported to {fname}')

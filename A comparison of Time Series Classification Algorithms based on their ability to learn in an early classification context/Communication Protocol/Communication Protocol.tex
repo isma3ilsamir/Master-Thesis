@@ -26,6 +26,138 @@
 	This document is a communication protocol for the master thesis. It includes a dated log for all the communication events that have happened through the course of the master thesis. This includes meeting minutes, email discussions, questions that come up in between periodic appointments and also a documentation of their statuses and their answers.
 \end{abstract}
 
+\section*{\texorpdfstring{\nth{5}}. October 2020, Reply to Follow up Email and questions about libraries}
+Dear Ismail Wahba.\newline
+Great overview, very promising. I had hoped that WEASEL, BOSS and TEASER were also in pyts or sktime, but 16 classifiers in sktime sounds very promising. From what I read, sktime has the most extensive functionalities.\newline
+To place information in context:
+\begin{itemize}
+	\item which of these repos contain algorithms by Bagnall and team?
+	\item ... by Keogh and peers?
+	\item ... eTSCA (by any author)?
+\end{itemize}
+All todos are as we discussed. There is one more todo:
+\begin{itemize}
+	\item Specify what is meant by "incremental learning"
+\end{itemize}
+After all discussions we had, this specification is a must, so that the objectives of the analysis are clear.\newline
+All the best,
+Myra Spiliopoulou
+
+\section*{\texorpdfstring{\nth{5}}. October 2020, Follow up Email}
+Dear All,\newline
+Please find below the updates for the period between 25 Sept - 4 Oct:\newline
+\begin{itemize}
+	\item Done
+		\begin{itemize}
+			\item Read the papers of TEASER and InceptionTime (thank you Noor for sharing it with me)
+			\item Investigated multiple github repositories with different implementations of TSCA algorithms:
+				\begin{itemize}
+					\item sktime
+						\begin{itemize}
+							\item The main repository, it is an extension of sklearn for TS data
+							\item Contains 16 different classifiers and data importing capabilities
+							\item Allows for the creation of pipelines and ensembles
+						\end{itemize}
+					\item pyts
+						\begin{itemize}
+							\item Connected the UCR and UAE data archives (the biggest 2 archives)
+							\item Repository with good utils for transformation and approximation
+							\item Implementation of 6 different classifiers
+						\end{itemize}
+					\item sktime-dl
+						\begin{itemize}
+							\item Repository for deep learning algorithms adjusted for TSC
+							\item Contains 10 different deep learning classifiers including (InceptionTime, CNN and ResNet)
+						\end{itemize}
+					\item SFA\_Python
+						\begin{itemize}
+							\item Repository for eTSCA TEASER, univariate (WEASEL, BOSS and BOSSVS) and multivariate (WEASEL+MUSE)
+						\end{itemize}
+				\end{itemize}
+		\end{itemize}
+		There is no repository offering everything, but sktime and pyts seem to be well integrated, I had a quick play with both. I also tried downloading a dataset using pyts and then importing it in sktime and succeeded.\newline
+		I am also hoping that sktime-dl will be easy to use with them as it was developed by the same team of sktime.\newline
+	\item To-do
+		\begin{itemize}
+			\item Write a proposal based on our last call all together
+				\begin{itemize}
+					\item 3 categories (conventional TSCA, eTSCA with full TS learning, eTSCA with incremental learning)
+					\item Given a dataset, the framework will do the analysis and recommend the best algorithm(s) to use
+					\item The framework should provide insights on the earliness and performance for the algorithms on the dataset
+				\end{itemize}
+			\item Write a time-plan for the coming milestones
+			\item Short-list the algorithms that will be used
+		\end{itemize}
+\end{itemize}
+
+Best Regards,
+Ismail Wahba
+
+\section*{\texorpdfstring{\nth{24}}. September 2020, on the subtopic "incrementality" - 5 The Call}
+\begin{itemize}
+	\item Incrementality does not mean that the number of observations for an instances increases by time, but it is related to how we want to show the data to the classifier
+	\item We will not an early classification in the strict sense of "incremental learning", but we will create a testbed where we simulate an earliness context
+	\item We want to consider 2 criteria in our experiment : earliness and quality
+	\item There are 2 types of early classification algorithms: ones that see the whole series and others that see only parts from the beginning
+	\item We are not doing event classification
+	\item Check TEASER algorithm, as it doesn't need to see the whole time series in learning
+	\item Our goal is nor creating incremental learners, we are evaluating existing learners on how early they can classify. By learning "offline" on the data while revealing more and more data
+	\item Desirable goal is to try to optimize the process, since going offline, learning and then testing will be very costly. Not by optimizing every algorithm, but by optimizing the framework
+	\item We create a wrapper around a group of algorithms, this wrapper will run the algorithms on the dataset and recommend the best one based on how every algorithm perform on the dataset
+	\item The dataset is not a parameter of the recommendation, for example we will not recommend algorithms based on similarity between datasets
+	\item The parameters used for the recommendation: earliness, quality (accuracy) and a metric of overall performance (Pareto optimization)
+	\item Use 2 families: Conventional and early time series classification algorithms
+	\item For conventional classifiers we will chop the data
+	\item For early classifiers that see the whole time series we chop the data
+	\item For early classifiers that see part of the data we will not do chopping, because it doesn't see the whole data anyway (TEASER family)
+	\item To have comparable results between TEASER and other algorithms that we will do the chopping for, we need to have comparable measure. Because TEASER calculates earliness for each time series seperately, but other algorithms earliness is based on the chopping
+	\item Differentiate between dependent instances (instances belong to same object) and independent instances (panel data)
+\end{itemize}
+
+\section*{\texorpdfstring{\nth{23}}. September 2020, on the subtopic "incrementality" - 4}
+Dear Ismail Wahba.\newline
+Today I spoke with Noor: indeed, a live discussion clarifies a lot. We will clarify all.\newline
+Till tomorrow,\newline
+Myra Spiliopoulou
+
+\section*{\texorpdfstring{\nth{23}}. September 2020, on the subtopic "incrementality" - 3}
+Dear Prof Spiliopoulou,\newline
+Thank you for the reply.\newline
+Yes it helps regarding the first point of connecting/transforming TSCA to E-TSCA.\newline
+As for the incremental property of algorithms, I believe it will become clearer during our discussion on Friday.\newline
+Best Regards,\newline
+Ismail Wahba
+
+\section*{\texorpdfstring{\nth{23}}. September 2020, on the subtopic "incrementality" - 2}
+Dear Ismail Wahba.\newline
+This mail goes to you and also to Vishnu and Noor, because Vishnu told me that you exchange with them and have difficulties with item b) below.\newline
+We have a meeting on Friday, where we can discuss this. I think that the subject is much simpler than it sounds:\newline
+There are algorithms for time series classification (TSCA) and methods for early time series classification (E-TSCA).\newline
+What must be done to transform an arbirary TSCA into an E-TSCA?\newline
+One way to go is that you pick two state of the art TSCAs and propose an E-extension for each one.\newline
+Does this help?\newline
+Best regards,\newline
+Myra
+
+\section*{\texorpdfstring{\nth{23}}. September 2020, on the subtopic "incrementality" - 1}
+Dear Prof Spiliopoulou,\newline
+Since our last call I have been investigating the two topics we discussed
+\begin{itemize}
+	\item Early Timeseries Classification as one of the motivations for our research
+	\item How can we transform a normal TSCA to an incremental one
+\end{itemize}
+As for the first point, I have made myself more familiar with the idea of early classification, although while reading I came to realize more and more that the technique itself is different than TSCA.\newline
+My problem was with the second point. Whenever I found something with incremental learning, it is discussing online learning (data streams), which I believe is not related to our topic.\newline
+I couldn't find anything discussing incremental learning in an offline context except one paper. (Losing, Viktor, Barbara Hammer, and Heiko Wersing. "Incremental on-line learning: A review and comparison of state of the art algorithms." Neurocomputing 275 (2018): 1261-1274.)\newline
+In the context of the paper, I understood that incremental learning is more like mini batches learning. We divide the dataset into N batches. Starting with the first batch (subset of instances) we learn a model, then for each new batch we learn a new model which is based on the previous model and the batch at hand (subset of instances). Then the classification is done using only the last model.\newline
+But I think this is not the same setting for our research, as we want to learn a model on few time points (features) for all instances and then make the model learn more by incrementing more time points (features) to it.\newline
+I feel like I am stuck now and I am seeking guidance.\newline
+I am not sure if that really is the incremental learning technique that we should apply ?\newline
+and how to connect the incremental learning topic to our research ?\newline
+I appreciate your help\newline
+Best Regards,\newline
+Ismail Wahbha\newline
+
 \section*{\texorpdfstring{\nth{26}}. August 2020, Reply to mail of Aug 23}
 Dear Ismail Wahba.\newline
 I hope I did not miss much from the communication. It seems you have some difficulties with WEASEL, you need time for it.\newline

@@ -1,7 +1,7 @@
-PWD c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD
+PWD c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD
 INPUT C:\Users\Ismail\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.tex
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.log
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\main.tex
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\main.log
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\size10.clo
@@ -106,9 +106,9 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsbsy.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsbsy.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsopn.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsmath\amsopn.sty
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.aux
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.aux
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.aux
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\main.aux
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\main.aux
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\main.aux
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\cbfonts-fd\lgrcmr.fd
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\cbfonts-fd\lgrcmr.fd
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\context\base\mkii\supp-pdf.mkii
@@ -121,126 +121,9 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\kvdefinekeys\kvd
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\kvdefinekeys\kvdefinekeys.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\english.lbx
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\english.lbx
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.bcf
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.bbl
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.bbl
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.bbl
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\title_page.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\title_page.tex
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\main.bcf
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\title_page.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\title_page.tex
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Figure\Signet_INF_1.pdf
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Figure\Signet_INF_1.pdf
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.pdf
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Figure\Signet_INF_1.pdf
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Figure\Signet_INF_1.pdf
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
-INPUT C:\Users\Ismail\AppData\Local\MiKTeX\pdftex\config\pdftex.map
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr9.tfm
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\abstract.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\abstract.tex
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\tableofcontents.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\tableofcontents.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.toc
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.toc
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.toc
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\ListOfFigures.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\ListOfFigures.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.lof
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.lof
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.lof
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsl10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\ListOfTable.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\ListOfTable.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.lot
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.lot
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.lot
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\ListOfAbbreviations.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\ListOfAbbreviations.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Introduction\Introduction.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Introduction\Introduction.tex
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\omscmr.fd
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\omscmr.fd
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Introduction\Goals_Thesis.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Introduction\Goals_Thesis.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Introduction\Structure_Thesis.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Introduction\Structure_Thesis.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Concepts_intro.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Concepts_intro.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Time Series Data.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Time Series Data.tex
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti9.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Nature of Time Series Data.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Nature of Time Series Data.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Time Series Classification Problem.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Time Series Classification Problem.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Early Time Series Classification Problem.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\Early Time Series Classification Problem.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\concepts_and_terminology.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\concepts_and_terminology.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\related_work.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\Related Work\related_work.tex
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.aux
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.run.xml
-OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master Thesis\Performance-Degradation-of-Time-Series-Classification-Algorithms-while-shortening-series-length\master_thesis_KMD\main.run.xml
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsl10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsl10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\Figure\Signet_INF_1.pdf
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\A comparison of Time Series Classification Algorithms based on their ability to learn in an early classification context\master_thesis_KMD\Figure\Signet_INF_1.pdf
