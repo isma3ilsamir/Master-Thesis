@@ -2182,3 +2182,155 @@
     <bcf:datasource type="file" datatype="bibtex">List_of_Cited_Literature.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="2">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="3">abanda2019review</bcf:citekey>
+    <bcf:citekey order="3">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="4">lines2018time</bcf:citekey>
+    <bcf:citekey order="5">loning2019sktime</bcf:citekey>
+    <bcf:citekey order="6">loning2019sktime</bcf:citekey>
+    <bcf:citekey order="7">Bostrom2017</bcf:citekey>
+    <bcf:citekey order="8">deng2013time</bcf:citekey>
+    <bcf:citekey order="9">kate2016using</bcf:citekey>
+    <bcf:citekey order="9">jeong2011weighted</bcf:citekey>
+    <bcf:citekey order="9">bostrom2017shapelet</bcf:citekey>
+    <bcf:citekey order="9">lines2018time</bcf:citekey>
+    <bcf:citekey order="9">schafer2017multivariate</bcf:citekey>
+    <bcf:citekey order="9">fawaz2020inceptiontime</bcf:citekey>
+    <bcf:citekey order="10">ratanamahatana2004making</bcf:citekey>
+    <bcf:citekey order="10">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="10">tan2020fastee</bcf:citekey>
+    <bcf:citekey order="10">petitjean2016faster</bcf:citekey>
+    <bcf:citekey order="10">schafer2017fast</bcf:citekey>
+    <bcf:citekey order="11">schafer2020teaser</bcf:citekey>
+    <bcf:citekey order="12">xing2009early</bcf:citekey>
+    <bcf:citekey order="13">mori2019early</bcf:citekey>
+    <bcf:citekey order="13">tavenard2016cost</bcf:citekey>
+    <bcf:citekey order="13">xing2012early</bcf:citekey>
+    <bcf:citekey order="13">mori2017reliable</bcf:citekey>
+    <bcf:citekey order="14">mori2017early</bcf:citekey>
+    <bcf:citekey order="14">parrish2013classifying</bcf:citekey>
+    <bcf:citekey order="14">lin2015reliable</bcf:citekey>
+    <bcf:citekey order="15">griffin2001toward</bcf:citekey>
+    <bcf:citekey order="15">ghalwash2012early</bcf:citekey>
+    <bcf:citekey order="16">bernaille2006traffic</bcf:citekey>
+    <bcf:citekey order="17">yazdanbakhsh2019multivariate</bcf:citekey>
+    <bcf:citekey order="17">gupta2020fault</bcf:citekey>
+    <bcf:citekey order="18">ghalwash2014utilizing</bcf:citekey>
+    <bcf:citekey order="19">schafer2020teaser</bcf:citekey>
+    <bcf:citekey order="20">ghalwash2012early</bcf:citekey>
+    <bcf:citekey order="20">schafer2020teaser</bcf:citekey>
+    <bcf:citekey order="21">kate2016using</bcf:citekey>
+    <bcf:citekey order="22">lines2018time</bcf:citekey>
+    <bcf:citekey order="23">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="24">faloutsos1994fast</bcf:citekey>
+    <bcf:citekey order="25">xing2010brief</bcf:citekey>
+    <bcf:citekey order="26">xing2010brief</bcf:citekey>
+    <bcf:citekey order="26">kate2016using</bcf:citekey>
+    <bcf:citekey order="26">lines2018time</bcf:citekey>
+    <bcf:citekey order="27">abanda2019review</bcf:citekey>
+    <bcf:citekey order="28">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="29">kate2016using</bcf:citekey>
+    <bcf:citekey order="29">lines2015time</bcf:citekey>
+    <bcf:citekey order="29">wang2013experimental</bcf:citekey>
+    <bcf:citekey order="30">jeong2011weighted</bcf:citekey>
+    <bcf:citekey order="31">keogh2001derivative</bcf:citekey>
+    <bcf:citekey order="31">gorecki2013using</bcf:citekey>
+    <bcf:citekey order="32">chen2004marriage</bcf:citekey>
+    <bcf:citekey order="33">marteau2008time</bcf:citekey>
+    <bcf:citekey order="34">das1997finding</bcf:citekey>
+    <bcf:citekey order="35">stefan2012move</bcf:citekey>
+    <bcf:citekey order="36">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="36">abanda2019review</bcf:citekey>
+    <bcf:citekey order="36">bostrom2017shapelet</bcf:citekey>
+    <bcf:citekey order="37">lines2015time</bcf:citekey>
+    <bcf:citekey order="38">lucas2019proximity</bcf:citekey>
+    <bcf:citekey order="39">baydogan2013bag</bcf:citekey>
+    <bcf:citekey order="39">jeong2011weighted</bcf:citekey>
+    <bcf:citekey order="39">kate2016using</bcf:citekey>
+    <bcf:citekey order="40">hills2014classification</bcf:citekey>
+    <bcf:citekey order="40">ding2008querying</bcf:citekey>
+    <bcf:citekey order="40">bagnall2012transformation</bcf:citekey>
+    <bcf:citekey order="41">abanda2019review</bcf:citekey>
+    <bcf:citekey order="41">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="42">tan2020fastee</bcf:citekey>
+    <bcf:citekey order="43">schafer2017fast</bcf:citekey>
+    <bcf:citekey order="43">petitjean2016faster</bcf:citekey>
+    <bcf:citekey order="44">tan2020fastee</bcf:citekey>
+    <bcf:citekey order="45">sakoe1978dynamic</bcf:citekey>
+    <bcf:citekey order="46">itakura1975minimum</bcf:citekey>
+    <bcf:citekey order="47">ratanamahatana2004making</bcf:citekey>
+    <bcf:citekey order="48">tan2019time</bcf:citekey>
+    <bcf:citekey order="49">stefan2012move</bcf:citekey>
+    <bcf:citekey order="50">lines2015time</bcf:citekey>
+    <bcf:citekey order="51">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="52">stefan2012move</bcf:citekey>
+    <bcf:citekey order="52">tan2020fastee</bcf:citekey>
+    <bcf:citekey order="53">fawaz2020inceptiontime</bcf:citekey>
+    <bcf:citekey order="53">fawaz2019deep</bcf:citekey>
+    <bcf:citekey order="54">tan2020fastee</bcf:citekey>
+    <bcf:citekey order="55">lines2015time</bcf:citekey>
+    <bcf:citekey order="55">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="56">shifaz2020ts</bcf:citekey>
+    <bcf:citekey order="57">fawaz2020inceptiontime</bcf:citekey>
+    <bcf:citekey order="57">fawaz2019deepreview</bcf:citekey>
+    <bcf:citekey order="58">lucas2019proximity</bcf:citekey>
+    <bcf:citekey order="59">lucas2019proximity</bcf:citekey>
+    <bcf:citekey order="60">lucas2019proximity</bcf:citekey>
+    <bcf:citekey order="61">baydogan2016time</bcf:citekey>
+    <bcf:citekey order="62">deng2013time</bcf:citekey>
+    <bcf:citekey order="63">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="64">deng2013time</bcf:citekey>
+    <bcf:citekey order="65">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="66">santos2016literature</bcf:citekey>
+    <bcf:citekey order="66">rodriguez2004support</bcf:citekey>
+    <bcf:citekey order="66">deng2013time</bcf:citekey>
+    <bcf:citekey order="67">rodriguez2004support</bcf:citekey>
+    <bcf:citekey order="68">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="69">deng2013time</bcf:citekey>
+    <bcf:citekey order="70">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="71">deng2013time</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="anyt">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">presort</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2">
+      <bcf:sortitem order="1">labelalpha</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="7">
+      <bcf:sortitem order="1">volume</bcf:sortitem>
+      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="anyt/global//global/global"
+                type="entry"
+                sortingtemplatename="anyt"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
