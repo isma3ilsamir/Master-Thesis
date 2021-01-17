@@ -273,6 +273,31 @@
       \field{pages}{23\bibrangedash 26}
       \range{pages}{4}
     \endentry
+    \entry{bostrom2018shapelet}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=c3c365fc76bc8eff92a263c901e471c0}{%
+           family={Bostrom},
+           familyi={B\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of East Anglia}%
+      }
+      \strng{namehash}{c3c365fc76bc8eff92a263c901e471c0}
+      \strng{fullhash}{c3c365fc76bc8eff92a263c901e471c0}
+      \strng{bibnamehash}{c3c365fc76bc8eff92a263c901e471c0}
+      \strng{authorbibnamehash}{c3c365fc76bc8eff92a263c901e471c0}
+      \strng{authornamehash}{c3c365fc76bc8eff92a263c901e471c0}
+      \strng{authorfullhash}{c3c365fc76bc8eff92a263c901e471c0}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Shapelet Transforms for Univariate and Multivariate Time Series Classification}
+      \field{type}{phdthesis}
+      \field{year}{2018}
+    \endentry
     \entry{bostrom2017shapelet}{article}{}
       \name{author}{2}{}{%
         {{hash=c3c365fc76bc8eff92a263c901e471c0}{%
@@ -849,6 +874,45 @@
       \field{year}{2013}
       \field{pages}{310\bibrangedash 331}
       \range{pages}{22}
+    \endentry
+    \entry{grabocka2014learning}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=30cee9e8b1f61d82df15782e87163d90}{%
+           family={Grabocka},
+           familyi={G\bibinitperiod},
+           given={Josif},
+           giveni={J\bibinitperiod}}}%
+        {{hash=860cc6347679b902fcf17e94465f0e7a}{%
+           family={Schilling},
+           familyi={S\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=a78fe4f292957ed0686ef668ef87048e}{%
+           family={Wistuba},
+           familyi={W\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod}}}%
+        {{hash=6bd1e34895061f42175a4e3ec60b0ea6}{%
+           family={Schmidt-Thieme},
+           familyi={S\bibinithyphendelim T\bibinitperiod},
+           given={Lars},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{7a59728cc2d57e5cdf6db6fc361790d7}
+      \strng{fullhash}{7ffc70ab88af0c98440e2876e1e3a6ac}
+      \strng{bibnamehash}{7a59728cc2d57e5cdf6db6fc361790d7}
+      \strng{authorbibnamehash}{7a59728cc2d57e5cdf6db6fc361790d7}
+      \strng{authornamehash}{7a59728cc2d57e5cdf6db6fc361790d7}
+      \strng{authorfullhash}{7ffc70ab88af0c98440e2876e1e3a6ac}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 20th ACM SIGKDD international conference on Knowledge discovery and data mining}
+      \field{title}{Learning time-series shapelets}
+      \field{year}{2014}
+      \field{pages}{392\bibrangedash 401}
+      \range{pages}{10}
     \endentry
     \entry{griffin2001toward}{article}{}
       \name{author}{2}{}{%
@@ -1486,6 +1550,40 @@
       \field{pages}{204\bibrangedash 218}
       \range{pages}{15}
     \endentry
+    \entry{mueen2011logical}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=6edc244104556f9fb8ad6320f0e6da1f}{%
+           family={Mueen},
+           familyi={M\bibinitperiod},
+           given={Abdullah},
+           giveni={A\bibinitperiod}}}%
+        {{hash=1164ac6d1586ceeb53e02cf48b555413}{%
+           family={Keogh},
+           familyi={K\bibinitperiod},
+           given={Eamonn},
+           giveni={E\bibinitperiod}}}%
+        {{hash=8e2e224ea041fd6dd0cd5f4e6955964d}{%
+           family={Young},
+           familyi={Y\bibinitperiod},
+           given={Neal},
+           giveni={N\bibinitperiod}}}%
+      }
+      \strng{namehash}{a05c0a5e3df891738b01a7a73412f182}
+      \strng{fullhash}{a05c0a5e3df891738b01a7a73412f182}
+      \strng{bibnamehash}{a05c0a5e3df891738b01a7a73412f182}
+      \strng{authorbibnamehash}{a05c0a5e3df891738b01a7a73412f182}
+      \strng{authornamehash}{a05c0a5e3df891738b01a7a73412f182}
+      \strng{authorfullhash}{a05c0a5e3df891738b01a7a73412f182}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 17th ACM SIGKDD international conference on Knowledge discovery and data mining}
+      \field{title}{Logical-shapelets: an expressive primitive for time series classification}
+      \field{year}{2011}
+      \field{pages}{1154\bibrangedash 1162}
+      \range{pages}{9}
+    \endentry
     \entry{parrish2013classifying}{article}{}
       \name{author}{4}{}{%
         {{hash=dfb261e4409c7731d58d22d9c587275a}{%
@@ -1583,6 +1681,38 @@
       \field{year}{2016}
       \field{pages}{1\bibrangedash 26}
       \range{pages}{26}
+    \endentry
+    \entry{rakthanmanon2013fast}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=111ae0389d0d69065ca8c45f6beb3698}{%
+           family={Rakthanmanon},
+           familyi={R\bibinitperiod},
+           given={Thanawin},
+           giveni={T\bibinitperiod}}}%
+        {{hash=1164ac6d1586ceeb53e02cf48b555413}{%
+           family={Keogh},
+           familyi={K\bibinitperiod},
+           given={Eamonn},
+           giveni={E\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{610305264b3eccb9b77101733fc957fb}
+      \strng{fullhash}{610305264b3eccb9b77101733fc957fb}
+      \strng{bibnamehash}{610305264b3eccb9b77101733fc957fb}
+      \strng{authorbibnamehash}{610305264b3eccb9b77101733fc957fb}
+      \strng{authornamehash}{610305264b3eccb9b77101733fc957fb}
+      \strng{authorfullhash}{610305264b3eccb9b77101733fc957fb}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{proceedings of the 2013 SIAM International Conference on Data Mining}
+      \field{title}{Fast shapelets: A scalable algorithm for discovering time series shapelets}
+      \field{year}{2013}
+      \field{pages}{668\bibrangedash 676}
+      \range{pages}{9}
     \endentry
     \entry{ratanamahatana2004making}{inproceedings}{}
       \name{author}{2}{}{%
@@ -1708,6 +1838,35 @@
       \field{booktitle}{Sami@ iknow}
       \field{title}{A Literature Survey of Early Time Series Classification and Deep Learning.}
       \field{year}{2016}
+    \endentry
+    \entry{schafer2015boss}{article}{}
+      \name{author}{1}{}{%
+        {{hash=588807da0f43e165bd2ec52dc90cd42e}{%
+           family={Sch{ä}fer},
+           familyi={S\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{588807da0f43e165bd2ec52dc90cd42e}
+      \strng{fullhash}{588807da0f43e165bd2ec52dc90cd42e}
+      \strng{bibnamehash}{588807da0f43e165bd2ec52dc90cd42e}
+      \strng{authorbibnamehash}{588807da0f43e165bd2ec52dc90cd42e}
+      \strng{authornamehash}{588807da0f43e165bd2ec52dc90cd42e}
+      \strng{authorfullhash}{588807da0f43e165bd2ec52dc90cd42e}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Data Mining and Knowledge Discovery}
+      \field{number}{6}
+      \field{title}{The BOSS is concerned with time series classification in the presence of noise}
+      \field{volume}{29}
+      \field{year}{2015}
+      \field{pages}{1505\bibrangedash 1530}
+      \range{pages}{26}
     \endentry
     \entry{schafer2017fast}{inproceedings}{}
       \name{author}{2}{}{%
@@ -2186,6 +2345,35 @@
       \field{journaltitle}{arXiv preprint arXiv:1905.01697}
       \field{title}{Multivariate Time Series Classification using Dilated Convolutional Neural Network}
       \field{year}{2019}
+    \endentry
+    \entry{ye2009time}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=5aa57d52746a62caf9977b4884f12952}{%
+           family={Ye},
+           familyi={Y\bibinitperiod},
+           given={Lexiang},
+           giveni={L\bibinitperiod}}}%
+        {{hash=1164ac6d1586ceeb53e02cf48b555413}{%
+           family={Keogh},
+           familyi={K\bibinitperiod},
+           given={Eamonn},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{4ee455a89e13446c4b638b92ae58f03e}
+      \strng{fullhash}{4ee455a89e13446c4b638b92ae58f03e}
+      \strng{bibnamehash}{4ee455a89e13446c4b638b92ae58f03e}
+      \strng{authorbibnamehash}{4ee455a89e13446c4b638b92ae58f03e}
+      \strng{authornamehash}{4ee455a89e13446c4b638b92ae58f03e}
+      \strng{authorfullhash}{4ee455a89e13446c4b638b92ae58f03e}
+      \field{sortinit}{Y}
+      \field{sortinithash}{6ae2ff5458ff901249c2745238c951b7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining}
+      \field{title}{Time series shapelets: a new primitive for data mining}
+      \field{year}{2009}
+      \field{pages}{947\bibrangedash 956}
+      \range{pages}{10}
     \endentry
   \enddatalist
 \endrefsection

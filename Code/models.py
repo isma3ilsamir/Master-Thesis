@@ -171,10 +171,12 @@ class Model:
                            val in self.hyper_param.items()}
         return estimators, params_dict
 
-    def export_model(self, exp):
+    def export_model(self, process, revealed_pct):
         cv = 'cv' if self.cv else 'no_cv'
+        pct = f"{int(revealed_pct)}_pct" if revealed_pct else None
         fname = os.path.join(self.models_folder,
-                             f'{exp}_{self.clf_name}_{cv}.sav')
+                             f'{process}_{self.clf_name}_{cv}_{pct}.sav' if pct
+                             else f'{process}_{self.clf_name}_{cv}.sav')
         joblib.dump(self.clf, fname)
         self.logger.info(f'Model exported to {fname}')
 
@@ -251,7 +253,6 @@ class KNNED_SKTIME(Model):
         'weights': ['uniform', 'distance'],
     }
 
-
 class KNNDTW(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
                                metric='dtw')
@@ -262,6 +263,45 @@ class KNNDTW(pytsModel):
         "leaf_size": [1, 10, 30, 100]
     }
 
+class KNNDTW_sc(pytsModel):
+    clf = KNeighborsClassifier(n_neighbors=1,
+                               metric='dtw_sakoechiba')
+    clf_name = "1NN-DTW-sakoechiba"
+    hyper_param = {
+        'algorithm': ['auto', 'brute'],
+        'weights': ['uniform', 'distance'],
+        "leaf_size": [1, 10, 30, 100]
+    }
+
+class KNNDTW_it(pytsModel):
+    clf = KNeighborsClassifier(n_neighbors=1,
+                               metric='dtw_itakura')
+    clf_name = "1NN-DTW-itakura"
+    hyper_param = {
+        'algorithm': ['auto', 'brute'],
+        'weights': ['uniform', 'distance'],
+        "leaf_size": [1, 10, 30, 100]
+    }
+
+class KNNDTW_ms(pytsModel):
+    clf = KNeighborsClassifier(n_neighbors=1,
+                               metric='dtw_multiscale')
+    clf_name = "1NN-DTW-multiscale"
+    hyper_param = {
+        'algorithm': ['auto', 'brute'],
+        'weights': ['uniform', 'distance'],
+        "leaf_size": [1, 10, 30, 100]
+    }
+
+class KNNDTW_fs(pytsModel):
+    clf = KNeighborsClassifier(n_neighbors=1,
+                               metric='dtw_fast')
+    clf_name = "1NN-DTW-fast"
+    hyper_param = {
+        'algorithm': ['auto', 'brute'],
+        'weights': ['uniform', 'distance'],
+        "leaf_size": [1, 10, 30, 100]
+    }
 
 class KNNMSM(Model):
     clf = KNeighborsTimeSeriesClassifier(n_neighbors=1, metric='msm')
@@ -269,20 +309,22 @@ class KNNMSM(Model):
     hyper_param = {
         'algorithm': ['brute'],
         'weights': ['uniform', 'distance'],
-        'metric_params': [{'c': 0.01},{'c': 0.1},{'c': 1},{'c': 10},{'c': 100}]
+        'metric_params': [{'c': 0.01}, {'c': 0.1}, {'c': 1}, {'c': 10}, {'c': 100}]
     }
 
+
 class EE(Model):
-    clf= ElasticEnsemble(verbose=0)
-    clf_name= 'EE'
+    clf = ElasticEnsemble(verbose=0)
+    clf_name = 'EE'
     hyper_param = {
         'distance_measures': ['all']
     }
 
+
 class PFOREST(Model):
-    clf = ProximityForest(n_jobs= -1,
-    get_distance_measure= None,
-    verbosity= 0)
+    clf = ProximityForest(n_jobs=-1,
+                          get_distance_measure=None,
+                          verbosity=0)
     clf_name = 'PForest'
     hyper_param = {
         'n_estimators': [1, 10, 100, 250, 500, 1000]
@@ -292,8 +334,8 @@ class PFOREST(Model):
 class TSF(Model):
     clf = TimeSeriesForestClassifier(verbose=0,
                                      n_jobs=-1,
-                                     oob_score= True,
-                                     bootstrap= True)
+                                     oob_score=True,
+                                     bootstrap=True)
     clf_name = 'TSF'
     hyper_param = {'n_estimators': [1, 10, 100, 250, 500, 1000],
                    'max_features': ['sqrt', 'log2']
@@ -305,12 +347,12 @@ class LS(pytsModel):
                             n_jobs=-1)
     clf_name = "LS"
     hyper_param = {
-        'n_shapelets_per_size': [0.05, 0.15, 0.2, 0.3],
+        'n_shapelets_per_size': [0.05, 0.15, 0.2, 0.3, 0.5],
         'min_shapelet_length': [0.025, 0.075, 0.1, 0.125, 0.175, 0.2],
         'shapelet_scale': [1, 2, 3],
         'C': [5000, 2000, 1000, 100, 10, 1],
-        'learning_rate': [0.01, 0.1, 1.0],
-        'max_iter':  [1000, 2000, 5000, 10000],
+        'learning_rate': [0.01, 0.05, 0.1, 1.0],
+        'max_iter':  [1000, 2000, 3000, 5000, 10000],
         'tol': [1e-3, 1e-2]
     }
 
@@ -337,7 +379,7 @@ class WEASEL(Model):
 
 
 class CBOSS(Model):
-    clf = ContractableBOSS()
+    clf = ContractableBOSS(min_window= 5)
     clf_name = 'CBoss'
     hyper_param = {
         'n_parameter_samples': [100, 250, 500],
@@ -360,9 +402,11 @@ class INCEPTION(Model):
         'nb_epochs': [1500]
     }
 
-    def export_model(self, exp):
+    def export_model(self, process, revealed_pct):
         cv = 'cv' if self.cv else 'no_cv'
+        pct = f"{int(revealed_pct)}_pct" if revealed_pct else None
         fname = os.path.join(self.models_folder,
-                             f'{exp}_{self.clf_name}_{cv}.h5')
+                             f'{process}_{self.clf_name}_{cv}_{pct}.h5' if pct
+                             else f'{process}_{self.clf_name}_{cv}.h5')
         self.clf.model.save(fname)
         self.logger.info(f'Model exported to {fname}')

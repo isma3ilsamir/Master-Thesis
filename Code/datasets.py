@@ -30,7 +30,7 @@ def get_test_train_data(dataset_name):
 
 def _download_dataset(dataset_name):
     try:
-        datasets_folder= os.path.join(os.getcwd(), 'datasets')
+        datasets_folder= os.path.join(os.getcwd(), 'datasets\\')
         if not os.path.exists(datasets_folder):
             os.makedirs(datasets_folder)
         if dataset_name in datasets.uea_dataset_list():
