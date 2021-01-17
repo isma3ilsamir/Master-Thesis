@@ -2313,7 +2313,19 @@
     <bcf:citekey order="85">bagnall2017great</bcf:citekey>
     <bcf:citekey order="85">grabocka2014learning</bcf:citekey>
     <bcf:citekey order="86">hills2014classification</bcf:citekey>
-    <bcf:citekey order="87">Bostrom2017</bcf:citekey>
+    <bcf:citekey order="87">bostrom2018shapelet</bcf:citekey>
+    <bcf:citekey order="88">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="88">lines2015time</bcf:citekey>
+    <bcf:citekey order="89">hills2014classification</bcf:citekey>
+    <bcf:citekey order="90">bostrom2018shapelet</bcf:citekey>
+    <bcf:citekey order="91">hills2014classification</bcf:citekey>
+    <bcf:citekey order="92">Bostrom2017</bcf:citekey>
+    <bcf:citekey order="93">Bostrom2017</bcf:citekey>
+    <bcf:citekey order="94">bagnall2017great</bcf:citekey>
+    <bcf:citekey order="95">shifaz2020ts</bcf:citekey>
+    <bcf:citekey order="95">lines2018time</bcf:citekey>
+    <bcf:citekey order="96">Bostrom2017</bcf:citekey>
+    <bcf:citekey order="97">shifaz2020ts</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

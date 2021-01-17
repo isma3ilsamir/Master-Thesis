@@ -46,16 +46,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.3.2}Shapelet Transform}{12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Dictionary Based Algorithms}{12}%
+\contentsline {subsection}{\numberline {3.4}Dictionary Based Algorithms}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1}WEASEL}{12}%
+\contentsline {subsubsection}{\numberline {3.4.1}WEASEL}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.2}BOSS}{12}%
+\contentsline {subsubsection}{\numberline {3.4.2}BOSS}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}Deep Learning Algorithms}{12}%
+\contentsline {subsection}{\numberline {3.5}Deep Learning Algorithms}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.1}Inception Time}{12}%
+\contentsline {subsubsection}{\numberline {3.5.1}Inception Time}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Appendix}{13}%
+\contentsline {section}{\numberline {4}Appendix}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Declaration of Authorship}{19}%
+\contentsline {section}{\numberline {5}Declaration of Authorship}{20}%

@@ -1,0 +1,16 @@
+Phase independent shapelets, or just shapelets as less formally known,
+are subseries which are ultimately distinctive of classes regardless of their place on the time series \cite{schafer2017fast,bagnall2017great}.
+They were first introduced in \cite{ye2009time} as an alternative for KNN approaches; to overcome their shortcomings.\newline
+Shapelets reduce the space and time complexity needed by KNN, because they are formed from subsequences which are shorter than
+the original time series. Needing only one shapelet at classification time, they form a compressed format of the classification problem \cite{bostrom2017shapelet,ye2009time,mueen2011logical}.
+While KNN classify based on comparison to other instances, shapelets provide insight about the unique features of classes and thus more
+interpretable results of how the classification was carried out.
+Finally, shapelets are best suited for problems where a certain pattern can differentiate instances which is harder to detect when comparing whole series \cite{bagnall2017great,Bostrom2017}.\newline
+The original shapelet algorithm enumerated all possible shapelets and embeded the best ones, based on information gain assessment, in a decision tree.
+Together with a calculated distance threshold, the shapelets and the threshold are used together as splitting criteria \cite{lines2018time,schafer2015boss}.
+There have been many attempts to speed up the process of shapelets discovery, by determining good shapelets in a faster manner.
+Two of them are; Fast Shapelets (FS) \cite{rakthanmanon2013fast} and Learned Shapelets (LS) \cite{grabocka2014learning}.
+FS applied discretization through Symbolic Aggregate Approximation (SAX) to reduce the length of time series,
+while LS tried to learn the shapelets \cite{shifaz2020ts}.
+Later on the idea of tranforming time series data to an alternative space was adopted in \cite{hills2014classification},
+the transformed data consists of distances to the best k shapelets, then classification is done using an ensemble of eight classifiers.

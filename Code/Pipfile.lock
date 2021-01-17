@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "5c2c6533426159ec863f672d468f11d681a29b11c44f18d95e58faa168c14fe9"
+            "sha256": "b1c03a082e3b97cf8e79a401c685989ddfd063eb76263627ccd09161160820f9"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -553,37 +553,6 @@
             ],
             "version": "==5.8.0"
         },
-        "pyarrow": {
-            "hashes": [
-                "sha256:00d8fb8a9b2d9bb2f0ced2765b62c5d72689eed06c47315bca004584b0ccda60",
-                "sha256:0b358773eb9fb1b31c8217c6c8c0b4681c3dff80562dc23ad5b379f0279dad69",
-                "sha256:0bf43e520c33ceb1dd47263a5326830fca65f18d827f7f7b8fe7e64fc4364d88",
-                "sha256:0db5156a66615591a4a8c66a9a30890a364a259de8d2a6ccb873c7d1740e6c75",
-                "sha256:1000e491e9a539588ec33a2c2603cf05f1d4629aef375345bfd64f2ab7bc8529",
-                "sha256:14b02a629986c25e045f81771799e07a8bb3f339898c111314066436769a3dd4",
-                "sha256:16ec87163a2fb4abd48bf79cbdf70a7455faa83740e067c2280cfa45a63ed1f3",
-                "sha256:3e33e9003794c9062f4c963a10f2a0d787b83d4d1a517a375294f2293180b778",
-                "sha256:652c5dff97624375ed0f97cc8ad6f88ee01953f15c17083917735de171f03fe0",
-                "sha256:6afc71cc9c234f3cdbe971297468755ec3392966cb19d3a6caf42fd7dbc6aaa9",
-                "sha256:916b593a24f2812b9a75adef1143b1dd89d799e1803282fea2829c5dc0b828ea",
-                "sha256:9a8d3c6baa6e159017d97e8a028ae9eaa2811d8f1ab3d22710c04dcddc0dd7a1",
-                "sha256:9f4ba9ab479c0172e532f5d73c68e30a31c16b01e09bb21eba9201561231f722",
-                "sha256:acdd18fd83c0be0b53a8e734c0a650fb27bbf4e7d96a8f7eb0a7506ea58bd594",
-                "sha256:b5e6cd217457e8febcc98a6c279b96f72d5c31a24cd2bffd8d3b2da701d2025c",
-                "sha256:bc8c3713086e4a137b3fda4b149440458b1b0bd72f67b1afa2c7068df1edc060",
-                "sha256:c801e59ec4e8d9d871e299726a528c3ba3139f2ce2d9cdab101f8483c52eec7c",
-                "sha256:ccff3a72f70ebfcc002bf75f5ad1248065e5c9c14e0dcfa599a438ea221c5658",
-                "sha256:ce0462cec7f81c4ff87ce1a95c82a8d467606dce6c72e92906ac251c6115f32b",
-                "sha256:cf9bf10daadbbf1a360ac1c7dab0b4f8381d81a3f452737bd6ed310d57a88be8",
-                "sha256:dc0d04c42632e65c4fcbe2f82c70109c5f347652844ead285bc1285dc3a67660",
-                "sha256:dd661b6598ce566c6f41d31cc1fc4482308613c2c0c808bd8db33b0643192f84",
-                "sha256:eb05038b750a6e16a9680f9d2c40d050796284ea1f94690da8f4f28805af0495",
-                "sha256:fb69672e69e1b752744ee1e236fdf03aad78ffec905fc5c19adbaf88bac4d0fd",
-                "sha256:ffb306951b5925a0638dc2ef1ab7ce8033f39e5b4e0fef5787b91ef4fa7da19d"
-            ],
-            "index": "pypi",
-            "version": "==2.0.0"
-        },
         "pygments": {
             "hashes": [
                 "sha256:bc9591213a8f0e0ca1a5e68a479b4887fdc3e75d0774e5c71c31920c427de435",
@@ -771,22 +740,8 @@
             "version": "==0.0"
         },
         "sktime": {
-            "hashes": [
-                "sha256:01567cd9cd012d9a7985ab73bc97d191a202677df2bb8dfb89f4779a4362e235",
-                "sha256:41c7d400f08e7b5eed9244fd9a8ad8912164ec7fd28febdeab670f27bb8c0b12",
-                "sha256:5ab6ccc3954974e00f1acfc62a8199a4b6093ebdf018edba6adfa16a503a9da2",
-                "sha256:7472adab4b1c37a218b98d3ae72e7025195821cbb655b919dd2cb7bdcf1f4d78",
-                "sha256:84188f6114f37d6a9df6869ab4e08cdea810b27c07393b11981bd50485db2ed6",
-                "sha256:97ce8134324e7d9c32e8f5825580d788910cc92b2d5c79346371c1432195a9cf",
-                "sha256:a275c53a29fa2843073d1d751ee1ead556a139d5ae9acbf141737a93618e9d3e",
-                "sha256:a2a2e6ea717fe1c8a33ef65fce8927d85aedbed204f0730abf2b36cc5ae10d0d",
-                "sha256:d890456298a0625ceac6f0ab0711057c767e90474ad10568aaeccc95b3a64f3d",
-                "sha256:db31d8a700c45cde946796680577ef079a3ea494ffe1ab3bb46d895bb63eef2c",
-                "sha256:e36f58affac6ae93ce1dd61798306186edec91221003c4319126c81e5d2d19f0",
-                "sha256:f7060a1087538d51da6ac45dfa5b726f1b39bbbed700096640a739273e022e57"
-            ],
-            "index": "pypi",
-            "version": "==0.5.2"
+            "git": "https://github.com/alan-turing-institute/sktime.git",
+            "ref": "7bc4a17b120c97cb2686e026e623f4c71f7b485b"
         },
         "sktime-dl": {
             "git": "https://github.com/sktime/sktime-dl.git",
@@ -965,13 +920,6 @@
                 "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"
             ],
             "version": "==0.2.5"
-        },
-        "wheel": {
-            "hashes": [
-                "sha256:78b5b185f0e5763c26ca1e324373aadd49182ca90e825f7853f4b2509215dc0e",
-                "sha256:e11eefd162658ea59a60a0f6c7d493a7190ea4b9a85e335b33489d9f17e0245e"
-            ],
-            "version": "==0.36.2"
         },
         "zict": {
             "hashes": [

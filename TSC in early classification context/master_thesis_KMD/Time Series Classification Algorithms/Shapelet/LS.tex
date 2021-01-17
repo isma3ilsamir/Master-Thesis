@@ -1,0 +1,13 @@
+Learned Shapelets (LS) was proposed in \cite{grabocka2014learning} as a new prospective for approaching time series shapelets.
+Instead of searching for shapelets through enumeration of all candidates, LS learns K near-to-optimal shapelets that can linearly
+separate instances through a stochastic gradient objective \cite{lines2018time,bostrom2018shapelet}.
+The found shapelets need not to be a subsequence of one of the training examples \cite{bagnall2017great,schafer2017fast}.\newline
+LS follows a two steps technique. In the begining LS looks for a set of shapelets from the training data set using two parameters;
+L controls the length of shapelets searched, while R controls the scaling of subsequences. Then these shapelets are clustered using
+a K-Means algorithm and instances are represented in a new K-dimensional format where the values of the features represent the minimum
+distance between the instance and one of the shapelets.\newline
+For the second step, using the new features representation, LS can start learning class probabilities for instances by considering a logistic regression model for each
+of the classes and optimizing a regularized logistic loss function. The regularized loss function updates the shapelets and the weights of features.
+This process keeps iteratively going untill either the model converges or the maximum number of iterations is reached.\cite{bostrom2018shapelet}.
+In summary, the main objective of the aglorithm is to learn collectively the optimal shapelets and the weights
+linear hyper-plane that minimizes the objective function \cite{bagnall2017great,grabocka2014learning}.

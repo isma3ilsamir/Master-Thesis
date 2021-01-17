@@ -1,0 +1,41 @@
+Time Series Forest (TSF) is an algorithm that was introduced in 2013 by \cite{deng2013time}.
+They motivated their model with two main criteria; contributing to interpretable time series classification through
+the use of simple statistical temporal features and reaching this goal by creating an efficient and effective classifier.\newline
+TSF considers three types of interval features; mean, standard deviation and slope.
+If we were to consider an interval with starting point $t\textsubscript{1}$ and with ending point $t\textsubscript{2}$.
+Let $v\textsubscript{i}$ be the value at a specific point $t\textsubscript{i}$.
+Then the three features can be denoted as:
+\begin{definition}
+    \begin{equation}\nonumber
+        mean(t\textsubscript{1},t\textsubscript{2})= \frac{\sum_{i=t\textsubscript{1}}^{t\textsubscript{2}} v\textsubscript{i}}{t\textsubscript{2} - t\textsubscript{1} + 1}
+    \end{equation}
+\end{definition}
+\begin{definition}
+    \begin{equation}\nonumber
+        std(t\textsubscript{1},t\textsubscript{2})=
+          \begin{cases}
+            \frac{\sum_{i=t\textsubscript{1}}^{t\textsubscript{2}} (v\textsubscript{i} - mean(t\textsubscript{1},t\textsubscript{2}))^{2}}
+                {t\textsubscript{2} - t\textsubscript{1}}
+                & \text{if t\textsubscript{1} $<$ t\textsubscript{2}}\\
+            0 & \text{if t\textsubscript{1} = t\textsubscript{2}}
+          \end{cases}
+      \end{equation}
+\end{definition}
+\begin{definition}
+    \begin{equation}\nonumber
+        slope(t\textsubscript{1},t\textsubscript{2})=
+          \begin{cases}
+            m & \text{if t\textsubscript{1} $<$ t\textsubscript{2}}\\
+            0 & \text{if t\textsubscript{1} = t\textsubscript{2}}
+          \end{cases}
+    \end{equation}
+\end{definition}
+Where m denotes the slope of the least squares regression line for the training dataset.\newline
+For building the trees, TSF introduced a new splitting criteria at the tree nodes, which they called the Entrace. A combination of
+Entropy and distance; to break the ties between features of equal entropy gain by preferring splits that have the furthest distance
+to the nearest instance. They also use a specific number of evaluation points rather than checking all split points for the highest
+information gain. In their experiment \cite{bagnall2017great} found these two criteria to have negative effect on accuracy.\newline
+As mentioned earlier the feature space for creating interval features is huge, TSF adopts the same random sampling technique that Random Forests use
+reducing the feature space from $O(M^{2})$ to only $O(M)$, by considering only $O(\sqrt{M})$ random interval sizes and $O(\sqrt{M})$
+random starting points at each tree node \cite{deng2013time}. The final classification of a testing instance is done using majority
+voting of all time series trees created.

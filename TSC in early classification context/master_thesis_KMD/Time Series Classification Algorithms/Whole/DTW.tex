@@ -1,0 +1,25 @@
+Dynamic Time Warping was a very strong baseline for time series classification for a long time \cite{abanda2019review,bagnall2017great}.
+It was first introduced as a technique to recognize spoken words that can deal with misallignments between time series
+that Euclidean Distance couldn't handle \cite{tan2020fastee}.\newline
+To calculate the distance between two time series instances  $T\textsubscript{1} = [t1\textsubscript{1},t1\textsubscript{2},...t1\textsubscript{m}$]
+and $T\textsubscript{2} = [t2\textsubscript{1},t2\textsubscript{2},...t2\textsubscript{m}$];
+a distance matrix $M(T\textsubscript{1},T\textsubscript{2})$, of size m $\times$ m, is calculated for $T\textsubscript{1}$ and $T\textsubscript{2}$.
+With $M\textsubscript{i,j}(t1\textsubscript{i},t2\textsubscript{j})$ representing the distance between $t1\textsubscript{i}$ $\in$ $T\textsubscript{1}$
+and $t2\textsubscript{j}$ $\in$ $T\textsubscript{2}$.
+The goal of DTW is to find an optimal path that minimizes the cumulative distance between points of $T\textsubscript{1}$ and $T\textsubscript{2}$.\newline
+A candidate path $P = [p\textsubscript{1},p\textsubscript{2},...p\textsubscript{p}]$ is to be found by traversing M.
+For a path to be valid it must conform to some conditions:
+\begin{itemize}
+    \item $p\textsubscript{1} = (t1\textsubscript{1},t2\textsubscript{1})$
+    \item $p\textsubscript{p} = (t1\textsubscript{m},t2\textsubscript{m})$
+    \item for all i \textless m :
+        \begin{itemize}
+            \item $0 \leq t1\textsubscript{i+1} - t1\textsubscript{i} \leq 1$
+            \item $0 \leq t2\textsubscript{i+1} - t2\textsubscript{i} \leq 1$
+        \end{itemize}
+\end{itemize}
+
+Finding an optimal path under DTW can be computationally expensive with complexity of $O(n^2)$ for a time series of length n \cite{schafer2017fast,petitjean2016faster}.
+Consequently it is usual to use a contraint with the path; to prevent comparison of points outside a certain window \cite{tan2020fastee}; like the famous Sakoe-Chiba Band \cite{sakoe1978dynamic}, Itakura Parallelogram \cite{itakura1975minimum} and Ratanamahatana-Keogh Band \cite{ratanamahatana2004making}.
+Typically DTW can make use of it's warping window to handle distortion in time series,
+but still it is vulnerable to cases where the differene in length between instances length is larger than the warping window \cite{tan2019time}.
