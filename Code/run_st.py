@@ -21,6 +21,7 @@ import numpy as np
 import pandas as pd
 import logging
 import os
+from datetime import datetime
 
 from splitting import get_split_indexes, apply_split
 from datasets import get_test_train_data
@@ -65,10 +66,10 @@ def tsc(logger, args, X_train, X_test, y_train, y_test):
     logger.info(f"===== Step: Initializaing models =====")
     models = {
         # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        #   'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         # 'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -113,10 +114,10 @@ def etsc(logger, args, X_train, X_test, y_train, y_test):
     logger.info(f"===== Step: Initializaing models =====")
     models = {
         # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        # #   'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # # #   'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         # 'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -267,14 +268,27 @@ def export_model(model, process, revealed_pct=None):
         pass
     model.export_model(process,revealed_pct)
 
+def get_report_file_name(start_time):
+    ts= datetime.strftime(start_time,"%Y_%m_%d_%H%M%S")
+    report_folder = os.path.join(
+        os.getcwd(), 'reports', '')
+    if not os.path.exists(report_folder):
+        os.makedirs(report_folder)
+    f = f"{__file__}_{ts}"
+    fname = os.path.join(
+        report_folder, f)
+    return fname
 
 if __name__ == "__main__":
+    start_time= datetime.now()
+    report_ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
+    report= []
     analysis=None
     models=None
     logger=initialize_logger()
-    try:
-        arguments=docopt.docopt(__doc__)
-        for dataset in arguments['--dataset']:
+    arguments=docopt.docopt(__doc__)
+    for dataset in arguments['--dataset']:
+        try:
             args=dict()
             args['tsc']=arguments['--tsc']
             args['etsc']=arguments['--etsc']
@@ -311,7 +325,12 @@ if __name__ == "__main__":
             # fname = get_analysis_file_name(args)
             # analysis.to_json(f'{fname}.json')
             # logger.info(f"Analysis exported to {fname}.json")
+            report.append({'running_file':__file__, 'ts': start_time, 'tsc': args['tsc'], 'etsc': args['etsc'], 'dataset': args['dataset'], 'cv': args['cv'], 'default_split': args['default_split'], 'n_iter': args['n_iter'], 'score_function': args['score_function'], 'split': args['split'], 'from_beg': args['from_beg'], 'from_end': args['from_end'], 'split': args['split'], 'success': True, 'exception':None})
 
-    except Exception as e:
-        logger.critical(e)
-        raise
+        except Exception as e:
+            report.append({'running_file':__file__, 'ts': start_time, 'tsc': args['tsc'], 'etsc': args['etsc'], 'dataset': args['dataset'], 'cv': args['cv'], 'default_split': args['default_split'], 'n_iter': args['n_iter'], 'score_function': args['score_function'], 'split': args['split'], 'from_beg': args['from_beg'], 'from_end': args['from_end'], 'split': args['split'], 'success': False, 'exception':e})
+            logger.critical(e)
+    report_df= pd.DataFrame(report)
+    fname = get_report_file_name(start_time)
+    report_df.to_json(f'{fname}.json',orient='records')
+    logger.info(f"Running Report exported to {fname}.json")

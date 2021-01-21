@@ -1,4 +1,6 @@
 import os
+import pathlib
+import glob
 from pyts import datasets
 from sktime.utils.data_io import load_from_arff_to_dataframe as load_arff
 from sktime.utils.data_io import load_from_tsfile_to_dataframe as load_tsf
@@ -18,6 +20,18 @@ def lookup_dataset(dataset_name):
         print(e)
         raise
 
+def get_files_path(dataset_download_folder):
+    files_str_list = glob.glob(dataset_download_folder + "/**/*.arff", recursive = True)
+    files_path_list= list(map(pathlib.Path,files_str_list))
+    parents= [path.parent for path in files_path_list]
+    parent_folders= set(parents)
+    files_path=None
+    if len(parent_folders) == 1:
+        files_path= parent_folders.pop()
+    else:
+        raise Exception("There are more than one folder with arff files")
+    return files_path
+
 def get_test_train_data(dataset_name):
     ds= os.path.normcase(os.path.join(os.getcwd(),'datasets', f'{dataset_name}'))
     if os.path.exists(ds):
@@ -25,7 +39,8 @@ def get_test_train_data(dataset_name):
     else:
         print(f"Dataset '{dataset_name}' was not found in the datasets folder. Will lookup UEA and UCR archives")
         ds = _download_dataset(dataset_name)
-    X_train, X_test, y_train, y_test= _get_test_train_split(ds)
+    files_path= get_files_path(ds)
+    X_train, X_test, y_train, y_test= _get_test_train_split(files_path)
     return X_train, X_test, y_train, y_test
 
 def _download_dataset(dataset_name):
@@ -56,13 +71,11 @@ def _get_test_train_split(dataset_location):
         X_train, y_train = load_arff(os.path.normcase(os.path.join(dataset_location, f'{dataset}_TRAIN.arff')))
         X_test, y_test = load_arff(os.path.normcase( os.path.join(dataset_location, f'{dataset}_TEST.arff')))
     except Exception as e:
-        print(e)
         print("Error loading arff files, will try using ts files")  # Try to load using ts format
-        pass
-    try:
-        X_train, y_train = load_tsf(os.path.normcase(os.path.join(dataset_location, f'{dataset}_TRAIN.ts')))
-        X_test, y_test = load_tsf(os.path.normcase( os.path.join(dataset_location, f'{dataset}_TEST.ts')))
-    except Exception as e:
-        print("Error loading both arff and ts files")
-        raise
+        print(e)
+        try:
+            X_train, y_train = load_tsf(os.path.normcase(os.path.join(dataset_location, f'{dataset}_TRAIN.ts')))
+            X_test, y_test = load_tsf(os.path.normcase( os.path.join(dataset_location, f'{dataset}_TEST.ts')))
+        except Exception as e:
+            raise Exception("Error loading both arff and ts files")
     return X_train, X_test, y_train, y_test
