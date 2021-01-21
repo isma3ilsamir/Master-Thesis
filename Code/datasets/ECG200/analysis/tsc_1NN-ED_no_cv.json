@@ -1,0 +1,1 @@
+{"classifier":{"0":"1NN-ED"},"train_time":{"0":0.0},"test_ds_score_time":{"0":0.0},"test_ds_score":{"0":0.88},"params":{"0":{"algorithm":"auto","leaf_size":30,"metric":"minkowski","metric_params":null,"n_jobs":1,"n_neighbors":1,"p":2,"weights":"uniform"}},"dataset":{"0":"ecg200"}}

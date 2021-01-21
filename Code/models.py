@@ -145,7 +145,7 @@ class Model:
             self.logger.addHandler(ch)
 
     def initialize_model(self, ds):
-        models_folder = os.path.join(os.getcwd(), 'datasets', ds, 'models\\')
+        models_folder = os.path.join(os.getcwd(), 'datasets', ds, 'models','')
         if not os.path.exists(models_folder):
             os.makedirs(models_folder)
         self.models_folder = models_folder
@@ -213,7 +213,7 @@ class pytsModel(Model):
         # return score
 
     def initialize_model(self, ds):
-        models_folder = os.path.join(os.getcwd(), 'datasets', ds, 'models\\')
+        models_folder = os.path.join(os.getcwd(), 'datasets', ds, 'models','')
         if not os.path.exists(models_folder):
             os.makedirs(models_folder)
         self.models_folder = models_folder

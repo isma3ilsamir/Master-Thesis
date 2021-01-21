@@ -1,7 +1,7 @@
 """
 Usage:
-    run.py --tsc (--dataset=<ds>) (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split)
-    run.py --etsc (--dataset=<ds>) (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split) [--from_beg | --from_end] [--split=<s>]
+    run.py --tsc (--dataset=<ds>)... (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split)
+    run.py --etsc (--dataset=<ds>)... (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split) [--from_beg | --from_end] [--split=<s>]
 
 Options:
     --tsc                  Runs an experiment on the dataset; to recommend the best performing model based on accuracy
@@ -224,7 +224,7 @@ def no_cv(logger, models, X_train, X_test, y_train, y_test):
 
 
 def get_analysis_file_name(args):
-    analysis_folder = os.path.join(os.getcwd(), 'analysis\\')
+    analysis_folder = os.path.join(os.getcwd(), 'analysis','')
     process = 'tsc' if args['tsc'] else 'etsc'
     cv = 'cv' if args['cv'] else 'no_cv'
     if not os.path.exists(analysis_folder):
@@ -235,7 +235,7 @@ def get_analysis_file_name(args):
 
 def get_model_analysis_file_name(process, dataset, cv, split, model_name):
     analysis_folder = os.path.join(
-        os.getcwd(), 'datasets', dataset, 'analysis\\')
+        os.getcwd(), 'datasets', dataset, 'analysis','')
     if not os.path.exists(analysis_folder):
         os.makedirs(analysis_folder)
     f = f"{process}_{model_name}_{cv}_{split}" if split else f"{process}_{model_name}_{cv}"
@@ -269,49 +269,48 @@ def export_model(model, process, revealed_pct=None):
 
 
 if __name__ == "__main__":
-    import IPython
-    IPython.embed()
     analysis=None
     models=None
     logger=initialize_logger()
     try:
         arguments=docopt.docopt(__doc__)
-        args=dict()
-        args['tsc']=arguments['--tsc']
-        args['etsc']=arguments['--etsc']
-        args['cv']=arguments['--cv']
-        args['default_split']=arguments['--default_split']
-        args['dataset']=arguments['--dataset']
-        args['n_iter']=int(arguments['--n_iter'])
-        args['score_function']=arguments['--score_function']
-        args['split']= None if arguments['--tsc'] else int(arguments['--split'])
-        if arguments['--from_beg'] | (not arguments['--from_beg'] and not arguments['--from_end']):
-            args['from_beg']=True
-        args['from_end']=arguments['--from_end']
+        for dataset in arguments['--dataset']:
+            args=dict()
+            args['tsc']=arguments['--tsc']
+            args['etsc']=arguments['--etsc']
+            args['cv']=arguments['--cv']
+            args['default_split']=arguments['--default_split']
+            args['dataset']=dataset
+            args['n_iter']=int(arguments['--n_iter'])
+            args['score_function']=arguments['--score_function']
+            args['split']= None if arguments['--tsc'] else int(arguments['--split'])
+            if arguments['--from_beg'] | (not arguments['--from_beg'] and not arguments['--from_end']):
+                args['from_beg']=True
+            args['from_end']=arguments['--from_end']
 
-        logger.info(
-            f"===== Step: Loading Dataset {arguments['--dataset']} =====")
-        X_train, X_test, y_train, y_test=get_test_train_data(
-            arguments['--dataset'])
-        logger.info(f"Dataset {arguments['--dataset']} loaded !!")
-        args['dim']=X_train.shape[1]
-        if args['dim'] > 1:
-            logger.info(f"Dataset {arguments['--dataset']} is Multivariate")
-        else:
-            logger.info(f"Dataset {arguments['--dataset']} is Univariate")
+            logger.info(
+                f"===== Step: Loading Dataset {args['dataset']} =====")
+            X_train, X_test, y_train, y_test=get_test_train_data(
+                args['dataset'])
+            logger.info(f"Dataset {args['dataset']} loaded !!")
+            args['dim']=X_train.shape[1]
+            if args['dim'] > 1:
+                logger.info(f"Dataset {args['dataset']} is Multivariate")
+            else:
+                logger.info(f"Dataset {args['dataset']} is Univariate")
 
-        if arguments['--tsc']:
-            analysis, models=tsc(logger, args, X_train,
-                                   X_test, y_train, y_test)
-        elif arguments['--etsc']:
-            analysis, models=etsc(
-                logger, args, X_train, X_test, y_train, y_test)
+            if args['tsc']:
+                analysis, models=tsc(logger, args, X_train,
+                                    X_test, y_train, y_test)
+            elif args['etsc']:
+                analysis, models=etsc(
+                    logger, args, X_train, X_test, y_train, y_test)
 
-        logger.info(f"===== Step: Exporting Analysis Results =====")
-        export_analysis(analysis, args)
-        # fname = get_analysis_file_name(args)
-        # analysis.to_json(f'{fname}.json')
-        # logger.info(f"Analysis exported to {fname}.json")
+            logger.info(f"===== Step: Exporting Analysis Results =====")
+            export_analysis(analysis, args)
+            # fname = get_analysis_file_name(args)
+            # analysis.to_json(f'{fname}.json')
+            # logger.info(f"Analysis exported to {fname}.json")
 
     except Exception as e:
         logger.critical(e)
