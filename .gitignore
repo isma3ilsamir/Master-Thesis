@@ -128,6 +128,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Data files
+datasets/
+reports/
+
 # Studying Folders
 other*master*thesis
 Ismail*Wahba*Master*Thesis*Registration.pdf

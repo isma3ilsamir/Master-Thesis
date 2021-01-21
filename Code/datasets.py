@@ -40,6 +40,7 @@ def get_test_train_data(dataset_name):
         print(f"Dataset '{dataset_name}' was not found in the datasets folder. Will lookup UEA and UCR archives")
         ds = _download_dataset(dataset_name)
     files_path= get_files_path(ds)
+    files_path= os.path.normcase(files_path)
     X_train, X_test, y_train, y_test= _get_test_train_split(files_path)
     return X_train, X_test, y_train, y_test
 
@@ -54,11 +55,11 @@ def _download_dataset(dataset_name):
         if ds_lower in uea_lower:
             ds_index= uea_lower.index(ds_lower)
             ds_name= datasets.uea_dataset_list()[ds_index]
-            datasets.fetch_uea_dataset(dataset= ds_name, data_home= datasets_folder)
+            datasets.fetch_uea_dataset(dataset= ds_name, data_home= datasets_folder, use_cache=False)
         elif ds_lower in ucr_lower:
             ds_index= ucr_lower.index(ds_lower)
             ds_name= datasets.ucr_dataset_list()[ds_index]
-            datasets.fetch_ucr_dataset(dataset= ds_name, data_home= datasets_folder)
+            datasets.fetch_ucr_dataset(dataset= ds_name, data_home= datasets_folder, use_cache=False)
         else :
             raise Exception(f"Dataset '{dataset_name}' was not found in either UEA or UCR archives. Please choose a valid dataset")
     except Exception as e:

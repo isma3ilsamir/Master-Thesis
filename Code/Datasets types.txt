@@ -1,0 +1,46 @@
+python run_knn.py --tsc --default_split
+python run_knn.py --tsc --cv
+python run_knn.py --etsc --default_split
+python run_knn.py --etsc --default_split 
+
+### Audio ###
+--dataset=DuckDuckGeese --dataset=Heartbeat --dataset=InsectWingbeatSound --dataset=InsectWingbeat --dataset=JapaneseVowels
+
+### Device ###
+--dataset=ACSF1 --dataset=Computers --dataset=ElectricDevices --dataset=HouseTwenty --dataset=LargeKitchenAppliances --dataset=PLAID --dataset=PowerCons --dataset=RefrigerationDevices --dataset=ScreenType --dataset=SmallKitchenAppliances
+
+### ECG ###
+--dataset=AtrialFibrillation --dataset=CinCECGtorso --dataset=ECG200 --dataset=ECG5000 --dataset=ECGFiveDays --dataset=NonInvasiveFetalECGThorax1 --dataset=NonInvasiveFetalECGThorax2 --dataset=StandWalkJump --dataset=TwoLeadECG
+
+### EEG ###
+--dataset=FaceDetection --dataset=FingerMovements --dataset=HandMovementDirection --dataset=MotorImagery --dataset=SelfRegulationSCP1 --dataset=SelfRegulationSCP2
+
+### EOG ###
+--dataset=EOGHorizontalSignal --dataset=EOGVerticalSignal
+
+### EPG ###
+--dataset=InsectEPGRegularTrain --dataset=InsectEPGSmallTrain
+
+### HAR ###
+--dataset=BasicMotions --dataset=Cricket --dataset=Epilepsy --dataset=Ering --dataset=Handwriting --dataset=Libras --dataset=NATOPS --dataset=RacketSports --dataset=UWaveGestureLibrary
+
+### HEMODYNAMICS ###
+--dataset=PigAirwayPressure --dataset=PigArtPressure --dataset=PigCVP
+
+### MISC ###  --> claifornia traffic station occupancy sensors, classify day of week
+--dataset=PEMS-SF
+
+### OTHER ###
+--dataset=EthanolConcentration --dataset=Fungi --dataset=LSST
+
+### SENSOR ###
+--dataset=Car --dataset=DodgerLoopDay --dataset=DodgerLoopGame --dataset=DodgerLoopWeekend --dataset=Earthquakes --dataset=FordA --dataset=FordB --dataset=FreezerRegularTrain --dataset=FreezerSmallTrain --dataset=ItalyPowerDemand --dataset=Lightning2 --dataset=Lightning7 --dataset=MoteStrain --dataset=PickupGestureWiimoteZ --dataset=Plane --dataset=ShakeGestureWiimoteZ --dataset=SonyAIBORobotSurface1 --dataset=SonyAIBORobotSurface2 --dataset=StarlightCurves --dataset=Trace --dataset=Wafer
+
+### SOUND ###
+--dataset=Phoneme
+
+### SPECTRO ###
+--dataset=Beef --dataset=Coffee --dataset=EthanolLevel --dataset=Ham --dataset=Meat --dataset=OliveOil --dataset=Rock --dataset=SemgHandGenderCh2 --dataset=SemgHandMovementCh2 --dataset=SemgHandSubjectCh2 --dataset=Strawberry --dataset=Wine
+
+### SPEECH ### 
+--dataset=SpokenArabicDigits
