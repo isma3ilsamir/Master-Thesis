@@ -15,7 +15,6 @@ Options:
     --from_end             Start from end of time series and reveal previous subsequences at each iteration
     --split=<s>            The number of splits to apply to the time series. 10 splits= 10% increments, 20 splits= 5% increments,...etc [default: 20]
 """
-from re import split
 import docopt
 import numpy as np
 import pandas as pd
@@ -59,17 +58,16 @@ def initialize_logger():
 
 
 def tsc(logger, args, X_train, X_test, y_train, y_test):
-    analysis_data = None
     logger.info(
         f"===== Starting Time Series Classification Model Selection Experiment =====")
 
     logger.info(f"===== Step: Initializaing models =====")
     models = {
         'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -83,41 +81,39 @@ def tsc(logger, args, X_train, X_test, y_train, y_test):
         # 'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
     }
 
-    if args['cv']:
-        analysis_data = cv(logger, models, X_train, X_test,
-                           y_train, y_test)
-    elif args['default_split']:
-        analysis_data = no_cv(logger, models, X_train, X_test,
-                              y_train, y_test)
-    
-    logger.info(f"===== Step: Exporting fitted models =====")
     for m in models.values():
-        export_model(m, 'tsc')
+        analysis_data = []
+        if args['cv']:
+            analysis_data.append(cv(logger, 'tsc', m, X_train, X_test,
+                           y_train, y_test, None))
+        elif args['default_split']:
+            analysis_data.append(no_cv(logger, 'tsc', m, X_train, X_test,
+                              y_train, y_test, None))
 
-    analysis = pd.DataFrame(analysis_data)
-    analysis['dataset'] = args['dataset']
-    # analysis['rank_test_score'] = analysis['test_ds_score'].rank(
-    #     ascending=False, method='dense')
-    # analysis['rank_train_time'] = analysis['train_time'].rank(
-    #     ascending=True, method='dense')
-    # analysis['rank_score_time'] = analysis['test_ds_score_time'].rank(
-    #     ascending=True, method='dense')
+        analysis = pd.DataFrame(analysis_data)
+        analysis['dataset'] = args['dataset']
 
-    return analysis, models
+        logger.info(f"===== Step: Exporting Analysis Results for {m.clf_name} =====")
+        export_analysis(analysis, args)
+        # analysis['rank_test_score'] = analysis['test_ds_score'].rank(
+        #     ascending=False, method='dense')
+        # analysis['rank_train_time'] = analysis['train_time'].rank(
+        #     ascending=True, method='dense')
+        # analysis['rank_score_time'] = analysis['test_ds_score_time'].rank(
+        #     ascending=True, method='dense')
 
 
 def etsc(logger, args, X_train, X_test, y_train, y_test):
-    analysis_data = None
     logger.info(
         f"===== Starting Early Time Series Classification Experiment =====")
 
     logger.info(f"===== Step: Initializaing models =====")
     models = {
-        'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-        'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        # #   'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # # #   'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -125,10 +121,10 @@ def etsc(logger, args, X_train, X_test, y_train, y_test):
         'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         'pforest': PFOREST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-        'knn_dtw_sc': KNNDTW_sc(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'knn_dtw_it': KNNDTW_it(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'knn_dtw_ms': KNNDTW_ms(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
+        # 'knn_dtw_sc': KNNDTW_sc(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'knn_dtw_it': KNNDTW_it(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'knn_dtw_ms': KNNDTW_ms(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
     }
 
     logger.info(f"===== Step: Applying data splitting =====")
@@ -137,91 +133,87 @@ def etsc(logger, args, X_train, X_test, y_train, y_test):
         f"Data split Indexes obtained. Time series length will be split into {args['split']} approximaltely equal chunks")
 
     dfs = []
-    for i, index in enumerate(split_indexes):
-        revealed_pct= (100 / args["split"])*(i+1)
-        logger.info(f'######################################################')
-        logger.info(
-            f'===== Learning on {revealed_pct}% of the time series =====')
-        X_train_splitted = apply_split(
-            X_train, index, desc=arguments['--from_beg'])
+    for m in models.values():
+        analysis_data = []
+        for i, index in enumerate(split_indexes):
+            revealed_pct= (100 / args["split"])*(i+1)
+            logger.info(f'######################################################')
+            logger.info(
+                f'===== Learning on {revealed_pct}% of the time series =====')
+            X_train_splitted = apply_split(
+                X_train, index, desc=arguments['--from_beg'])
 
-        if args['cv']:
-            analysis_data = cv(logger, models, X_train_splitted, X_test,
-                               y_train, y_test)
+            if args['cv']:
+                analysis_data.append(cv(logger, 'etsc', m, X_train_splitted, X_test,
+                                y_train, y_test, revealed_pct))
 
-        elif args['default_split']:
-            analysis_data = no_cv(logger, models, X_train_splitted, X_test,
-                                  y_train, y_test)
+            elif args['default_split']:
+                analysis_data.append(no_cv(logger, 'etsc', m, X_train_splitted, X_test,
+                                    y_train, y_test, revealed_pct))
 
-        logger.info(f"===== Step: Exporting fitted models =====")
-        for m in models.values():
-            export_model(m, 'etsc', revealed_pct)
-
-        df = pd.DataFrame(analysis_data)
-        df['revealed_pct'] = revealed_pct
-        df['harmonic_mean'] = (2 * (1 - df['revealed_pct']) * df['test_ds_score']
-                               )/((1 - df['revealed_pct']) + df['test_ds_score'])
-        # df['rank_hm'] = df['harmonic_mean'].rank(
-        #     ascending=False, method='dense')
-        # df['rank_train_time'] = df['train_time'].rank(
-        #     ascending=True, method='dense')
-        # df['rank_score_time'] = df['test_ds_score_time'].rank(
-        #     ascending=True, method='dense')
-        dfs.append(df)
-    analysis = pd.concat(dfs, axis=0, ignore_index=True)
-    analysis['dataset'] = args['dataset']
-
-    return analysis, models
+            df = pd.DataFrame(analysis_data)
+            df['revealed_pct'] = revealed_pct
+            df['harmonic_mean'] = (2 * (1 - df['revealed_pct']) * df['test_ds_score']
+                                )/((1 - df['revealed_pct']) + df['test_ds_score'])
+            # df['rank_hm'] = df['harmonic_mean'].rank(
+            #     ascending=False, method='dense')
+            # df['rank_train_time'] = df['train_time'].rank(
+            #     ascending=True, method='dense')
+            # df['rank_score_time'] = df['test_ds_score_time'].rank(
+            #     ascending=True, method='dense')
+            dfs.append(df)
+        analysis = pd.concat(dfs, axis=0, ignore_index=True)
+        analysis['dataset'] = args['dataset']
+        logger.info(f"===== Step: Exporting Analysis Results for {m.clf_name} =====")
+        export_analysis(analysis, args)
 
 
-def cv(logger, models, X_train, X_test, y_train, y_test):
+def cv(logger, process, model, X_train, X_test, y_train, y_test, revealed_pct):
     # # combine training and testing datasets
     # X = X_train.append(X_test, ignore_index=True)
     # y = np.concatenate((y_train, y_test), axis=0)
 
-    logger.info(f"===== Step: Running Cross Validation =====")
-    for m in models.values():
-        m.fit(X_train, y_train)
-        m.best_estimator_analysis['train_time'] = m.train_time
+    logger.info(f"===== Step: Running Cross Validation for {model.clf_name} =====")
+    model.fit(X_train, y_train)
+    model.best_estimator_analysis['train_time'] = model.train_time
 
-    logger.info(f"===== Step: Labeling Testing Dataset =====")
-    for m in models.values():
-        m.predict(X_test)
+    logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
+    model.predict(X_test)
 
-    logger.info(f"===== Step: Calculating Accuracy scores =====")
-    for m in models.values():
-        m.get_score(X_test, y_test)
-        m.best_estimator_analysis['test_ds_score'] = m.test_ds_score
-        m.best_estimator_analysis['test_ds_score_time'] = m.test_ds_score_time
+    logger.info(f"===== Step: Calculating Accuracy scores for {model.clf_name} =====")
+    model.get_score(X_test, y_test)
+    model.best_estimator_analysis['test_ds_score'] = model.test_ds_score
+    model.best_estimator_analysis['test_ds_score_time'] = model.test_ds_score_time
 
-    logger.info(f"===== Step: Prepare Analysis Results =====")
-    analysis_data = [m.best_estimator_analysis for m in models.values()]
+    logger.info(f"===== Step: Prepare Analysis Results for {model.clf_name} =====")
+    analysis= model.best_estimator_analysis
     logger.info(f"Analysis metrics: score, fitting time, testing time")
     # logger.info("models are ranked based on each of the metrics")
-    return analysis_data
+
+    logger.info(f"===== Step: Exporting fitted model for {model.clf_name} =====")
+    export_model(model, process, revealed_pct)
+    return analysis
 
 
-def no_cv(logger, models, X_train, X_test, y_train, y_test):
-    logger.info(f"===== Step: Fitting models on Training Dataset =====")
-    for m in models.values():
-        m.fit(X_train, y_train)
+def no_cv(logger, process, model, X_train, X_test, y_train, y_test, revealed_pct):
+    logger.info(f"===== Step: Fitting models on Training Dataset for {model.clf_name} =====")
+    model.fit(X_train, y_train)
 
-    logger.info(f"===== Step: Labeling Testing Dataset =====")
-    for m in models.values():
-        m.predict(X_test)
+    logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
+    model.predict(X_test)
 
-    logger.info(f"===== Step: Calculating Accuracy scores =====")
-    for m in models.values():
-        m.get_score(X_test, y_test)
+    logger.info(f"===== Step: Calculating Accuracy scores for {model.clf_name} =====")
+    model.get_score(X_test, y_test)
 
-    logger.info(f"===== Step: Prepare Analysis Results =====")
-    idx = ['classifier', 'train_time',
-           'test_ds_score_time', 'test_ds_score', 'params']
-    analysis_data = [pd.Series([m.clf_name, m.train_time, m.test_ds_score_time,
-                                m.test_ds_score, m.clf.get_params()], index=idx) for m in models.values()]
+    logger.info(f"===== Step: Prepare Analysis Results for {model.clf_name} =====")
+    idx = ['classifier', 'train_time','test_ds_score_time', 'test_ds_score', 'params']
+    analysis= pd.Series([model.clf_name, model.train_time, model.test_ds_score_time, model.test_ds_score, model.clf.get_params()], index=idx)
     logger.info("Analysis metrics: score, fitting time, testing time")
     # logger.info("models are ranked based on each of the metrics")
-    return analysis_data
+
+    logger.info(f"===== Step: Exporting fitted model for {model.clf_name} =====")
+    export_model(model, process, revealed_pct)
+    return analysis
 
 
 def get_analysis_file_name(args):
@@ -314,17 +306,10 @@ if __name__ == "__main__":
                 logger.info(f"Dataset {args['dataset']} is Univariate")
 
             if args['tsc']:
-                analysis, models=tsc(logger, args, X_train,
-                                    X_test, y_train, y_test)
+                tsc(logger, args, X_train, X_test, y_train, y_test)
             elif args['etsc']:
-                analysis, models=etsc(
-                    logger, args, X_train, X_test, y_train, y_test)
-
-            logger.info(f"===== Step: Exporting Analysis Results =====")
-            export_analysis(analysis, args)
-            # fname = get_analysis_file_name(args)
-            # analysis.to_json(f'{fname}.json')
-            # logger.info(f"Analysis exported to {fname}.json")
+                etsc(logger, args, X_train, X_test, y_train, y_test)
+            
             report.append({'running_file':__file__, 'ts': start_time, 'tsc': args['tsc'], 'etsc': args['etsc'], 'dataset': args['dataset'], 'cv': args['cv'], 'default_split': args['default_split'], 'n_iter': args['n_iter'], 'score_function': args['score_function'], 'split': args['split'], 'from_beg': args['from_beg'], 'from_end': args['from_end'], 'split': args['split'], 'success': True, 'exception':None})
 
         except Exception as e:

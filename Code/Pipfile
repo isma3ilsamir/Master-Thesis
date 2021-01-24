@@ -21,7 +21,6 @@ h5py = "*"
 sktime-dl = {git = "https://github.com/sktime/sktime-dl.git"}
 ipykernel = "*"
 jedi = "==0.17.2"
-tensorflow= "*"
 
 [requires]
 python_version = "3.7"

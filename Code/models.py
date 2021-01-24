@@ -250,7 +250,7 @@ class KNNED_SKTIME(Model):
     clf_name = "1NN-ED-SKTime"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
+        'weights': ['uniform', 'distance']
     }
 
 class KNNDTW(pytsModel):
@@ -259,8 +259,7 @@ class KNNDTW(pytsModel):
     clf_name = "1NN-DTW"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
-        "leaf_size": [1, 10, 30, 100]
+        'weights': ['uniform', 'distance']
     }
 
 class KNNDTW_sc(pytsModel):
@@ -269,8 +268,7 @@ class KNNDTW_sc(pytsModel):
     clf_name = "1NN-DTW-sakoechiba"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
-        "leaf_size": [1, 10, 30, 100]
+        'weights': ['uniform', 'distance']
     }
 
 class KNNDTW_it(pytsModel):
@@ -279,8 +277,7 @@ class KNNDTW_it(pytsModel):
     clf_name = "1NN-DTW-itakura"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
-        "leaf_size": [1, 10, 30, 100]
+        'weights': ['uniform', 'distance']
     }
 
 class KNNDTW_ms(pytsModel):
@@ -289,8 +286,7 @@ class KNNDTW_ms(pytsModel):
     clf_name = "1NN-DTW-multiscale"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
-        "leaf_size": [1, 10, 30, 100]
+        'weights': ['uniform', 'distance']
     }
 
 class KNNDTW_fs(pytsModel):
@@ -299,8 +295,7 @@ class KNNDTW_fs(pytsModel):
     clf_name = "1NN-DTW-fast"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
-        "leaf_size": [1, 10, 30, 100]
+        'weights': ['uniform', 'distance']
     }
 
 class KNNMSM(Model):
@@ -311,7 +306,6 @@ class KNNMSM(Model):
         'weights': ['uniform', 'distance'],
         'metric_params': [{'c': 0.01}, {'c': 0.1}, {'c': 1}, {'c': 10}, {'c': 100}]
     }
-
 
 class EE(Model):
     clf = ElasticEnsemble(verbose=0)
@@ -327,7 +321,7 @@ class PFOREST(Model):
                           verbosity=0)
     clf_name = 'PForest'
     hyper_param = {
-        'n_estimators': [1, 10, 100, 250, 500, 1000]
+        'n_estimators': [100, 500, 1000]
     }
 
 
@@ -337,44 +331,45 @@ class TSF(Model):
                                      oob_score=True,
                                      bootstrap=True)
     clf_name = 'TSF'
-    hyper_param = {'n_estimators': [1, 10, 100, 250, 500, 1000],
+    hyper_param = {'n_estimators': [100, 250, 500, 1000],
                    'max_features': ['sqrt', 'log2']
                    }
 
 
 class LS(pytsModel):
     clf = LearningShapelets(verbose=0,
-                            n_jobs=-1)
+                            n_jobs=-1,
+                            shapelet_scale=3,
+                            learning_rate=0.01,
+                            tol= 1e-3)
     clf_name = "LS"
     hyper_param = {
-        'n_shapelets_per_size': [0.05, 0.15, 0.2, 0.3, 0.5],
+        'n_shapelets_per_size': [0.05, 0.15, 0.3],
         'min_shapelet_length': [0.025, 0.075, 0.1, 0.125, 0.175, 0.2],
-        'shapelet_scale': [1, 2, 3],
-        'C': [5000, 2000, 1000, 100, 10, 1],
-        'learning_rate': [0.01, 0.05, 0.1, 1.0],
-        'max_iter':  [1000, 2000, 3000, 5000, 10000],
-        'tol': [1e-3, 1e-2]
+        'shapelet_scale': [1,2,3],
+        'C': [1000, 100, 10, 1],
+        'max_iter':  [2000, 5000, 10000]
     }
 
 
 class ST(Model):
-    clf = ShapeletTransformClassifier(time_contract_in_mins=2)
+    clf = ShapeletTransformClassifier(time_contract_in_mins= 60)
     clf_name = "ST"
     hyper_param = {
-        'time_contract_in_mins': [1, 2, 5],
-        'n_estimators': [1, 100, 200, 500, 1000]
+        'n_estimators': [500, 1000]
     }
 
 
 class WEASEL(Model):
     clf = WEASEL(p_threshold=0.05,
-                 n_jobs=-1)
+                 n_jobs=-1
+                 )
     clf_name = "WEASEL"
     hyper_param = {
-        # 'anova ': [True, False],
-        'bigrams': [True, False],
+        'anova':[True, False],
+        'bigrams':[True, False],
         'binning_strategy': ['equi-depth', 'equi-width', 'information-gain'],
-        'window_inc': [1, 2, 3, 4]
+        'window_inc': [2,3,4]
     }
 
 
