@@ -1,0 +1,27 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autopep8 = "*"
+
+[packages]
+sklearn = "*"
+matplotlib = "*"
+pandas = "*"
+numpy = "*"
+seaborn = "*"
+docopt = "*"
+sktime = {git = "https://github.com/alan-turing-institute/sktime.git"}
+pyts = "*"
+tslearn = "*"
+tsfresh = "*"
+h5py = "*"
+sktime-dl = {git = "https://github.com/sktime/sktime-dl.git"}
+ipykernel = "*"
+jedi = "==0.17.2"
+tensorflow= "*"
+
+[requires]
+python_version = "3.7"
