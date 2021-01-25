@@ -84,8 +84,6 @@ def tsc(logger, args, X_train, X_test, y_train, y_test):
     }
 
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        import IPython
-        IPython.embed()
         executor.map(tsc_process_model,
                      repeat(logger),
                      repeat('tsc'),
