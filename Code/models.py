@@ -330,10 +330,11 @@ class EE(Model):
 class PFOREST(Model):
     clf = ProximityForest(n_jobs=-1,
                           get_distance_measure=None,
-                          verbosity=0)
+                          verbosity=0,
+                          n_estimators= 100)
     clf_name = 'PForest'
     hyper_param = {
-        'n_estimators': [100, 500, 1000],
+        'n_estimators': [100],
         'n_jobs' : [-1]
     }
 

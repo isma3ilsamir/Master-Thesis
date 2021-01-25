@@ -67,54 +67,47 @@ def tsc(logger, args, X_train, X_test, y_train, y_test):
     models = {
         'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-        'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-        'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # 'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-        'pforest': PFOREST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # 'pforest': PFOREST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         # 'knn_dtw_sc': KNNDTW_sc(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_dtw_it': KNNDTW_it(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_dtw_ms': KNNDTW_ms(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
     }
 
-    rep= len(models.values())
-    i = [1,2,3,4,5,6,7,8,9,10,11,12,13]
-
     with concurrent.futures.ProcessPoolExecutor() as executor:
         import IPython
         IPython.embed()
-        executor.map(process_model, repeat(logger), repeat('tsc'), models.values(), repeat(X_train), repeat(X_test), repeat(y_train), repeat(y_test), repeat(None),i)
+        executor.map(tsc_process_model,
+                     repeat(logger),
+                     repeat('tsc'),
+                     models.values(),
+                     repeat(X_train),
+                     repeat(X_test),
+                     repeat(y_train),
+                     repeat(y_test)
+                )
 
-
-# for m in models.values():
-def process_model(logger, process, m,  X_train, X_test, y_train, y_test, revealed_pct,i):
-    print(f"###################################{i}")
+def tsc_process_model(logger, process, m,  X_train, X_test, y_train, y_test):
     analysis_data = []
     if args['cv']:
-        analysis_data.append(cv(logger, process, m, X_train, X_test,
-                        y_train, y_test, revealed_pct))
+        analysis_data.append(cv(logger, process, m, X_train, X_test, y_train, y_test, None))
     elif args['default_split']:
-        analysis_data.append(no_cv(logger, process, m, X_train, X_test,
-                            y_train, y_test, revealed_pct))
+        analysis_data.append(no_cv(logger, process, m, X_train, X_test, y_train, y_test, None))
 
     analysis = pd.DataFrame(analysis_data)
     analysis['dataset'] = args['dataset']
 
     logger.info(f"===== Step: Exporting Analysis Results for {m.clf_name} =====")
     export_analysis(analysis, args)
-    # analysis['rank_test_score'] = analysis['test_ds_score'].rank(
-    #     ascending=False, method='dense')
-    # analysis['rank_train_time'] = analysis['train_time'].rank(
-    #     ascending=True, method='dense')
-    # analysis['rank_score_time'] = analysis['test_ds_score_time'].rank(
-    #     ascending=True, method='dense')
-
 
 def etsc(logger, args, X_train, X_test, y_train, y_test):
     logger.info(
@@ -125,61 +118,65 @@ def etsc(logger, args, X_train, X_test, y_train, y_test):
         # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # # #   'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # 'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-        'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-        'pforest': PFOREST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # 'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+        # 'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+        # 'pforest': PFOREST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
         # 'knn_dtw_sc': KNNDTW_sc(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_dtw_it': KNNDTW_it(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_dtw_ms': KNNDTW_ms(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
         # 'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
     }
 
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+        executor.map(etsc_process_model,
+                     repeat(logger),
+                     repeat('etsc'),
+                     models.values(),
+                     repeat(X_train),
+                     repeat(X_test),
+                     repeat(y_train),
+                     repeat(y_test)
+                )
+
+def etsc_process_model(logger, process, m, X_train, X_test, y_train, y_test):
+    dfs = []
+    analysis_data = []
     logger.info(f"===== Step: Applying data splitting =====")
     split_indexes = get_split_indexes(X_train, args['split'])
     logger.info(
         f"Data split Indexes obtained. Time series length will be split into {args['split']} approximaltely equal chunks")
 
-    dfs = []
-    for m in models.values():
-        analysis_data = []
-        for i, index in enumerate(split_indexes):
-            revealed_pct= (100 / args["split"])*(i+1)
-            logger.info(f'######################################################')
-            logger.info(
-                f'===== Learning on {revealed_pct}% of the time series =====')
-            X_train_splitted = apply_split(
-                X_train, index, desc=arguments['--from_beg'])
+    for i, index in enumerate(split_indexes):
+        revealed_pct= (100 / args["split"])*(i+1)
+        logger.info(f'######################################################')
+        logger.info(
+            f'===== Learning on {revealed_pct}% of the time series =====')
+        X_train_splitted = apply_split(
+            X_train, index, desc=arguments['--from_beg'])
 
-            if args['cv']:
-                analysis_data.append(cv(logger, 'etsc', m, X_train_splitted, X_test,
+        if args['cv']:
+            analysis_data.append(cv(logger, process, m, X_train_splitted, X_test,
+                            y_train, y_test, revealed_pct))
+
+        elif args['default_split']:
+            analysis_data.append(no_cv(logger, process, m, X_train_splitted, X_test,
                                 y_train, y_test, revealed_pct))
 
-            elif args['default_split']:
-                analysis_data.append(no_cv(logger, 'etsc', m, X_train_splitted, X_test,
-                                    y_train, y_test, revealed_pct))
-
-            df = pd.DataFrame(analysis_data)
-            df['revealed_pct'] = revealed_pct
-            df['harmonic_mean'] = (2 * (1 - df['revealed_pct']) * df['test_ds_score']
-                                )/((1 - df['revealed_pct']) + df['test_ds_score'])
-            # df['rank_hm'] = df['harmonic_mean'].rank(
-            #     ascending=False, method='dense')
-            # df['rank_train_time'] = df['train_time'].rank(
-            #     ascending=True, method='dense')
-            # df['rank_score_time'] = df['test_ds_score_time'].rank(
-            #     ascending=True, method='dense')
-            dfs.append(df)
-        analysis = pd.concat(dfs, axis=0, ignore_index=True)
-        analysis['dataset'] = args['dataset']
-        logger.info(f"===== Step: Exporting Analysis Results for {m.clf_name} =====")
-        export_analysis(analysis, args)
-
+        df = pd.DataFrame(analysis_data)
+        df['revealed_pct'] = revealed_pct
+        df['harmonic_mean'] = (2 * (1 - df['revealed_pct']) * df['test_ds_score']
+                            )/((1 - df['revealed_pct']) + df['test_ds_score'])
+        dfs.append(df)
+    analysis = pd.concat(dfs, axis=0, ignore_index=True)
+    analysis['dataset'] = args['dataset']
+    logger.info(f"===== Step: Exporting Analysis Results for {m.clf_name} =====")
+    export_analysis(analysis, args)
 
 def cv(logger, process, model, X_train, X_test, y_train, y_test, revealed_pct):
     # # combine training and testing datasets
