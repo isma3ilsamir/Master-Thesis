@@ -8,7 +8,7 @@ Univariate
 ####################################################################################
 
 ### Audio ###
---dataset=InsectWingbeatSound --dataset=InsectWingbeat
+--dataset=InsectWingbeatSound
 
 ### Device ###
 --dataset=ACSF1 --dataset=Computers --dataset=ElectricDevices --dataset=HouseTwenty --dataset=LargeKitchenAppliances --dataset=PLAID --dataset=PowerCons --dataset=RefrigerationDevices --dataset=ScreenType --dataset=SmallKitchenAppliances
