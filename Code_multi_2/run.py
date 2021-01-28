@@ -1,0 +1,404 @@
+"""
+Usage:
+    run.py --tsc (--dataset=<ds>)... (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split)
+    run.py --etsc (--dataset=<ds>)... (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split) [--from_beg | --from_end] [--split=<s>]
+
+Options:
+    --tsc                  Runs an experiment on the dataset; to recommend the best performing model based on accuracy
+    --etsc                 Runs an experiment on the dataset; to study performance of time series classification algorithms in an early classification context
+    --dataset=<ds>         The name of the dataset folder. It should contain arff files, with the naming convention dataset_TEST.arff and dataset_TRAIN.arff
+    --cv                   Apply cross validation to the dataset
+    --default_split        Use the default split of the dataset
+    --n_iter=<n>           Number of iterations for randomized cross validation [default: 50]
+    --score_function=<f>   Function used for classification performance. Use a value from sklearn.metrics [default: balanced_accuracy]
+    --from_beg             Start from beginning of time series and reveal next subsequences at each iteration
+    --from_end             Start from end of time series and reveal previous subsequences at each iteration
+    --split=<s>            The number of splits to apply to the time series. 10 splits= 10% increments, 20 splits= 5% increments,...etc [default: 20]
+"""
+from time import perf_counter
+import docopt
+import numpy as np
+import pandas as pd
+import logging
+import os
+from datetime import datetime
+import concurrent.futures
+from itertools import repeat, count
+import json
+
+from splitting import get_split_indexes, apply_split
+from datasets import get_test_train_data
+
+import matplotlib.pyplot as plt
+
+from models import KNNED, KNNDTW, KNNMSM, KNNED_SKTIME, PFOREST, EE
+from models import KNNDTW_sc, KNNDTW_it, KNNDTW_ms, KNNDTW_fs
+from models import TSF
+from models import LS, ST
+from models import WEASEL, CBOSS
+from models import INCEPTION
+
+# create logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+if not logger.hasHandlers():
+    # create console handler and set level to debug
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.INFO)
+
+    # create formatter
+    formatter = logging.Formatter('%(message)s')
+
+    # add formatter to ch
+    ch.setFormatter(formatter)
+
+    # add ch to logger
+    logger.addHandler(ch)
+
+def initialize_models(args):
+    logger.info(f"===== Step: Initializaing models =====")
+    if args['tsc']:
+        return {
+            'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            # # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            'pforest': PFOREST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            # 'knn_dtw_sc': KNNDTW_sc(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            # 'knn_dtw_it': KNNDTW_it(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            # 'knn_dtw_ms': KNNDTW_ms(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            # 'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
+        }
+    else:
+        return {
+                # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+                # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                # # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+                'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+                'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+                'pforest': PFOREST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+                # # 'knn_dtw_sc': KNNDTW_sc(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                # # 'knn_dtw_it': KNNDTW_it(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                # # 'knn_dtw_ms': KNNDTW_ms(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                # # 'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
+        }
+
+def tsc(args, start_time):
+    try:
+        start= perf_counter()
+        logger.info(f"===== Starting Time Series Classification Model Selection Experiment =====")
+        analysis_data = []
+        ds= args['dataset']
+        model= args['model']
+        logger.info(f"===== Reading Data for {model.clf_name} =====")
+        X_train, X_test, y_train, y_test= get_test_train_data(ds)
+
+        if args['cv']:
+            analysis_data.append(cv('tsc', model, X_train, X_test, y_train, y_test, None))
+        elif args['default_split']:
+            analysis_data.append(no_cv('tsc', model, X_train, X_test, y_train, y_test, None))
+
+        analysis = pd.DataFrame(analysis_data)
+        analysis['dataset'] = args['dataset']
+
+        logger.info(f"===== Step: Exporting Analysis Results for {model.clf_name} =====")
+        export_analysis(analysis, args, start_time)
+        stop= perf_counter()
+        log= {
+            'process': 'tsc',
+            'dataset': args['dataset'],
+            'model': args['model'].clf_name,
+            'cv': args['cv'],
+            'n_iter': args['n_iter'],
+            'score_function': args['score_function'],
+            'from_beg': args['from_beg'],
+            'split': args['split'],
+            'revealed_pct': args['revealed_pct'],
+            'success': True,
+            'error': None,
+            'duration': stop - start
+        }
+
+    except Exception as e:
+        stop= perf_counter()
+        logger.critical(f"===== tsc Failed for {args['model'].clf_name} =====")
+        log={
+            'process': 'tsc',
+            'dataset': args['dataset'],
+            'model': args['model'].clf_name,
+            'cv': args['cv'],
+            'n_iter': args['n_iter'],
+            'score_function': args['score_function'],
+            'from_beg': args['from_beg'],
+            'split': args['split'],
+            'revealed_pct': args['revealed_pct'],
+            'success': False,
+            'error': e,
+            'duration': start - stop
+        }
+    finally:
+        logger.info(f"===== Step: Exporting Logs for {args['model'].clf_name} dataset {args['dataset']} =====")
+        export_log(log, start_time)
+
+
+def etsc(args, start_time):
+    try:
+        start= perf_counter()
+        logger.info(f"===== Starting Early Time Series Classification Experiment =====")
+        analysis_data = []
+        ds= args['dataset']
+        model= args['model']
+        revealed_pct= args['revealed_pct']
+        logger.info(f"===== Reading Data for {model.clf_name} =====")
+        X_train, X_test, y_train, y_test= get_test_train_data(ds)
+
+        logger.info(f'===== Learning on {revealed_pct}% of the time series =====')
+        X_train_splitted = apply_split(X_train, args['split_indexes'], desc=args['from_beg'])
+
+        if args['cv']:
+            analysis_data.append(cv('etsc', model, X_train_splitted, X_test,
+                            y_train, y_test, revealed_pct))
+
+        elif args['default_split']:
+            analysis_data.append(no_cv('etsc', model, X_train_splitted, X_test,
+                                y_train, y_test, revealed_pct))
+
+        analysis = pd.DataFrame(analysis_data)
+        analysis['revealed_pct'] = revealed_pct
+        analysis['harmonic_mean'] = (2 * (1 - analysis['revealed_pct']) * analysis['test_ds_score']) / ((1 - analysis['revealed_pct']) + analysis['test_ds_score'])
+        analysis['dataset'] = args['dataset']
+        logger.info(f"===== Step: Exporting Analysis Results for {model.clf_name} =====")
+        export_analysis(analysis, args, start_time)
+
+        stop= perf_counter()
+        log= {
+            'process': 'etsc',
+            'dataset': args['dataset'],
+            'model': args['model'].clf_name,
+            'cv': args['cv'],
+            'n_iter': args['n_iter'],
+            'score_function': args['score_function'],
+            'from_beg': args['from_beg'],
+            'split': args['split'],
+            'revealed_pct': args['revealed_pct'],
+            'success': True,
+            'error': None,
+            'duration': stop - start
+        }
+
+    except Exception as e:
+        stop= perf_counter()
+        logger.critical(f"=====etsc Failed for {args['model'].clf_name} dataset {args['dataset']} revealed percent {args['revealed_pct']}=====")
+        log={
+            'process': 'etsc',
+            'dataset': args['dataset'],
+            'model': args['model'].clf_name,
+            'cv': args['cv'],
+            'n_iter': args['n_iter'],
+            'score_function': args['score_function'],
+            'from_beg': args['from_beg'],
+            'split': args['split'],
+            'revealed_pct': args['revealed_pct'],
+            'success': False,
+            'error': e,
+            'duration': start - stop
+        }
+    finally:
+        logger.info(f"===== Step: Exporting Logs for {args['model'].clf_name} =====")
+        export_log(log, start_time)
+
+def cv(process, model, X_train, X_test, y_train, y_test, revealed_pct):
+    logger.info(f"===== Step: Running Cross Validation for {model.clf_name} =====")
+    model.fit(X_train, y_train)
+    model.best_estimator_analysis['train_time'] = model.train_time
+
+    logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
+    model.predict(X_test)
+
+    logger.info(f"===== Step: Calculating Accuracy scores for {model.clf_name} =====")
+    model.get_score(X_test, y_test)
+    model.best_estimator_analysis['test_ds_score'] = model.test_ds_score
+    model.best_estimator_analysis['test_ds_score_time'] = model.test_ds_score_time
+
+    logger.info(f"===== Step: Prepare Analysis Results for {model.clf_name} =====")
+    analysis= model.best_estimator_analysis
+    logger.info(f"Analysis metrics: score, fitting time, testing time")
+    # logger.info("models are ranked based on each of the metrics")
+
+    logger.info(f"===== Step: Exporting fitted model for {model.clf_name} =====")
+    export_model(model, process, revealed_pct)
+    return analysis
+
+
+def no_cv(process, model, X_train, X_test, y_train, y_test, revealed_pct):
+    logger.info(f"===== Step: Fitting models on Training Dataset for {model.clf_name} =====")
+    model.fit(X_train, y_train)
+
+    logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
+    model.predict(X_test)
+
+    logger.info(f"===== Step: Calculating Accuracy scores for {model.clf_name} =====")
+    model.get_score(X_test, y_test)
+
+    logger.info(f"===== Step: Prepare Analysis Results for {model.clf_name} =====")
+    idx = ['classifier', 'train_time','test_ds_score_time', 'test_ds_score', 'params']
+    analysis= pd.Series([model.clf_name, model.train_time, model.test_ds_score_time, model.test_ds_score, model.clf.get_params()], index=idx)
+    logger.info("Analysis metrics: score, fitting time, testing time")
+    # # logger.info("models are ranked based on each of the metrics")
+
+    logger.info(f"===== Step: Exporting fitted model for {model.clf_name} =====")
+    export_model(model, process, revealed_pct)
+    return analysis
+
+def get_model_analysis_file_name(args, start_time):
+    ts= datetime.strftime(start_time,"%Y_%m_%d_%H%M%S")
+    process= 'tsc' if args['tsc'] else 'etsc'
+    dataset= args['dataset']
+    cv = 'cv' if args['cv'] else 'no_cv'
+    pct = f"{int(args['revealed_pct'])}_pct" if args['revealed_pct'] else None
+    model_name= args['model'].clf_name
+    analysis_folder = os.path.join(
+        os.getcwd(), 'datasets', dataset, 'analysis','')
+    if not os.path.exists(analysis_folder):
+        os.makedirs(analysis_folder)
+    f = f"{process}_{dataset}_{model_name}_{cv}_{pct}_{ts}" if pct else f"{process}_{dataset}_{model_name}_{cv}_{ts}"
+    fname = os.path.join(analysis_folder, f)
+    return fname
+
+def export_analysis(analysis, args, start_time):
+    model = args['model'].clf_name
+    model_analysis_file=get_model_analysis_file_name(args, start_time)
+    analysis.to_json(f'{model_analysis_file}.json')
+    logger.info(f"Analysis for {model} exported to {model_analysis_file}.json")
+
+
+def export_model(model, process, revealed_pct=None):
+    if model.clf == 'PForest':
+        logger.critical('Proximity Forest Model export is not currently working')
+        pass
+    model.export_model(process,revealed_pct)
+
+def get_log_file_name(start_time, logs):
+    ts= datetime.strftime(start_time,"%Y_%m_%d_%H%M%S")
+    process= logs['process']
+    dataset= logs['dataset']
+    cv = 'cv' if logs['cv'] else 'no_cv'
+    pct = f"{int(logs['revealed_pct'])}_pct" if logs['revealed_pct'] else None
+    model_name= logs['model']
+    logs_folder = os.path.join(os.getcwd(), 'logs', '')
+    if not os.path.exists(logs_folder):
+        os.makedirs(logs_folder)
+    f = f"{process}_{dataset}_{model_name}_{cv}_{pct}_{ts}" if pct else f"{process}_{dataset}_{model_name}_{cv}_{ts}"
+    fname = os.path.join(logs_folder, f)
+    return fname
+
+def export_log(logs, start_time):
+    fname = get_log_file_name(start_time, logs)
+    with open(f'{fname}.json', 'w') as fp:
+        json.dump(logs, fp)
+    logger.info(f"Logs exported to {fname}.json")
+
+def prepare_args(arguments, dataset):
+    args={}
+    args['tsc']=arguments['--tsc']
+    args['etsc']=arguments['--etsc']
+    args['dataset'] = dataset
+    args['cv']=arguments['--cv']
+    args['default_split']=arguments['--default_split']
+    args['n_iter']= None if arguments['--default_split'] else int(arguments['--n_iter'])
+    args['score_function']=arguments['--score_function']
+    args['split']= None if arguments['--tsc'] else int(arguments['--split'])
+    if arguments['--from_beg'] | (not arguments['--from_beg'] and not arguments['--from_end']):
+        args['from_beg']=True
+    args['from_end']=arguments['--from_end']
+    X_train, _, _, _=get_test_train_data(args['dataset'])
+    args['dim']=X_train.shape[1]
+    args['models']= initialize_models(args)
+    logger.info(f"===== Step: Applying data splitting =====")
+    args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes(X_train, args['split'])
+    args['revealed_pct'] = None if arguments['--tsc'] else [(100 / args["split"])*(i+1) for i in range(args["split"])]
+    return args
+
+def flatten_models(args):
+    return list(map(prepare_model_args, repeat(args), args['models'].values()))
+
+def prepare_model_args(args, model):
+    new_args={}
+    new_args['tsc']=args['tsc']
+    new_args['etsc']=args['etsc']
+    new_args['dataset'] = args['dataset']
+    new_args['cv']=args['cv']
+    new_args['default_split']=args['default_split']
+    new_args['n_iter']= args['n_iter']
+    new_args['score_function']= args['score_function']
+    new_args['split']= args['split']
+    new_args['from_beg']= args['from_beg']
+    new_args['from_end']=args['from_end']
+    new_args['dim']=args['dim']
+    new_args['model']= model
+    new_args['split_indexes']= args['split_indexes']
+    new_args['revealed_pct']=   args['revealed_pct']
+    return new_args
+
+def flatten_split_indexes(args):
+    return list(map(prepare_indexes_args, repeat(args), args['split_indexes'], args['revealed_pct']))
+
+def prepare_indexes_args(args, index, revealed_pct):
+    new_args={}
+    new_args['tsc']=args['tsc']
+    new_args['etsc']=args['etsc']
+    new_args['dataset'] = args['dataset']
+    new_args['cv']=args['cv']
+    new_args['default_split']=args['default_split']
+    new_args['n_iter']= args['n_iter']
+    new_args['score_function']= args['score_function']
+    new_args['split']= args['split']
+    new_args['from_beg']= args['from_beg']
+    new_args['from_end']=args['from_end']
+    new_args['dim']=args['dim']
+    new_args['model']= args['model']
+    new_args['split_indexes']= index
+    new_args['revealed_pct']= revealed_pct
+    return new_args
+
+if __name__ == "__main__":
+    start_time= datetime.now()
+    report_ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
+    report= []
+    analysis=None
+    arguments=docopt.docopt(__doc__)
+
+    # download the datasets
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        executor.map(get_test_train_data, arguments['--dataset'])
+
+    # get flat args list
+    args_list= list(map(prepare_args, repeat(arguments), arguments['--dataset']))
+    args_list= list(map(flatten_models, args_list))
+    flatten = lambda t: [item for sublist in t for item in sublist]
+    flat_args_list= flatten(args_list)
+
+    if arguments['--tsc']:
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            executor.map(tsc, flat_args_list, repeat(start_time))
+
+    elif arguments['--etsc']:
+        flat_split_list= list(map(flatten_split_indexes, flat_args_list))
+        flatten = lambda t: [item for sublist in t for item in sublist]
+        flat_split_list= flatten(flat_split_list)
+        with concurrent.futures.ProcessPoolExecutor() as executor:
+            executor.map(etsc, flat_split_list, repeat(start_time))
