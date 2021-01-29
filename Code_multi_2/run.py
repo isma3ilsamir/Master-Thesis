@@ -61,10 +61,10 @@ def initialize_models(args):
     if args['tsc']:
         return {
             'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-            # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-            # # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -79,9 +79,9 @@ def initialize_models(args):
         }
     else:
         return {
-                # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                # # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
                 # # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-                # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+                # # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
                 'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
                 # # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
                 'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
@@ -97,13 +97,13 @@ def initialize_models(args):
                 # # 'knn_dtw_fs': KNNDTW_fs(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset'])
         }
 
-def tsc(args, start_time):
+def tsc(args, start_time, start= perf_counter()):
     try:
-        start= perf_counter()
         logger.info(f"===== Starting Time Series Classification Model Selection Experiment =====")
         analysis_data = []
         ds= args['dataset']
         model= args['model']
+        ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.info(f"===== Reading Data for {model.clf_name} =====")
         X_train, X_test, y_train, y_test= get_test_train_data(ds)
 
@@ -120,6 +120,7 @@ def tsc(args, start_time):
         stop= perf_counter()
         log= {
             'process': 'tsc',
+            'ts': ts,
             'dataset': args['dataset'],
             'model': args['model'].clf_name,
             'cv': args['cv'],
@@ -135,9 +136,11 @@ def tsc(args, start_time):
 
     except Exception as e:
         stop= perf_counter()
+        ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.critical(f"===== tsc Failed for {args['model'].clf_name} =====")
         log={
             'process': 'tsc',
+            'ts': ts,
             'dataset': args['dataset'],
             'model': args['model'].clf_name,
             'cv': args['cv'],
@@ -147,15 +150,15 @@ def tsc(args, start_time):
             'split': args['split'],
             'revealed_pct': args['revealed_pct'],
             'success': False,
-            'error': e,
-            'duration': start - stop
+            'error': None if not e else e,
+            'duration': stop - start 
         }
     finally:
         logger.info(f"===== Step: Exporting Logs for {args['model'].clf_name} dataset {args['dataset']} =====")
         export_log(log, start_time)
 
 
-def etsc(args, start_time):
+def etsc(args, start_time, start= perf_counter()):
     try:
         start= perf_counter()
         logger.info(f"===== Starting Early Time Series Classification Experiment =====")
@@ -163,6 +166,7 @@ def etsc(args, start_time):
         ds= args['dataset']
         model= args['model']
         revealed_pct= args['revealed_pct']
+        ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.info(f"===== Reading Data for {model.clf_name} =====")
         X_train, X_test, y_train, y_test= get_test_train_data(ds)
 
@@ -187,6 +191,7 @@ def etsc(args, start_time):
         stop= perf_counter()
         log= {
             'process': 'etsc',
+            'ts': ts,
             'dataset': args['dataset'],
             'model': args['model'].clf_name,
             'cv': args['cv'],
@@ -202,9 +207,11 @@ def etsc(args, start_time):
 
     except Exception as e:
         stop= perf_counter()
+        ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.critical(f"=====etsc Failed for {args['model'].clf_name} dataset {args['dataset']} revealed percent {args['revealed_pct']}=====")
         log={
             'process': 'etsc',
+            'ts': ts,
             'dataset': args['dataset'],
             'model': args['model'].clf_name,
             'cv': args['cv'],
@@ -214,8 +221,8 @@ def etsc(args, start_time):
             'split': args['split'],
             'revealed_pct': args['revealed_pct'],
             'success': False,
-            'error': e,
-            'duration': start - stop
+            'error': None if not e else e,
+            'duration': stop - start
         }
     finally:
         logger.info(f"===== Step: Exporting Logs for {args['model'].clf_name} =====")
@@ -308,8 +315,8 @@ def get_log_file_name(start_time, logs):
 
 def export_log(logs, start_time):
     fname = get_log_file_name(start_time, logs)
-    with open(f'{fname}.json', 'w') as fp:
-        json.dump(logs, fp)
+    log_df = pd.DataFrame.from_dict([logs])
+    log_df.to_json(f'{fname}.json')
     logger.info(f"Logs exported to {fname}.json")
 
 def prepare_args(arguments, dataset):
@@ -328,7 +335,7 @@ def prepare_args(arguments, dataset):
     X_train, _, _, _=get_test_train_data(args['dataset'])
     args['dim']=X_train.shape[1]
     args['models']= initialize_models(args)
-    logger.info(f"===== Step: Applying data splitting =====")
+    # logger.info(f"===== Step: Applying data splitting =====")
     args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes(X_train, args['split'])
     args['revealed_pct'] = None if arguments['--tsc'] else [(100 / args["split"])*(i+1) for i in range(args["split"])]
     return args
@@ -382,9 +389,13 @@ if __name__ == "__main__":
     analysis=None
     arguments=docopt.docopt(__doc__)
 
-    # download the datasets
-    with concurrent.futures.ThreadPoolExecutor() as executor:
-        executor.map(get_test_train_data, arguments['--dataset'])
+    try:
+        # download the datasets
+        with concurrent.futures.ThreadPoolExecutor() as executor:
+            executor.map(get_test_train_data, arguments['--dataset'])
+    except Exception as e:
+        logger.info(f"Exception occurred: {e}")
+
 
     # get flat args list
     args_list= list(map(prepare_args, repeat(arguments), arguments['--dataset']))
