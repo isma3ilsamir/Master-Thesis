@@ -15,16 +15,18 @@ Options:
     --from_end             Start from end of time series and reveal previous subsequences at each iteration
     --split=<s>            The number of splits to apply to the time series. 10 splits= 10% increments, 20 splits= 5% increments,...etc [default: 20]
 """
+import platform
+import sys
+import psutil
+
 from time import perf_counter
 import docopt
-import numpy as np
 import pandas as pd
 import logging
 import os
 from datetime import datetime
 import concurrent.futures
 from itertools import repeat, count
-import json
 
 from splitting import get_split_indexes, apply_split
 from datasets import get_test_train_data
@@ -382,11 +384,46 @@ def prepare_indexes_args(args, index, revealed_pct):
     new_args['revealed_pct']= revealed_pct
     return new_args
 
-if __name__ == "__main__":
+def memory_limit(percentage: float):
+    if platform.system() != "Linux":
+        print('Only works on linux!')
+        return
+    import resource
+    soft, hard = resource.getrlimit(resource.RLIMIT_AS)
+    resource.setrlimit(resource.RLIMIT_AS, (get_memory() * 1024 * percentage, hard))
+
+def get_memory():
+    with open('/proc/meminfo', 'r') as mem:
+        free_memory = 0
+        for i in mem:
+            sline = i.split()
+            if str(sline[0]) == 'MemAvailable:':
+                ### commented code is the original, this is an enhancement
+                # if str(sline[0]) in ('MemFree:', 'Buffers:', 'Cached:'):
+                #     free_memory += int(sline[1])
+                free_memory = int(sline[1])
+                break
+    return free_memory
+
+def memory(percentage=0.8):
+    def decorator(function):
+        def wrapper(*args, **kwargs):
+            memory_limit(percentage)
+            try:
+                function(*args, **kwargs)
+            except MemoryError:
+                mem = get_memory() / 1024 /1024
+                print('Remain: %.2f GB' % mem)
+                sys.stderr.write('\n\nERROR: Memory Exception\n')
+                sys.exit(1)
+        return wrapper
+    return decorator
+
+@memory(percentage=0.8)
+def main():
+    logger.info(f'This code is limited to 80% of memory and 80% of CPU on LINUX ONLY !!!!!!!')
+    max_workers= int(psutil.cpu_count() * 0.8)
     start_time= datetime.now()
-    report_ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
-    report= []
-    analysis=None
     arguments=docopt.docopt(__doc__)
 
     try:
@@ -404,12 +441,15 @@ if __name__ == "__main__":
     flat_args_list= flatten(args_list)
 
     if arguments['--tsc']:
-        with concurrent.futures.ProcessPoolExecutor() as executor:
+        with concurrent.futures.ProcessPoolExecutor(max_workers= max_workers) as executor:
             executor.map(tsc, flat_args_list, repeat(start_time))
 
     elif arguments['--etsc']:
         flat_split_list= list(map(flatten_split_indexes, flat_args_list))
         flatten = lambda t: [item for sublist in t for item in sublist]
         flat_split_list= flatten(flat_split_list)
-        with concurrent.futures.ProcessPoolExecutor() as executor:
+        with concurrent.futures.ProcessPoolExecutor(max_workers= max_workers) as executor:
             executor.map(etsc, flat_split_list, repeat(start_time))
+
+if __name__ == "__main__":
+    main()

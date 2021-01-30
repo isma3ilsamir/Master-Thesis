@@ -73,7 +73,7 @@ class Model:
             param_distributions=self.hyper_param,
             n_iter=self.n_iter,
             scoring=self.scoring_function,
-            n_jobs=-1,
+            n_jobs=-2,
             random_state=0,
             verbose=0,
             cv=5
@@ -236,7 +236,7 @@ class KNNED(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
                                metric='minkowski',
                                p=2,
-                               n_jobs= -1)
+                               n_jobs=-2)
     clf_name = "1NN-ED"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
@@ -258,7 +258,7 @@ class KNNED_SKTIME(Model):
 class KNNDTW(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
                                metric='dtw',
-                               n_jobs=-1)
+                               n_jobs=-2)
     clf_name = "1NN-DTW"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
@@ -269,7 +269,7 @@ class KNNDTW(pytsModel):
 class KNNDTW_sc(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
                                metric='dtw_sakoechiba',
-                               n_jobs=-1)
+                               n_jobs=-2)
     clf_name = "1NN-DTW-sakoechiba"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
@@ -280,7 +280,7 @@ class KNNDTW_sc(pytsModel):
 class KNNDTW_it(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
                                metric='dtw_itakura',
-                               n_jobs=-1)
+                               n_jobs=-2)
     clf_name = "1NN-DTW-itakura"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
@@ -291,7 +291,7 @@ class KNNDTW_it(pytsModel):
 class KNNDTW_ms(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
                                metric='dtw_multiscale',
-                               n_jobs=-1)
+                               n_jobs=-2)
     clf_name = "1NN-DTW-multiscale"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
@@ -302,7 +302,7 @@ class KNNDTW_ms(pytsModel):
 class KNNDTW_fs(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
                                metric='dtw_fast',
-                               n_jobs=-1)
+                               n_jobs=-2)
     clf_name = "1NN-DTW-fast"
     hyper_param = {
         'algorithm': ['auto', 'brute'],
@@ -328,7 +328,7 @@ class EE(Model):
 
 
 class PFOREST(Model):
-    clf = ProximityForest(n_jobs=-1,
+    clf = ProximityForest(n_jobs=-2,
                           get_distance_measure=None,
                           verbosity=0,
                           n_estimators= 100)
@@ -341,7 +341,7 @@ class PFOREST(Model):
 
 class TSF(Model):
     clf = TimeSeriesForestClassifier(verbose=0,
-                                     n_jobs=-1,
+                                     n_jobs=-2,
                                      oob_score=True,
                                      bootstrap=True)
     clf_name = 'TSF'
@@ -353,7 +353,7 @@ class TSF(Model):
 
 class LS(pytsModel):
     clf = LearningShapelets(verbose=0,
-                            n_jobs=-1,
+                            n_jobs=-2,
                             shapelet_scale=3,
                             learning_rate=0.01,
                             tol= 1e-3)
@@ -378,7 +378,7 @@ class ST(Model):
 
 class WEASEL(Model):
     clf = WEASEL(p_threshold=0.05,
-                 n_jobs=-1
+                 n_jobs=-2
                  )
     clf_name = "WEASEL"
     hyper_param = {
