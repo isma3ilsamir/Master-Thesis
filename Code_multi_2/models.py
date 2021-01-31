@@ -3,6 +3,7 @@ import os
 import logging
 import pandas as pd
 import joblib
+import numpy as np
 
 # from scipy.sparse.construct import rand
 # from scipy.stats.stats import _euclidean_dist
@@ -11,6 +12,13 @@ from scipy.stats.stats import mode
 # from sklearn.metrics import accuracy_score, classification_report, balanced_accuracy_score
 # from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.pipeline import Pipeline
+from sklearn.ensemble import VotingClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn import tree
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sktime_dl.deeplearning.base import estimators
 # from sklearn.utils import estimator_checks
 # from sklearn.utils.fixes import loguniform
 # from scipy.stats import uniform, randint, poisson, norm, logser
@@ -24,6 +32,7 @@ from sktime.classification.distance_based import ProximityForest
 from sktime.classification.shapelet_based import ShapeletTransformClassifier
 from sktime.classification.dictionary_based import WEASEL
 from sktime.classification.dictionary_based import ContractableBOSS
+from sktime.transformations.panel.shapelets import ContractedShapeletTransform
 
 from pyts.classification import KNeighborsClassifier
 from pyts.classification.learning_shapelets import LearningShapelets
@@ -234,15 +243,21 @@ class pytsModel(Model):
 
 class KNNED(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
-                               metric='minkowski',
+                               weights='uniform',
+                               algorithm='auto',
+                               leaf_size=30,
                                p=2,
+                               metric='minkowski',
                                n_jobs=-2)
     clf_name = "1NN-ED"
     hyper_param = {
-        'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
-        "leaf_size": [1, 10, 30, 100],
-        'n_jobs' : [-1]
+        'n_neighbors' : [1],
+        'weights' : ['uniform', 'distance'],
+        'algorithm' : ['auto', 'brute'],
+        'leaf_size' : [1, 10, 30, 100],
+        'p' : [2],
+        'metric' : ['minkowski'],
+        'n_jobs' : [-2]
     }
 
 
@@ -257,13 +272,21 @@ class KNNED_SKTIME(Model):
 
 class KNNDTW(pytsModel):
     clf = KNeighborsClassifier(n_neighbors=1,
+                               weights='uniform',
+                               algorithm='auto',
+                               leaf_size=30,
+                               p=2,
                                metric='dtw',
                                n_jobs=-2)
     clf_name = "1NN-DTW"
     hyper_param = {
-        'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
-        'n_jobs' : [-1]
+        'n_neighbors' : [1],
+        'weights' : ['uniform', 'distance'],
+        'algorithm' : ['auto', 'brute'],
+        'leaf_size' : [1, 10, 30, 100],
+        'p' : [2],
+        'metric' : ['dtw'],
+        'n_jobs' : [-2]
     }
 
 class KNNDTW_sc(pytsModel):
@@ -274,7 +297,7 @@ class KNNDTW_sc(pytsModel):
     hyper_param = {
         'algorithm': ['auto', 'brute'],
         'weights': ['uniform', 'distance'],
-        'n_jobs' : [-1]
+        'n_jobs' : [-2]
     }
 
 class KNNDTW_it(pytsModel):
@@ -285,7 +308,7 @@ class KNNDTW_it(pytsModel):
     hyper_param = {
         'algorithm': ['auto', 'brute'],
         'weights': ['uniform', 'distance'],
-        'n_jobs' : [-1]
+        'n_jobs' : [-2]
     }
 
 class KNNDTW_ms(pytsModel):
@@ -296,7 +319,7 @@ class KNNDTW_ms(pytsModel):
     hyper_param = {
         'algorithm': ['auto', 'brute'],
         'weights': ['uniform', 'distance'],
-        'n_jobs' : [-1]
+        'n_jobs' : [-2]
     }
 
 class KNNDTW_fs(pytsModel):
@@ -307,15 +330,20 @@ class KNNDTW_fs(pytsModel):
     hyper_param = {
         'algorithm': ['auto', 'brute'],
         'weights': ['uniform', 'distance'],
-        'n_jobs' : [-1]
+        'n_jobs' : [-2]
     }
 
 class KNNMSM(Model):
-    clf = KNeighborsTimeSeriesClassifier(n_neighbors=1, metric='msm')
+    clf = KNeighborsTimeSeriesClassifier(n_neighbors=1,
+                                         weights="uniform",
+                                         algorithm="brute",
+                                         metric="msm")
     clf_name = "1NN-MSM"
     hyper_param = {
-        'algorithm': ['auto', 'brute'],
-        'weights': ['uniform', 'distance'],
+        'n_neighbors' : [1],
+        'weights' : ['uniform', 'distance'],
+        'algorithm' : ['auto', 'brute'],
+        'metric' : ['msm'],
         'metric_params': [{'c': 0.01}, {'c': 0.1}, {'c': 1}, {'c': 10}, {'c': 100}]
     }
 
@@ -328,43 +356,107 @@ class EE(Model):
 
 
 class PFOREST(Model):
-    clf = ProximityForest(n_jobs=-2,
-                          get_distance_measure=None,
-                          verbosity=0,
-                          n_estimators= 100)
+    clf = ProximityForest(random_state=None,
+                        n_estimators=100,
+                        distance_measure=None,
+                        get_distance_measure=None,
+                        verbosity=0,
+                        max_depth=np.math.inf,
+                        n_jobs=-2,
+                        n_stump_evaluations=5,
+                        find_stump=None)
     clf_name = 'PForest'
     hyper_param = {
-        'n_estimators': [100],
-        'n_jobs' : [-1]
-    }
+        'random_state' : [None],
+        'n_estimators' : [100],
+        'distance_measure' : [None],
+        'get_distance_measure' : [None],
+        'verbosity' : [0],
+        'max_depth' : [np.math.inf],
+        'n_jobs' : [-2],
+        'n_stump_evaluations' : [5],
+        'find_stump' : [None]
+        }
 
 
 class TSF(Model):
-    clf = TimeSeriesForestClassifier(verbose=0,
-                                     n_jobs=-2,
-                                     oob_score=True,
-                                     bootstrap=True)
+    clf = TimeSeriesForestClassifier(estimator=None,
+                                    n_estimators=500,
+                                    criterion='entropy',
+                                    max_depth=None,
+                                    min_samples_split=2,
+                                    min_samples_leaf=1,
+                                    min_weight_fraction_leaf=0,
+                                    max_features='sqrt',
+                                    max_leaf_nodes=None,
+                                    min_impurity_decrease=0,
+                                    min_impurity_split=None,
+                                    bootstrap=True,
+                                    oob_score=True,
+                                    n_jobs=-2,
+                                    random_state=None,
+                                    verbose=0,
+                                    warm_start=False,
+                                    class_weight=None,
+                                    max_samples=None)
     clf_name = 'TSF'
-    hyper_param = {'n_estimators': [100, 250, 500, 1000],
-                   'max_features': ['sqrt', 'log2'],
-                   'n_jobs' : [-1]
+    hyper_param = {'estimator' : [None],
+                    'n_estimators' : [500],
+                    'criterion' : ['entropy', 'gini'],
+                    'max_depth' : [None],
+                    'min_samples_split' : [2],
+                    'min_samples_leaf' : [1],
+                    'min_weight_fraction_leaf' : [0],
+                    'max_features': ['sqrt', 'log2'],
+                    'max_leaf_nodes' : [None],
+                    'min_impurity_decrease' : [0],
+                    'min_impurity_split' : [None],
+                    'bootstrap' : [True],
+                    'oob_score' : [True],
+                    'n_jobs' : [-2],
+                    'random_state' : [None],
+                    'verbose' : [0],
+                    'warm_start' : [False],
+                    'class_weight' : [None],
+                    'max_samples' : [None]
                    }
 
 
 class LS(pytsModel):
-    clf = LearningShapelets(verbose=0,
-                            n_jobs=-2,
+    clf = LearningShapelets(min_shapelet_length=0.1,
                             shapelet_scale=3,
+                            penalty='l2',
+                            tol=0.001,
+                            C=1000,
                             learning_rate=0.01,
-                            tol= 1e-3)
+                            max_iter=10000,
+                            multi_class='ovr',
+                            alpha=- 100,
+                            fit_intercept=True,
+                            intercept_scaling=1,
+                            class_weight=None,
+                            verbose=0,
+                            random_state=None,
+                            n_jobs=-2)
+                            
     clf_name = "LS"
     hyper_param = {
-        'n_shapelets_per_size': [0.05, 0.15, 0.3],
-        'min_shapelet_length': [0.025, 0.075, 0.1, 0.125, 0.175, 0.2],
-        'shapelet_scale': [1,2,3],
-        'C': [1000, 100, 10, 1],
-        'max_iter':  [2000, 5000, 10000],
-        'n_jobs' : [-1]
+        'n_shapelets_per_size' : [0.05, 0.15, 0.3],
+        'min_shapelet_length' : [0.025, 0.075, 0.1, 0.125, 0.175, 0.2],
+        'shapelet_scale' : [1,2,3],
+        'penalty' : ['l2'],
+        'tol' : [0.001],
+        'C' : [1000, 100, 10, 1],
+        'learning_rate' : [0.01],
+        'max_iter' : [2000, 5000, 10000],
+        'multi_class' : ['ovr'],
+        'alpha' : [- 100],
+        'fit_intercept' : [True],
+        'intercept_scaling' : [1],
+        'class_weight' : [None],
+        'verbose' : [0],
+        'random_state' : [None],
+        'n_jobs' : [-2]
     }
 
 
@@ -375,27 +467,67 @@ class ST(Model):
         'n_estimators': [500, 1000]
     }
 
+class ST_ensemble(Model):
+    st= ContractedShapeletTransform(min_shapelet_length=3,
+                                    max_shapelet_length=np.inf,
+                                    max_shapelets_to_store_per_class=200,
+                                    time_contract_in_mins=60,
+                                    num_candidates_to_sample_per_case=20,
+                                    random_state=None,
+                                    verbose=0,
+                                    remove_self_similar=True)
+    nb = GaussianNB()
+    tree= tree.DecisionTreeClassifier(max_features='sqrt')
+    rf= RandomForestClassifier(n_estimators=500)
+    svm_lin= SVC(kernel='linear')
+    svm_rbf = SVC(kernel='rbf')
+    vote= VotingClassifier(estimators=[nb,tree,rf,svm_lin,svm_rbf],
+                              voting='hard',
+                              weights=None,
+                              n_jobs=-2,
+                              flatten_transform=True,
+                              verbose=False)
+    steps = [('st',st), ("clf", vote)]
+
+    clf = Pipeline(steps= steps)
+    clf_name = "ST_ensemble"
+    hyper_param = {}
+
 
 class WEASEL(Model):
-    clf = WEASEL(p_threshold=0.05,
-                 n_jobs=-2
-                 )
+    clf = WEASEL(anova=True,
+    bigrams=True,
+    binning_strategy="information-gain",
+    window_inc=2,
+    p_threshold=0.05,
+    n_jobs= -2,
+    random_state=None)
     clf_name = "WEASEL"
     hyper_param = {
         'anova':[True, False],
         'bigrams':[True, False],
         'binning_strategy': ['equi-depth', 'equi-width', 'information-gain'],
         'window_inc': [2,3,4],
-        'n_jobs' : [-1]
+        'n_jobs' : [-2],
+        'p_threshold' : [0.05]
     }
 
 
 class CBOSS(Model):
-    clf = ContractableBOSS(min_window= 5)
+    clf = ContractableBOSS(n_parameter_samples=250,
+                          max_ensemble_size=50,
+                          max_win_len_prop=1,
+                          time_limit=60,
+                          min_window=5,
+                          random_state=None)
     clf_name = 'CBoss'
     hyper_param = {
-        'n_parameter_samples': [100, 250, 500],
-        'max_ensemble_size': [10, 25, 50]
+        'n_parameter_samples' : [250],
+        'max_ensemble_size': [100, 250, 500],
+        'max_win_len_prop' : [0.5, 1],
+        'time_limit' : [60],
+        'min_window' : [5],
+        'random_state' : [None]
     }
 
 
