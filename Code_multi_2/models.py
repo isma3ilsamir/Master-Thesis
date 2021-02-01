@@ -12,6 +12,7 @@ from scipy.stats.stats import mode
 # from sklearn.metrics import accuracy_score, classification_report, balanced_accuracy_score
 # from sklearn.metrics.pairwise import euclidean_distances
 from sklearn.model_selection import RandomizedSearchCV
+from sklearn.model_selection import ParameterGrid
 from sklearn.pipeline import Pipeline
 from sklearn.ensemble import VotingClassifier
 from sklearn.naive_bayes import GaussianNB
@@ -160,14 +161,14 @@ class Model:
         self.models_folder = models_folder
         if self.dim > 1:
             mv_estimators, mv_param_dict = self.get_params_dict()
-            self.clf = ColumnEnsembleClassifier(estimators=mv_estimators)
+            self.clf = ColumnEnsembleClassifier(estimators=mv_estimators, remainder="drop", verbose=False)
             self.hyper_param = mv_param_dict
         else:
             pass
 
     def get_params_dict(self):
         estimators = []
-        params_dict = None
+        params_dict = {}
         for i in range(self.dim):
             temp = f"{self.clf_name}_{i}__"
 
@@ -176,8 +177,8 @@ class Model:
                 self.clf,
                 [i]))
 
-            params_dict = {temp + str(key): val for key,
-                           val in self.hyper_param.items()}
+            for key, val in self.hyper_param.items():
+                params_dict[temp + str(key)] = val
         return estimators, params_dict
 
     def export_model(self, process, revealed_pct):
@@ -343,7 +344,7 @@ class KNNMSM(Model):
         'n_neighbors' : [1],
         'weights' : ['uniform', 'distance'],
         'algorithm' : ['auto', 'brute'],
-        'metric' : ['msm'],
+        # 'metric' : ['msm'],
         'metric_params': [{'c': 0.01}, {'c': 0.1}, {'c': 1}, {'c': 10}, {'c': 100}]
     }
 
@@ -357,7 +358,7 @@ class EE(Model):
 
 class PFOREST(Model):
     clf = ProximityForest(random_state=None,
-                        n_estimators=100,
+                        n_estimators=10,
                         distance_measure=None,
                         get_distance_measure=None,
                         verbosity=0,
@@ -368,7 +369,7 @@ class PFOREST(Model):
     clf_name = 'PForest'
     hyper_param = {
         'random_state' : [None],
-        'n_estimators' : [100],
+        'n_estimators' : [10],
         'distance_measure' : [None],
         'get_distance_measure' : [None],
         'verbosity' : [0],
@@ -400,7 +401,8 @@ class TSF(Model):
                                     class_weight=None,
                                     max_samples=None)
     clf_name = 'TSF'
-    hyper_param = {'estimator' : [None],
+    hyper_param = {
+                    'estimator' : [None],
                     'n_estimators' : [500],
                     'criterion' : ['entropy', 'gini'],
                     'max_depth' : [None],
@@ -481,7 +483,12 @@ class ST_ensemble(Model):
     rf= RandomForestClassifier(n_estimators=500)
     svm_lin= SVC(kernel='linear')
     svm_rbf = SVC(kernel='rbf')
-    vote= VotingClassifier(estimators=[nb,tree,rf,svm_lin,svm_rbf],
+    vote= VotingClassifier(estimators=[
+                                ('nb',nb),
+                                ('tree',tree),
+                                ('rf',rf),
+                                ('svm_lin',svm_lin),
+                                ('svm_rbf',svm_rbf)],
                               voting='hard',
                               weights=None,
                               n_jobs=-2,
@@ -532,8 +539,19 @@ class CBOSS(Model):
 
 
 class INCEPTION(Model):
-    clf = InceptionTimeClassifier(model_name='inception',
-                                  verbose=False)
+    clf = InceptionTimeClassifier(nb_filters=32,
+                                  use_residual=True,
+                                  use_bottleneck=True,
+                                  bottleneck_size=32,
+                                  depth=6,
+                                  kernel_size=41 - 1,
+                                  batch_size=64,
+                                  nb_epochs=1500,
+                                  callbacks=None,
+                                  random_state=0,
+                                  verbose=False,
+                                  model_name='inception',
+                                  model_save_directory=None)
     clf_name = 'Inception'
     hyper_param = {
         'nb_filters': [32],

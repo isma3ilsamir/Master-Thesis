@@ -1,7 +1,7 @@
 """
 Usage:
-    run.py --tsc (--dataset=<ds>)... (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split)
-    run.py --etsc (--dataset=<ds>)... (--cv [--n_iter=<n>] [--score_function=<f>]| --default_split) [--from_beg | --from_end] [--split=<s>]
+    run.py --tsc (--dataset=<ds>)... (--cv [--n_iter=<n>] | --default_split) [--score_function=<f>]
+    run.py --etsc (--dataset=<ds>)... (--cv [--n_iter=<n>] | --default_split) [--from_beg | --from_end] [--split=<s>] [--score_function=<f>]
 
 Options:
     --tsc                  Runs an experiment on the dataset; to recommend the best performing model based on accuracy
@@ -30,6 +30,8 @@ from itertools import repeat, count
 
 from splitting import get_split_indexes, apply_split
 from datasets import get_test_train_data
+
+from sktime.classification.compose import ColumnEnsembleClassifier as ColEns
 
 import matplotlib.pyplot as plt
 
@@ -70,7 +72,7 @@ def initialize_models(args):
             # 'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # 'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-            'st_ensemble': ST_ensemble(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            # 'st_ensemble': ST_ensemble(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             # 'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # 'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # 'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -90,7 +92,7 @@ def initialize_models(args):
                 # 'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
                 # 'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
                 'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-                'st_ensemble': ST_ensemble(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+                # 'st_ensemble': ST_ensemble(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
                 # 'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
                 # 'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
                 # 'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -112,6 +114,12 @@ def tsc(args, start_time, start= perf_counter()):
         X_train, X_test, y_train, y_test= get_test_train_data(ds)
 
         if args['cv']:
+            # This code is just handling for an error when doing cross-validation
+            if isinstance(args['model'].clf, ColEns):
+                ens_param= {'remainder': ['drop'], 'verbose': [False]}
+                for k, v in ens_param.items():
+                    for val in v:
+                        args['model'].clf.set_params(**{k: val})
             analysis_data.append(cv('tsc', model, X_train, X_test, y_train, y_test, None))
         elif args['default_split']:
             analysis_data.append(no_cv('tsc', model, X_train, X_test, y_train, y_test, None))
@@ -178,6 +186,12 @@ def etsc(args, start_time, start= perf_counter()):
         X_train_splitted = apply_split(X_train, args['split_indexes'], desc=args['from_beg'])
 
         if args['cv']:
+            # This code is just handling for an error when doing cross-validation
+            if isinstance(args['model'].clf, ColEns):
+                ens_param= {'remainder': ['drop'], 'verbose': [False]}
+                for k, v in ens_param.items():
+                    for val in v:
+                        args['model'].clf.set_params(**{k: val})
             analysis_data.append(cv('etsc', model, X_train_splitted, X_test,
                             y_train, y_test, revealed_pct))
 
@@ -433,7 +447,6 @@ def main():
             executor.map(get_test_train_data, arguments['--dataset'])
     except Exception as e:
         logger.info(f"Exception occurred: {e}")
-
 
     # get flat args list
     args_list= list(map(prepare_args, repeat(arguments), arguments['--dataset']))
