@@ -446,7 +446,8 @@ def memory(percentage=0.8):
 
 # @memory(percentage=0.8)
 def main():
-    max_workers= int(psutil.cpu_count() * 0.6)
+    # max_workers= int(psutil.cpu_count() * 0.6)
+    max_workers = 2
     start_time= datetime.now()
     arguments=docopt.docopt(__doc__)
 
