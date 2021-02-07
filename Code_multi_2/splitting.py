@@ -19,7 +19,6 @@ def get_split_indexes_w_threshold(df, div, threshold, dataset):
     if (ts_length < threshold) | (ts_length_10pct >= threshold) :
         split_lengths= ([ts_length // div + (1 if x < ts_length % div else 0)  for x in range (div)])
         split_indexes= np.cumsum(split_lengths).tolist()
-        split_indexes= keep_chunks(split_indexes, [1,2,3,div])
     elif ts_length_10pct < threshold :
         quot , rem = divmod(ts_length, threshold)
         split_lengths= [threshold] * quot
@@ -28,6 +27,8 @@ def get_split_indexes_w_threshold(df, div, threshold, dataset):
     else:
         print("################ !!!! WARNING !!!! ################")
         print(f"Dividing using threshold skipped both conditions {dataset}")
+    if len(split_indexes) > 4:
+        split_indexes= keep_chunks(split_indexes, [1,2,3,div])
     return split_indexes
 
 def apply_split(df,split_index, desc=False):
