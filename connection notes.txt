@@ -1,0 +1,37 @@
+##### Connection #####
+wvdS12!k
+kmdlab07.cs.uni-magdeburg.de
+
+##### running #####
+python run_knn.py --tsc --default_split
+
+
+
+cp -i /home/wahba/Master-Thesis/Code/updates/_data.py /home/wahba/.local/share/virtualenvs/Code_multi-VWVVskad/lib/python3.7/site-packages/sktime_dl/utils/
+
+cp -i /home/wahba/Master-Thesis/Code_multi_2/updates/_data.py /home/wahba/.local/share/virtualenvs/Code_multi_2-RJcmYIAP/lib/python3.7/site-packages/sktime_dl/utils/
+
+
+pkill -9 python
+
+
+### Steps ###
+1. pipenv install --python 3.7
+2. pipenv shell
+3. cp -i /home/wahba/Master-Thesis/Code/updates/_data.py /home/wahba/.local/share/virtualenvs/Code-_AzjR9sQ/lib/python3.7/site-packages/sktime_dl/utils/
+4. pipenv run tmux
+5. create windows inside tmux
+
+##### tmux #####
+tmux list-sessions
+tmux attach-session -t 0
+ctrl+b then d (detach)
+tmux new -s session_name
+ctrl+b then : + kill-session
+ctrl+b then c (new window)
+
+
+##### memory check #####
+ps -U wahba --no-headers -o rss | awk '{ sum+=$1} END {print int(sum/1024) "MB"}'
+
+pipenv install -e git+https://github.com/alan-turing-institute/sktime.git@master#egg=sktime

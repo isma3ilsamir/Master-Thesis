@@ -1,0 +1,22 @@
+equiprobable:= prior of each class is 1/k +- epsilon
+5 classes
+19% 19% 19% 19% 24%
+k classes
+there is a class that has a much higher or lower priori than the others
+10% 10% 10% 10% 60%
+there is a class that is more probable than all the others taken together
+10 10% 10% 35% 35%
+there is a class that is twice as likely as another class
+5% 10% 25% 25% 25% 10%
+From myra to Everyone:  06:06 PM
+D1, D2, ..., D20
+MV1, ...m MV5
+D_i, MV_j : dominant / dominated
+train nb_{MV_j} over D_1, ..., D_k where the features of each of D_1 are #instances, #classes, skeweness etc
+p_{MV_j}(dominant|skewness=Y) =0-99
+0.99
+A_1, A_2, ..., A_n
+performance(D_i, A_j) in {dominant, dominated}
+
+
+MEETING on 10th Feb 4:30

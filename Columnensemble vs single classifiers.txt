@@ -1,0 +1,138 @@
+from sktime.classification.compose import ColumnEnsembleClassifier
+from pyts.classification import KNeighborsClassifier
+from pyts.multivariate.classification import MultivariateClassifier
+from sktime.classification.compose import TimeSeriesForestClassifier
+
+ds= flat_args_list[0]['dataset']
+X_train, X_test, y_train, y_test= get_test_train_data('Cricket')
+
+X_train_tsl = from_sktime_dataset(X_train)
+X_train_pyts = to_pyts_dataset(X_train_tsl)
+
+
+X_test_tsl = from_sktime_dataset(X_test)
+X_test_pyts = to_pyts_dataset(X_test_tsl)
+
+######## train
+X_train_0= X_train['dim_0']
+X_train_0_pyts = X_train_pyts[:,0,:]
+
+X_train_1= X_train['dim_1']
+X_train_1_pyts = X_train_pyts[:,1,:]
+
+X_train_2= X_train['dim_2']
+X_train_2_pyts = X_train_pyts[:,2,:]
+
+X_train_3= X_train['dim_3']
+X_train_3_pyts = X_train_pyts[:,3,:]
+
+X_train_4= X_train['dim_4']
+X_train_4_pyts = X_train_pyts[:,4,:]
+
+X_train_5= X_train['dim_5']
+X_train_5_pyts = X_train_pyts[:,5,:]
+
+######## test
+X_test_0= X_test['dim_0']
+X_test_0_pyts = X_test_pyts[:,0,:]
+   
+X_test_1= X_test['dim_1']
+X_test_1_pyts = X_test_pyts[:,1,:]
+   
+X_test_2= X_test['dim_2']
+X_test_2_pyts = X_test_pyts[:,2,:]
+   
+X_test_3= X_test['dim_3']
+X_test_3_pyts = X_test_pyts[:,3,:]
+   
+X_test_4= X_test['dim_4']
+X_test_4_pyts = X_test_pyts[:,4,:]
+   
+X_test_5= X_test['dim_5']
+X_test_5_pyts = X_test_pyts[:,5,:]
+
+
+###############################
+q= MultivariateClassifier(KNeighborsClassifier(n_neighbors=1, metric='minkowski', p=2, n_jobs= -1))
+q.fit(X_train_pyts, y_train)
+q_score= q.score(X_test_pyts, y_test)
+
+p= KNeighborsClassifier(n_neighbors=1, metric='minkowski', p=2, n_jobs= -1)
+o= KNeighborsClassifier(n_neighbors=1, metric='minkowski', p=2, n_jobs= -1)
+i= KNeighborsClassifier(n_neighbors=1, metric='minkowski', p=2, n_jobs= -1)
+u= KNeighborsClassifier(n_neighbors=1, metric='minkowski', p=2, n_jobs= -1)
+y= KNeighborsClassifier(n_neighbors=1, metric='minkowski', p=2, n_jobs= -1)
+t= KNeighborsClassifier(n_neighbors=1, metric='minkowski', p=2, n_jobs= -1)
+
+p.fit(X_train_0_pyts, y_train)
+o.fit(X_train_1_pyts, y_train)
+i.fit(X_train_2_pyts, y_train)
+u.fit(X_train_3_pyts, y_train)
+y.fit(X_train_4_pyts, y_train)
+t.fit(X_train_5_pyts, y_train)
+
+p_score= p.score(X_test_0_pyts, y_test)
+o_score= o.score(X_test_1_pyts, y_test)
+i_score= i.score(X_test_2_pyts, y_test)
+u_score= u.score(X_test_3_pyts, y_test)
+y_score= y.score(X_test_4_pyts, y_test)
+t_score= t.score(X_test_5_pyts, y_test)
+###############################
+a= MultivariateClassifier(KNeighborsClassifier(n_neighbors=1, metric='dtw', n_jobs=-1))
+a.fit(X_train_pyts, y_train)
+a_score= a.score(X_test_pyts, y_test)
+
+l= KNeighborsClassifier(n_neighbors=1, metric='dtw', n_jobs=-1)
+k= KNeighborsClassifier(n_neighbors=1, metric='dtw', n_jobs=-1)
+j= KNeighborsClassifier(n_neighbors=1, metric='dtw', n_jobs=-1)
+h= KNeighborsClassifier(n_neighbors=1, metric='dtw', n_jobs=-1)
+g= KNeighborsClassifier(n_neighbors=1, metric='dtw', n_jobs=-1)
+f= KNeighborsClassifier(n_neighbors=1, metric='dtw', n_jobs=-1)
+
+l.fit(X_train_0_pyts, y_train)
+k.fit(X_train_1_pyts, y_train)
+j.fit(X_train_2_pyts, y_train)
+h.fit(X_train_3_pyts, y_train)
+g.fit(X_train_4_pyts, y_train)
+f.fit(X_train_5_pyts, y_train)
+
+l_score= l.score(X_test_0_pyts, y_test)
+k_score= k.score(X_test_1_pyts, y_test)
+j_score= j.score(X_test_2_pyts, y_test)
+h_score= h.score(X_test_3_pyts, y_test)
+g_score= g.score(X_test_4_pyts, y_test)
+f_score= f.score(X_test_5_pyts, y_test)
+###############################
+z= ColumnEnsembleClassifier(
+estimators=[
+        ("0", TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True), [0]),
+        ("1", TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True), [1]),
+		("2", TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True), [2]),
+		("3", TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True), [3]),
+		("4", TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True), [4]),
+		("5", TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True), [5])
+    ]
+)
+z.fit(X_train, y_train)
+z_score= z.score(X_test, y_test)
+
+m= TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True)
+n= TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True)
+b= TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True)
+v= TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True)
+c= TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True)
+x= TimeSeriesForestClassifier(verbose=0,n_jobs=-1,oob_score=True,bootstrap=True)
+
+m.fit(X_train_0.to_frame(), y_train)
+n.fit(X_train_1.to_frame(), y_train)
+b.fit(X_train_2.to_frame(), y_train)
+v.fit(X_train_3.to_frame(), y_train)
+c.fit(X_train_4.to_frame(), y_train)
+x.fit(X_train_5.to_frame(), y_train)
+
+m_score= m.score(X_test_0.to_frame(), y_test)
+n_score= n.score(X_test_1.to_frame(), y_test)
+b_score= b.score(X_test_2.to_frame(), y_test)
+v_score= v.score(X_test_3.to_frame(), y_test)
+c_score= c.score(X_test_4.to_frame(), y_test)
+x_score= x.score(X_test_5.to_frame(), y_test)
