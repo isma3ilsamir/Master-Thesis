@@ -278,7 +278,7 @@ class KNNDTW(pytsModel):
                                leaf_size=30,
                                p=2,
                                metric='dtw',
-                               n_jobs=-2)
+                               n_jobs=-1)
     clf_name = "1NN-DTW"
     hyper_param = {
         'n_neighbors' : [1],
@@ -287,7 +287,7 @@ class KNNDTW(pytsModel):
         'leaf_size' : [1, 10, 30, 100],
         'p' : [2],
         'metric' : ['dtw'],
-        'n_jobs' : [-2]
+        'n_jobs' : [-1]
     }
 
 class KNNDTW_sc(pytsModel):
@@ -358,23 +358,23 @@ class EE(Model):
 
 class PFOREST(Model):
     clf = ProximityForest(random_state=None,
-                        n_estimators=10,
+                        n_estimators=100,
                         distance_measure=None,
                         get_distance_measure=None,
                         verbosity=0,
                         max_depth=np.math.inf,
-                        n_jobs=-2,
+                        n_jobs=-1,
                         n_stump_evaluations=5,
                         find_stump=None)
     clf_name = 'PForest'
     hyper_param = {
         'random_state' : [None],
-        'n_estimators' : [10],
+        'n_estimators' : [100],
         'distance_measure' : [None],
         'get_distance_measure' : [None],
         'verbosity' : [0],
         'max_depth' : [np.math.inf],
-        'n_jobs' : [-2],
+        'n_jobs' : [-1],
         'n_stump_evaluations' : [5],
         'find_stump' : [None]
         }
@@ -507,7 +507,7 @@ class WEASEL(Model):
     binning_strategy="information-gain",
     window_inc=2,
     p_threshold=0.05,
-    n_jobs= -2,
+    n_jobs=-2,
     random_state=None)
     clf_name = "WEASEL"
     hyper_param = {

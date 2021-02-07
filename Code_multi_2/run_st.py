@@ -13,11 +13,12 @@ Options:
     --score_function=<f>   Function used for classification performance. Use a value from sklearn.metrics [default: balanced_accuracy]
     --from_beg             Start from beginning of time series and reveal next subsequences at each iteration
     --from_end             Start from end of time series and reveal previous subsequences at each iteration
-    --split=<s>            The number of splits to apply to the time series. 10 splits= 10% increments, 20 splits= 5% increments,...etc [default: 20]
+    --split=<s>            The number of splits to apply to the time series. 10 splits= 10% increments, 20 splits= 5% increments,...etc [default: 10]
 """
 import platform
 import sys
 import psutil
+import time
 
 from time import perf_counter
 import docopt
@@ -28,8 +29,8 @@ from datetime import datetime
 import concurrent.futures
 from itertools import repeat, count
 
-from splitting import get_split_indexes, apply_split
-from datasets import get_test_train_data
+from splitting import get_split_indexes, apply_split, get_split_indexes_w_threshold
+from datasets import get_test_train_data, handle_missing_values
 
 from sktime.classification.compose import ColumnEnsembleClassifier as ColEns
 
@@ -64,15 +65,15 @@ def initialize_models(args):
     logger.info(f"===== Step: Initializaing models =====")
     if args['tsc']:
         return {
-            # 'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            'knn_ed': KNNED(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # # 'knn_ed_sktime': KNNED_SKTIME(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-            # 'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
+            'knn_dtw': KNNDTW(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # 'knn_msm': KNNMSM(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # # 'ee': EE(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             # 'tsf': TSF(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # 'ls': LS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
-            'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
-            # 'st_ensemble': ST_ensemble(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            # 'st': ST(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
+            'st_ensemble': ST_ensemble(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
             # 'weasel': WEASEL(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # 'cboss': CBOSS(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim=args['dim'], ds=args['dataset']),
             # 'inception': INCEPTION(scoring_function=args['score_function'], n_iter=args['n_iter'], cv=args['cv'], dim= args['dim'], ds= args['dataset']),
@@ -112,6 +113,8 @@ def tsc(args, start_time, start= perf_counter()):
         ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.info(f"===== Reading Data for {model.clf_name} =====")
         X_train, X_test, y_train, y_test= get_test_train_data(ds)
+        handle_missing_values(X_train, ds, model.clf_name)
+        handle_missing_values(X_test, ds, model.clf_name)
 
         if args['cv']:
             # This code is just handling for an error when doing cross-validation
@@ -168,6 +171,7 @@ def tsc(args, start_time, start= perf_counter()):
     finally:
         logger.info(f"===== Step: Exporting Logs for {args['model'].clf_name} dataset {args['dataset']} =====")
         export_log(log, start_time)
+        return log
 
 
 def etsc(args, start_time, start= perf_counter()):
@@ -181,6 +185,8 @@ def etsc(args, start_time, start= perf_counter()):
         ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.info(f"===== Reading Data for {model.clf_name} =====")
         X_train, X_test, y_train, y_test= get_test_train_data(ds)
+        handle_missing_values(X_train, ds, model.clf_name)
+        handle_missing_values(X_test, ds, model.clf_name)
 
         logger.info(f'===== Learning on {revealed_pct}% of the time series =====')
         X_train_splitted = apply_split(X_train, args['split_indexes'], desc=args['from_beg'])
@@ -245,14 +251,15 @@ def etsc(args, start_time, start= perf_counter()):
     finally:
         logger.info(f"===== Step: Exporting Logs for {args['model'].clf_name} =====")
         export_log(log, start_time)
+        return log
 
 def cv(process, model, X_train, X_test, y_train, y_test, revealed_pct):
     logger.info(f"===== Step: Running Cross Validation for {model.clf_name} =====")
     model.fit(X_train, y_train)
     model.best_estimator_analysis['train_time'] = model.train_time
 
-    logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
-    model.predict(X_test)
+    # logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
+    # model.predict(X_test)
 
     logger.info(f"===== Step: Calculating Accuracy scores for {model.clf_name} =====")
     model.get_score(X_test, y_test)
@@ -273,8 +280,8 @@ def no_cv(process, model, X_train, X_test, y_train, y_test, revealed_pct):
     logger.info(f"===== Step: Fitting models on Training Dataset for {model.clf_name} =====")
     model.fit(X_train, y_train)
 
-    logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
-    model.predict(X_test)
+    # logger.info(f"===== Step: Labeling Testing Dataset for {model.clf_name} =====")
+    # model.predict(X_test)
 
     logger.info(f"===== Step: Calculating Accuracy scores for {model.clf_name} =====")
     model.get_score(X_test, y_test)
@@ -354,8 +361,10 @@ def prepare_args(arguments, dataset):
     args['dim']=X_train.shape[1]
     args['models']= initialize_models(args)
     # logger.info(f"===== Step: Applying data splitting =====")
-    args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes(X_train, args['split'])
-    args['revealed_pct'] = None if arguments['--tsc'] else [(100 / args["split"])*(i+1) for i in range(args["split"])]
+    # args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes(X_train, args['split'])
+    args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes_w_threshold(X_train, args['split'], 200, dataset)
+    ts_length= len(X_train['dim_0'][0])
+    args['revealed_pct'] = None if arguments['--tsc'] else [int((100 * i)/ts_length) for i in args['split_indexes']]
     return args
 
 def flatten_models(args):
@@ -444,7 +453,12 @@ def main():
     try:
         # download the datasets
         with concurrent.futures.ThreadPoolExecutor() as executor:
-            executor.map(get_test_train_data, arguments['--dataset'])
+            # executor.map(get_test_train_data, arguments['--dataset'])
+            futures = {
+                executor.submit(get_test_train_data, task) : task
+                    for task in arguments['--dataset']
+            }
+            concurrent.futures.wait(futures)
     except Exception as e:
         logger.info(f"Exception occurred: {e}")
 
@@ -454,16 +468,33 @@ def main():
     flatten = lambda t: [item for sublist in t for item in sublist]
     flat_args_list= flatten(args_list)
 
+    start = time.time()
     if arguments['--tsc']:
         with concurrent.futures.ProcessPoolExecutor(max_workers= max_workers) as executor:
-            executor.map(tsc, flat_args_list, repeat(start_time))
+            # futures = {executor.submit(tsc, flat_args_list, repeat(start_time))}
+            futures = {
+                executor.submit(tsc, task, start_time) : '_'.join([task['dataset'], task['model'].clf_name])
+                    for task in flat_args_list
+            }
+            concurrent.futures.wait(futures)
 
     elif arguments['--etsc']:
         flat_split_list= list(map(flatten_split_indexes, flat_args_list))
         flatten = lambda t: [item for sublist in t for item in sublist]
         flat_split_list= flatten(flat_split_list)
         with concurrent.futures.ProcessPoolExecutor(max_workers= max_workers) as executor:
-            executor.map(etsc, flat_split_list, repeat(start_time))
+            # futures = {executor.submit(etsc, flat_split_list, repeat(start_time))}
+            futures = {
+                executor.submit(etsc, task, start_time) : '_'.join([task['dataset'], task['model'].clf_name, str(task['revealed_pct'])])
+                    for task in flat_split_list
+            }
+            concurrent.futures.wait(futures)
+    end = time.time()
+ 
+    print("Total time : %ssecs" % (end - start))
+ 
+    for fut in concurrent.futures.as_completed(futures):
+        print(f"The outcome for {fut} is {fut.result()}")
 
 if __name__ == "__main__":
     main()

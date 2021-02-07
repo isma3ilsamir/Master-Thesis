@@ -13,7 +13,6 @@ pandas = "*"
 numpy = "*"
 seaborn = "*"
 docopt = "*"
-sktime = {git = "https://github.com/alan-turing-institute/sktime.git"}
 pyts = "*"
 tslearn = "*"
 tsfresh = "*"
@@ -25,6 +24,7 @@ tensorflow= "*"
 tensorflow-addons = "*"
 pexpect = "*"
 psutil = "*"
+sktime = "*"
 
 [requires]
 python_version = "3.7"
