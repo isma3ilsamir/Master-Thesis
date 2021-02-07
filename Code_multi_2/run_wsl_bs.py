@@ -319,9 +319,9 @@ def export_analysis(analysis, args, start_time):
 
 
 def export_model(model, process, revealed_pct=None):
-    if model.clf == 'PForest':
+    if model.clf_name == 'PForest':
         logger.critical('Proximity Forest Model export is not currently working')
-        pass
+        return
     model.export_model(process,revealed_pct)
 
 def get_log_file_name(start_time, logs):

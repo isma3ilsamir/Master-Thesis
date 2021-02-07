@@ -363,7 +363,7 @@ class PFOREST(Model):
                         get_distance_measure=None,
                         verbosity=0,
                         max_depth=np.math.inf,
-                        n_jobs=-1,
+                        n_jobs=16,
                         n_stump_evaluations=5,
                         find_stump=None)
     clf_name = 'PForest'
@@ -374,7 +374,7 @@ class PFOREST(Model):
         'get_distance_measure' : [None],
         'verbosity' : [0],
         'max_depth' : [np.math.inf],
-        'n_jobs' : [-1],
+        'n_jobs' : [16],
         'n_stump_evaluations' : [5],
         'find_stump' : [None]
         }
