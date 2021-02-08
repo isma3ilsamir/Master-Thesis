@@ -319,10 +319,14 @@ def export_analysis(analysis, args, start_time):
 
 
 def export_model(model, process, revealed_pct=None):
-    if model.clf_name == 'PForest':
-        logger.critical('Proximity Forest Model export is not currently working')
-        return
-    model.export_model(process,revealed_pct)
+    try:
+        if model.clf_name == 'PForest':
+            logger.critical('Proximity Forest Model export is not currently working')
+            return
+        model.export_model(process,revealed_pct)
+    except Exception as e:
+        pct= 'full length'if not revealed_pct else f'{int(revealed_pct)}_pct'
+        logger.critical(f'====== Exporting model {model.clf_name} for {pct} failed !!!! =======')
 
 def get_log_file_name(start_time, logs):
     ts= datetime.strftime(start_time,"%Y_%m_%d_%H%M%S")
@@ -446,8 +450,7 @@ def memory(percentage=0.8):
 
 # @memory(percentage=0.8)
 def main():
-    # max_workers= int(psutil.cpu_count() * 0.6)
-    max_workers = 2 
+    max_workers= int(psutil.cpu_count() * 0.6)
     start_time= datetime.now()
     arguments=docopt.docopt(__doc__)
 
