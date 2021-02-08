@@ -38,15 +38,15 @@ def apply_split(df,split_index, desc=False):
         df = df.applymap(lambda cell: cell[:split_index])
     return df
 
-def get_splitted_data(df, desc=False):
-    dfs = []
-    split_indexes = get_split_indexes(df)
-    for i in range(len(split_indexes)):
-        splitted_df = apply_split(df, split_indexes[i], desc)
-        splitted_df = splitted_df.add_prefix(f'{5*(i+1)}_pct_')
-        dfs.append(splitted_df)
-    df = pd.concat(dfs, axis=1)
-    return df, split_indexes
+# def get_splitted_data(df, desc=False):
+#     dfs = []
+#     split_indexes = get_split_indexes(df)
+#     for i in range(len(split_indexes)):
+#         splitted_df = apply_split(df, split_indexes[i], desc)
+#         splitted_df = splitted_df.add_prefix(f'{5*(i+1)}_pct_')
+#         dfs.append(splitted_df)
+#     df = pd.concat(dfs, axis=1)
+#     return df, split_indexes
 
 def keep_chunks(split_indexes, chunks):
     remaining_indexes= [split_indexes[i - 1] for i in chunks]

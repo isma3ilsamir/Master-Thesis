@@ -30,10 +30,13 @@ from sktime.classification.distance_based._time_series_neighbors import KNeighbo
 from sktime.classification.compose import TimeSeriesForestClassifier
 from sktime.classification.distance_based import ElasticEnsemble
 from sktime.classification.distance_based import ProximityForest
+import sktime.classification.distance_based._proximity_forest as pf
+from sktime.classification.distance_based._proximity_forest import dtw_distance_measure_getter,  setup_ddtw_distance_measure_getter, wdtw_distance_measure_getter, setup_wddtw_distance_measure_getter, msm_distance_measure_getter, lcss_distance_measure_getter, erp_distance_measure_getter, twe_distance_measure_getter
 from sktime.classification.shapelet_based import ShapeletTransformClassifier
 from sktime.classification.dictionary_based import WEASEL
 from sktime.classification.dictionary_based import ContractableBOSS
 from sktime.transformations.panel.shapelets import ContractedShapeletTransform
+from sktime.transformations.panel.summarize._extract import DerivativeSlopeTransformer
 
 from pyts.classification import KNeighborsClassifier
 from pyts.classification.learning_shapelets import LearningShapelets
@@ -357,6 +360,19 @@ class EE(Model):
 
 
 class PFOREST(Model):
+    transformer = pf._CachedTransformer(DerivativeSlopeTransformer())
+
+    distance_measure_getters = [
+        # euclidean_distance_measure_getter,
+        dtw_distance_measure_getter,
+        setup_ddtw_distance_measure_getter(transformer),
+        wdtw_distance_measure_getter,
+        setup_wddtw_distance_measure_getter(transformer),
+        msm_distance_measure_getter,
+        lcss_distance_measure_getter,
+        erp_distance_measure_getter,
+        twe_distance_measure_getter,
+    ]
     clf = ProximityForest(random_state=None,
                         n_estimators=100,
                         distance_measure=None,

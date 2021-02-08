@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "469bf1afd88d9425368a301140f02562f071324543b741c139ce54bec5c2e81b"
+            "sha256": "32461f2c2a762ad813099998b887ec806264692a3805caae6fe5b2c066b7a3b1"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -22,6 +22,14 @@
                 "sha256:b3d9eb5119ff6e0a0125f6dabf2f9fae02f8acae7be70576002fac27235611c5"
             ],
             "version": "==0.11.0"
+        },
+        "appnope": {
+            "hashes": [
+                "sha256:93aa393e9d6c54c5cd570ccadd8edad61ea0c4b9ea7a01409020c9aa019eb442",
+                "sha256:dd83cd4b5b460958838f6eb3000c660b1f9caf2a5b1de4264e941512f603258a"
+            ],
+            "markers": "sys_platform == 'darwin'",
+            "version": "==0.1.2"
         },
         "astunparse": {
             "hashes": [
@@ -71,14 +79,6 @@
                 "sha256:9bc994f9e9447593bd0a45371f0e7ac7333710fcf64a4eb9834bf149f4ef2f32"
             ],
             "version": "==1.6.0"
-        },
-        "colorama": {
-            "hashes": [
-                "sha256:5941b2b48a20143d2267e95b1c2a7603ce057ee39fd88e7329b0c292aa16869b",
-                "sha256:9f47eda37229f68eee03b24b9748937c7dc3868f906e8ba69fbcbdd3bc5dc3e2"
-            ],
-            "markers": "sys_platform == 'win32'",
-            "version": "==0.4.4"
         },
         "cycler": {
             "hashes": [
@@ -788,22 +788,6 @@
             ],
             "version": "==2021.1"
         },
-        "pywin32": {
-            "hashes": [
-                "sha256:1c204a81daed2089e55d11eefa4826c05e604d27fe2be40b6bf8db7b6a39da63",
-                "sha256:27a30b887afbf05a9cbb05e3ffd43104a9b71ce292f64a635389dbad0ed1cd85",
-                "sha256:350c5644775736351b77ba68da09a39c760d75d2467ecec37bd3c36a94fbed64",
-                "sha256:60a8fa361091b2eea27f15718f8eb7f9297e8d51b54dbc4f55f3d238093d5190",
-                "sha256:638b68eea5cfc8def537e43e9554747f8dee786b090e47ead94bfdafdb0f2f50",
-                "sha256:8151e4d7a19262d6694162d6da85d99a16f8b908949797fd99c83a0bfaf5807d",
-                "sha256:a3b4c48c852d4107e8a8ec980b76c94ce596ea66d60f7a697582ea9dce7e0db7",
-                "sha256:b1609ce9bd5c411b81f941b246d683d6508992093203d4eb7f278f4ed1085c3f",
-                "sha256:d7e8c7efc221f10d6400c19c32a031add1c4a58733298c09216f57b4fde110dc",
-                "sha256:fbb3b1b0fbd0b4fc2a3d1d81fe0783e30062c1abed1d17c32b7879d55858cfae"
-            ],
-            "markers": "sys_platform == 'win32'",
-            "version": "==300"
-        },
         "pyyaml": {
             "hashes": [
                 "sha256:08682f6b72c722394747bddaf0aa62277e02557c0fd1c42cb853016a38f8dedf",
@@ -970,22 +954,9 @@
             "version": "==0.0"
         },
         "sktime": {
-            "hashes": [
-                "sha256:010ffcf0a2dd209d9e3bd37e0aeb18da5fb92a49c8808c4441a60dcc334d6a78",
-                "sha256:182046de0954d776b117231b8b042d7fcf637b9a8dc37d60b7d33a4780237e90",
-                "sha256:1b4e3d97f69d6597017d2896f713f25d1b566da7fb9a9c219089abfb196c8530",
-                "sha256:231ae08b7e70276b6b22e378aa6c5f2217c964123ced09755a5ab08086cbb3b6",
-                "sha256:2630701238f4730cb6202c63516708d6fde62cebaffc07f47f64c0183f2f0f52",
-                "sha256:30e3d05aced5fae4f3688cd30ce44aeb62679bfe1229832b991fa78daefaa121",
-                "sha256:4b48a11571eaf2474b7f9413439a4c1cb15a656cef59a66e74552b48ca3c4428",
-                "sha256:65673e314726df3cd61c21d132ed29641718055f26c77dd11a6a0ddf9b3ff02c",
-                "sha256:765d7dd52a332feeb405bb24bac78c522bddd7ce758d71277d8c1acead6dc94d",
-                "sha256:7ddce21304d8f33d038b18ae9e6126b3836a868a91559e5fa2d357427ae38206",
-                "sha256:86dbaa4f9a7c44eddf324fc6087a94ab4fa3e274be0bbc937b105b54df83f387",
-                "sha256:917eab2a37bf97955e9846ae0e2bfbdf3ba786b1e39d45073f2177d6dc877ab1"
-            ],
-            "index": "pypi",
-            "version": "==0.5.3"
+            "editable": true,
+            "git": "https://github.com/alan-turing-institute/sktime.git",
+            "ref": "45d88931288f076f7e42043399567b77130406b2"
         },
         "sktime-dl": {
             "git": "https://github.com/sktime/sktime-dl.git",
