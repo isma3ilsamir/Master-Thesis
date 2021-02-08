@@ -1,9 +1,9 @@
 import numpy as np
 import pandas as pd
 
-def split_ts_5_pct(df, desc=False):
-    df, split_indexes = get_splitted_data(df, desc)
-    return df, split_indexes
+# def split_ts_5_pct(df, desc=False):
+#     df, split_indexes = get_splitted_data(df, desc)
+#     return df, split_indexes
 
 def get_split_indexes(df, div):
     ts_length= len(df['dim_0'][0])
