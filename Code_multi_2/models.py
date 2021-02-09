@@ -378,7 +378,7 @@ class PFOREST(Model):
             msm_distance_measure_getter,
             lcss_distance_measure_getter,
             erp_distance_measure_getter,
-            twe_distance_measure_getter,
+            twe_distance_measure_getter
          ]
 
         def pick_rand_distance_measure(proximity):
@@ -398,8 +398,6 @@ class PFOREST(Model):
             return pf.distance_predefined_params(distance_measure, **param_perm)
 
         return pick_rand_distance_measure
-	
-    transformer = pf._CachedTransformer(DerivativeSlopeTransformer())
 
     clf = ProximityForest(random_state=None,
                         n_estimators=100,
