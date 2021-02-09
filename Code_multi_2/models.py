@@ -37,6 +37,7 @@ from sktime.classification.dictionary_based import WEASEL
 from sktime.classification.dictionary_based import ContractableBOSS
 from sktime.transformations.panel.shapelets import ContractedShapeletTransform
 from sktime.transformations.panel.summarize._extract import DerivativeSlopeTransformer
+from sktime.distances.elastic_cython import msm_distance
 
 from pyts.classification import KNeighborsClassifier
 from pyts.classification.learning_shapelets import LearningShapelets
@@ -375,7 +376,7 @@ class PFOREST(Model):
     ]
     clf = ProximityForest(random_state=None,
                         n_estimators=100,
-                        distance_measure=None,
+                        distance_measure= msm_distance,
                         get_distance_measure=None,
                         verbosity=0,
                         max_depth=np.math.inf,

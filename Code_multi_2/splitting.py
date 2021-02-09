@@ -28,7 +28,7 @@ def get_split_indexes_w_threshold(df, div, threshold, dataset):
         print("################ !!!! WARNING !!!! ################")
         print(f"Dividing using threshold skipped both conditions {dataset}")
     if len(split_indexes) > 4:
-        split_indexes= keep_chunks(split_indexes, [1,2,3,div])
+        split_indexes= keep_chunks(split_indexes, [1,2,3,len(split_indexes)])
     return split_indexes
 
 def apply_split(df,split_index, desc=False):
