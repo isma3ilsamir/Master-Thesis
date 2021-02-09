@@ -1,8 +1,11 @@
 import os
 import pandas as pd
+import glob
 
-path_to_json = os.path.join(os.getcwd(), 'logs', '')
+# path_to_json = os.path.join(os.getcwd(), 'logs', '')
+path_to_json = glob.glob(os.path.join(os.getcwd(),'code_*/logs/*'))   
 json_files = [pos_json for pos_json in os.listdir(path_to_json) if pos_json.endswith('.json')]
+
 
 
 dfs= []

@@ -361,28 +361,56 @@ class EE(Model):
 
 
 class PFOREST(Model):
+    def setup_all_distance_measure_getter(proximity):
+        """
+        setup all distance measure getter functions from a proximity object
+        :param proximity: a PT / PF / PS
+        :return: a list of distance measure getters
+        """
+        # transformer = pf._CachedTransformer(DerivativeSlopeTransformer())
+        # list of distance measures that work with etsc
+        distance_measure_getters = [
+##            euclidean_distance_measure_getter,
+            dtw_distance_measure_getter,
+##           setup_ddtw_distance_measure_getter(transformer),
+            wdtw_distance_measure_getter,
+##            setup_wddtw_distance_measure_getter(transformer),
+            msm_distance_measure_getter,
+            lcss_distance_measure_getter,
+            erp_distance_measure_getter,
+            twe_distance_measure_getter,
+         ]
+
+        def pick_rand_distance_measure(proximity):
+            """
+            generate a distance measure from a range of parameters
+            :param proximity: proximity object containing distance measures,
+            ranges and dataset
+            :return: a distance measure with no parameters
+            """
+            random_state = proximity.random_state
+            X = proximity.X
+            distance_measure_getter = random_state.choice(distance_measure_getters)
+            distance_measure_perm = distance_measure_getter(X)
+            param_perm = pf.pick_rand_param_perm_from_dict(distance_measure_perm, random_state)
+            distance_measure = param_perm["distance_measure"]
+            del param_perm["distance_measure"]
+            return pf.distance_predefined_params(distance_measure, **param_perm)
+
+        return pick_rand_distance_measure
+	
     transformer = pf._CachedTransformer(DerivativeSlopeTransformer())
 
-    distance_measure_getters = [
-        # euclidean_distance_measure_getter,
-        dtw_distance_measure_getter,
-        setup_ddtw_distance_measure_getter(transformer),
-        wdtw_distance_measure_getter,
-        setup_wddtw_distance_measure_getter(transformer),
-        msm_distance_measure_getter,
-        lcss_distance_measure_getter,
-        erp_distance_measure_getter,
-        twe_distance_measure_getter,
-    ]
     clf = ProximityForest(random_state=None,
                         n_estimators=100,
-                        distance_measure= msm_distance,
+                        distance_measure=None,
                         get_distance_measure=None,
                         verbosity=0,
                         max_depth=np.math.inf,
                         n_jobs=16,
                         n_stump_evaluations=5,
-                        find_stump=None)
+                        find_stump=None,
+                        setup_distance_measure_getter=setup_all_distance_measure_getter )
     clf_name = 'PForest'
     hyper_param = {
         'random_state' : [None],
@@ -393,7 +421,8 @@ class PFOREST(Model):
         'max_depth' : [np.math.inf],
         'n_jobs' : [16],
         'n_stump_evaluations' : [5],
-        'find_stump' : [None]
+        'find_stump' : [None],
+        'setup_distance_measure_getter' : [setup_all_distance_measure_getter]
         }
 
 
