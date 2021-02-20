@@ -50,6 +50,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 # from random import choices
 
+random_state= 88
 
 class Model:
     clf = None
@@ -89,7 +90,7 @@ class Model:
             n_iter=self.n_iter,
             scoring=self.scoring_function,
             n_jobs=-2,
-            random_state=0,
+            random_state= random_state,
             verbose=0,
             cv=5
         )
@@ -350,7 +351,7 @@ class KNNMSM(Model):
     }
 
 class EE(Model):
-    clf = ElasticEnsemble(verbose=0)
+    clf = ElasticEnsemble(verbose=0, random_state= random_state)
     clf_name = 'EE'
     hyper_param = {
         'distance_measures': ['all']
@@ -396,7 +397,7 @@ class PFOREST(Model):
 
         return pick_rand_distance_measure
 
-    clf = ProximityForest(random_state=None,
+    clf = ProximityForest(random_state= random_state,
                         n_estimators=100,
                         distance_measure=None,
                         get_distance_measure=None,
@@ -428,7 +429,7 @@ class TSF(Model):
                                     bootstrap=True,
                                     oob_score=True,
                                     n_jobs=-2,
-                                    random_state=None,
+                                    random_state= random_state,
                                     verbose=0,
                                     warm_start=False,
                                     class_weight=None,
@@ -454,7 +455,7 @@ class LS(pytsModel):
                             intercept_scaling=1,
                             class_weight=None,
                             verbose=0,
-                            random_state=None,
+                            random_state= random_state,
                             n_jobs=-2)
                             
     clf_name = "LS"
@@ -473,6 +474,7 @@ class LS(pytsModel):
 
 class ST(Model):
     clf = ShapeletTransformClassifier(time_contract_in_mins= 60,
+                                      random_state= random_state,
                                       n_estimators= 500)
     clf_name = "ST"
     hyper_param = {
@@ -486,7 +488,7 @@ class ST_ensemble(Model):
                                     max_shapelets_to_store_per_class=200,
                                     time_contract_in_mins=60,
                                     num_candidates_to_sample_per_case=20,
-                                    random_state=None,
+                                    random_state= random_state,
                                     verbose=0,
                                     remove_self_similar=True)
     nb = GaussianNB()
@@ -519,7 +521,7 @@ class WEASEL(Model):
     window_inc=2,
     p_threshold=0.05,
     n_jobs=-2,
-    random_state=None)
+    random_state= random_state)
     clf_name = "WEASEL"
     hyper_param = {
         'anova':[True, False],
@@ -536,7 +538,7 @@ class CBOSS(Model):
                           time_limit=60,
                           min_window=5,
                           n_jobs= -2,
-                          random_state=None)
+                          random_state= random_state)
     clf_name = 'CBoss'
     hyper_param = {
         'max_ensemble_size': [100, 250, 500],
@@ -554,7 +556,7 @@ class INCEPTION(Model):
                                   batch_size=64,
                                   nb_epochs=1500,
                                   callbacks=None,
-                                  random_state=0,
+                                  random_state= random_state,
                                   verbose=False,
                                   model_name='inception',
                                   model_save_directory=None)

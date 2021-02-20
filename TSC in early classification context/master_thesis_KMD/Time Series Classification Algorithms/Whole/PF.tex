@@ -1,10 +1,35 @@
-Proximity Forest is an ensemble of decision trees that utilizes the eleven elastic distances from EE \cite{fawaz2020inceptiontime,fawaz2019deep}.
-It was introduced as an addition to scalable time series classification, to offer a more scalable and accurate classifier than EE \cite{tan2020fastee}.
-On one side, EE is an accurate classifier as it combines 11 NN-algorithms each using a different elastic measure, but it's training process is slow \cite{lines2015time,bagnall2017great}.
-This goes back to the leave-one-out-cross-validation (LOOCV) used to optimize the parameters each used metric \cite{shifaz2020ts}.
-Proximity Forest saves a lot of the computational cost by replacing parameter searches with random sampling \cite{fawaz2020inceptiontime,fawaz2019deepreview}.\newline
-To learn a single proximity tree, a selection process is carried out selecting a random time series examplar per class \cite{lucas2019proximity}.
-Unlike conventional decision trees that use feature values for their nodes, proximity trees build their nodes using the selected examplars \cite{lucas2019proximity}.
+Proximity forest was developed by \cite{lucas2019proximity}.
+It was introduced as an addition to scalable time series classification, offering a more scalable and accurate classifier than EE \cite{tan2020fastee}.
+On one side, EE was an accurate classifier being one the state of the art algorithms and the best among distnace based algorithms, as it combines 11 NN-algorithms each using a different elastic measure.
+But on the other hand, EE's training process was very slow as it scales quadratically with the training size of the data set \cite{lines2015time,bagnall2017great}.
+This goes back to the leave-one-out-cross-validation (LOOCV) used to optimize the parameters for each used metric \cite{shifaz2020ts}.\newline
+Proximity Forest wanted to achieve two main goals. The first was to offer an adaptable algorithm that can scale with huge data sets consisting of millions of time series instances.
+Beating EE, by orders of maginute, and other state of the art algorithms in terms of training and testing run time complexity.
+While the other goal was to develop a competitive algorithm on the UCR data sets archive without the need to sacrifice accuracy for scalability as is the case with BOSS-VS \cite{lucas2019proximity}.\newline
+
+Capitalizing on the previous research that has been put in developing specialized time series distance measures and inspired by the existing EE \cite{fawaz2020inceptiontime,fawaz2019deep}.
+Proximity forests combine the the eleven elastic distances from EE along with a tree-based algorithms to form an ensemble of decision trees.
+The reason behind using tree-based algorithms lies in the divide-and-conquer strategy that they adopt, which makes them scalable for large data sets.
+Also a stochastic process is used for the selection of distance measures and their hyper-parameters, which usually hinders the performance of other algorithms,
+like KNN, that need to learn the hyper-parameters of the utilized distance measure for each data set before using it \cite{lucas2019proximity}.
+Proximity forests can scale sublinearly with training data set size, but quadratically with the length of the time series \cite{shifaz2020ts}.
+\subsection{Learning a proximity forest}
+Proximity forests are based on a similar concept as Random Forests \cite{breiman2001random}, another tree-based ensemble, which learns only on a subset of the available features
+for building tree nodes. This process insinuates in a factor of variability between the trees that form the ensemble but each with a low bias.
+The collective classification accuracy of the ensemble then tends to provide better results than any if it's single classifiers \cite{lucas2019proximity}.
+
+The building unit of a proximity forest is called the proximity tree. A proximity tree and a decision tree are similar on all aspects,
+but they differ in the tests they apply in internal nodes.
+A conventional decision tree builds it's nodes using attributes. When an instance is being tested, it is compared to the value of the attribute
+and then follows the branch to which it conforms.\newline
+Unlike conventional decision trees that use feature values for their nodes, proximity trees build their nodes using randomly selected examplars.
+When an instance to be tested, an elastic distance measure is calculated and then it follows the branch of the nearest examplar.
+
 For internal nodes, along with the examplar a randomly selected elastic distance measure ,from EE's 11 distances measures, exists. The parameters of the measure are randomly selected as well.
 At each node, the examplars are compared to all training set instances using the selected distance measure and the data is split based on the proximity
 of the training instances to the examplars. This process is repeated untill all leaves are pure \cite{lucas2019proximity}.
+
+\subsection{Classifying with a proximity forest}
+
+To learn a single proximity tree, a selection process is carried out selecting a random time series examplar per class \cite{lucas2019proximity}.
+Proximity Forest saves a lot of the computational cost by replacing parameter searches with random sampling \cite{fawaz2020inceptiontime,fawaz2019deepreview}.\newline
