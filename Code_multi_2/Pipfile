@@ -24,7 +24,7 @@ tensorflow= "*"
 tensorflow-addons = "*"
 pexpect = "*"
 psutil = "*"
-sktime = {editable = true,git = "https://github.com/alan-turing-institute/sktime.git",ref = "master"}
+sktime = {git = "https://github.com/alan-turing-institute/sktime.git"}
 
 [requires]
 python_version = "3.7"

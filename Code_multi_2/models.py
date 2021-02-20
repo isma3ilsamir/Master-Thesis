@@ -37,7 +37,8 @@ from sktime.classification.dictionary_based import WEASEL
 from sktime.classification.dictionary_based import ContractableBOSS
 from sktime.transformations.panel.shapelets import ContractedShapeletTransform
 from sktime.transformations.panel.summarize._extract import DerivativeSlopeTransformer
-from sktime.distances.elastic_cython import msm_distance
+
+from sktime.distances.elastic import dtw_distance
 
 from pyts.classification import KNeighborsClassifier
 from pyts.classification.learning_shapelets import LearningShapelets
@@ -217,7 +218,7 @@ class pytsModel(Model):
     def predict_proba(self, X, y=None):
         X_test = self.from_sktime_to_pyts(X)
         y_test = y
-        Model.predict(self, X_test, y_test)
+        Model.predict_proba(self, X_test, y_test)
         # return proba
 
     def get_score(self, X, y):
@@ -256,12 +257,8 @@ class KNNED(pytsModel):
                                n_jobs=-2)
     clf_name = "1NN-ED"
     hyper_param = {
-        'n_neighbors' : [1],
         'weights' : ['uniform', 'distance'],
-        'algorithm' : ['auto', 'brute'],
         'leaf_size' : [1, 10, 30, 100],
-        'p' : [2],
-        'metric' : ['minkowski'],
         'n_jobs' : [-2]
     }
 
@@ -271,7 +268,7 @@ class KNNED_SKTIME(Model):
                                          metric=euclidean)
     clf_name = "1NN-ED-SKTime"
     hyper_param = {
-        'algorithm': ['auto', 'brute'],
+        'algorithm': ['brute'],
         'weights': ['uniform', 'distance']
     }
 
@@ -367,14 +364,14 @@ class PFOREST(Model):
         :param proximity: a PT / PF / PS
         :return: a list of distance measure getters
         """
-        # transformer = pf._CachedTransformer(DerivativeSlopeTransformer())
+        transformer = pf._CachedTransformer(DerivativeSlopeTransformer())
         # list of distance measures that work with etsc
         distance_measure_getters = [
 ##            euclidean_distance_measure_getter,
             dtw_distance_measure_getter,
-##           setup_ddtw_distance_measure_getter(transformer),
+            setup_ddtw_distance_measure_getter(transformer),
             wdtw_distance_measure_getter,
-##            setup_wddtw_distance_measure_getter(transformer),
+            setup_wddtw_distance_measure_getter(transformer),
             msm_distance_measure_getter,
             lcss_distance_measure_getter,
             erp_distance_measure_getter,
@@ -411,15 +408,7 @@ class PFOREST(Model):
                         setup_distance_measure_getter=setup_all_distance_measure_getter )
     clf_name = 'PForest'
     hyper_param = {
-        'random_state' : [None],
-        'n_estimators' : [100],
-        'distance_measure' : [None],
-        'get_distance_measure' : [None],
-        'verbosity' : [0],
-        'max_depth' : [np.math.inf],
         'n_jobs' : [16],
-        'n_stump_evaluations' : [5],
-        'find_stump' : [None],
         'setup_distance_measure_getter' : [setup_all_distance_measure_getter]
         }
 
@@ -446,25 +435,8 @@ class TSF(Model):
                                     max_samples=None)
     clf_name = 'TSF'
     hyper_param = {
-                    'estimator' : [None],
-                    'n_estimators' : [500],
                     'criterion' : ['entropy', 'gini'],
-                    'max_depth' : [None],
-                    'min_samples_split' : [2],
-                    'min_samples_leaf' : [1],
-                    'min_weight_fraction_leaf' : [0],
-                    'max_features': ['sqrt', 'log2'],
-                    'max_leaf_nodes' : [None],
-                    'min_impurity_decrease' : [0],
-                    'min_impurity_split' : [None],
-                    'bootstrap' : [True],
-                    'oob_score' : [True],
-                    'n_jobs' : [-2],
-                    'random_state' : [None],
-                    'verbose' : [0],
-                    'warm_start' : [False],
-                    'class_weight' : [None],
-                    'max_samples' : [None]
+                    'max_features': ['sqrt', 'log2']
                    }
 
 
@@ -490,26 +462,21 @@ class LS(pytsModel):
         'n_shapelets_per_size' : [0.05, 0.15, 0.3],
         'min_shapelet_length' : [0.025, 0.075, 0.1, 0.125, 0.175, 0.2],
         'shapelet_scale' : [1,2,3],
-        'penalty' : ['l2'],
-        'tol' : [0.001],
         'C' : [1000, 100, 10, 1],
         'learning_rate' : [0.01],
         'max_iter' : [2000, 5000, 10000],
         'multi_class' : ['ovr'],
         'alpha' : [- 100],
-        'fit_intercept' : [True],
-        'intercept_scaling' : [1],
-        'class_weight' : [None],
-        'verbose' : [0],
-        'random_state' : [None],
         'n_jobs' : [-2]
     }
 
 
 class ST(Model):
-    clf = ShapeletTransformClassifier(time_contract_in_mins= 60)
+    clf = ShapeletTransformClassifier(time_contract_in_mins= 60,
+                                      n_estimators= 500)
     clf_name = "ST"
     hyper_param = {
+        'time_contract_in_mins' : [60],
         'n_estimators': [500, 1000]
     }
 
@@ -558,9 +525,7 @@ class WEASEL(Model):
         'anova':[True, False],
         'bigrams':[True, False],
         'binning_strategy': ['equi-depth', 'equi-width', 'information-gain'],
-        'window_inc': [2,3,4],
-        'n_jobs' : [-2],
-        'p_threshold' : [0.05]
+        'window_inc': [2,3,4]
     }
 
 
@@ -570,15 +535,12 @@ class CBOSS(Model):
                           max_win_len_prop=1,
                           time_limit=60,
                           min_window=5,
+                          n_jobs= -2,
                           random_state=None)
     clf_name = 'CBoss'
     hyper_param = {
-        'n_parameter_samples' : [250],
         'max_ensemble_size': [100, 250, 500],
-        'max_win_len_prop' : [0.5, 1],
-        'time_limit' : [60],
-        'min_window' : [5],
-        'random_state' : [None]
+        'max_win_len_prop' : [0.5, 1]
     }
 
 
