@@ -351,7 +351,8 @@ def prepare_args(arguments, dataset):
     X_train, _, _, _=get_test_train_data(args['dataset'])
     args['dim']=X_train.shape[1]
     args['models']= initialize_models(args)
-    logger.info(f"===== Step: Applying data splitting for dataset {dataset}=====")
+    if not arguments['--tsc']:
+        logger.info(f"===== Step: Applying data splitting for dataset {dataset}=====")
     args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes(X_train, args['split'], dataset)
     ts_length= len(X_train['dim_0'][0])
     args['revealed_pct'] = None if arguments['--tsc'] else [int((100 * i)/ts_length) for i in args['split_indexes']]

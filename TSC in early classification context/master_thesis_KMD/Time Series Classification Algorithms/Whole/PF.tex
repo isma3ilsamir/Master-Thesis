@@ -13,7 +13,8 @@ The reason behind using tree-based algorithms lies in the divide-and-conquer str
 Also a stochastic process is used for the selection of distance measures and their hyper-parameters, which usually hinders the performance of other algorithms,
 like KNN, that need to learn the hyper-parameters of the utilized distance measure for each data set before using it \cite{lucas2019proximity}.
 Proximity forests can scale sublinearly with training data set size, but quadratically with the length of the time series \cite{shifaz2020ts}.
-\subsection{Learning a proximity forest}
+
+%\subsection{Learning a proximity forest}
 Proximity forests are based on a similar concept as Random Forests \cite{breiman2001random}, another tree-based ensemble, which learns only on a subset of the available features
 for building tree nodes. This process insinuates in a factor of variability between the trees that form the ensemble but each with a low bias.
 The collective classification accuracy of the ensemble then tends to provide better results than any if it's single classifiers \cite{lucas2019proximity}.
@@ -22,14 +23,25 @@ The building unit of a proximity forest is called the proximity tree. A proximit
 but they differ in the tests they apply in internal nodes.
 A conventional decision tree builds it's nodes using attributes. When an instance is being tested, it is compared to the value of the attribute
 and then follows the branch to which it conforms.\newline
-Unlike conventional decision trees that use feature values for their nodes, proximity trees build their nodes using randomly selected examplars.
-When an instance to be tested, an elastic distance measure is calculated and then it follows the branch of the nearest examplar.
+Unlike conventional decision trees, that use feature values for their nodes, proximity trees build their nodes using randomly selected examplars.
+When an instance to be tested, an elastic distance measure is calculated and then it follows the branch of the nearest examplar.\newline
+An internal node in the tree holds two attributes; \emph{measure} and \emph{branches}.
+As noted in \cite{lucas2019proximity}, a measure is function \emph{object} $\times$ \emph{object} $\rightarrow\mathbb{R}$.
+Proximity Forest uses the same 11 distance measures used by EE; Euclidean distance (ED) Dynamic time warping using the full window (DTW);
+Dynamic time warping with a restricted warping window (DTW-R); Weighted dynamic time warping (WDTW);
+Derivative dynamic time warping using the full window (DDTW); Derivative dynamic time warping with a restricted warping window (DDTW-R);
+Weighted derivative dynamic time warping (WDDTW); Longest common subsequence (LCSS); Edit distance with real penalty (ERP);
+Time warp edit distance (TWE); and, Move-Split-Merge (MSM).
+Proximity Forest saves a lot of the computational cost by replacing parameter searches with random sampling \cite{fawaz2020inceptiontime,fawaz2019deepreview}.
+While branches is a vector of the possible branches to follow, each branch holding two attributes; \emph{examplar} and \emph{subtree}.
+\emph{examplar} is a time series instance to which a query instance is compared, and \emph{subtree} refers to the tree an instance should follow
+in case it is closest to a specific examplar.\newline
+If all time series in a specific node share the same class, then a leaf node is created and the value of the class label is assigned to the \emph{class}
+attribute of this node. During classification, if a query instance is to reach this node, it is directly labeled with the value of it's \emph{class} attribute.
 
-For internal nodes, along with the examplar a randomly selected elastic distance measure ,from EE's 11 distances measures, exists. The parameters of the measure are randomly selected as well.
-At each node, the examplars are compared to all training set instances using the selected distance measure and the data is split based on the proximity
-of the training instances to the examplars. This process is repeated untill all leaves are pure \cite{lucas2019proximity}.
-
-\subsection{Classifying with a proximity forest}
-
-To learn a single proximity tree, a selection process is carried out selecting a random time series examplar per class \cite{lucas2019proximity}.
-Proximity Forest saves a lot of the computational cost by replacing parameter searches with random sampling \cite{fawaz2020inceptiontime,fawaz2019deepreview}.\newline
+%\subsection{Classifying with a proximity forest}
+When a query time series is to be classified, it starts at the root node of a proximity tree.
+The distance between the query and each of the randomly selected examplars is calculated, using the randomly selected distance measure at the node.
+Then the query travels down the branch of the nearest examplar. This processes is repeated, passing through the internal nodes of the tree
+till the query reaches a leaf node, where it is assigned the class label of that node. This whole process is then repeated for all the trees
+constituting the forest. The final classification of the forest is made by majority voting between it's trees.

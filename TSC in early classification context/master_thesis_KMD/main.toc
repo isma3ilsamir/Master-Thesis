@@ -36,29 +36,25 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {3.1.4}Proximity Forest}{10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Learning a proximity forest}{10}%
+\contentsline {subsection}{\numberline {3.2}Phase Dependent intervals Algorithms}{11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Classifying with a proximity forest}{11}%
+\contentsline {subsubsection}{\numberline {3.2.1}Time Series Forest}{11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Phase Dependent intervals Algorithms}{11}%
+\contentsline {subsection}{\numberline {3.3}Phase Independent intervals Algorithms}{12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1}Time Series Forest}{11}%
+\contentsline {subsubsection}{\numberline {3.3.1}Learned Shapelets}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}Phase Independent intervals Algorithms}{12}%
+\contentsline {subsubsection}{\numberline {3.3.2}Shapelet Transform}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.1}Learned Shapelets}{12}%
+\contentsline {subsection}{\numberline {3.4}Dictionary Based Algorithms}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.5.2}Shapelet Transform}{13}%
+\contentsline {subsubsection}{\numberline {3.4.1}WEASEL}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.6}Dictionary Based Algorithms}{14}%
+\contentsline {subsubsection}{\numberline {3.4.2}BOSS}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.1}WEASEL}{14}%
+\contentsline {subsection}{\numberline {3.5}Deep Learning Algorithms}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.6.2}BOSS}{14}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.7}Deep Learning Algorithms}{14}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.7.1}Inception Time}{14}%
+\contentsline {subsubsection}{\numberline {3.5.1}Inception Time}{14}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Appendix}{15}%
 \defcounter {refsection}{0}\relax 
