@@ -1,0 +1,112 @@
+\chapter{Classification Algorithms}
+\label{ChapterClassificationAlgorithms}
+This Chapter discusses the definitions and background of the topics mentioned in this thesis.
+We discuss the nature of time series data, the two problems of time series classification (TSC) and early time series classification (eTSC) then present the different techniques encompassed by them.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Time Series Data}
+\label{TimeSeriesData}
+
+\subsection{Definitions}
+\label{TSDefinitions}
+A time series is a finite sequence of ordered observations, either based on time or another aspect \cite{abanda2019review,bagnall2017great}.
+The existence of the time component makes time series an abundant form of data that covers various domains like; medicine, finance, engineering and biology \cite{lines2018time}.
+A time series dataset is a collection of time series instances.
+\begin{definition}
+    A set T of n time series instances, T = \{$T\textsubscript{1}$,$T\textsubscript{2}$, $\ldots$ ,$T\textsubscript{n}$\}.
+\end{definition}
+Each of the time series instances $T\textsubscript{i}$ consists of a sequence of observations.
+\begin{definition}
+    A time series $T\textsubscript{i}$, of length L is represented as $T\textsubscript{i}$ = [$t\textsubscript{1}$,$t\textsubscript{2}$, $\ldots$ $t\textsubscript{L}$].
+\end{definition}
+Time series data can come in different forms. It is important to comprehend what different forms the data can take and what implicit assumptions they convey; to be able to choose the suitable algorithms and tools to deal with it.
+
+The first form is when the observations of instances capture a singular value, this is referred to as univariate time series.
+\begin{definition}
+    Univariate time series $T\textsubscript{i}$, of length L is represented as 
+    $T\textsubscript{i}$ = [$t\textsubscript{1}$,$t\textsubscript{2}$, $\ldots$ $t\textsubscript{L}$].
+    With $t\textsubscript{j}$ as a real valued number.
+\end{definition}
+While the other form is when multiple measurments are captured by the observations.
+According to \cite{loning2019sktime}, it is essential to differentiate between the two ways multiple time series can be generated; panel data and multivariate time series data.
+
+If more than one variable is being observed during a single experiment, with each variable representing a different measurement; this is called multivariate time series.
+\begin{definition}
+    Multivariate time series $T\textsubscript{i}$ of length L is represented as $T\textsubscript{i} = [t\textsubscript{1},t\textsubscript{2},\ldots t\textsubscript{L}$].
+    With $t\textsubscript{j}$ having M dimensions, each is a univariate time series.
+\end{definition}
+While panel data is when the same kind of measurments is collected from independent instances; like different patients or diverse industrial processes.
+
+For panel data, it is possible to assume that the different instances are i.i.d, but this assumption doesn't hold for observation of a single instance.
+The same goes for multivariate time series, individual univariate observations are assumed to be statistically dependant.
+
+\subsection{Nature of Time Series Data}
+\label{NatureOfTimeSeriesData}
+Having discussed the dependency assumptions in time the different forms of time series data.
+It is this dependency that makes time series data challenging for conventional machine learning algorithms, which are used for tabular and cross-sectional data.
+Tabular and cross-sectional data assume observations to be independent and identically distributed (i.i.d) \cite{loning2019sktime}.
+
+If we were to tabularize time series data; convert it into a tabular form by considering each observation as an individual feature.
+Then it would be possible to apply conventional machine learning algorithms, under the implicit modelling assumption that observations are not ordered.
+This means that if the order of the features was changed, still the model result will not change.
+This assumption can work for some problems, but it doesn't have to work for all problems.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Time Series Classification}
+\label{TimeSeriesClassification}
+Time series classification is a subtype of the general classification problem, which considers the the unique property of dependency between adjacent features of instances \cite{Bostrom2017}.
+The main goal of time series classification is to learn a function f,
+which given a training dataset T = \{$T\textsubscript{1}$,$T\textsubscript{2}$, $\ldots$ ,$T\textsubscript{n}$\} of time series instances
+along with their corresponding class labels Y=\{$y\textsubscript{1}$,$y\textsubscript{2}$, $\ldots$ $y\textsubscript{n}$\} where $y\textsubscript{i}$ $\in$ \{1,2, $\ldots$ C\},
+can predict class labels for unseen instances \cite{deng2013time}.
+
+Time series classification has been studied with different objectives, some papers focused on attaining the highest accuracy of classification as the main goal \cite{kate2016using,jeong2011weighted,bostrom2017shapelet,lines2018time,schafer2017multivariate,fawaz2020inceptiontime},
+while other papers focused on attaining lower time complexity \cite{ratanamahatana2004making,bagnall2017great,tan2020fastee,petitjean2016faster,schafer2017fast}.
+
+In this master thesis, we are more interested in assessing the results in terms of accuracy than time complexity. We define accuracy like \cite{schafer2020teaser}; 
+as the percentage of correctly classified instances for a given dataset D, either being a training or testing dataset.
+\begin{definition}
+    $Accuracy = \frac{number of correct classifications}{|D|}$
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Time Series Classification Algorithms}
+This chapter will introduce different types of TSCA. There are multiple ways to divide TSCAs 
+\subimport{./}{Whole}
+\subimport{./}{Phase Dependent}
+\subimport{./}{Shapelet}
+\subimport{./}{Dictionary}
+\subimport{./}{Deep Learning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Early Time Series Classification}
+\label{EarlyTimeSeriesClassification}
+On another side, early time series classification is also a classification problem which considers the temporal nature of data,
+but with a slightly different objective and used for different scenarios other than time series classification.
+
+eTSC's main objective is to learn a model which can classify unseen instances as early as possible,
+while maintaining a competitive accuracy compared to a model that uses full length data or to a user defined threshold\cite{xing2009early}.
+Which is a very challenging objective; due to the, naturally, contradicting nature of earliness and accuracy.
+In general, the more data is made available for the model to learn the better accuracy it can attain \cite{mori2019early,tavenard2016cost,xing2012early,mori2017reliable}.
+This is why many eTSC researches consider it as a problem of optimizing multiple objectives.
+
+eTSC is needed in situations in which waiting for more data to arrive can be costly or
+when making late decisions can cause unfavorable results \cite{mori2017early,parrish2013classifying,lin2015reliable}.
+This is why eTSC has been applied in various domains like early medical diagnosis \cite{griffin2001toward,ghalwash2012early},
+avoiding issues in network traffic flow \cite{bernaille2006traffic}, human activity recognition \cite{yazdanbakhsh2019multivariate,gupta2020fault}
+and early prediction of stock crisis \cite{ghalwash2014utilizing}.
+
+We follow the definition of earliness mentioned by \cite{schafer2020teaser}; as the mean number of data points s after which a label is assigned.
+\begin{definition}
+    $Earliness = \frac{\sum_{T{i}\in D} \frac{s}{len(T{i})} }{|D|}$
+\end{definition}
+As well as the objective measure, Harmonic mean (HM), mentioned by \cite{ghalwash2012early,schafer2020teaser}, which includes both accuracy and earliness.
+For the problem we have, HM is a weighted average between accuracy and earliness.
+\begin{definition}
+    $F_{\beta} = (1 + \beta^2)\frac{accuracy(1-earliness)}{\beta^2(1-accuracy)+earliness}$
+\end{definition}
+The value of $\beta$ can be used to give higher importance to one of the aspects over the other, but we use equal weights for both.

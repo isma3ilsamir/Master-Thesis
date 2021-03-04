@@ -1,9 +1,9 @@
 Dynamic Time Warping was a very strong baseline for time series classification for a long time \cite{abanda2019review,bagnall2017great}.
 It was first introduced as a technique to recognize spoken words that can deal with misallignments between time series
 that Euclidean Distance couldn't handle \cite{tan2020fastee}.\newline
-To calculate the distance between two time series instances  $T\textsubscript{1} = [t1\textsubscript{1},t1\textsubscript{2},...t1\textsubscript{m}$]
-and $T\textsubscript{2} = [t2\textsubscript{1},t2\textsubscript{2},...t2\textsubscript{m}$];
-a distance matrix $M(T\textsubscript{1},T\textsubscript{2})$, of size m $\times$ m, is calculated for $T\textsubscript{1}$ and $T\textsubscript{2}$.
+To calculate the distance between two time series instances  $T\textsubscript{1} = [t1\textsubscript{1},t1\textsubscript{2},...t1\textsubscript{n}$]
+and $T\textsubscript{2} = [t2\textsubscript{1},t2\textsubscript{2},...t2\textsubscript{n}$];
+a distance matrix $M(T\textsubscript{1},T\textsubscript{2})$, of size n $\times$ n, is calculated for $T\textsubscript{1}$ and $T\textsubscript{2}$.
 With $M\textsubscript{i,j}(t1\textsubscript{i},t2\textsubscript{j})$ representing the distance between $t1\textsubscript{i}$ $\in$ $T\textsubscript{1}$
 and $t2\textsubscript{j}$ $\in$ $T\textsubscript{2}$.
 The goal of DTW is to find an optimal path that minimizes the cumulative distance between points of $T\textsubscript{1}$ and $T\textsubscript{2}$.\newline
@@ -11,7 +11,7 @@ A candidate path $P = [p\textsubscript{1},p\textsubscript{2},...p\textsubscript{
 For a path to be valid it must conform to some conditions:
 \begin{itemize}
     \item $p\textsubscript{1} = (t1\textsubscript{1},t2\textsubscript{1})$
-    \item $p\textsubscript{p} = (t1\textsubscript{m},t2\textsubscript{m})$
+    \item $p\textsubscript{p} = (t1\textsubscript{n},t2\textsubscript{n})$
     \item for all i \textless m :
         \begin{itemize}
             \item $0 \leq t1\textsubscript{i+1} - t1\textsubscript{i} \leq 1$

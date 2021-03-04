@@ -1,0 +1,60 @@
+\subsection{Phase Dependent intervals Algorithms}
+\label{SubsectionPhaseDependent}
+Phase dependent algorithms is a group of algorithms that extract temporal features from intervals of time series.
+These temporal features help with the interpretibility of the model; as they give insights about the temporal characteristics of the data \cite{baydogan2016time},
+unlike whole time series algorithms that base their decisions solely on the similarities between instances.
+Another advantage of phase dependent algorithms is that they can also handle distortions and misalignments of time series data \cite{deng2013time}.
+
+According to \cite{bagnall2017great}, phase dependent algorithms are best used for problems where discrimanatory information from intervals exist,
+this would be the case with long timer series instances and which might include areas of noise that can easily deceive classifiers.
+Like the case with the SmallKitchenAppliances dataset, in which the usage of three classes; a kettle, a microwave and toaster is recorded every 2 minutes for one day.
+Not only the pattern of usage is discrimanatory in such case, but also the time of usage.
+
+Typically using interval features requires a two phase process; first by extracting the temporal features and then training a classifier using the extracted features \cite{deng2013time}.
+There are n(n-1)/2 possible intervals,for a time series of length n\cite{bagnall2017great}.
+There is also a wide variety of features, also called literals, to extract for each interval. These cover simple statistical measures as well as local and global temporal features \cite{santos2016literature,rodriguez2004support,deng2013time}.
+This introduces one of the main challenges for phase dependent algorithms, that is which intervals to consider for the feature extraction step.
+Which \cite{rodriguez2004support} proposed a solution for by only considering intervals with lengths equal to powers of two \cite{bagnall2017great}.
+
+\subsubsection{Time Series Forest}
+\label{SubsubsectionTimeSeriesForest}
+Time Series Forest (TSF) is an algorithm that was introduced in 2013 by \cite{deng2013time}.
+They motivated their model with two main criteria; contributing to interpretable time series classification through
+the use of simple statistical temporal features and reaching this goal by creating an efficient and effective classifier.
+
+TSF considers three types of interval features; mean, standard deviation and slope.
+If we were to consider an interval with starting point $t\textsubscript{1}$ and with ending point $t\textsubscript{2}$.
+Let $v\textsubscript{i}$ be the value at a specific point $t\textsubscript{i}$.
+Then the three features can be denoted as:
+\begin{equation}
+    mean(t\textsubscript{1},t\textsubscript{2})= \frac{\sum_{i=t\textsubscript{1}}^{t\textsubscript{2}} v\textsubscript{i}}{t\textsubscript{2} - t\textsubscript{1} + 1}
+\end{equation}
+
+\begin{equation}
+    std(t\textsubscript{1},t\textsubscript{2})=
+        \begin{cases}
+        \frac{\sum_{i=t\textsubscript{1}}^{t\textsubscript{2}} (v\textsubscript{i} - mean(t\textsubscript{1},t\textsubscript{2}))^{2}}
+            {t\textsubscript{2} - t\textsubscript{1}}
+            & \text{if t\textsubscript{1} $<$ t\textsubscript{2}}\\
+        0 & \text{if t\textsubscript{1} = t\textsubscript{2}}
+        \end{cases}
+\end{equation}
+
+\begin{equation}
+    slope(t\textsubscript{1},t\textsubscript{2})=
+        \begin{cases}
+        m & \text{if t\textsubscript{1} $<$ t\textsubscript{2}}\\
+        0 & \text{if t\textsubscript{1} = t\textsubscript{2}}
+        \end{cases}
+\end{equation}
+Where m denotes the slope of the least squares regression line for the training dataset.
+
+For building the trees, TSF introduced a new splitting criteria at the tree nodes, which they called the Entrace. A combination of
+Entropy and distance; to break the ties between features of equal entropy gain by preferring splits that have the furthest distance
+to the nearest instance. They also use a specific number of evaluation points rather than checking all split points for the highest
+information gain. In their experiment \cite{bagnall2017great} found these two criteria to have negative effect on accuracy.
+
+As mentioned earlier the feature space for creating interval features is huge, TSF adopts the same random sampling technique that Random Forests use
+reducing the feature space from $O(M^{2})$ to only $O(M)$, by considering only $O(\sqrt{M})$ random interval sizes and $O(\sqrt{M})$
+random starting points at each tree node \cite{deng2013time}. The final classification of a testing instance is done using majority
+voting of all time series trees created.

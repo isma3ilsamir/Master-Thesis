@@ -1,9 +1,9 @@
 The Euclidean distance is a remarkably simple technique to calculate the distance between time series instances.
-Given two instances  $T\textsubscript{1}$ = [$t\textsubscript{11}$,$t\textsubscript{12}$,...$t\textsubscript{1n}$]
-and $T\textsubscript{2}$ = [$t\textsubscript{21}$,$t\textsubscript{22}$,...$t\textsubscript{2n}$], the euclidean distance
+Given two instances  $T\textsubscript{1}$ = [$t1\textsubscript{1}$,$t1\textsubscript{2}$,...$t1\textsubscript{n}$]
+and $T\textsubscript{2}$ = [$t2\textsubscript{1}$,$t2\textsubscript{2}$,...$t2\textsubscript{n}$], the euclidean distance
 between them can be determined as:
 \begin{definition}
-    ED($T\textsubscript{1}$,$T\textsubscript{2}$)= $\sqrt{\sum_{i=1}^{n} (t\textsubscript{1i} - t\textsubscript{2i})^{2}}$
+    ED($T\textsubscript{1}$,$T\textsubscript{2}$)= $\sqrt{\sum_{i=1}^{n} (t1\textsubscript{i} - t2\textsubscript{i})^{2}}$
 \end{definition}
 Euclidean distnace has been preferred to other classifiers due to it's space and time efficiency, but it suffers from two main shortcomings \cite{baydogan2013bag, jeong2011weighted,kate2016using}.
 The first one is that it cannot handle comparisons between time series of different lengths.

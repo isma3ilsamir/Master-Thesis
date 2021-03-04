@@ -1,0 +1,52 @@
+InceptionTime \cite{fawaz2020inceptiontime} is a recent deep learning algorithm for TSC problems, which is able to achieve high accuracy score \cite{ruiz2020great}.
+Motivated by the increasing interest in deep learning algorithms in the TSC domain along with the need for scalable algorithms
+that can deal with large data sets, either in number of instances or in length of the time series, and scale to them.
+InceptionTime is inspired by AlexNet \cite{krizhevsky2012imagenet}, an algorithm that was considered a breakthrough for deep learning algorithms \cite{alom2018history},
+and wanted to achieve the same but for the domain of TSC.
+
+% main idea of inception time
+InceptionTime is based on the idea that the combination of deep CNN with residual connections, like in ResNet, can attain higher classification performance \cite{fawaz2019deepreview}
+Since CNN has proved competency with image classification, there seemed a potential opportunity to be able to use deeper CNN for time series;
+since time series data is mainly structured on only one dimension which is time, while images have two spacial dimensions.
+This opened the door for using more complex models for TSC problems which would be computationally challenging to use for images.
+The building blocks of an InceptionTime network are called Inception modules, these are were introduced by \cite{szegedy2015going} and evolved later on to Inceptionv4 \cite{szegedy2017inception}.
+The InceptionTime classifier is an ensemble of 5 InceptionTime networks each initialized with random weights and are assigned equal weights for the final prediction.
+We will discuss in more details the structure of an InceptionTime network using the notation mentioned in \cite{fawaz2020inceptiontime}.
+
+% inception time network structure
+InceptionTime's structure is similar to that of a ResNet, but instead of using three residual blocks, InceptionTime uses only two.
+Each of the residual blocks in composed of three Inception modules instead of the traditional fully convolutional network.
+Like residual networks, a linear skip connection exists between the two residual blocks of the network, passing the input from one block to be concatenated with the input of the other;
+this helps passing information from earlier layers of the network to deeper layers and thus mitigating the vanishing gradient issue \cite{he2016deep}.
+After the residual blocks, a Global Average Pooling (GAP) layer exists where the multivariate time series output is averaged over the time dimension.
+The final component of the network is a conventional fully-connected softmax layer with a count of neurons similar to the count of output classes.
+
+% Inside the inception module
+Inside the inception module, there are two main components; the bottleneck layer and the variable length filters.
+Assuming that the input in a multivariate time series data of \emph{M} dimensions. The job of the bottleneck layer is to transform
+the data from having \emph{M} dimensions, into a multivariate data set having \emph{m} dimensions, where \emph{m} $\ll$ \emph{M}.
+This is done by passing a group of sliding filters \emph{m} with length 1 and a stride of size 1.
+Which will substantially reduce the dimensionality of the time series data and consequently will also decrease the model's comlexity
+making it more robust for overfitting problems on data sets of small sizes. The other benfit of including the bottleneck layer,
+is that it allows utilizing longer filters on the data than the original ResNet using approximately the same number of parameters;
+due to the lower number of dimensions that the filters will have to deal with.\newline
+The output of the bottleneck layer is then passed for a set of variable length filters, the second component of the network, of length \emph{l}
+where \emph{l} $\epsilon$ {10, 20, 40}. In addition to the filters, a parallel MaxPooling operation is carried out followed by a bottleneck layer;
+to make the model robust to small data noises. The final multivariate output is then formed by concatenating the output from each filter based convolution
+along with the output of the MaxPooling operation. This whole process is executed for each Inception module in the network.\newline
+In the end, an InceptionTime network is able to learn the underlying hierarchical structures of a time series by stacking multiple Inception modules
+and learning from the different filter sizes, which had been learned during training, inside them.
+
+% Inception Ensemble
+The final InceptionTime classifier is an ensemble of 5 InceptionTime networks.
+InceptionTime networks accuracy scores showed high variances, a problem which have been discussed by \cite{scardapane2017randomness} and was found in ResNet networks as well \cite{fawaz2019deep}.
+This happens due to the random initialization of the networks and due to the stochastic approach used for optimization.
+InceptionTime classifier follows an ensembling technique for neural networks to handle TSC \cite{fawaz2019deep} in order to leverage the high variability;
+adhering to the idea that combining multiple networks would yield better results than one classifier.
+During the classification of an instance, InceptionTime combines the logistic output of the 5 networks and assigns an equal weight to each of them.
+This can be denoted by the equation
+\begin{definition}
+    $\hat{y}\textsubscript{i,c} = \frac{1}{n} \sum_{j = 1}^{n} \sigma\textsubscript{c} (x\textsubscript{i}, \theta\textsubscript{i}) | \forall\textsubscript{c} \epsilon [1,C]$
+\end{definition}
+Where $\hat{y}\textsubscript{i,c}$ is the class probability for instance $x\textsubscript{i}$ as belonging to the class c,
+which is the averaged logistic output $\sigma\textsubscript{c}$ over the randomly initialized models n.

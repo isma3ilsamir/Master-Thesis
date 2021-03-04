@@ -1,0 +1,53 @@
+\chapter{Introduction}
+\label{ChapterIntroduction}
+Time Series Classification is a field of machine learning that has grabbed the attention of many reasearches in the last decade.
+Time series data exists, by nature, in numerous real scenarios; medical examination records of patients\{reference\}, signal processing\{reference\}, weather forecasting\{reference\} and astronomy\{reference\} are some of them.
+
+Classification of time series data has been tackled with different objectives; the first is concerned with the accuracy of classification as well as space and time complexity. This objective is referred to simply as Time Series Classification (TSC). While the second objective adds the factor of earliness as a primary goal and is referred to as Early Time Series Classification (eTSC).
+
+Numerous algorithms have been introduced to tackle the problem of Time Series Classification. According to the \cite{bagnall2017great}, these algorithms can be divided, based on their technique, into six groups.
+
+Whole time series algorithms\{reference\} compare two time series, usually by employing an elastic distance measure between all data points of both time series.
+Phase dependent interval algorithms\{reference\} operate by extracting informative features from intervals of time series, they are more suitable for long and noisy data than whole time series algorithms.
+Phase independent interval algorithms\{reference\} are used when a class can be identified using a single or multiple patterns regardless of when they occur during the time series.
+Dictionary based algorithms\{reference\} consider the number of repetitions of patterns as a factor of classification and not just simple occurence of one.
+Ensembles\{reference\} combine the power of different algorithms, either of different or same core technique, then make the final classification decision based on voting.
+In addition to the previous algorithms, there are also deep learning time series algorithms which build classifiers using generative as well as discriminative models.
+
+On the other hand, Early Time Series Classification algorithms are designed to deal with less data in order to achieve earliness of prediction, but of course this comes with a price of accuracy.
+Many of the ideas applied in TSC have also been applied in eTSC; including 1-NN with Mimimum Prediction Length (MPL)\{reference\}, Phase independent intervals\{reference\}, generative classifiers\{reference\} and ensembles\{reference\}.
+
+
+Both, Time Series Classification Algorithms (TSCA) and Early Time Series Classification Algorithms (eTSCA), have introduced well performing algorithms in terms of their respective performance measures.
+Their algorithms have been tested on publicly available archives\{reference\}; to benchmark their performance on a diverse set of datasets with different characteristics.
+
+According to \cite{bagnall2017great}, based on the "No free lunch theorem", no specific algorithm has proven to prevail over all others. This means that different problems with different datasets would require a choice between the algorithms based on how they perform on them, specially for non-public or non-experimented datasets.
+In this thesis, we tackle this idea; by offering a framework that runs state-of-the-art algorithms on the provided dataset and provides analyses about the performance of each algorithm.
+
+Also due to their different objectives, TSCA and eTSCA have been dealt with as two different families. Which leaves studying the relationship between both algorithm families an open area for research.
+We study the relationship between TSCA and eTSCA, by extending TSCA to deal with earliness as a main objective and compare how they perform in an early time series classification problem context.
+
+\subsubsection*{Goal of this Thesis}
+\label{thesisGoals}
+This master thesis had two main goals.
+The first goal was to create a testbed for comparing different algorithms on a non-public dataset.
+While the second one was to study the relationship between the two families of algorithms; TSCAs and eTSCAs.
+
+The first goal was motivated by \cite{bagnall2017great}, one of the most comprehensive review papers in the time series field.
+With it's release, Bagnall et. al has set the foundation methodology for accurately benchmarking the performance of TSCAs for the ,at that time, currently existing and for algorithms that will be developed in the future.
+In their experiment, they have used 85 datasets publicly available from UCR and UEA, the biggest two data archives.
+Our goal was to offer a testbed, which can be used on private datasets. It runs state of the art algorithms, then provides analysis about their classification performance.
+The provided analysis can help, based on empirical evidence, choose the best fitting algorithm in accordance with the problem at hand.
+
+
+As for the second goal, we extended the study of relationship between TSCAs and eTSCAs.
+Both families offer a wide variety of algorithms, but have different objectives and thus have different approaches in their learning processes.
+TSCAs focus primarily on the accuracy of the classification. In order to achieve this goal, full utilization of the whole time series data is done to achieve the highest possible accurate results.
+While eTSCAs objective tries to maximize both accuracy and earliness together, which is hard to attain because of the contradicting nature between both\{reference\}.
+This is why eTSCAs try to learn with as least possible data points as possible while maintaining classification accuracy.
+This study investigated the ability of TSCAs to perform in a simulated early classification context.
+TSCAs were trained on shortened training data, while keeping record of models' accuracy measure in comparison to a baseline utilizing complete training data points.
+
+\subsubsection*{Structure of the Thesis}
+\label{thesisStructure}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget porta erat. Morbi consectetur est vel gravida pretium. Suspendisse ut dui eu ante cursus gravida non sed sem. Nullam sapien tellus, commodo id velit id, eleifend volutpat quam. Phasellus mauris velit, dapibus finibus elementum vel, pulvinar non tellus. Nunc pellentesque pretium diam, quis maximus dolor faucibus id. Nunc convallis sodales ante, ut ullamcorper est egestas vitae. Nam sit amet enim ultrices, ultrices elit pulvinar, volutpat risus.

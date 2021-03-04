@@ -17,71 +17,32 @@
 
 \thispagestyle{empty}
 \null\newpage
-\pagenumbering{arabic} 
-\section{Introduction}
-\input{Introduction/Introduction.tex}
-\subsection{Goal of the Thesis}
-\input{Introduction/Goals_Thesis.tex}
-\subsection{Structure of the Thesis}
-\input{Introduction/Structure_Thesis.tex}
-
+\pagenumbering{arabic}
+\import{Chapters/01 Introduction}{Introduction}
 \null\newpage
 
-\section{Concepts and Terminology}
-\input{Related Work/Concepts_intro.tex}
-\subsection{Time Series Data}
-\input{Related Work/Time Series Data.tex}
-\subsubsection{Nature of Time Series Data}
-\input{Related Work/Nature of Time Series Data.tex}
-\subsection{Time Series Classification}
-\input{Related Work/Time Series Classification Problem.tex}
-\subsection{Early Time Series Classification}
-\input{Related Work/Early Time Series Classification Problem.tex}
-\subsection{notes}
-\input{Related Work/concepts_and_terminology.tex}
-\input{Related Work/related_work.tex}
-
+\import{Chapters/02 Related Work}{Related Work}
 \null\newpage
 
-\section{Time Series Classification Algorithms}
-\input{Time Series Classification Algorithms/TSC intro.tex}
-
-\subsection{Whole Time Series Algorithms}
-\input{Time Series Classification Algorithms/Whole/Whole Time Series.tex}
-\subsubsection{Nearest Neighbor with ED}
-\input{Time Series Classification Algorithms/Whole/KNNED.tex}
-\subsubsection{Nearest Neighbor with DTW}
-\input{Time Series Classification Algorithms/Whole/DTW.tex}
-\subsubsection{Nearest Neighbor with MSM Distance}
-\input{Time Series Classification Algorithms/Whole/MSM.tex}
-\subsubsection{Proximity Forest}
-\input{Time Series Classification Algorithms/Whole/PF.tex}
-
-\subsection{Phase Dependent intervals Algorithms}
-\input{Time Series Classification Algorithms/Interval/Phase Dependent.tex}
-\subsubsection{Time Series Forest}
-\input{Time Series Classification Algorithms/Interval/TSF.tex}
-
-\subsection{Phase Independent intervals Algorithms}
-\input{Time Series Classification Algorithms/Shapelet/Shapelet.tex}
-\subsubsection{Learned Shapelets}
-\input{Time Series Classification Algorithms/Shapelet/LS.tex}
-\subsubsection{Shapelet Transform}
-\input{Time Series Classification Algorithms/Shapelet/ST.tex}
-
-\subsection{Dictionary Based Algorithms}
-\input{Time Series Classification Algorithms/Dictionary/Dictionary Intro.tex}
-\subsubsection{WEASEL}
-\input{Time Series Classification Algorithms/Dictionary/WEASEL.tex}
-\subsubsection{BOSS}
-\input{Time Series Classification Algorithms/Dictionary/Boss.tex}
-
-\subsection{Deep Learning Algorithms}
-\input{Time Series Classification Algorithms/Deep Learning/Deep Learning Intro.tex}
-\subsubsection{Inception Time}
-\input{Time Series Classification Algorithms/Deep Learning/Inception.tex}
+\import{Chapters/03 Classification Algorithms}{Classification Algorithms}
 \null\newpage
 
+\import{Chapters/04 Datasets}{Datasets}
+\null\newpage
+
+\import{Chapters/05 Adaptation Methodology}{Adaptation Methodology}
+\null\newpage
+
+\import{Chapters/06 New Framework}{New Framework}
+\null\newpage
+
+\import{Chapters/07 Results}{Results}
+\null\newpage
+
+\import{Chapters/08 Findings Discussion}{Findings Discussion}
+\null\newpage
+
+\import{Chapters/09 Summary and Outlook}{Summary and Outlook}
 
 \section{Appendix}
 %\appendix

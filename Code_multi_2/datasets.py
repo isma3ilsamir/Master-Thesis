@@ -89,7 +89,6 @@ def handle_missing_values(df, ds, clf_name):
     if idx.empty:
         pass
     else:
-        print("##### Dataset {ds} has missing values, these will be imputed using sktime imputer, this might cause unreliable results #####")
         idx= idx.drop_duplicates()
         impute_missing_values(idx, df, ds, clf_name)
 

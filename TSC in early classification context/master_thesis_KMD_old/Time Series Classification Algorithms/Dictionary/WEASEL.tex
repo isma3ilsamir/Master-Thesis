@@ -1,0 +1,62 @@
+After the success that BOSS achieved, it became one of the baseline classifiers of TSC.
+Other reasearch has either included it as a building component of their ensembles \cite{lines2018time, bagnall2015time},
+or have used it, as a baseline for comparison of their algorithm's performance \cite{fawaz2020inceptiontime,shifaz2020ts,lucas2019proximity}
+Later on, the same team that developed BOSS introduced a newer algorithm, Word ExtrAction for time SEries cLassification (WEASEL) \cite{schafer2017fast}.
+A dictionary based classifier which is very similar to BOSS and can be thought of as an extension to it, with more focus on scalability \cite{middlehurst2019scalable}.
+WEASEL motivated their work with the absence of scalable classifiers, at the time, that can deal with big data sets; as the existing were either not scalable enough
+or not accurate enough. Despite being a non-ensemble classifier, WEASEL can compete with powerful ensembles in terms of accuracy without the need for
+long prediction times, but this comes with the cost of resource expensive training \cite{middlehurst2019scalable}.
+
+Like the other dictionary based approaches, WEASEL uses a sliding window over the data instances to extract substructures.
+These substructures are then discretized per window to extract features and finally a machine learning classifier is learned over the transformed features.
+But WEASEL differentiates itself from the other algorithms in the way it constructs and filters the features.
+We will discuss the new approaches that WEASEL uses for extracting discriminative features, building a model to deal with multiple occurences of words and variable windows' lengths
+and selecting features to reduce runtime and exclude irrelevant features.
+
+In the beginning, WEASEL uses multiple sliding windows of different lengths; to extract substructures.
+While keeping track of their order; in order to use them later on as bi-gram features.
+This replaces the process of building multiple models then choosing the best one, with building only one model which can learn from the concatenated high-dimensional feature vector.
+Then each of the substructures is normalized and a DFT is applied.
+Instead of filtering out the higher Fourier coefficients, WEASEL applies an ANalysis Of VAriance (ANOVA) F-test to keep real and imaginary Fourier values that best separate instances from different classes.
+Then the kept coefficients are discretized into words, based on alphabet of size \emph{c}, using binning boundaries. Instead of using equi-depth binning, WEASEL applies an information gain based
+binning technique; which further more helps separating instances of classes.
+In the end, a histogram is built using all the windows lengths and the extracted features, uni-grams and bi-grams.
+Irrelevant features are then filtered out using a Chi-squared test. The final highly discriminative feature vector produced is then used to learn a logistic regression classifier.
+
+% Feature Extraction
+WEASEL, like BOSS, transforms extracted windows from a time series into words using an alphabet of size \emph{c}.
+They identify two main drawbacks for SFA, and introduce a new supervised symbolic representation technique which is based on SFA but overcomes the drawbacks.
+The first drawback of SFA is that it acts like a low pass filter and excludes the high frequency components from the Fourier transformation,
+which might discard important features in some scenarios. The other drawback, is that SFA defines the boundaries of bins during quantization
+independent of the class labels; which might cause SFA words of equal frequencies to appear unnecessarily in multiple classes.
+In order to over come the drawbacks of SFA, WEASEL follows two steps;
+discriminative approximation using ANOVA F-test and discriminative quantization using information gain.
+
+% Feature Extraction - approximation
+As mentioned earlier, approximation involves representing a time series of length \emph{n} with a shorter, yet informative, representation of length \emph{l} by applying a Fourier transformation.
+WEASEL aims at keeping the best class separating \emph{l}, real and imaginary, Fourier coefficients by applying a one-way ANOVA F-test.
+The test verifies the hypothesis that the means of two or more distributions/groups differ from each other \cite{lowry2014concepts}.
+This can be tested by comparing two variances; the variance between groups and the variance within the groups.
+Using the notations in \cite{schafer2017fast}, \emph{mean square between} ($MS\textsubscript{B}$) and \emph{mean square within} ($MS\textsubscript{W}$) respectively.
+The F-values is then calculated as :
+\begin{definition}
+    \centerline{F= $\frac{MS\textsubscript{B}}{MS\textsubscript{W}}$}
+\end{definition}
+Then \emph{l} coefficients with the highest F-values are kept; as these represent features which have big differences between the classes (high $MS\textsubscript{B}$) and
+small differences within the same class (low $MS\textsubscript{W}$).
+
+% Feature Extraction - quantization
+After that, discretization is carried out to set the split thresholds for each of the extracted Fourier value.
+Discretization involves a binning process, where each Fourier value is divided into a number of bins.
+Each bin is represented by an upper and a lower boundary, and assigned a letter from an alphabet \emph{c}.
+Previous quantization techniques used equi-depth or equi-width binning, but these techniques are solely based on values and ignore the distribution of classes.
+WEASEL applies a binning technique based on IG; assuring that for each partition the majority of the values would belong to the same class.
+
+% Feature Selection
+The result of the feature extraction phase is a high dimensional feature vector with a dimensionality of \emph{$\mathcal{O}(min(Nn^{2},c^{l})$},
+where \emph{c} is an alphabet, \emph{l} is the length of a word, \emph{N} is the total number of instances and \emph{n} is the length of the time series.
+Since WEASEL uses bi-grams and \emph{$\mathcal{O}(n)$} window lengths, the dimensionality of the feature space increases to \emph{$\mathcal{O}(min(Nn^{2},c^{2l} \cdot n)$}.
+This enormous feature space is then reduced using a Chi-squared ($\chi^{2}$) test. Chi-squared tests is a statistical test used to determine if there is a significant difference
+between the recognised frequencies and the expected frequencies of of a features within a group. This implies that features which have high ($\chi^{2}$) values are statistically
+frequent in certain classes. By comparing the ($\chi^{2}$) values of features to a threshold, all features with scores lower than the threshold can be excluded from the faeture space.
+This usually reduced the feature space by 30\% - 70\% and helped train the logistic regresion classifier in a timely manner.
