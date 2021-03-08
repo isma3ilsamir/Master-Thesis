@@ -16,10 +16,18 @@ for j in json_files:
 report = pd.concat(dfs, axis=0, ignore_index=True)
 
 report = report.sort_values('ts').groupby(['model','dataset','revealed_pct']).tail(1)
-rerun = report[report['success']==False] 
-rerun.to_json('./rerun.json')
 
 successful_runs = report[report['success']==True] 
 successful_runs.to_json('./successful_runs.json')
+
+rerun = report[report['success']==False and ] 
+rerun.to_json('./rerun.json')
+
+
 import IPython
 IPython.embed()
+
+# it should always be empty which means I didn't put failed dataset while it was successfully run after this failed run
+intersected_runs =successful_runs.merge(rerun, on=['model','dataset','revealed_pct'], how='inner')                                                              
+if not intersected_runs.empty:
+    print(f"check duplicated dataset runs{intersected_runs}")
