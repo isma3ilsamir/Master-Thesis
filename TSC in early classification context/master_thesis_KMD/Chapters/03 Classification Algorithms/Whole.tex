@@ -38,6 +38,7 @@ converge with euclidean distance \cite{hills2014classification,ding2008querying,
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Nearest Neighbor with DTW}
+\label{SubsubsectionDTW}
 Dynamic Time Warping was a very strong baseline for time series classification for a long time \cite{abanda2019review,bagnall2017great}.
 It was first introduced as a technique to recognize spoken words that can deal with misallignments between time series
 that Euclidean Distance couldn't handle \cite{tan2020fastee}.
@@ -77,6 +78,7 @@ but still it is vulnerable to cases where the differene in length between instan
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Nearest Neighbor with MSM Distance}
+\label{SubsubsectionMSM}
 Move-Split-Merge is distance measure that was first introduced in \cite{stefan2012move}.
 The main purpose of introducing MSM was to combine certain characteristics within one distance measure.
 These are; robustness to misalignments between time series instances, being an actual metric unlike other distance measures like DTW and LCSS,
@@ -103,6 +105,7 @@ The cost of a move is equal to the absolute difference between the old and the n
 The costs of split and merge are equal and they are set to a constant to satisfy the symmetry property of metricity \cite{stefan2012move,tan2020fastee}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Proximity Forest}
+\label{SubsubsectionPForest}
 Proximity forest was developed by \cite{lucas2019proximity}.
 It was introduced as an addition to scalable time series classification, offering a more scalable and accurate classifier than EE \cite{tan2020fastee}.
 On one side, EE was an accurate classifier being one the state of the art algorithms and the best among distnace based algorithms, as it combines 11 NN-algorithms each using a different elastic measure.
@@ -160,7 +163,6 @@ constituting the forest. The final classification of the forest is made by major
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{PForest.JPG}
-    \centering
     \caption{Visual depiction of the root node for the ‘Trace’ dataset (simplified to 2 classes). The top chart represents the data at the root node (one colour per class) while the data at the bottom left and right represent the data once split by the tree. The two time series in the middle left and right are the exemplars on which the tree is splitting. The scatter plot at the center represents the distance of each time series at the root node with respect to the left and right exemplars (resp. x- and y-axes) (Color figure online) \cite{lucas2019proximity}.}
     \label{Img:PForest}
 \end{figure}
