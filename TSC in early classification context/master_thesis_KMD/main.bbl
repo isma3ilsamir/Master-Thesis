@@ -389,6 +389,45 @@
       \field{pages}{2796\bibrangedash 2802}
       \range{pages}{7}
     \endentry
+    \entry{benavoli2016should}{article}{}
+      \name{author}{3}{}{%
+        {{hash=a530c79da7054c7e81488962a667a481}{%
+           family={Benavoli},
+           familyi={B\bibinitperiod},
+           given={Alessio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=492b0dfcd7b1de44b70c059e04a40bca}{%
+           family={Corani},
+           familyi={C\bibinitperiod},
+           given={Giorgio},
+           giveni={G\bibinitperiod}}}%
+        {{hash=a7c3dff644a45463166796db4c0ee3f3}{%
+           family={Mangili},
+           familyi={M\bibinitperiod},
+           given={Francesca},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR. org}%
+      }
+      \strng{namehash}{f748f913170b39ef8b050dd25f8340d4}
+      \strng{fullhash}{f748f913170b39ef8b050dd25f8340d4}
+      \strng{bibnamehash}{f748f913170b39ef8b050dd25f8340d4}
+      \strng{authorbibnamehash}{f748f913170b39ef8b050dd25f8340d4}
+      \strng{authornamehash}{f748f913170b39ef8b050dd25f8340d4}
+      \strng{authorfullhash}{f748f913170b39ef8b050dd25f8340d4}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Machine Learning Research}
+      \field{number}{1}
+      \field{title}{Should we really use post-hoc tests based on mean-ranks?}
+      \field{volume}{17}
+      \field{year}{2016}
+      \field{pages}{152\bibrangedash 161}
+      \range{pages}{10}
+    \endentry
     \entry{bernaille2006traffic}{article}{}
       \name{author}{5}{}{%
         {{hash=73b4fb184a474ef7402fff1830edac09}{%
@@ -778,6 +817,34 @@
       \field{note}{\url{https://www.cs.ucr.edu/~eamonn/time_series_data_2018/}}
       \field{title}{The UCR Time Series Classification Archive}
       \field{year}{2018}
+    \endentry
+    \entry{demvsar2006statistical}{article}{}
+      \name{author}{1}{}{%
+        {{hash=4f1562f6c926af2ba7e34e919ea14f1d}{%
+           family={Dem{š}ar},
+           familyi={D\bibinitperiod},
+           given={Janez},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {JMLR. org}%
+      }
+      \strng{namehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{fullhash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{bibnamehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{authorbibnamehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{authornamehash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \strng{authorfullhash}{4f1562f6c926af2ba7e34e919ea14f1d}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Journal of Machine Learning Research}
+      \field{title}{Statistical comparisons of classifiers over multiple data sets}
+      \field{volume}{7}
+      \field{year}{2006}
+      \field{pages}{1\bibrangedash 30}
+      \range{pages}{30}
     \endentry
     \entry{deng2013time}{article}{}
       \name{author}{4}{}{%
