@@ -46,6 +46,9 @@ from pyts.multivariate.classification import MultivariateClassifier
 
 from sktime_dl.deeplearning import InceptionTimeClassifier
 
+from sklearn.dummy import DummyClassifier
+from sktime.transformations.panel.reduce import Tabularizer
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 # from random import choices
@@ -580,3 +583,12 @@ class INCEPTION(Model):
                              else f'{process}_{self.clf_name}_{cv}.h5')
         self.clf.model.save(fname)
         self.logger.info(f'Model exported to {fname}')
+
+class dummy(Model):
+    clf = Pipeline([
+        ("transform", Tabularizer()),
+        ("clf", DummyClassifier(
+            strategy="most_frequent",
+            random_state= random_state))
+        ])
+    clf_name = 'Dummy'
