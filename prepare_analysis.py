@@ -20,6 +20,12 @@ cols = ['classifier', 'mean_fit_time', 'std_fit_time', 'mean_score_time',
        'train_time', 'test_ds_score', 'test_ds_score_time',
        'revealed_pct', 'harmonic_mean', 'dataset']
 
+df = report[cols].copy()
+df['clf'] = df['classifier'] + '_' + df['revealed_pct'].astype(str)
+
+# for CD diagram
+df[['clf', 'dataset', 'test_ds_score']]
+
 # report = report.sort_values('ts').groupby(['model','dataset','revealed_pct']).tail(1)
 
 import IPython
