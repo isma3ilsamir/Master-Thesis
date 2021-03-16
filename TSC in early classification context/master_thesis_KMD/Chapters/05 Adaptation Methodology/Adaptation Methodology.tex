@@ -1,3 +1,20 @@
 \chapter{Adaptation Methodology}
 \label{ChapterAdaptationMethodology}
-This chapter should discuss the Adaptation Methodology
+THis chapter should describe the Adaptation Methodology
+
+%
+As motivated earlier, eTSC is a field which is concerned with classification of time series data with earliness and accuracy
+as the main objectives. Dedicated eTSCAs focus on adapting the algorithms to learn class labels of the data as early as possible
+while maintaining accuracy \cite{mori2017early}.
+Our framework, on the other hand, investigated the adaptation of the context in which conventional TSCA operate to learn a specific
+classification problem and the effect it had on the classifiers' performance.
+
+We define our early classification context as
+
+We implement the context using an algorithm which given a time series $T$ of some length $L$ and a number of splits $s$,
+the algorithm would cut $T$ into smaller subsequences of nearly equal lengths. Where the length of each subsequence is equal to $\div{L}{s}$.
+$s$ is a parameter that decides the ratio represented by each subsequence length to the total length of the time series $T$,
+that is if $s$ = 10 then the length of each subsequence would be 10\% of the total length, if $s$ = 20 then each subsequence
+represents 5\% of the total length and so on.
+
+This cutting mechanism controls is what decides the notion of earliness in our calculations.
