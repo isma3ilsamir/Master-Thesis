@@ -25,6 +25,7 @@ tensorflow-addons = "*"
 pexpect = "*"
 psutil = "*"
 sktime = {git = "https://github.com/alan-turing-institute/sktime.git"}
+xlrd = "*"
 
 [requires]
 python_version = "3.7"

@@ -1,15 +1,15 @@
 import numpy as np
 import pandas as pd
 
-def get_split_indexes(df, div, dataset):
+def get_split_indexes(df, div, dataset, splits_to_keep):
     print(f"Applying splitting for dataset: {dataset}")
     ts_length= len(df['dim_0'][0])
     split_lengths= ([ts_length // div + (1 if x < ts_length % div else 0)  for x in range (div)])
     split_indexes= np.cumsum(split_lengths).tolist()
-    split_indexes= keep_chunks(split_indexes, [1,2,3,len(split_indexes)])
+    split_indexes= keep_chunks(split_indexes, splits_to_keep)
     return split_indexes
 
-def get_split_indexes_w_threshold(df, div, threshold, dataset):
+def get_split_indexes_w_threshold(df, div, threshold, dataset, splits_to_keep):
     ts_length= len(df['dim_0'][0])
     ts_length_10pct = int(ts_length * 0.1)
     if (ts_length < threshold) | (ts_length_10pct >= threshold) :
@@ -24,7 +24,7 @@ def get_split_indexes_w_threshold(df, div, threshold, dataset):
         print("################ !!!! WARNING !!!! ################")
         print(f"Dividing using threshold skipped both conditions {dataset}")
     if len(split_indexes) > 4:
-        split_indexes= keep_chunks(split_indexes, [1,2,3,len(split_indexes)])
+        split_indexes= keep_chunks(split_indexes, splits_to_keep)
     return split_indexes
 
 def apply_split(df,split_index, asc=True):
