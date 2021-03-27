@@ -1,19 +1,20 @@
 """
 Usage:
     run.py --tsc (--dataset=<ds>)... (--cv [--n_iter=<n>] | --default_split) [--score_function=<f>]
-    run.py --etsc (--dataset=<ds>)... (--cv [--n_iter=<n>] | --default_split) [--from_beg | --from_end] [--split=<s>] [--score_function=<f>]
+    run.py --etsc (--dataset=<ds>)... (--cv [--n_iter=<n>] | --default_split) [--from_beg | --from_end] [--split=<s>] [--score_function=<f>] [--splits_to_keep=<stk>]...
 
 Options:
-    --tsc                  Runs an experiment on the dataset; to recommend the best performing model based on accuracy
-    --etsc                 Runs an experiment on the dataset; to study performance of time series classification algorithms in an early classification context
-    --dataset=<ds>         The name of the dataset folder. It should contain arff files, with the naming convention dataset_TEST.arff and dataset_TRAIN.arff
-    --cv                   Apply cross validation to the dataset
-    --default_split        Use the default split of the dataset
-    --n_iter=<n>           Number of iterations for randomized cross validation [default: 50]
-    --score_function=<f>   Function used for classification performance. Use a value from sklearn.metrics [default: balanced_accuracy]
-    --from_beg             Start from beginning of time series and reveal next subsequences at each iteration
-    --from_end             Start from end of time series and reveal previous subsequences at each iteration
-    --split=<s>            The number of splits to apply to the time series. 10 splits= 10% increments, 20 splits= 5% increments,...etc [default: 10]
+    --tsc                   Runs an experiment on the dataset; to recommend the best performing model based on accuracy.
+    --etsc                  Runs an experiment on the dataset; to study performance of time series classification algorithms in an early classification context.
+    --dataset=<ds>          The name of the dataset folder. It should contain arff files, with the naming convention dataset_TEST.arff and dataset_TRAIN.arff.
+    --cv                    Apply cross validation to the dataset.
+    --default_split         Use the default split of the dataset.
+    --n_iter=<n>            Number of iterations for randomized cross validation [default: 50].
+    --score_function=<f>    Function used for classification performance. Use a value from sklearn.metrics [default: balanced_accuracy].
+    --from_beg              Start from beginning of time series and reveal next subsequences at each iteration.
+    --from_end              Start from end of time series and reveal previous subsequences at each iteration.
+    --split=<s>             The number of splits to apply to the time series. 10 splits= 10% increments, 20 splits= 5% increments,...etc [default: 10].
+    --splits_to_keep=<stk>  The indexes of splits to use, all other indexes will be excluded from the run. For 10 splits indexes should be between 1 and 10 [default: 1 2 3 10].
 """
 import platform
 import sys
@@ -30,7 +31,7 @@ import concurrent.futures
 from itertools import repeat, count
 
 from splitting import get_split_indexes, apply_split, get_split_indexes_w_threshold
-from datasets import get_test_train_data, handle_missing_values
+from datasets import get_test_train_data, check_for_missing_values
 
 from sktime.classification.compose import ColumnEnsembleClassifier as ColEns
 
@@ -76,8 +77,8 @@ def tsc(args, start_time, start= perf_counter()):
         ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.info(f"===== Reading Data for {model.clf_name} =====")
         X_train, X_test, y_train, y_test= get_test_train_data(ds)
-        handle_missing_values(X_train, ds, model.clf_name)
-        handle_missing_values(X_test, ds, model.clf_name)
+        check_for_missing_values(X_train, ds, model.clf_name)
+        check_for_missing_values(X_test, ds, model.clf_name)
 
         if args['cv']:
             # This code is just handling for an error when doing cross-validation
@@ -148,8 +149,8 @@ def etsc(args, start_time, start= perf_counter()):
         ts= datetime.strftime(start_time,"%d-%m-%Y %H:%M:%S")
         logger.info(f"===== Reading Data for {model.clf_name} =====")
         X_train, X_test, y_train, y_test= get_test_train_data(ds)
-        handle_missing_values(X_train, ds, model.clf_name)
-        handle_missing_values(X_test, ds, model.clf_name)
+        check_for_missing_values(X_train, ds, model.clf_name)
+        check_for_missing_values(X_test, ds, model.clf_name)
 
         logger.info(f'===== Learning on {revealed_pct}% of the time series =====')
         X_train_splitted = apply_split(X_train, args['split_indexes'], asc=args['from_beg'])
@@ -330,7 +331,12 @@ def prepare_args(arguments, dataset):
     args['models']= initialize_models(args)
     if not arguments['--tsc']:
         logger.info(f"===== Step: Applying data splitting for dataset {dataset}=====")
-    args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes(X_train, args['split'], dataset)
+    
+    if isinstance(arguments['--splits_to_keep'], str):
+        arguments['--splits_to_keep'] = [arguments['--splits_to_keep']] 
+    args['splits_to_keep'] = None if arguments['--tsc'] else [int(i) for i in arguments['--splits_to_keep']]
+    
+    args['split_indexes'] = None if arguments['--tsc'] else get_split_indexes(X_train, args['split'], dataset, args['splits_to_keep'])
     ts_length= len(X_train['dim_0'][0])
     args['revealed_pct'] = None if arguments['--tsc'] else [int((100 * i)/ts_length) for i in args['split_indexes']]
     return args
@@ -353,7 +359,8 @@ def prepare_model_args(args, model):
     new_args['dim']=args['dim']
     new_args['model']= model
     new_args['split_indexes']= args['split_indexes']
-    new_args['revealed_pct']=   args['revealed_pct']
+    new_args['revealed_pct']= args['revealed_pct']
+    new_args['splits_to_keep']= args['splits_to_keep']
     return new_args
 
 def flatten_split_indexes(args):
@@ -375,6 +382,7 @@ def prepare_indexes_args(args, index, revealed_pct):
     new_args['model']= args['model']
     new_args['split_indexes']= index
     new_args['revealed_pct']= revealed_pct
+    new_args['splits_to_keep']= args['splits_to_keep']
     return new_args
 
 def memory_limit(percentage: float):

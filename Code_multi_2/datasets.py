@@ -83,6 +83,16 @@ def _get_test_train_split(dataset_location):
             raise Exception("Error loading both arff and ts files")
     return X_train, X_test, y_train, y_test
 
+def check_for_missing_values(df, ds, clf_name):
+    long_format= from_nested_to_long(df)
+    idx= long_format[long_format['value'].isnull()][['index','column']]
+    if idx.empty:
+        print(f"Dataset {ds} doesn't have any missing values")
+        pass
+    else:
+        print(f"Dataset {ds} has missing values, current framework cannot handle such case")
+        raise Exception(f"Dataset {ds} has missing values, current framework cannot handle such case")
+
 def handle_missing_values(df, ds, clf_name):
     long_format= from_nested_to_long(df)
     idx= long_format[long_format['value'].isnull()][['index','column']]
