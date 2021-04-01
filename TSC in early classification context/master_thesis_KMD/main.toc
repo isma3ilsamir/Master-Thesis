@@ -40,7 +40,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Time Series Classification}{9}{section.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Time Series Classification Algorithms}{9}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Time Series Classification Algorithms}{10}{section.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.1}Whole Time Series Algorithms}{10}{subsection.3.3.1}%
 \defcounter {refsection}{0}\relax 
@@ -52,7 +52,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Proximity Forest}{12}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Phase Dependent intervals Algorithms}{13}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Phase Dependent intervals Algorithms}{15}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Time Series Forest}{15}{section*.17}%
 \defcounter {refsection}{0}\relax 
@@ -70,30 +70,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.5}Deep Learning Algorithms}{22}{subsection.3.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{InceptionTime}{23}{section*.26}%
+\contentsline {subsubsection}{InceptionTime}{24}{section*.26}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Early Time Series Classification}{25}{section.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Data Sets}{27}{chapter.4}%
+\contentsline {subsection}{\numberline {3.4.1}Early Time Series Classifiation Algorithms}{26}{subsection.3.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}UCR/UEA Archives}{27}{section.4.1}%
+\contentsline {subsubsection}{ECTS}{26}{section*.28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}UCR Archive}{27}{subsection.4.1.1}%
+\contentsline {subsubsection}{Shapelet Based Algorithms}{27}{section*.29}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}UEA Archive}{27}{subsection.4.1.2}%
+\contentsline {subsubsection}{ECDIRE}{27}{section*.30}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Used Data Sets}{28}{subsection.4.1.3}%
+\contentsline {subsubsection}{TEASER}{28}{section*.31}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Karolinska data set}{28}{section.4.2}%
+\contentsline {chapter}{\numberline {4}Data Sets}{29}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Adaptation Methodology}{31}{chapter.5}%
+\contentsline {section}{\numberline {4.1}UCR/UEA Archives}{29}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}New Framework}{32}{chapter.6}%
+\contentsline {subsection}{\numberline {4.1.1}UCR Archive}{29}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Results}{33}{chapter.7}%
+\contentsline {subsection}{\numberline {4.1.2}UEA Archive}{29}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Findings Discussion}{34}{chapter.8}%
+\contentsline {subsection}{\numberline {4.1.3}Used Data Sets}{30}{subsection.4.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Summary and Outlook}{35}{chapter.9}%
+\contentsline {section}{\numberline {4.2}Karolinska data set}{30}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Declaration of Authorship}{45}{section.9.1}%
+\contentsline {chapter}{\numberline {5}Adaptation Methodology}{33}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}New Framework}{34}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Results}{35}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}Findings Discussion}{36}{chapter.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {9}Summary and Outlook}{37}{chapter.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}Declaration of Authorship}{47}{section.9.1}%

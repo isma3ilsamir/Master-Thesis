@@ -539,7 +539,7 @@ class CBOSS(Model):
                           max_ensemble_size=50,
                           max_win_len_prop=1,
                           time_limit=60,
-                          min_window=5,
+                          min_window=1,
                           n_jobs= -2,
                           random_state= random_state)
     clf_name = 'CBoss'

@@ -1450,6 +1450,60 @@
       \field{title}{A Fault-Tolerant Early Classification Approach for Human Activities using Multivariate Time Series}
       \field{year}{2020}
     \endentry
+    \entry{he2015early}{article}{}
+      \name{author}{6}{}{%
+        {{hash=fa8d0cefd0a4d5ce6f1e463d02f82f8a}{%
+           family={He},
+           familyi={H\bibinitperiod},
+           given={Guoliang},
+           giveni={G\bibinitperiod}}}%
+        {{hash=9cd38065cb1768f739870a8354a75501}{%
+           family={Duan},
+           familyi={D\bibinitperiod},
+           given={Yong},
+           giveni={Y\bibinitperiod}}}%
+        {{hash=ec33fe09057d96684426f497ddcdc9e7}{%
+           family={Peng},
+           familyi={P\bibinitperiod},
+           given={Rong},
+           giveni={R\bibinitperiod}}}%
+        {{hash=fd1fa11e0199698c60a5afce21bf19de}{%
+           family={Jing},
+           familyi={J\bibinitperiod},
+           given={Xiaoyuan},
+           giveni={X\bibinitperiod}}}%
+        {{hash=12c83d48005d81882364c6811d423d9e}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Tieyun},
+           giveni={T\bibinitperiod}}}%
+        {{hash=e2ac6a23208e179d9123e55ddd27bfb2}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Lingling},
+           giveni={L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{a7520d74bb5ae81a7185872ab1cdd2c9}
+      \strng{fullhash}{32fbca4e20f69d90cd035e4d75e3d148}
+      \strng{bibnamehash}{a7520d74bb5ae81a7185872ab1cdd2c9}
+      \strng{authorbibnamehash}{a7520d74bb5ae81a7185872ab1cdd2c9}
+      \strng{authornamehash}{a7520d74bb5ae81a7185872ab1cdd2c9}
+      \strng{authorfullhash}{32fbca4e20f69d90cd035e4d75e3d148}
+      \field{extraname}{1}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Neurocomputing}
+      \field{title}{Early classification on multivariate time series}
+      \field{volume}{149}
+      \field{year}{2015}
+      \field{pages}{777\bibrangedash 787}
+      \range{pages}{11}
+    \endentry
     \entry{he2016deep}{inproceedings}{}
       \name{author}{4}{}{%
         {{hash=6b4b60e909e78633945f3f9c9dc83e01}{%
@@ -1479,6 +1533,7 @@
       \strng{authorbibnamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
       \strng{authornamehash}{6edb98fe38401d2fe4a026f5ce6e8451}
       \strng{authorfullhash}{42c4b52dc3a62cebabbc11c73e1afb53}
+      \field{extraname}{2}
       \field{sortinit}{H}
       \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
       \field{labelnamesource}{author}
@@ -2202,6 +2257,49 @@
       \field{year}{2019}
       \field{pages}{607\bibrangedash 635}
       \range{pages}{29}
+    \endentry
+    \entry{lv2019effective}{article}{}
+      \name{author}{4}{}{%
+        {{hash=2ed6a9f94d4f715ad6221fdc202fdc4d}{%
+           family={Lv},
+           familyi={L\bibinitperiod},
+           given={Junwei},
+           giveni={J\bibinitperiod}}}%
+        {{hash=53044ba98fa43a9464a0edaed03c3981}{%
+           family={Hu},
+           familyi={H\bibinitperiod},
+           given={Xuegang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=ad7517ebe80619f75e6261e4aae4f0e1}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Lei},
+           giveni={L\bibinitperiod}}}%
+        {{hash=720e2998f706930c8d1f1aa44897ab3e}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Peipei},
+           giveni={P\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{392d8aa699e4c29d3ba9923f6e75d2b1}
+      \strng{fullhash}{6bd9037d6fd5ec55e2c2b48b1144b94a}
+      \strng{bibnamehash}{392d8aa699e4c29d3ba9923f6e75d2b1}
+      \strng{authorbibnamehash}{392d8aa699e4c29d3ba9923f6e75d2b1}
+      \strng{authornamehash}{392d8aa699e4c29d3ba9923f6e75d2b1}
+      \strng{authorfullhash}{6bd9037d6fd5ec55e2c2b48b1144b94a}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{IEEE Access}
+      \field{title}{An effective confidence-based early classification of time series}
+      \field{volume}{7}
+      \field{year}{2019}
+      \field{pages}{96113\bibrangedash 96124}
+      \range{pages}{12}
     \endentry
     \entry{marteau2008time}{article}{}
       \name{author}{1}{}{%
@@ -3523,6 +3621,48 @@
       \field{year}{2012}
       \field{pages}{105\bibrangedash 127}
       \range{pages}{23}
+    \endentry
+    \entry{xing2011extracting}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=58fdb3391f828f775b0aa30ea5eba3e5}{%
+           family={Xing},
+           familyi={X\bibinitperiod},
+           given={Zhengzheng},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=56af930e1f5e2c9a791b71e7b347c0ba}{%
+           family={Pei},
+           familyi={P\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ed7b2de2f08bfa6638d5d174d55d839b}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Philip\bibnamedelima S},
+           giveni={P\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+        {{hash=9977c03c4025bd86cbe014ceb976aabe}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Ke},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {SIAM}%
+      }
+      \strng{namehash}{40e86b8bd1a35b6c1227cadfc5bc261c}
+      \strng{fullhash}{5cb644833e3c67bfcc634f102bd6eff4}
+      \strng{bibnamehash}{40e86b8bd1a35b6c1227cadfc5bc261c}
+      \strng{authorbibnamehash}{40e86b8bd1a35b6c1227cadfc5bc261c}
+      \strng{authornamehash}{40e86b8bd1a35b6c1227cadfc5bc261c}
+      \strng{authorfullhash}{5cb644833e3c67bfcc634f102bd6eff4}
+      \field{sortinit}{X}
+      \field{sortinithash}{e90038f30fa4b9ce59606fc8347e3cc7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Proceedings of the 2011 SIAM International Conference on Data Mining}
+      \field{title}{Extracting interpretable features for early classification on time series}
+      \field{year}{2011}
+      \field{pages}{247\bibrangedash 258}
+      \range{pages}{12}
     \endentry
     \entry{yazdanbakhsh2019multivariate}{article}{}
       \name{author}{2}{}{%
