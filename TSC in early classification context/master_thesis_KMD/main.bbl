@@ -1139,6 +1139,44 @@
       \field{pages}{1936\bibrangedash 1962}
       \range{pages}{27}
     \endentry
+    \entry{JMLR:v21:19-763}{article}{}
+      \name{author}{2}{}{%
+        {{hash=5fa0def8b83dd494fbd31bea4f1b1616}{%
+           family={Faouzi},
+           familyi={F\bibinitperiod},
+           given={Johann},
+           giveni={J\bibinitperiod}}}%
+        {{hash=65c52e7bf43127dd6a5c2f874680656f}{%
+           family={Janati},
+           familyi={J\bibinitperiod},
+           given={Hicham},
+           giveni={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{679036e7f084afe1e26cdf5c2da5b35c}
+      \strng{fullhash}{679036e7f084afe1e26cdf5c2da5b35c}
+      \strng{bibnamehash}{679036e7f084afe1e26cdf5c2da5b35c}
+      \strng{authorbibnamehash}{679036e7f084afe1e26cdf5c2da5b35c}
+      \strng{authornamehash}{679036e7f084afe1e26cdf5c2da5b35c}
+      \strng{authorfullhash}{679036e7f084afe1e26cdf5c2da5b35c}
+      \field{labelalpha}{FJ20}
+      \field{sortinit}{F}
+      \field{sortinithash}{fb0c0faa89eb6abae8213bf60e6799ea}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{46}
+      \field{title}{pyts: A Python Package for Time Series Classification}
+      \field{volume}{21}
+      \field{year}{2020}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{urlraw}
+      \verb http://jmlr.org/papers/v21/19-763.html
+      \endverb
+      \verb{url}
+      \verb http://jmlr.org/papers/v21/19-763.html
+      \endverb
+    \endentry
     \entry{faloutsos1994fast}{article}{}
       \name{author}{3}{}{%
         {{hash=976e034dd29cfc47640ae45c16d21a9d}{%
@@ -2647,6 +2685,107 @@
       \field{pages}{3561\bibrangedash 3589}
       \range{pages}{29}
     \endentry
+    \entry{scikit-learn}{article}{}
+      \name{author}{16}{}{%
+        {{hash=6e96fec0d63277626bb324bd28cdecb7}{%
+           family={Pedregosa},
+           familyi={P\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+        {{hash=b99c2df2144dc5ee09317a7833dea42d}{%
+           family={Varoquaux},
+           familyi={V\bibinitperiod},
+           given={G.},
+           giveni={G\bibinitperiod}}}%
+        {{hash=955f19cea89ae97bb7936078898e6255}{%
+           family={Gramfort},
+           familyi={G\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=2787869c9954c1d4e9891098995feb75}{%
+           family={Michel},
+           familyi={M\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod}}}%
+        {{hash=86d47ab9ca1a9dae108b4d4a0418c679}{%
+           family={Thirion},
+           familyi={T\bibinitperiod},
+           given={B.},
+           giveni={B\bibinitperiod}}}%
+        {{hash=d42f9e9cec95da1dad2232eac74982ab}{%
+           family={Grisel},
+           familyi={G\bibinitperiod},
+           given={O.},
+           giveni={O\bibinitperiod}}}%
+        {{hash=8bd8ef25258dd2311f92df23fe71ecf7}{%
+           family={Blondel},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=a5ee41fa92b9e425806e1773853f1932}{%
+           family={Prettenhofer},
+           familyi={P\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=0c808557734e8929976d1f06f99c4ff2}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={R.},
+           giveni={R\bibinitperiod}}}%
+        {{hash=9662a6ea01596c6dd450817ccac81c4a}{%
+           family={Dubourg},
+           familyi={D\bibinitperiod},
+           given={V.},
+           giveni={V\bibinitperiod}}}%
+        {{hash=39e81a3e2193b954680a0ab847a0bb55}{%
+           family={Vanderplas},
+           familyi={V\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=14c4a498c032f77d0b83f86c710dd50e}{%
+           family={Passos},
+           familyi={P\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=dc075b18fb4710a1a37b258804c57efe}{%
+           family={Cournapeau},
+           familyi={C\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=67ec0e8add781665a43010c9559111e9}{%
+           family={Brucher},
+           familyi={B\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=dcb3918f09eb8785e6b212a907cc37cf}{%
+           family={Perrot},
+           familyi={P\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ab20fcf381cd45daa82417c6fc595051}{%
+           family={Duchesnay},
+           familyi={D\bibinitperiod},
+           given={E.},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{3a097aa3ebf2b8c2acf988341dde9710}
+      \strng{fullhash}{7a67607c66e4af944b5f16461d6d0a87}
+      \strng{bibnamehash}{3a097aa3ebf2b8c2acf988341dde9710}
+      \strng{authorbibnamehash}{3a097aa3ebf2b8c2acf988341dde9710}
+      \strng{authornamehash}{3a097aa3ebf2b8c2acf988341dde9710}
+      \strng{authorfullhash}{7a67607c66e4af944b5f16461d6d0a87}
+      \field{labelalpha}{Ped+11}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{title}{Scikit-learn: Machine Learning in {P}ython}
+      \field{volume}{12}
+      \field{year}{2011}
+      \field{pages}{2825\bibrangedash 2830}
+      \range{pages}{6}
+    \endentry
     \entry{petitjean2016faster}{article}{}
       \name{author}{6}{}{%
         {{hash=270fff17f2b0edbcb28e6c8dc2d70c64}{%
@@ -3402,6 +3541,89 @@
       \field{journaltitle}{arXiv preprint arXiv:1910.04341}
       \field{title}{Time series classification for varying length series}
       \field{year}{2019}
+    \endentry
+    \entry{JMLR:v21:20-091}{article}{}
+      \name{author}{11}{}{%
+        {{hash=3d8260acdd72b376866455e65a3b46f6}{%
+           family={Tavenard},
+           familyi={T\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod}}}%
+        {{hash=5fa0def8b83dd494fbd31bea4f1b1616}{%
+           family={Faouzi},
+           familyi={F\bibinitperiod},
+           given={Johann},
+           giveni={J\bibinitperiod}}}%
+        {{hash=3c5a678081dbfbac82c5fad7985c4288}{%
+           family={Vandewiele},
+           familyi={V\bibinitperiod},
+           given={Gilles},
+           giveni={G\bibinitperiod}}}%
+        {{hash=162179e9d8886bb02748213e34724e0f}{%
+           family={Divo},
+           familyi={D\bibinitperiod},
+           given={Felix},
+           giveni={F\bibinitperiod}}}%
+        {{hash=3d64451dbfb2e1f56a73f05db4da022f}{%
+           family={Androz},
+           familyi={A\bibinitperiod},
+           given={Guillaume},
+           giveni={G\bibinitperiod}}}%
+        {{hash=c31c8214f544c0de18f0d4f0c9ae9a92}{%
+           family={Holtz},
+           familyi={H\bibinitperiod},
+           given={Chester},
+           giveni={C\bibinitperiod}}}%
+        {{hash=b87d6cd807b72e5f58499930691574bb}{%
+           family={Payne},
+           familyi={P\bibinitperiod},
+           given={Marie},
+           giveni={M\bibinitperiod}}}%
+        {{hash=69b85665ba97bc383033dd1cc5c5b136}{%
+           family={Yurchak},
+           familyi={Y\bibinitperiod},
+           given={Roman},
+           giveni={R\bibinitperiod}}}%
+        {{hash=79459fbb8b30a6b984f147d458fe144d}{%
+           family={Ru{ß}wurm},
+           familyi={R\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=88277b9cf231e28345c3ca05481435af}{%
+           family={Kolar},
+           familyi={K\bibinitperiod},
+           given={Kushal},
+           giveni={K\bibinitperiod}}}%
+        {{hash=2525824015a6342fb3c147868906f7af}{%
+           family={Woods},
+           familyi={W\bibinitperiod},
+           given={Eli},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{5fa44d6efc7fdedc9d652badce047a0e}
+      \strng{fullhash}{17e51d952c21c8a1e6fad3a2eb9ed35e}
+      \strng{bibnamehash}{5fa44d6efc7fdedc9d652badce047a0e}
+      \strng{authorbibnamehash}{5fa44d6efc7fdedc9d652badce047a0e}
+      \strng{authornamehash}{5fa44d6efc7fdedc9d652badce047a0e}
+      \strng{authorfullhash}{17e51d952c21c8a1e6fad3a2eb9ed35e}
+      \field{labelalpha}{Tav+20}
+      \field{sortinit}{T}
+      \field{sortinithash}{51f9faf24c60c62ca764a77f78cf5666}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Machine Learning Research}
+      \field{number}{118}
+      \field{title}{Tslearn, A Machine Learning Toolkit for Time Series Data}
+      \field{volume}{21}
+      \field{year}{2020}
+      \field{pages}{1\bibrangedash 6}
+      \range{pages}{6}
+      \verb{urlraw}
+      \verb http://jmlr.org/papers/v21/20-091.html
+      \endverb
+      \verb{url}
+      \verb http://jmlr.org/papers/v21/20-091.html
+      \endverb
     \endentry
     \entry{tanisaro2016time}{inproceedings}{}
       \name{author}{2}{}{%

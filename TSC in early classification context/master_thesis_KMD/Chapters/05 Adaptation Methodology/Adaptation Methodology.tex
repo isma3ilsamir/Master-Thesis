@@ -17,9 +17,91 @@ classification problem and the effect it had on the classifiers' performance.
 We define our early classification context as the problem in which a TSCA is trained on labeled but incomplete time series data, then
 used to classify data instances of full length.
 
-The baseline performance for each classifier is determined by it's performance on the full length data.
+% Libraires we use
+We implemented our framework in python language.
+For the implementation of the non-deep learning algorithms we used the open source libraires $sktime$ \cite{loning2019sktime} and $pyts$ \cite{JMLR:v21:19-763},
+while for the implementation of the deep learning algorithm InceptionTime we used the library $sktimedl$ which provides an interface for the implementation provided
+in the study \cite{fawaz2020inceptiontime}. Finally, we used the library \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to it's
+capacity to transform the raw data into the needed input formats for all the other libraires.
 
-% Describe the implementation
+The framework can be divided into several consecutive steps:
+\begin{enumerate}
+    \item User input
+    \item Experiment preparation
+    \item Model Training
+    \item Testing and analysis report
+\end{enumerate}
+
+% User Input
+In the user input step, the user provides the necessary information required by the framework to start it's experiments.
+These information provide the guidelines of the process which will be carried out and decide what steps should be done in the
+experiment preparation step.
+Table \ref{TableUserInput} shows a summary of each of the needed information, represented as a parameter for the framework.
+\begin{table}
+    \centering
+    \begin{tabular}{|l|l|l|}
+    \hline
+    \multicolumn{1}{|l|}{Parameter} & Data Type          & Description                                        \\ \hline
+    Dataset                         & String List        & The name of the data set(s)                        \\ \hline
+    Splits                          & Integer            & The number of splits to apply on the data set      \\ \hline
+    Hyperparam                      & Boolean            & Learn hyperparameters for the model or skip        \\ \hline
+    NumIterations                   & Integer            & Number of hyperparameters combinations to sample   \\ \hline
+    ChunksToKeep                    & Integer List       & The indexes of the chunks to use                   \\ \hline
+    FromBeg                         & Boolean            & Reveal data chunks from beginning or end           \\ \hline
+    ScoringFunction                 & String             & The strategy for evaluating the model on test data \\ \hline
+    \end{tabular}
+    \caption{Input parameters required for using the framework}
+    \label{TableUserInput}
+\end{table}
+
+% Experiment Preparation
+In the experiment preparation step, the framework starts preparing the different components of the experiment to be run.
+These components include data set management, models initialization, preparation of the early classification context
+and configuration of the training and testing processes.
+
+% Datasets
+Our framework's data sets handling module is configured to process data sets in either of two ways; automatic download from the UCR/UEA data archives,
+or manually provided data sets that comply with some specifications.
+Since the data loading module from $pyts$ \cite{JMLR:v21:19-763} offers integrated tools with the UCR/UEA data archives for fetching and downloading data,
+we have configured our data module to extend $pyts$ by transparently checking both data archives when provided with a data set name.
+The other option would be to provide a data set folder holding the name of the data set.
+Inside the folder there should exist one training data set file with the name \enquote{FolderName\_TRAIN} and one testing data set file with the name \enquote{FolderName\_TEST}.
+Which is the case for most of the data sets from both archives.
+For multivariate data sets, our framework assumes that the training data set file, as well as the testing data set file, contains data of all dimensions.
+For maximum compatibility, our framework extends the data processing utilities from $sktime$ \cite{loning2019sktime}
+which can read data sets that comply with the guidelines provided by the UCR and the UEA archives.
+We consider \enquote{arff} format as the primary expected data type.
+
+%Multivariate (models initialization)
+As mentioned earlier in section \ref{GreatBakeoffMultivariate}, there are two ways to work on multivariate time series data sets \cite{ruiz2020great}.
+The first way is by using bespoke multivaraite classifiers which can deal with the multiple dimensions available in the data.
+While the other is by using ensembles of univariate classifiers, each fit to a separate dimension under the assumption of independence between the dimensions.
+Our framework applies the second technique for handling multivariate data sets.
+
+In the experiment preparation step, the framework checks the data and determines the number of dimensions in consists of.
+If the data set is univariate then the model initalizes the default classifer implementations provided by the libraries.
+In case the data set was found to be multivariate, we initialize a special classifier type which extends the usage of univariate classifiers for multivariate problems.
+This special classifier is reffered to as $ColumnEnsembleClassifier$ in the $sktime$ library implementation and as the $MultivariateClassifier$ in $pyts$.
+
+There are two assumptions that we make at this step in our framework.
+First, we assume that to extend a specific univariate classifier to a problem, we should fit the same type of the classifer on all dimensions of the data.
+This is goes back to our goal, that we want to compare classifiers from different groups and not to create an ensemble which makes use of different classifiers
+applying different techniques, like HIVE-COTE does.
+Second, we assume that we always have to fit one classifier per dimension, which have proved to be not a feasible solution for high dimensional data sets.
+We will discuss this in more details in our results.
+
+% Hyperparam + Scoring Function (configure training and testing)
+In preparation for the following steps in the framework, the experiment preparation step plays a role in configuring the training and the testing processes.
+For the training process, it is possible to either run using the default configuration of the classifiers from their libraries, or to learn it's hyperparameters through cross validation.
+We use a randomized search over the hyperparameters space of classifiers.
+The framework parameter $NumIterations$ represents the number of random samples to consider when optimizing the hyperparameters.
+If the space of the hyperparameters is less than $NumIterations$, then the space is exhausted by applying a grid search. We have considered 5-folds cross validation for all experiments.
+
+For the testing process, the framework allows the usage of any chosen performance metric which is supported by $sklearn$ library \cite{scikit-learn}.
+The chosen performance metric is utilized for the evaluation during both; the cross validation process and for calculating performance on the test data set.
+We consider \enquote{balanced accuracy} as our default performance metric; to account for problems where data sets have imbalanced classes distribution.
+
+% Chopping Algorithm
 Based on the assumption that all data instances are of the same length, we implement our early classification context using a time series chopping algorithm.
 The algorithm is provided with some time series data set $T$ with instances of length $L$ and three user defined parameters; $s$ which decides the number of splits $L$ should be split to,
 $FromBeg$ a flag which indicates whether the data chopping should occur from the beginning or the end of the time series $T$, and $ChunksToKeep$ which provides the user
@@ -28,7 +110,7 @@ The algorithm should return new copies of $T$; $[T_{1}, T_{2}, \ldots, T_{s}]$, 
 which we call the chunk. A chunk is a sequence of $p$ data points starting from the beginning or the end of the instances in $T$ based on the value of the parameter $FromBeg$.
 Each data set copy $T_{i+1}$ reveals one more chunk than the previous data set $T_{i}$ and the data set $T_{s}$ represents the set with instances of the full length $L$.
 It should be noted that our algorithm tries to have an equal value for $p$ used for each chunk, but this is limited by the length of the time series and the provided number of splits.
-The resulting data sets are then passed to the training process, where each algorithm applies it own technique to learn on the data set.
+The resulting data sets are then passed to the training process, where each algorithm applies it's own technique to learn on the data set.
 
 To better understand how the chopping algorithm works, consider the next example.
 Let's assume we have a data set $T$ with instances of length $L$ = 100, we set the value of $s$= 10 and $FromBeg$ = True.
@@ -53,7 +135,7 @@ The algorithm starts by calculating the value of $p$ for each of the required 10
 \end{algorithm}
 
 The resulting list $ChunksSizes$ from the algorithm will contain the value 10 for each of the chunks ($ChunksSizes$ = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]);
-this is because the length of the time series is divisible by the number of splits provided, so it results in perfect of splits of the data and thus chunks of equal sizes.
+this is because the length of the time series is divisible by the number of splits provided, so it results in perfect splits of the data and thus chunks of equal sizes.
 If we assume the same scenario again but with a different $s$ value like 8, the algorithm will try to provide as equal values of $p$ as possible
 giving back a $ChunksSizes$ of values [13, 13, 13, 13, 12, 12, 12, 12].
 
@@ -61,7 +143,7 @@ After calculating the chunk sizes, the chopping algorithm translates $ChunksSize
 Which is then used to create the different copies $T_{i}$ by selecting subsequences.
 The values of $SplitIndexes$ are the indexes of the last time point that a specific chunk should read.
 We calculate these values by carrying out a cumulative sum over the values of $ChunksSizes$.
-For example, the list $ChunksSizes$ = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10] is traslated into the list $SplitIndexes$ = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].
+For example, the list $ChunksSizes$ = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10] is translated into the list $SplitIndexes$ = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].
 This means that the corresponding data set $T_{1}$ will contain all it's data instances represented by the subsequences from the \nth{1} time point till the \nth{10} time points,
 and the data set $T_{3}$ will contain subsequence from the \nth{1} time point till the \nth{30} time point.
 When we apply the same translation to the list $ChunksSizes$ = [13, 13, 13, 13, 12, 12, 12, 12], it gets translated into $SplitIndexes$ = [13, 26, 39, 52, 64, 76, 88, 100].
@@ -70,7 +152,7 @@ Finally, the algorithm filters out the list $SplitIndexes$, if the user provided
 The values passed through $ChunksToKeep$ corresponds to the indexes of the chunks the user is interested in, all the other chunks are excluded.
 Note that this process is different from reducing the number of splits; as the number of splits affects the sizes of the chunks being created.
 While $ChunksToKeep$ is used only to filter out the chunks after their sizes are already determined and translated into $SplitIndexes$.
-The space of possible values for $ChunksToKeep$ is between [1, $s$]. The logic of the function is demonstrated in \ref{FunctionChunksToKeep}
+The space of possible values for $ChunksToKeep$ is between [1, $s$]. The logic of the function is demonstrated in function \ref{FunctionChunksToKeep}
 
 \begin{algorithm}
     \caption{Function to filter out Chunks}\label{FunctionChunksToKeep}
@@ -89,6 +171,25 @@ If we consider the list $ChunksToKeep$ = [1, 3, 5] for our example $SplitIndexes
 The resulting filtered list will be $FilteredSplitIndexes$ = [10, 30, 50], which will result in only 3 copies of $T$; $T_{1}$, $T_{3}$ and $T_{5}$,
 each represented by it's respective subsequence length.
 
+ -- - - - - -The full algorithm
+
+\begin{algorithm}
+    \caption{The Chopping Algorithm}\label{AlgorithmChopping}
+    \begin{algorithmic}[1]
+      \Function{$GetSplitIndexes$}{$T,s,ChunksToKeep$}
+        \State $L \gets ExtractLength(T)$
+        \State $ChunksSizes \gets GetChunkSizes(L,s)$
+        \State $SplitIndexes \gets CumSum(ChunksSizes)$
+        \If{$KeepChunks$ is not Null}
+                \State $FilteredSplitIndexes \gets KeepChunks(SplitIndexes,ChunksToKeep)$
+            \Else
+                \State $FilteredSplitIndexes \gets SplitIndexes$
+            \EndIf
+        \State \textbf{return} $FilteredSplitIndexes$
+      \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
 % Relation between s and the earliness
 If we have a closer look at the parameter $s$, we can recognise that it contributes to the granularity of the earliness factor that we are calculating.
 The value of $s$ decides the total number of chunks we will use, which subsequently decides also the ratio represented by each chunk to the total length of the time series $T$.
@@ -97,6 +198,6 @@ If we consider our previous example, when we set the value of $s$ = 10 then the 
 If we decided to change the value of $s$ = 20, then each chunk will roughly represents 5\% of the total length and so on.
 Increasing the number of splits to be used comes with the cost of time and resources, each extra split adds one extra run per algorithm per data set.
 
-
-
-This cutting mechanism controls is what decides the notion of earliness in our calculations.
+% Analysis
+The last step of our framework is the testing and analysis report.
+After the successful running of the experiment, we 

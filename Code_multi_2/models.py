@@ -19,6 +19,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
+from sklearn.metrics import get_scorer
 from sktime_dl.deeplearning.base import estimators
 # from sklearn.utils import estimator_checks
 # from sklearn.utils.fixes import loguniform
@@ -134,7 +135,9 @@ class Model:
         if self.cv:
             score = self.best_estimator_.score(X=X_test, y=y_test)
         else:
-            score = self.clf.score(X=X_test, y=y_test)
+            scorer = get_scorer(self.scoring_function)
+            self.predict(X_test)
+            score = scorer._score_func(y_test, self.y_pred)
         score_stop = process_time()
         self.test_ds_score_time = score_stop - score_start
         self.test_ds_score = score
