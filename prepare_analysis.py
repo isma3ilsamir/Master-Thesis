@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import glob
 import pathlib
+from csv import reader
 
 from pandas.io import json
 
@@ -44,11 +45,12 @@ def remove_duplicates(df):
     df.reset_index(inplace= True)
     return df
 
-def get_json_files(folders):
-    path_to_json = []
-    for folder in folders:
-        path_to_json.extend(glob.glob(os.path.join(os.getcwd(),f'{folder}/datasets/*/analysis/etsc*')))
-    json_files = [pos_json for pos_json in path_to_json if pos_json.endswith('.json')]
+def get_json_files(analysis_filenames):
+    json_files = []
+    with open('analysis_filenames', 'r') as read_obj:
+        csv_reader = reader(read_obj)
+        for row in csv_reader:
+            json_files.append(row)
     return json_files
 
 def extract_json_data(json_files):
@@ -58,22 +60,14 @@ def extract_json_data(json_files):
         dfs.append(df)
     return pd.concat(dfs, axis=0, ignore_index=True, sort= False)
 
-folders = [
-#  'code_cbos_wsl',
-#  'code_st',
-#  'code_tsf_inception',
-#  'pf_experiment',
-#  'pf_without_twe',
-#  'wsl_failed_rerun'
-'Code_multi_2'
-]
+
 pcts= [10, 20, 30, 100]
 train_size = [50,100,250,500,1000]
 length = [50,100,250,500,1000]
 num_classes = [2,3,4,5,10,15,30,50]
+analysis_filenames = 'log_filenames.csv'
 
-
-json_files = get_json_files(folders)
+json_files = get_json_files(analysis_filenames)
 df = extract_json_data(json_files)
 df = get_analysis_df(df)
 df = create_clf_pct_col(df)
@@ -96,6 +90,13 @@ df_20 = filter_by_val(df, 'revealed_pct', 20)
 df_30 = filter_by_val(df, 'revealed_pct', 30)
 df_100 = filter_by_val(df, 'revealed_pct', 100)
 
+
+# get all datasets with revealed_pct and runs output
+datasets = pd.read_csv('Datasets_metadata.csv')
+revealed_pct = [10,20,30,100]
+classifiers = ['ST', 'CBoss', 'TSF', 'PForest', 'WEASEL', 'Dummy']
+datasets_extended = pd.concat([datasets['dataset']] * len(revealed_pct) , keys = revealed_pct).reset_index(level = 1, drop = True).rename_axis('revealed_pct').reset_index()
+datasets_extended = pd.concat([datasets_extended] * len(classifiers) , keys = classifiers).reset_index(level = 1, drop = True).rename_axis('model').reset_index()
 
 import IPython
 IPython.embed()

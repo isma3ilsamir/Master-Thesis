@@ -1,5 +1,5 @@
-\chapter{The New Approach}
-\label{ChapterNewApproah}
+\chapter{Framework and Experimental Design}
+\label{ChapterFrameworkExperiment}
 This chapter describes our proposed framework which compares TSCAs in a context which is inspired by the problem of eTSC.
 We will define what we mean by early classification context and how do we simulate it. We will also discuss the different steps
 of the framework and what tools were used to build it.
@@ -10,8 +10,8 @@ of the framework and what tools were used to build it.
 As motivated earlier, eTSC is a field which is concerned with classification of time series data with earliness and accuracy
 as the main objectives. Dedicated eTSCAs focus on building models that can learn class labels of the data as early as possible
 while maintaining accuracy \cite{mori2017early}.
-Our framework, on the other hand, investigated the adaptation of the context in which conventional TSCA operate to learn a specific
-classification problem and the effect it had on the classifiers' performance.
+Our framework, on the other hand, investigates the adaptation of the context in which conventional TSCA operate to learn a specific
+classification problem and the effect it has on the classifiers' performance.
 
 % Should describe the early classification context
 We define our early classification context as the problem in which a TSCA is trained on labeled but incomplete time series data, then
@@ -106,11 +106,30 @@ Based on the assumption that all data instances are of the same length, we imple
 The algorithm is provided with some time series data set $T$ with instances of length $L$ and three user defined parameters; $s$ which decides the number of splits $L$ should be split to,
 $FromBeg$ a flag which indicates whether the data chopping should occur from the beginning or the end of the time series $T$, and $ChunksToKeep$ which provides the user
 with the option to use only specific chunks of interest and exclude the processing for all other chunks.
-The algorithm should return new copies of $T$; $[T_{1}, T_{2}, \ldots, T_{s}]$, each copy $T_{i}$ containing all instances from $T$ but revealing a subsequence of $L$
+Algorithm \ref{AlgorithmChopping} demonstrates how the chopping algorithm works.
+
+The result of the algorithm is then used to create new copies of $T$; $[T_{1}, T_{2}, \ldots, T_{s}]$, each copy $T_{i}$ containing all instances from $T$ but revealing a subsequence of $L$
 which we call the chunk. A chunk is a sequence of $p$ data points starting from the beginning or the end of the instances in $T$ based on the value of the parameter $FromBeg$.
 Each data set copy $T_{i+1}$ reveals one more chunk than the previous data set $T_{i}$ and the data set $T_{s}$ represents the set with instances of the full length $L$.
 It should be noted that our algorithm tries to have an equal value for $p$ used for each chunk, but this is limited by the length of the time series and the provided number of splits.
 The resulting data sets are then passed to the training process, where each algorithm applies it's own technique to learn on the data set.
+
+\begin{algorithm}
+    \caption{The Chopping Algorithm}\label{AlgorithmChopping}
+    \begin{algorithmic}[1]
+      \Function{$GetSplitIndexes$}{$T,s,ChunksToKeep$}
+        \State $L \gets ExtractLength(T)$
+        \State $ChunksSizes \gets GetChunkSizes(L,s)$
+        \State $SplitIndexes \gets CumSum(ChunksSizes)$
+        \If{$KeepChunks$ is not Null}
+                \State $FilteredSplitIndexes \gets KeepChunks(SplitIndexes,ChunksToKeep)$
+            \Else
+                \State $FilteredSplitIndexes \gets SplitIndexes$
+            \EndIf
+        \State \textbf{return} $FilteredSplitIndexes$
+      \EndFunction
+    \end{algorithmic}
+\end{algorithm}
 
 To better understand how the chopping algorithm works, consider the next example.
 Let's assume we have a data set $T$ with instances of length $L$ = 100, we set the value of $s$= 10 and $FromBeg$ = True.
@@ -171,25 +190,6 @@ If we consider the list $ChunksToKeep$ = [1, 3, 5] for our example $SplitIndexes
 The resulting filtered list will be $FilteredSplitIndexes$ = [10, 30, 50], which will result in only 3 copies of $T$; $T_{1}$, $T_{3}$ and $T_{5}$,
 each represented by it's respective subsequence length.
 
- -- - - - - -The full algorithm
-
-\begin{algorithm}
-    \caption{The Chopping Algorithm}\label{AlgorithmChopping}
-    \begin{algorithmic}[1]
-      \Function{$GetSplitIndexes$}{$T,s,ChunksToKeep$}
-        \State $L \gets ExtractLength(T)$
-        \State $ChunksSizes \gets GetChunkSizes(L,s)$
-        \State $SplitIndexes \gets CumSum(ChunksSizes)$
-        \If{$KeepChunks$ is not Null}
-                \State $FilteredSplitIndexes \gets KeepChunks(SplitIndexes,ChunksToKeep)$
-            \Else
-                \State $FilteredSplitIndexes \gets SplitIndexes$
-            \EndIf
-        \State \textbf{return} $FilteredSplitIndexes$
-      \EndFunction
-    \end{algorithmic}
-\end{algorithm}
-
 % Relation between s and the earliness
 If we have a closer look at the parameter $s$, we can recognise that it contributes to the granularity of the earliness factor that we are calculating.
 The value of $s$ decides the total number of chunks we will use, which subsequently decides also the ratio represented by each chunk to the total length of the time series $T$.
@@ -198,6 +198,29 @@ If we consider our previous example, when we set the value of $s$ = 10 then the 
 If we decided to change the value of $s$ = 20, then each chunk will roughly represents 5\% of the total length and so on.
 Increasing the number of splits to be used comes with the cost of time and resources, each extra split adds one extra run per algorithm per data set.
 
+
 % Analysis
 The last step of our framework is the testing and analysis report.
-After the successful running of the experiment, we 
+After the successful running of the experiments and calculating performance scores using the provided scoring function, we create a single report for each run experiment.
+We produce one report per classifier per data set.
+We refer by data set to each data set that was finally produced by the chopping algorithm.
+These reports collect the essential data and statistics that form the basis of our results.
+Table \ref{TableAnalysisReport} shows the structureof the output for the analysis report.
+
+\begin{table}
+    \centering
+    \begin{tabular}{|l|l|}
+    \hline
+    \multicolumn{1}{|l|}{Item} & Description                                                     \\ \hline
+    Classifier                 & The classifier name                                             \\ \hline
+    Train time                 & The total training time (CPU Time)                              \\ \hline
+    Test time                  & The total testing time (CPU Time)                               \\ \hline
+    Test score                 & Performance score on testing data set                           \\ \hline
+    Params                     & List of hyperparameters used and their values                   \\ \hline
+    Revealed \%                & Percent of data points used for training from the total length  \\ \hline
+    Harmonic Mean              & Harmonic mean between test score and revealed \%                \\ \hline
+    Dataset                    & The name of the data set                                        \\ \hline
+    \end{tabular}
+    \caption{Analysis report created for each experiment}
+    \label{TableAnalysisReport}
+\end{table}

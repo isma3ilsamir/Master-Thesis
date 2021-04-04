@@ -96,16 +96,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Karolinska data set}{30}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}The New Approach}{33}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Framework and Experimental Design}{33}{chapter.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.1}The Framework}{33}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}New Framework}{38}{chapter.6}%
+\contentsline {chapter}{\numberline {6}New Framework}{39}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Results}{39}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Results}{40}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Findings Discussion}{40}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Findings Discussion}{41}{chapter.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Summary and Outlook}{41}{chapter.9}%
+\contentsline {chapter}{\numberline {9}Summary and Outlook}{42}{chapter.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Declaration of Authorship}{52}{section.9.1}%
+\contentsline {section}{\numberline {9.1}Declaration of Authorship}{53}{section.9.1}%
