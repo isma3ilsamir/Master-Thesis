@@ -79,12 +79,32 @@ def rank_by_type(df):
         pass
     return False
 
+def get_runs_within_clf(df, classifier, dataset, revealed_pcts):
+    df.query(f'classifier == {classifier} &\
+               dataset == {dataset} &\
+               FT_Team.str.startswith("S").values')
+
+    return False
+
+def get_ds_finished_chunks_for_clf(df, classifier, num_chunks):
+    df = filter_by_val(df, 'classifier', classifier)
+    ds_chunks = df.groupby('dataset')['revealed_pct'].size().to_frame().reset_index()
+    ds_chunks.columns = ['dataset','chunks_finished']
+    ds_list = filter_by_val(ds_chunks, 'chunks_finished', num_chunks)['dataset'].tolist()
+    return ds_list
+
+def get_ds_finished_clfs_for_revpct(df, revealed_pct, num_classifiers):
+    df = filter_by_val(df, 'revealed_pct', revealed_pct)
+    ds_clfs = df.groupby('dataset')['classifier'].size().to_frame().reset_index()
+    ds_clfs.columns = ['dataset','classifiers_finished']
+    ds_list = filter_by_val(ds_clfs, 'classifiers_finished', num_classifiers)['dataset'].tolist()
+    return ds_list
+
 def get_extended_datasets(dataset_df, revealed_pct, classifiers):
     # get all datasets with revealed_pct and runs output
     datasets_extended = pd.concat([dataset_df['dataset']] * len(revealed_pct) , keys = revealed_pct).reset_index(level = 1, drop = True).rename_axis('revealed_pct').reset_index()
     datasets_extended = pd.concat([datasets_extended] * len(classifiers) , keys = classifiers).reset_index(level = 1, drop = True).rename_axis('model').reset_index()
     return datasets_extended
-
 
 pcts= [10, 20, 30, 100]
 train_size = [50,100,250,500,1000]
