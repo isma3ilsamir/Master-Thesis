@@ -78,12 +78,12 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-compa
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\blx-compat.def
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.def
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.def
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\bbx\numeric.bbx
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\bbx\numeric.bbx
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\bbx\alphabetic.bbx
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\bbx\alphabetic.bbx
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\bbx\standard.bbx
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\bbx\standard.bbx
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\cbx\numeric.cbx
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\cbx\numeric.cbx
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\cbx\alphabetic.cbx
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\cbx\alphabetic.cbx
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.cfg
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\biblatex.cfg
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\graphics\lscape.sty
@@ -160,6 +160,20 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\tools\longtable.st
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\tools\longtable.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\float\float.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\algorithms\algorithm.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\algorithmicx\algpseudocode.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\algorithmicx\algorithmicx.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\genmisc\nth.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\genmisc\nth.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.def
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.def
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.cfg
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\csquotes\csquotes.cfg
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
@@ -351,6 +365,7 @@ INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early class
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Problem_hist.JPG
 INPUT Chapters\05 Adaptation Methodology\Adaptation Methodology.tex
 INPUT Chapters\05 Adaptation Methodology\Adaptation Methodology.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT Chapters\06 New Framework\New Framework.tex
 INPUT Chapters\06 New Framework\New Framework.tex
 INPUT Chapters\07 Results\Results.tex
@@ -379,6 +394,8 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex7.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
@@ -399,6 +416,8 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsl10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsl10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
@@ -413,5 +432,7 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti7.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb

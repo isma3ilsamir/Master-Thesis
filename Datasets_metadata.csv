@@ -57,11 +57,9 @@ NonInvasiveFetalECGThorax2,NonInvasiveFetalECGThorax2,TRUE,1800,1965,750,42,ECG,
 OliveOil,OliveOil,TRUE,30,30,570,4,SPECTRO,Univariate,1,FALSE
 PEMS-SF,PEMS-SF,TRUE,267,173,144,7,MISC,Multivariate,963,TRUE
 Phoneme,Phoneme,TRUE,214,1896,1024,39,SOUND,Univariate,1,FALSE
-PickupGestureWiimoteZ,PickupGestureWiimoteZ,TRUE,50,50,0,10,SENSOR,Univariate,1,TRUE
 PigAirwayPressure,PigAirwayPressure,TRUE,104,208,2000,52,HEMODYNAMICS,Univariate,1,TRUE
 PigArtPressure,PigArtPressure,TRUE,104,208,2000,52,HEMODYNAMICS,Univariate,1,TRUE
 PigCVP,PigCVP,TRUE,104,208,2000,52,HEMODYNAMICS,Univariate,1,TRUE
-PLAID,PLAID,TRUE,537,537,0,11,DEVICE,Univariate,1,FALSE
 Plane,Plane,TRUE,105,105,144,7,SENSOR,Univariate,1,FALSE
 PowerCons,PowerCons,TRUE,180,180,144,2,DEVICE,Univariate,1,TRUE
 RacketSports,RacketSports,TRUE,151,152,30,4,HAR,Multivariate,6,TRUE
@@ -73,11 +71,9 @@ SelfRegulationSCP2,SelfRegulationSCP2,TRUE,200,180,1152,2,EEG,Multivariate,7,TRU
 SemgHandGenderCh2,SemgHandGenderCh2,TRUE,300,600,1500,2,SPECTRO,Univariate,1,TRUE
 SemgHandMovementCh2,SemgHandMovementCh2,TRUE,450,450,1500,6,SPECTRO,Univariate,1,TRUE
 SemgHandSubjectCh2,SemgHandSubjectCh2,TRUE,450,450,1500,5,SPECTRO,Univariate,1,TRUE
-ShakeGestureWiimoteZ,ShakeGestureWiimoteZ,TRUE,50,50,0,10,SENSOR,Univariate,1,TRUE
 SmallKitchenAppliances,SmallKitchenAppliances,TRUE,375,375,720,3,DEVICE,Univariate,1,TRUE
 SonyAIBORobotSurface1,SonyAIBORobotSurface1,TRUE,20,601,70,2,SENSOR,Univariate,1,FALSE
 SonyAIBORobotSurface2,SonyAIBORobotSurface2,TRUE,27,953,65,2,SENSOR,Univariate,1,TRUE
-SpokenArabicDigits,SpokenArabicDigits,TRUE,6599,2199,93,10,SPEECH,Multivariate,13,TRUE
 StandWalkJump,StandWalkJump,TRUE,12,15,2500,3,ECG,Multivariate,4,TRUE
 StarlightCurves,StarlightCurves,TRUE,1000,8236,1024,3,SENSOR,Univariate,1,FALSE
 Strawberry,Strawberry,TRUE,613,370,235,2,SPECTRO,Univariate,1,TRUE

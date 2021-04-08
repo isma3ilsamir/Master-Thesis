@@ -2,8 +2,11 @@ import os
 import pandas as pd
 import glob
 import pathlib
-
+from csv import reader
 from pandas.io import json
+
+def round_down(num, divisor):
+    return num - (num%divisor)
 
 def create_clf_pct_col(df):
     df['clf'] = df['classifier'] + '_' + df['revealed_pct'].astype(str)
@@ -24,10 +27,6 @@ def get_datasets_df(ds_file='Datasets_metadata.xlsx', index_col=0, sheet='Sheet3
     # return pd.read_excel(ds_file, index_col= index_col, sheet_name= sheet)
     return pd.read_csv('Datasets_metadata.csv')
 
-def get_cd_df(df):
-    # for CD diagram
-    return df[['clf', 'dataset', 'test_ds_score']]
-
 def get_analysis_df(df):
     cols = ['classifier', 'mean_fit_time', 'std_fit_time', 'mean_score_time',
        'std_score_time', 'params', 'mean_test_score', 'std_test_score',
@@ -44,11 +43,21 @@ def remove_duplicates(df):
     df.reset_index(inplace= True)
     return df
 
-def get_json_files(folders):
-    path_to_json = []
-    for folder in folders:
-        path_to_json.extend(glob.glob(os.path.join(os.getcwd(),f'{folder}/datasets/*/analysis/etsc*')))
-    json_files = [pos_json for pos_json in path_to_json if pos_json.endswith('.json')]
+def get_json_files(analysis_filenames):
+    json_files = []
+    with open(analysis_filenames, 'r') as read_obj:
+        csv_reader = reader(read_obj)
+        for row in csv_reader:
+            if row[0] == 'filename':
+                continue
+            file_name = os.path.basename(row[0])
+            analysis_path = glob.glob(os.path.join(os.getcwd(),f'*/datasets/*/analysis/{file_name}'))
+            if not analysis_path:
+                raise(f'there was no analysis file found for {row[0]}')
+            elif len(analysis_path) > 1:
+                print(f'there is more than one location for file {row[0]}:')
+                print(analysis_path)
+            json_files.append(analysis_path[0])
     return json_files
 
 def extract_json_data(json_files):
@@ -58,62 +67,69 @@ def extract_json_data(json_files):
         dfs.append(df)
     return pd.concat(dfs, axis=0, ignore_index=True, sort= False)
 
-folders = [
-#  'code_cbos_wsl',
-#  'code_st',
-#  'code_tsf_inception',
-#  'pf_experiment',
-#  'pf_without_twe',
-#  'wsl_failed_rerun'
-'Code_multi_2'
-]
+def get_cd_df(df):
+    # for CD diagram
+    cd_df = df['clf','dataset','test_ds_score']
+    cd_df.columns = ['classifier_name','dataset_name','accuracy']
+    return cd_df
+
+def rank_by_type(df):
+    dataset_types = list(df['type'].unique())
+    for type in dataset_types:
+        pass
+    return False
+
+def get_runs_within_clf(df, classifier, dataset, revealed_pcts):
+    df.query(f'classifier == {classifier} &\
+               dataset == {dataset} &\
+               FT_Team.str.startswith("S").values')
+
+    return False
+
+def get_ds_finished_chunks_for_clf(df, classifier, num_chunks):
+    df = filter_by_val(df, 'classifier', classifier)
+    ds_chunks = df.groupby('dataset')['revealed_pct'].size().to_frame().reset_index()
+    ds_chunks.columns = ['dataset','chunks_finished']
+    ds_list = filter_by_val(ds_chunks, 'chunks_finished', num_chunks)['dataset'].tolist()
+    return ds_list
+
+def get_ds_finished_clfs_for_revpct(df, revealed_pct, num_classifiers):
+    df = filter_by_val(df, 'revealed_pct', revealed_pct)
+    ds_clfs = df.groupby('dataset')['classifier'].size().to_frame().reset_index()
+    ds_clfs.columns = ['dataset','classifiers_finished']
+    ds_list = filter_by_val(ds_clfs, 'classifiers_finished', num_classifiers)['dataset'].tolist()
+    return ds_list
+
+def get_extended_datasets(dataset_df, revealed_pct, classifiers):
+    # get all datasets with revealed_pct and runs output
+    datasets_extended = pd.concat([dataset_df['dataset']] * len(revealed_pct) , keys = revealed_pct).reset_index(level = 1, drop = True).rename_axis('revealed_pct').reset_index()
+    datasets_extended = pd.concat([datasets_extended] * len(classifiers) , keys = classifiers).reset_index(level = 1, drop = True).rename_axis('model').reset_index()
+    return datasets_extended
+
 pcts= [10, 20, 30, 100]
 train_size = [50,100,250,500,1000]
 length = [50,100,250,500,1000]
 num_classes = [2,3,4,5,10,15,30,50]
+classifiers = ['ST', 'CBoss', 'TSF', 'PForest', 'WEASEL', 'Dummy']
+analysis_filenames = 'log_filenames.csv'
 
-
-json_files = get_json_files(folders)
+json_files = get_json_files(analysis_filenames)
 df = extract_json_data(json_files)
 df = get_analysis_df(df)
 df = create_clf_pct_col(df)
 
 dataset_df = get_datasets_df()
+dataset_extended = get_extended_datasets(dataset_df, pcts, classifiers)
+
+import IPython
+IPython.embed()
 
 joined = get_joined_df(df, dataset_df)
 
 datasets = list(joined['dataset'].unique())
 dataset_types = list(joined['type'].unique())
 
-def rank_by_type(df):
-    dataset_types = list(df['type'].unique())
-    for type in dataset_types:
-
-
-
 df_10 = filter_by_val(df, 'revealed_pct', 10)
 df_20 = filter_by_val(df, 'revealed_pct', 20)
 df_30 = filter_by_val(df, 'revealed_pct', 30)
 df_100 = filter_by_val(df, 'revealed_pct', 100)
-
-
-import IPython
-IPython.embed()
-
-# report = report.sort_values('ts').groupby(['model','dataset','revealed_pct']).tail(1)
-
-
-# successful_runs = report[report['success']==True] 
-# successful_runs.to_json('./successful_runs.json')
-
-# # rerun = report[report['success']==False and ] 
-# # rerun.to_json('./rerun.json')
-
-
-# import IPython
-# IPython.embed()
-
-# # it should always be empty which means I didn't put failed dataset while it was successfully run after this failed run
-# intersected_runs =successful_runs.merge(rerun, on=['model','dataset','revealed_pct'], how='inner')                                                              
-# if not intersected_runs.empty:
-#     print(f"check duplicated dataset runs{intersected_runs}")

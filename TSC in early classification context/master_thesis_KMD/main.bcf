@@ -40,7 +40,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>labelalpha</bcf:key>
-      <bcf:value>0</bcf:value>
+      <bcf:value>1</bcf:value>
     </bcf:option>
     <bcf:option type="multivalued">
       <bcf:key>labelnamespec</bcf:key>
@@ -2450,6 +2450,14 @@
     <bcf:citekey order="205">ruiz2020great</bcf:citekey>
     <bcf:citekey order="205">fawaz2019deepreview</bcf:citekey>
     <bcf:citekey order="206">mori2017early</bcf:citekey>
+    <bcf:citekey order="207">loning2019sktime</bcf:citekey>
+    <bcf:citekey order="208">JMLR:v21:19-763</bcf:citekey>
+    <bcf:citekey order="209">fawaz2020inceptiontime</bcf:citekey>
+    <bcf:citekey order="210">JMLR:v21:20-091</bcf:citekey>
+    <bcf:citekey order="211">JMLR:v21:19-763</bcf:citekey>
+    <bcf:citekey order="212">loning2019sktime</bcf:citekey>
+    <bcf:citekey order="213">ruiz2020great</bcf:citekey>
+    <bcf:citekey order="214">scikit-learn</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

@@ -14,7 +14,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.4}{\ignorespaces The BOSS workflow \cite {schafer2015boss}\relax }}{18}{figure.caption.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces A time series is (a) approximated (low pass filtered) using DFT and (b) quantised using MCB resulting in the SFA word DAAC \cite {schafer2015boss}\relax }}{20}{figure.caption.22}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces A time series is (a) approximated (low pass filtered) using DFT and (b) quantised using MCB resulting in the SFA word DAAC \cite {schafer2015boss}\relax }}{19}{figure.caption.22}%
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.6}{\ignorespaces WEASEL Pipeline: Feature extraction using a novel supervised symbolic representation, and a novel bag-of-patterns model \cite {schafer2017fast}\relax }}{21}{figure.caption.24}%
 \defcounter {refsection}{0}\relax 

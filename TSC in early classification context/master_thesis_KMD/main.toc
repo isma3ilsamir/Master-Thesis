@@ -48,19 +48,19 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Nearest Neighbor with DTW}{11}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Nearest Neighbor with MSM Distance}{11}{section*.13}%
+\contentsline {subsubsection}{Nearest Neighbor with MSM Distance}{12}{section*.13}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Proximity Forest}{12}{section*.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Phase Dependent intervals Algorithms}{15}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Phase Dependent intervals Algorithms}{14}{subsection.3.3.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Time Series Forest}{15}{section*.17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.3}Phase Independent intervals Algorithms}{16}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.3}Phase Independent intervals Algorithms}{15}{subsection.3.3.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Learned Shapelets}{16}{section*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Shapelet Transform}{17}{section*.19}%
+\contentsline {subsubsection}{Shapelet Transform}{16}{section*.19}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.4}Dictionary Based Algorithms}{17}{subsection.3.3.4}%
 \defcounter {refsection}{0}\relax 
@@ -70,7 +70,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.5}Deep Learning Algorithms}{22}{subsection.3.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{InceptionTime}{24}{section*.26}%
+\contentsline {subsubsection}{InceptionTime}{23}{section*.26}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Early Time Series Classification}{25}{section.3.4}%
 \defcounter {refsection}{0}\relax 
@@ -78,7 +78,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{ECTS}{26}{section*.28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Shapelet Based Algorithms}{27}{section*.29}%
+\contentsline {subsubsection}{Shapelet Based Algorithms}{26}{section*.29}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{ECDIRE}{27}{section*.30}%
 \defcounter {refsection}{0}\relax 
@@ -96,14 +96,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.2}Karolinska data set}{30}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Adaptation Methodology}{33}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Framework and Experimental Design}{33}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}New Framework}{34}{chapter.6}%
+\contentsline {section}{\numberline {5.1}The Framework}{33}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Results}{35}{chapter.7}%
+\contentsline {chapter}{\numberline {6}New Framework}{39}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Findings Discussion}{36}{chapter.8}%
+\contentsline {chapter}{\numberline {7}Results}{40}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Summary and Outlook}{37}{chapter.9}%
+\contentsline {chapter}{\numberline {8}Findings Discussion}{41}{chapter.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Declaration of Authorship}{47}{section.9.1}%
+\contentsline {chapter}{\numberline {9}Summary and Outlook}{42}{chapter.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}Declaration of Authorship}{53}{section.9.1}%
