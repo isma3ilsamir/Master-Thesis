@@ -4,17 +4,28 @@ import glob
 import pathlib
 from csv import reader
 from pandas.io import json
+import IPython
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 def round_down(num, divisor):
     return num - (num%divisor)
 
+def create_whole_revpct(df):
+    df['revealed_pct_actual'] = df['revealed_pct']
+    # round revealed_pct
+    df['revealed_pct'] = round_down(df['revealed_pct_actual'],10)
+    return df
+
 def create_clf_pct_col(df):
+    df = create_whole_revpct(df)
     df['clf'] = df['classifier'] + '_' + df['revealed_pct'].astype(str)
     return df
 
 def get_joined_df(df, dataset_df):
     joined = df.set_index('dataset').join(dataset_df.set_index('dataset'), how='inner')
-    joined = joined.reset_index(drop = True)
+    joined = joined.reset_index(drop = False)
     return joined
 
 def filter_by_val(df, col, val):
@@ -51,9 +62,11 @@ def get_json_files(analysis_filenames):
             if row[0] == 'filename':
                 continue
             file_name = os.path.basename(row[0])
-            analysis_path = glob.glob(os.path.join(os.getcwd(),f'*/datasets/*/analysis/{file_name}'))
+            # analysis_path = glob.glob(os.path.join(os.getcwd(),f'*/datasets/*/analysis/{file_name}'))
+            analysis_path = glob.glob(os.path.join(os.getcwd(),f'*/{file_name}'))
             if not analysis_path:
-                raise(f'there was no analysis file found for {row[0]}')
+                IPython.embed()
+                raise Exception(f'there was no analysis file found for {row[0]}')
             elif len(analysis_path) > 1:
                 print(f'there is more than one location for file {row[0]}:')
                 print(analysis_path)
@@ -69,22 +82,75 @@ def extract_json_data(json_files):
 
 def get_cd_df(df):
     # for CD diagram
-    cd_df = df['clf','dataset','test_ds_score']
+    cd_df = df[['clf','dataset','test_ds_score']]
     cd_df.columns = ['classifier_name','dataset_name','accuracy']
     return cd_df
 
-def rank_by_type(df):
-    dataset_types = list(df['type'].unique())
-    for type in dataset_types:
-        pass
-    return False
+def rank_on_ds_score(df):
+    dfs=[]
+    datasets = list(df['dataset'].unique())
+    for ds in datasets:
+        filtered= filter_by_val(df,'dataset', ds).copy()
+        filtered['ds_rank'] = filtered['test_ds_score'].rank(ascending=False, method='min')
+        dfs.append(filtered)
+    ranked = pd.concat(dfs, axis=0, ignore_index=True)
+    return ranked
 
-def get_runs_within_clf(df, classifier, dataset, revealed_pcts):
-    df.query(f'classifier == {classifier} &\
-               dataset == {dataset} &\
-               FT_Team.str.startswith("S").values')
+def get_used_train_length(row, splits=10):
+    length = row['length']
+    pct = row['revealed_pct']
+    split_lengths= ([length // splits + (1 if x < length % splits else 0)  for x in range (splits)])
+    split_indexes= np.cumsum(split_lengths).tolist()
+    return split_indexes[int(pct/10) - 1]
 
-    return False
+def get_standard_train_length(row):
+    pct10_length = [5,10,25,50,100]
+    pct20_length = [10,20,50,100,200]
+    pct30_length = [15,30,75,150,300]
+    pct100_length = [50,100,250,500,1000]
+    pct = row['revealed_pct']
+    if pct == 10:
+        train_length_std = apply_metric_standardization(row, pct10_length, 'train_length')
+    elif pct == 20:
+        train_length_std = apply_metric_standardization(row, pct20_length, 'train_length')
+    elif pct == 30:
+        train_length_std = apply_metric_standardization(row, pct30_length, 'train_length')
+    elif pct == 100:
+        train_length_std = apply_metric_standardization(row, pct100_length, 'train_length')
+    else:
+        raise Exception(f"No handling for {pct}% in length std")
+    return train_length_std
+
+def get_standard_train_size(row):
+    sizes = [50,100,250,500,1000]
+    train_size_std = apply_metric_standardization(row, sizes, 'train_size')
+    return train_size_std
+
+def get_standard_num_classes(row):
+    classes = [2,3,4,5,10,15,30,50]
+    train_size_std = apply_metric_standardization(row, classes, 'num_classes')
+    return train_size_std
+
+def apply_metric_standardization(row, values, col):
+    r = len(values) + 1
+    for i in range(r):
+        if i == 0:
+            min = 0
+            max = values[i]
+        elif i == len(values):
+            min = values[i-1]
+            max = np.inf
+        else:
+            min = values[i-1]
+            max = values[i]
+
+        if (row[col] > min) and (row[col] <=max):
+            if max != np.inf:
+                return f"{min}-{max}"
+            else:
+                return f'{min}+'
+        else:
+            continue
 
 def get_ds_finished_chunks_for_clf(df, classifier, num_chunks):
     df = filter_by_val(df, 'classifier', classifier)
@@ -107,29 +173,85 @@ def get_extended_datasets(dataset_df, revealed_pct, classifiers):
     return datasets_extended
 
 pcts= [10, 20, 30, 100]
-train_size = [50,100,250,500,1000]
-length = [50,100,250,500,1000]
-num_classes = [2,3,4,5,10,15,30,50]
+
 classifiers = ['ST', 'CBoss', 'TSF', 'PForest', 'WEASEL', 'Dummy']
 analysis_filenames = 'log_filenames.csv'
+
+dataset_df = get_datasets_df()
+dataset_extended = get_extended_datasets(dataset_df, pcts, classifiers)
 
 json_files = get_json_files(analysis_filenames)
 df = extract_json_data(json_files)
 df = get_analysis_df(df)
 df = create_clf_pct_col(df)
+df = get_joined_df(df, dataset_df)
+df['train_length'] = df.apply(get_used_train_length, axis=1)
+df['train_length_std'] = df.apply(get_standard_train_length, axis=1)
+df['train_size_std'] = df.apply(get_standard_train_size, axis=1)
+df['num_classes_std'] = df.apply(get_standard_num_classes, axis=1)
+###### across clf analysis ######
 
-dataset_df = get_datasets_df()
-dataset_extended = get_extended_datasets(dataset_df, pcts, classifiers)
+## 10% datasets
+ds_10pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 10, 5)
+ds_10pct_data = filter_by_val(df, 'revealed_pct', 10)
+ds_10pct = filter_by_list(ds_10pct_data, 'dataset', ds_10pct_finished_5clf_list)
+
+## CD same pct revealed
+ds_10pct_cd = get_cd_df(ds_10pct)
+# ds_10pct_cd.to_csv('pforest_example.csv', index=False)
+
+## rank on data set
+ds_10_pct_ranked = rank_on_ds_score(ds_10pct)
+ds_10_pct_ranked_1_only = ds_10_pct_ranked[ds_10_pct_ranked['ds_rank']==1]
+### by type
+ds_10_pct_ranked_type = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['type'])
+# ds_10_pct_ranked_type.to_csv('ranking.csv', index=False)
+### by length
+ds_10_pct_ranked_length = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_length_std'])
+# ds_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+### by train size
+ds_10_pct_ranked_size = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_size_std'])
+# ds_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+### by num classes
+ds_10_pct_ranked_size = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['num_classes_std'])
+# ds_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+
+###### within clf analysis ######
+
+## TSF
+tsf_finished_4chunks_list = get_ds_finished_chunks_for_clf(df, 'TSF', 4)
+tsf_data = filter_by_val(df, 'classifier', 'TSF')
+tsf_4chunks = filter_by_list(tsf_data, 'dataset', tsf_finished_4chunks_list)
+
+## CD between diff pct revealed
+tsf_4chunks_cd = get_cd_df(tsf_4chunks)
+# tsf_4_chunks_cd.to_csv('pforest_example.csv', index=False)
+
+## scatter tsf100 vs tsf_10
+tsf100_vs_tsf10= pd.pivot_table(tsf_4chunks, values='test_ds_score', columns=['revealed_pct'], aggfunc=np.sum, index=['dataset'])
+plt.plot(tsf100_vs_tsf10[10], tsf100_vs_tsf10[100], 'o', color='black')
+# plt.plot([0,1], [0, 1], 'k-')
+plt.xlabel('TSF_10', fontsize=16)
+# plt.margins(x=0)
+plt.ylabel('TSF_100', fontsize=16)
+# plt.margins(y=0)
+plt.fill([0,0,1,0], [0,1,1,0], 'lightskyblue', alpha=0.2, edgecolor='lightskyblue')
+ax = plt.gca()
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+ax.xaxis.set_ticks_position('bottom')
+ax.yaxis.set_ticks_position('left')
+plt.savefig('TSF100_vs_TSF10.jpg', dpi=200)
+plt.show()
+
 
 import IPython
 IPython.embed()
 
-joined = get_joined_df(df, dataset_df)
+# datasets = list(joined['dataset'].unique())
+# dataset_types = list(joined['type'].unique())
 
-datasets = list(joined['dataset'].unique())
-dataset_types = list(joined['type'].unique())
-
-df_10 = filter_by_val(df, 'revealed_pct', 10)
-df_20 = filter_by_val(df, 'revealed_pct', 20)
-df_30 = filter_by_val(df, 'revealed_pct', 30)
-df_100 = filter_by_val(df, 'revealed_pct', 100)
+# df_10 = filter_by_val(df, 'revealed_pct', 10)
+# df_20 = filter_by_val(df, 'revealed_pct', 20)
+# df_30 = filter_by_val(df, 'revealed_pct', 30)
+# df_100 = filter_by_val(df, 'revealed_pct', 100)

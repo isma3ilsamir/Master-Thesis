@@ -7,6 +7,7 @@ from sktime.utils.data_io import load_from_tsfile_to_dataframe as load_tsf
 from sktime.utils.data_io import load_from_ucr_tsv_to_dataframe as load_tsv
 from sktime.utils.data_processing import from_long_to_nested, from_nested_to_long
 from sktime.transformations.series.impute import Imputer
+import IPython
 
 def lookup_dataset(dataset_name):
     try:
@@ -110,3 +111,108 @@ def impute_missing_values(idx, df, ds, clf_name):
         d= row['column']
         imputed_data= imputer.fit_transform(df[d].iloc[i])
         df[d].iloc[i]= imputed_data
+
+def check_for_missing_values_1(datasets):
+    ds_w_missing= []
+    ds_wout_missing= []
+    for ds in datasets:
+        X_train, _, _, _ = get_test_train_data(ds)
+        long_format= from_nested_to_long(X_train)
+        idx= long_format[long_format['value'].isnull()][['index','column']]
+        if idx.empty:
+            ds_wout_missing.append(ds)
+        else:
+            ds_w_missing.append(ds)
+            # print(f"Dataset {ds} has missing values, current framework cannot handle such case")
+            # raise Exception(f"Dataset {ds} has missing values, current framework cannot handle such case")
+    return ds_wout_missing, ds_w_missing
+
+
+l = ['StandWalkJump',
+'AtrialFibrillation',
+'InsectEPGSmallTrain',
+'Fungi',
+'Chinatown',
+'SonyAIBORobotSurface1',
+'MoteStrain',
+'DodgerLoopGame',
+'DodgerLoopWeekend',
+'Rock',
+'TwoLeadECG',
+'ECGFiveDays',
+'SonyAIBORobotSurface2',
+'Coffee',
+'FreezerSmallTrain',
+'Ering',
+'Beef',
+'OliveOil',
+'HouseTwenty',
+'BasicMotions',
+'CinCECGtorso',
+'Wine',
+'DuckDuckGeese',
+'Meat',
+'Car',
+'Lightning2',
+'InsectEPGRegularTrain',
+'ItalyPowerDemand',
+'Lightning7',
+'DodgerLoopDay',
+'ECG200',
+'Trace',
+'ACSF1',
+'PigAirwayPressure',
+'PigArtPressure',
+'PigCVP',
+'Plane',
+'Cricket',
+'Ham',
+'Epilepsy',
+'Handwriting',
+'FreezerRegularTrain',
+'RacketSports',
+'HandMovementDirection',
+'Libras',
+'NATOPS',
+'PowerCons',
+'SelfRegulationSCP2',
+'Heartbeat',
+'Phoneme',
+'Computers',
+'EthanolConcentration',
+'PEMS-SF',
+'SelfRegulationSCP1',
+'JapaneseVowels',
+'MotorImagery',
+'SemgHandGenderCh2',
+'FingerMovements',
+'Earthquakes',
+'EOGHorizontalSignal',
+'EOGVerticalSignal',
+'LargeKitchenAppliances',
+'RefrigerationDevices',
+'ScreenType',
+'SmallKitchenAppliances',
+'SemgHandMovementCh2',
+'SemgHandSubjectCh2',
+'ECG5000',
+'EthanolLevel',
+'Strawberry',
+'Wafer',
+'StarlightCurves',
+'MelbournePedestrian',
+# 'NonInvasiveFetalECGThorax1',
+# 'NonInvasiveFetalECGThorax2',
+'UWaveGestureLibrary',
+'LSST',
+'FordA',
+'FordB',
+'FaceDetection',
+'SpokenArabicDigits',
+'ElectricDevices',
+# 'InsectWingbeat',
+'InsectWingbeatSound']
+
+ds_wout_missing, ds_w_missing = check_for_missing_values_1(l)
+
+IPython.embed()

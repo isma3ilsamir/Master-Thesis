@@ -6,15 +6,15 @@ from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 from sklearn.metrics.pairwise import cosine_distances
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import CategoricalNB, GaussianNB, BernoulliNB
+import random
 
+cwd = os.path.dirname(__file__)
 
 def get_categorical_columns(df):
     return list(df.select_dtypes(include=['object']).columns.values)
 
-
 def get_numerical_columns(df):
     return list(df.select_dtypes(include=[np.number]).columns.values)
-
 
 def get_binary_columns(df):
     return list(df.select_dtypes(include=[bool]).columns.values)
@@ -79,28 +79,20 @@ def get_cosine_matrix(df_train, df_test):
 
 
 def get_trained_datasets():
-    path_to_ds = os.path.join(os.getcwd(), 'recommendation', 'ds.csv')
+    path_to_ds = os.path.join(cwd, 'ds.csv')
     ds_train = pd.read_csv(path_to_ds)
-    ds_train = ds_train.set_index('uea_ucr')
-    ds_train = ds_train.drop(columns=['dataset', 'in_both'])
+    # ds_train = ds_train.set_index('uea_ucr')
+    # ds_train = ds_train.drop(columns=['dataset', 'in_both'])
     return ds_train
 
+def get_train_test_ds(ds, num_test_ds):
+    ds_names = ds['dataset'].unique().tolist()
+    ds_test_names = random.sample(ds_names, num_test_ds)
+    ds_train_names = list(set(ds_names).difference(set(ds_test_names)))
 
-def get_new_datasets():
-    path_to_ds_test = os.path.join(
-        os.getcwd(), 'recommendation', 'ds_test.csv')
-    ds_test = pd.read_csv(path_to_ds_test)
-    ds_test = ds_test.set_index('uea_ucr')
-    ds_test = ds_test.drop(columns=['dataset', 'in_both'])
-    return ds_test
-
-
-def get_performance_results():
-    path_to_alg_ds = os.path.join(os.getcwd(), 'recommendation', 'alg_ds.csv')
-    alg_ds = pd.read_csv(path_to_alg_ds)
-    alg_ds = alg_ds.set_index('uea_ucr')
-    return alg_ds
-
+    ds_train = ds[ds['dataset'].isin(ds_train_names)].copy()
+    ds_test = ds[ds['dataset'].isin(ds_test_names)].copy()
+    return ds_train, ds_test
 
 def prepare_training_dataset(ds_train, ds_test, alg_ds):
     cat_encoder = OrdinalEncoder()
@@ -141,10 +133,9 @@ def prepare_training_dataset(ds_train, ds_test, alg_ds):
 if __name__ == '__main__':
 
     ds = get_trained_datasets()
-    ds_train, ds_test = train_test_split(ds, train_size= 0.8, test_size= 0.2)
-    alg_ds = get_performance_results()
+    ds_train, ds_test = get_train_test_ds(ds,2)
 
     # similarity between datasets
     cos_result_df = get_cosine_matrix(ds_train, ds_test)
 
-    prepare_training_dataset(ds_train, ds_test, alg_ds)
+    # prepare_training_dataset(ds_train, ds_test, alg_ds)
