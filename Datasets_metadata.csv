@@ -5,7 +5,7 @@ BasicMotions,BasicMotions,TRUE,40,40,100,4,HAR,Multivariate,6,TRUE
 Beef,Beef,TRUE,30,30,470,5,SPECTRO,Univariate,1,TRUE
 Car,Car,TRUE,60,60,577,4,SENSOR,Univariate,1,TRUE
 Chinatown,Chinatown,TRUE,20,345,24,2,Traffic,Univariate,1,TRUE
-CinCECGtorso,CinCECGtorso,TRUE,40,1380,1639,4,ECG,Univariate,1,FALSE
+CinCECGTorso,CinCECGTorso,TRUE,40,1380,1639,4,ECG,Univariate,1,FALSE
 Coffee,Coffee,TRUE,28,28,286,2,SPECTRO,Univariate,1,TRUE
 Computers,Computers,TRUE,250,250,720,2,DEVICE,Univariate,1,TRUE
 Cricket,Cricket,TRUE,108,72,1197,12,HAR,Multivariate,6,TRUE
