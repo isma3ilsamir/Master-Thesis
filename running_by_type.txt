@@ -59,7 +59,7 @@ Multivariate
 --dataset=FaceDetection --dataset=FingerMovements --dataset=HandMovementDirection --dataset=MotorImagery --dataset=SelfRegulationSCP1 --dataset=SelfRegulationSCP2
 
 ### HAR ###
---dataset=BasicMotions --dataset=Cricket --dataset=Epilepsy --dataset=Ering --dataset=Handwriting --dataset=Libras --dataset=NATOPS --dataset=RacketSports --dataset=UWaveGestureLibrary
+--dataset=BasicMotions --dataset=Cricket --dataset=Epilepsy --dataset=ERing --dataset=Handwriting --dataset=Libras --dataset=NATOPS --dataset=RacketSports --dataset=UWaveGestureLibrary
 
 ### MISC ###  --> claifornia traffic station occupancy sensors, classify day of week
 --dataset=PEMS-SF
