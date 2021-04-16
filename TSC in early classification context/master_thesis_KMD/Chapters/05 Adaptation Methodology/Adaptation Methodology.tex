@@ -1,8 +1,18 @@
 \chapter{Framework and Experimental Design}
 \label{ChapterFrameworkExperiment}
-This chapter describes our proposed framework which compares TSCAs in a context which is inspired by the problem of eTSC.
-We will define what we mean by early classification context and how do we simulate it. We will also discuss the different steps
-of the framework and what tools were used to build it.
+This chapter describes our proposed framework which compares TSCAs in a context that is inspired by the problem of eTSC and the design of our experiment.
+We begin by defining what we mean by early classification context and how does our framework simulate it.
+Then we discuss the structure of the framework, the software tools that were used to build it and how to evaluate it.
+In the second section of the chapter we represent our experimental setup.
+
+%%%%
+%%%%There are three research questions that are discussed:
+%%%%\begin{itemize}
+  %%%%\item How to adapt existing TSC workflows for the early TSC context ?
+  %%%%\item How to evaluate classifiers in the early TSC context ?
+  %%%%\item How to evaluate the proposed solution ?
+%%%%\end{itemize}
+%
 
 \section{The Framework}
 \label{SectionNewFramework}
@@ -13,47 +23,81 @@ while maintaining accuracy \cite{mori2017early}.
 Our framework, on the other hand, investigates the adaptation of the context in which conventional TSCA operate to learn a specific
 classification problem and the effect it has on the classifiers' performance.
 
-% Should describe the early classification context
+\subsection{Early Classification Context}
+\label{SubsectionEarlyClassificationContext}
 We define our early classification context as the problem in which a TSCA is trained on labeled but incomplete time series data, then
 used to classify data instances of full length.
 
+The motivation behind experimenting with such a context is driven by the medical field, where sometimes patients have to go through strenuous tests to be diagnosed.
+This is specially the case in audiological examinations; as patients are exposed to signals which pushs the limits of their hearing discomfort to be able to examine their problems.
+A classifier which can attain comparable reasults while only learning on a fraction of the whole time series data would shorten this process and thus relief patients from their discomfort.
+
+To answer our first research question \textbf{\textit{How can we adapt existing ts classification workflow for the early TS scenario ?}}
+
+We propose a framework that simulates an early classification context and runs a series of experiments using different TSCAs.
+It divides whole timeseries data instances into smaller subseries using a chopping algorithm, then starts multiple learning processes.
+In each learning process, the data is exposed incrementally to the classifier by revealing the next sub-series.
+These processess simulate an incremental learning scenario, where the classifier is not exposed to all the data points collected from the beginning to the end at once.
+However in each learning process it gets to know more information about the data instances than the previous process.
+In order to assess the perforance of classifiers that were exposed to less data points, we use the performance of classifiers that were exposed to full length training data as a baseline.
+In the next subsection \ref{SubsectionFrameworkStructureToolkits} we discuss the the details and the structure of the framework and 
+
+
+\subsection{Structure and Toolkits}
+\label{SubsectionFrameworkStructureToolkits}
 % Libraires we use
 We implemented our framework in python language.
 For the implementation of the non-deep learning algorithms we used the open source libraires $sktime$ \cite{loning2019sktime} and $pyts$ \cite{JMLR:v21:19-763},
 while for the implementation of the deep learning algorithm InceptionTime we used the library $sktimedl$ which provides an interface for the implementation provided
-in the study \cite{fawaz2020inceptiontime}. Finally, we used the library \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to it's
-capacity to transform the raw data into the needed input formats for all the other libraires.
+in the study \cite{fawaz2020inceptiontime}. Finally, we used the library $Tslearn$ \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to it's
+capacity to transform the raw data into any needed input format for all the other libraires.
 
 The framework can be divided into several consecutive steps:
 \begin{enumerate}
     \item User input
     \item Experiment preparation
-    \item Model Training
-    \item Testing and analysis report
+    \item Experiment Execution
+    \item Analysis report
 \end{enumerate}
 
+\subsubsection{User Input}
+\label{SubsectionUserInput}
 % User Input
 In the user input step, the user provides the necessary information required by the framework to start it's experiments.
 These information provide the guidelines of the process which will be carried out and decide what steps should be done in the
 experiment preparation step.
 Table \ref{TableUserInput} shows a summary of each of the needed information, represented as a parameter for the framework.
-\begin{table}
-    \centering
-    \begin{tabular}{|l|l|l|}
-    \hline
-    \multicolumn{1}{|l|}{Parameter} & Data Type          & Description                                        \\ \hline
-    Dataset                         & String List        & The name of the data set(s)                        \\ \hline
-    Splits                          & Integer            & The number of splits to apply on the data set      \\ \hline
-    Hyperparam                      & Boolean            & Learn hyperparameters for the model or skip        \\ \hline
-    NumIterations                   & Integer            & Number of hyperparameters combinations to sample   \\ \hline
-    ChunksToKeep                    & Integer List       & The indexes of the chunks to use                   \\ \hline
-    FromBeg                         & Boolean            & Reveal data chunks from beginning or end           \\ \hline
-    ScoringFunction                 & String             & The strategy for evaluating the model on test data \\ \hline
-    \end{tabular}
-    \caption{Input parameters required for using the framework}
-    \label{TableUserInput}
+
+\begin{table}[hbt!]
+  \setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
+  \begin{tabularx}{\textwidth}{|X|X|X|}
+  \hline
+  \textbf{Parameter} & \textbf{Data Type} & \textbf{Description} \\ \hline
+    Dataset         & String List        & The name of the data set(s)                        \\ \hline
+    Splits          & Integer            & The number of splits to apply on the data set      \\ \hline
+    Hyperparam      & Boolean            & Learn hyperparameters for the model or skip        \\ \hline
+    NumIterations   & Integer            & Number of hyperparameters combinations to sample   \\ \hline
+    ChunksToKeep    & Integer List       & The indexes of the chunks to use                   \\ \hline
+    FromBeg         & Boolean            & Reveal data chunks from beginning or end           \\ \hline
+    ScoringFunction & String             & The strategy for evaluating the model on test data \\ \hline
+  \end{tabularx}
+  \caption{Input parameters required for using the framework}
+  \label{TableUserInput}
 \end{table}
 
+We implemented the user input interface using $docopt$ \footnote{http://docopt.org}; a library which offers command-line interfaces through
+the use of simple arguments and elements. It also allows to set default values for parameters which can be overriden if a value is passed.
+In order to start running the framework, one provides the necessary parameter values through a simple terminal command.
+Listing \ref{ListingUserInput} shows a sample command for running our master python file $run.py$ on the Computers data set using hyperparameters optimization,
+while applying a split into 10 chunks.
+
+\lstset{basicstyle=\ttfamily\small}
+\begin{lstlisting}[language=Comsol,caption={Sample command for providing user input to the framework},captionpos=b,label={ListingUserInput}]
+  python run.py --etsc --dataset=Computers --cv --split=10
+\end{lstlisting}
+
+\subsubsection{Experiment Preparation}
+\label{SubsectionExperimentPreparation}
 % Experiment Preparation
 In the experiment preparation step, the framework starts preparing the different components of the experiment to be run.
 These components include data set management, models initialization, preparation of the early classification context
@@ -198,20 +242,71 @@ If we consider our previous example, when we set the value of $s$ = 10 then the 
 If we decided to change the value of $s$ = 20, then each chunk will roughly represents 5\% of the total length and so on.
 Increasing the number of splits to be used comes with the cost of time and resources, each extra split adds one extra run per algorithm per data set.
 
+\subsubsection{Experiment Execution}
+\label{SubsectionExperimentExecution}
+% Training Models
+The experiment execution step is where the actual processing of happens. 
+As previously mentioned in section \ref{SectionTSCA},
+we follow the grouping criteria by \cite{bagnall2017great} which arranges TSCAs into 5 main categories based on their techniques.
+We have included classifiers representing each of the 5 groups, in addition to a \nth{6} group which represents the family of deep learning time series algorithms.
+We tried, as far as the implemented libraries allowed, to represent each group with 2 classifiers; one that is a non-ensebmle and another which is an ensemble.
+A total of 10 classifiers are included in the framework covering all 6 groups, these can be broken down into the following:
+\begin{itemize}
+  \item Distance based : 1NN using MSM distance and PForest
+  \item Phase dependent algorithms : TSF
+  \item Shapelets: LS and ST
+  \item Dictionary based : WEASEL and BOSS
+  \item Deep learning : InceptionTime
+  \item Classical baselines: 1NN using euclidean distance and 1NN using DTW
+\end{itemize}
 
-% Analysis
+
+Table \ref{TableClassifierParams} shows the configuration and hyperparameters for all the included classifiers.
+We used the same hyperparameter space like that of the original published papers as closely as possible.
+During training, the number of hyperparameter sampling is decided by the framework parameter $NumIterations$ and we fix the number of cross validation folds to 5.
+
+\begin{table}[hbt!]
+  \setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
+  \begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  \textbf{Classifier} & \textbf{Parameters} \\ \hline
+  MSM                 & c = \{0.01, 0.1, 1, 10, 100\}                                                        \\ \hline
+  PForest             & k = 100 \newline r = 5                                                               \\ \hline
+  TSF                 & r = 500 \newline splitting = \{entropy, gini\} \newline maxfeatures = \{sqrt, log2\} \\ \hline
+  LS                  & $\lambda_{w}$ = \{0.01, 0.1, 1\} \newline
+                        $L_{min}$ = \{0.025, 0.075, 0.125, 0.175, 0.2\} \newline R = \{1, 2, 3\} \newline
+                        K = \{0.05, 0.15, 0.3\} \newline $\eta$ = 0.01 \newline
+                        maxIter = \{2000, 5000, 10000\}                                                      \\ \hline
+  ST                  & t = 60 mins \newline n=\{500,100\}                                                   \\ \hline
+  CBOSS               & t = 60 mins \newline k=\{50, 100, 250, 500\} \newline s=250 \newline p=[0.5 - 1]     \\ \hline
+  WEASEL              & ANOVA = \{True, False\} \newline bigrams =\{True, False\}
+                        \newline binning = \{equi-depth, equi-width, information-gain\}                      \\ \hline
+  Inception           & epochs = 1500 \newline batch size = 64 \newline $\eta$ = 0.001 \newline
+                        kernel sizes = \{10, 20, 40\}                                                        \\ \hline
+  DTW                 & full warping window                                                                  \\ \hline
+  \end{tabularx}
+  \caption{Parameters and configuration for TSCAs}
+  \label{TableClassifierParams}
+\end{table}
+
+
+
+
+\subsubsection{Analysis Report}
+\label{SubsectionAnalysisReport}
+% Analysis Report
 The last step of our framework is the testing and analysis report.
 After the successful running of the experiments and calculating performance scores using the provided scoring function, we create a single report for each run experiment.
 We produce one report per classifier per data set.
 We refer by data set to each data set that was finally produced by the chopping algorithm.
 These reports collect the essential data and statistics that form the basis of our results.
-Table \ref{TableAnalysisReport} shows the structureof the output for the analysis report.
+Table \ref{TableAnalysisReport} shows the structure of the output for the analysis report.
 
-\begin{table}
-    \centering
-    \begin{tabular}{|l|l|}
-    \hline
-    \multicolumn{1}{|l|}{Item} & Description                                                     \\ \hline
+\begin{table}[hbt!]
+  \setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
+  \begin{tabularx}{\textwidth}{|X|X|}
+  \hline
+  \textbf{Item} & \textbf{Description} \\ \hline
     Classifier                 & The classifier name                                             \\ \hline
     Train time                 & The total training time (CPU Time)                              \\ \hline
     Test time                  & The total testing time (CPU Time)                               \\ \hline
@@ -220,7 +315,18 @@ Table \ref{TableAnalysisReport} shows the structureof the output for the analysi
     Revealed \%                & Percent of data points used for training from the total length  \\ \hline
     Harmonic Mean              & Harmonic mean between test score and revealed \%                \\ \hline
     Dataset                    & The name of the data set                                        \\ \hline
-    \end{tabular}
-    \caption{Analysis report created for each experiment}
-    \label{TableAnalysisReport}
+  \end{tabularx}
+  \caption{Analysis report created for each experiment}
+  \label{TableAnalysisReport}
 \end{table}
+
+\section{Experiments}
+\label{SectionExperiment}
+% Experiments
+For each of the chosen data sets, we have trained 10 
+
+% Models excluded due to performance
+
+% Models excluded due not handling the context
+
+% Models used 

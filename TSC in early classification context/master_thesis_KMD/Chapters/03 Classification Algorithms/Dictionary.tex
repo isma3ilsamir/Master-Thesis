@@ -34,8 +34,8 @@ We will, briefly, discuss the main components that are used for each of the prev
 
 % Windowing
 To extract the substructures from a given time series instance $T = [t\textsubscript{1},t\textsubscript{2},...t\textsubscript{n}$],
-a windowing function is used to split it into fixed sized windows $S\textsubscript{i;w} = (t\textsubscript{i},,...t\textsubscript{i+w-1}$), each of them is of a size \emph{w}.
-The total number of windows that can be created for a time series of length n is \emph{n-w+1}, and each consecutive windows overlap on \emph{w-1} points.
+a windowing function is used to split it into fixed sized windows $S\textsubscript{i;w} = (t\textsubscript{i},,...t\textsubscript{i+w-1}$), each of them is of a size $w$.
+The total number of windows that can be created for a time series of length n is $n-w+1$, and each consecutive windows overlap on $w-1$ points.
 In order to achieve offset and amplitude invariance, each window is z-normalized by subtracting the mean from it's original values and then dividing the difference
 by the standard deviation.
 \begin{equation}
@@ -125,7 +125,7 @@ While keeping track of their order; in order to use them later on as bi-gram fea
 This replaces the process of building multiple models then choosing the best one, with building only one model which can learn from the concatenated high-dimensional feature vector.
 Then each of the substructures is normalized and a DFT is applied.
 Instead of filtering out the higher Fourier coefficients, WEASEL applies an ANalysis Of VAriance (ANOVA) F-test to keep real and imaginary Fourier values that best separate instances from different classes.
-Then the kept coefficients are discretized into words, based on alphabet of size \emph{c}, using binning boundaries. Instead of using equi-depth binning, WEASEL applies an information gain based
+Then the kept coefficients are discretized into words, based on alphabet of size $c$, using binning boundaries. Instead of using equi-depth binning, WEASEL applies an information gain based
 binning technique; which further more helps separating instances of classes.
 In the end, a histogram is built using all the windows lengths and the extracted features, uni-grams and bi-grams.
 Irrelevant features are then filtered out using a Chi-squared test. The final highly discriminative feature vector produced is then used to learn a logistic regression classifier.
@@ -140,7 +140,7 @@ Irrelevant features are then filtered out using a Chi-squared test. The final hi
 \end{figure}
 
 % Feature Extraction
-WEASEL, like BOSS, transforms extracted windows from a time series into words using an alphabet of size \emph{c}.
+WEASEL, like BOSS, transforms extracted windows from a time series into words using an alphabet of size $c$.
 They identify two main drawbacks for SFA, and introduce a new supervised symbolic representation technique which is based on SFA but overcomes the drawbacks.
 The first drawback of SFA is that it acts like a low pass filter and excludes the high frequency components from the Fourier transformation,
 which might discard important features in some scenarios. The other drawback, is that SFA defines the boundaries of bins during quantization
@@ -149,29 +149,29 @@ In order to over come the drawbacks of SFA, WEASEL follows two steps;
 discriminative approximation using ANOVA F-test and discriminative quantization using information gain.
 
 % Feature Extraction - approximation
-As mentioned earlier, approximation involves representing a time series of length \emph{n} with a shorter, yet informative, representation of length \emph{l} by applying a Fourier transformation.
-WEASEL aims at keeping the best class separating \emph{l}, real and imaginary, Fourier coefficients by applying a one-way ANOVA F-test.
+As mentioned earlier, approximation involves representing a time series of length $n$ with a shorter, yet informative, representation of length $l$ by applying a Fourier transformation.
+WEASEL aims at keeping the best class separating $l$, real and imaginary, Fourier coefficients by applying a one-way ANOVA F-test.
 The test verifies the hypothesis that the means of two or more distributions/groups differ from each other \cite{lowry2014concepts}.
 This can be tested by comparing two variances; the variance between groups and the variance within the groups.
-Using the notations in \cite{schafer2017fast}, \emph{mean square between} ($MS\textsubscript{B}$) and \emph{mean square within} ($MS\textsubscript{W}$) respectively.
+Using the notations in \cite{schafer2017fast}, $mean square between$ ($MS\textsubscript{B}$) and $mean square within$ ($MS\textsubscript{W}$) respectively.
 The F-values is then calculated as :
 \begin{equation}
     F= \frac{MS\textsubscript{B}}{MS\textsubscript{W}}
 \end{equation}
-Then \emph{l} coefficients with the highest F-values are kept; as these represent features which have big differences between the classes (high $MS\textsubscript{B}$) and
+Then $l$ coefficients with the highest F-values are kept; as these represent features which have big differences between the classes (high $MS\textsubscript{B}$) and
 small differences within the same class (low $MS\textsubscript{W}$).
 
 % Feature Extraction - quantization
 After that, discretization is carried out to set the split thresholds for each of the extracted Fourier value.
 Discretization involves a binning process, where each Fourier value is divided into a number of bins.
-Each bin is represented by an upper and a lower boundary, and assigned a letter from an alphabet \emph{c}.
+Each bin is represented by an upper and a lower boundary, and assigned a letter from an alphabet $c$.
 Previous quantization techniques used equi-depth or equi-width binning, but these techniques are solely based on values and ignore the distribution of classes.
 WEASEL applies a binning technique based on IG; assuring that for each partition the majority of the values would belong to the same class.
 
 % Feature Selection
-The result of the feature extraction phase is a high dimensional feature vector with a dimensionality of \emph{$\mathcal{O}(min(Nn^{2},c^{l})$},
-where \emph{c} is an alphabet, \emph{l} is the length of a word, \emph{N} is the total number of instances and \emph{n} is the length of the time series.
-Since WEASEL uses bi-grams and \emph{$\mathcal{O}(n)$} window lengths, the dimensionality of the feature space increases to \emph{$\mathcal{O}(min(Nn^{2},c^{2l} \cdot n)$}.
+The result of the feature extraction phase is a high dimensional feature vector with a dimensionality of $\mathcal{O}(min(Nn^{2},c^{l})$,
+where $c$ is an alphabet, $l$ is the length of a word, $n$ is the total number of instances and $n$ is the length of the time series.
+Since WEASEL uses bi-grams and $\mathcal{O}(n)$ window lengths, the dimensionality of the feature space increases to $\mathcal{O}(min(Nn^{2},c^{2l} \cdot n)$.
 This enormous feature space is then reduced using a Chi-squared ($\chi^{2}$) test. Chi-squared tests is a statistical test used to determine if there is a significant difference
 between the recognised frequencies and the expected frequencies of of a features within a group. This implies that features which have high ($\chi^{2}$) values are statistically
 frequent in certain classes. By comparing the ($\chi^{2}$) values of features to a threshold, all features with scores lower than the threshold can be excluded from the faeture space.
