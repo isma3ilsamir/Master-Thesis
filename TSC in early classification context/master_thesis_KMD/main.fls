@@ -200,6 +200,9 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\epstopdf-pkg\epsto
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\english.lbx
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\biblatex\lbx\english.lbx
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.bcf
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.bbl
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.bbl
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.bbl
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\caption\ltcaption.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\caption\ltcaption.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\hyperref\nameref.sty
@@ -208,4 +211,256 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\refcount\refcount.
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\refcount\refcount.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.pdf
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\title_page.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\title_page.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Figure\Signet_INF_1.pdf
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Figure\Signet_INF_1.pdf
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Figure\Signet_INF_1.pdf
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Figure\Signet_INF_1.pdf
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
+INPUT C:\Users\Ismail\AppData\Local\MiKTeX\pdftex\config\pdftex.map
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr9.tfm
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\abstract.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\abstract.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT .\tableofcontents.tex
+INPUT .\tableofcontents.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+INPUT main.toc
+INPUT main.toc
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam5.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsl10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.toc
+INPUT ListOfFigures.tex
+INPUT ListOfFigures.tex
+INPUT main.lof
+INPUT main.lof
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.lof
+INPUT ListOfTable.tex
+INPUT ListOfTable.tex
+INPUT main.lot
+INPUT main.lot
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.lot
+INPUT ListOfAbbreviations.tex
+INPUT ListOfAbbreviations.tex
+INPUT Chapters\01 Introduction\Introduction.tex
+INPUT Chapters\01 Introduction\Introduction.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\omscmr.fd
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\omscmr.fd
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+INPUT Chapters\02 Related Work\Related Work.tex
+INPUT Chapters\02 Related Work\Related Work.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
+INPUT Chapters\03 Classification Algorithms\Classification Algorithms.tex
+INPUT Chapters\03 Classification Algorithms\Classification Algorithms.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7.tfm
+INPUT Chapters\03 Classification Algorithms\.\Whole.tex
+INPUT Chapters\03 Classification Algorithms\.\Whole.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm0900.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\omlcmr.fd
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\omlcmr.fd
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\ED_vs_DTW.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\ED_vs_DTW.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\ED_vs_DTW.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\ED_vs_DTW.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\ED_vs_DTW.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\MSM.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\MSM.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\MSM.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\MSM.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\MSM.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\PForest.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\PForest.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\PForest.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\PForest.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\PForest.JPG
+INPUT Chapters\03 Classification Algorithms\.\Phase Dependent.tex
+INPUT Chapters\03 Classification Algorithms\.\Phase Dependent.tex
+INPUT Chapters\03 Classification Algorithms\.\Shapelet.tex
+INPUT Chapters\03 Classification Algorithms\.\Shapelet.tex
+INPUT Chapters\03 Classification Algorithms\.\Dictionary.tex
+INPUT Chapters\03 Classification Algorithms\.\Dictionary.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BossFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BossFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BossFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BossFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BossFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BOSS_SFA.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BOSS_SFA.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BOSS_SFA.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BOSS_SFA.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\BOSS_SFA.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASELFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASELFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASELFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASELFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASELFlow.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASEL_FEATURE.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASEL_FEATURE.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASEL_FEATURE.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASEL_FEATURE.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\WEASEL_FEATURE.JPG
+INPUT Chapters\03 Classification Algorithms\.\Deep Learning.tex
+INPUT Chapters\03 Classification Algorithms\.\Deep Learning.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\InceptionTime.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\InceptionTime.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\InceptionTime.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\InceptionTime.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Classification Algorithms\.\InceptionTime.JPG
+INPUT Chapters\03 Classification Algorithms\.\Early TSC Algorithms.tex
+INPUT Chapters\03 Classification Algorithms\.\Early TSC Algorithms.tex
+INPUT Chapters\04 Datasets\Datasets.tex
+INPUT Chapters\04 Datasets\Datasets.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Datasets\Problem_hist.JPG
+INPUT Chapters\05 Adaptation Methodology\Adaptation Methodology.tex
+INPUT Chapters\05 Adaptation Methodology\Adaptation Methodology.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbxti10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang2.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang2.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang3.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang3.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
+INPUT Chapters\06 New Framework\New Framework.tex
+INPUT Chapters\06 New Framework\New Framework.tex
+INPUT Chapters\07 Results\Results.tex
+INPUT Chapters\07 Results\Results.tex
+INPUT Chapters\08 Findings Discussion\Findings Discussion.tex
+INPUT Chapters\08 Findings Discussion\Findings Discussion.tex
+INPUT Chapters\09 Summary and Outlook\Summary and Outlook.tex
+INPUT Chapters\09 Summary and Outlook\Summary and Outlook.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.run.xml
+OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.run.xml
+INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm0900.pk
+INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm0900.pk
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr5.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr6.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr6.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsl10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsl10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti7.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb

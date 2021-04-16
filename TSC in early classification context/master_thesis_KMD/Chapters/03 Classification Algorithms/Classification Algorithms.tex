@@ -102,11 +102,13 @@ This is why eTSC is considered as a problem of optimizing multiple objectives.
 We have already defined accuracy for TSC in section \ref{TimeSeriesClassification}.
 For earliness, we follow the definition mentioned by \cite{schafer2020teaser}; as the mean number of data points s after which a label is assigned.
 \begin{definition}
+    \label{DefinitionEarliness}
     \[ \textstyle Earliness = \frac{\sum_{T{i}\in D}\frac{s}{len(T_{i})}}{|D|} \]
 \end{definition}
 As well as the objective measure, Harmonic mean (HM), mentioned by \cite{ghalwash2012early,schafer2020teaser}, which combines both accuracy and earliness in one equation.
 For the scope of our framework, we consider HM as a weighted average between accuracy and earliness.
 \begin{definition}
+    \label{DefinitionHM}
     $F_{\beta} = (1 + \beta^2)\frac{\text{accuracy(1 - earliness)}}{\beta^2 \text{(1 - accuracy) + earliness}}$
 \end{definition}
 The value of $\beta$ can be used to give higher importance to one of the aspects over the other, but we use equal weights for both.

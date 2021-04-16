@@ -245,9 +245,11 @@ Increasing the number of splits to be used comes with the cost of time and resou
 \subsubsection{Experiment Execution}
 \label{SubsectionExperimentExecution}
 % Training Models
-The experiment execution step is where the actual processing of happens. 
-As previously mentioned in section \ref{SectionTSCA},
-we follow the grouping criteria by \cite{bagnall2017great} which arranges TSCAs into 5 main categories based on their techniques.
+The experiment execution step is where the actual processing happens.
+After the preparation of the chunks for the data sets in the previous step, learning processes start and each of the implemented classifiers starts training on the prepared data sets.
+Each of these training processes is then followed by a testing process, where performance scores are calculated using the function provided by the parameter $ScoringFunction$ on testing data sets.
+
+As mentioned in section \ref{SectionTSCA}, we follow the grouping criteria by \cite{bagnall2017great} which arranges TSCAs into 5 main categories based on their techniques.
 We have included classifiers representing each of the 5 groups, in addition to a \nth{6} group which represents the family of deep learning time series algorithms.
 We tried, as far as the implemented libraries allowed, to represent each group with 2 classifiers; one that is a non-ensebmle and another which is an ensemble.
 A total of 10 classifiers are included in the framework covering all 6 groups, these can be broken down into the following:
@@ -259,7 +261,6 @@ A total of 10 classifiers are included in the framework covering all 6 groups, t
   \item Deep learning : InceptionTime
   \item Classical baselines: 1NN using euclidean distance and 1NN using DTW
 \end{itemize}
-
 
 Table \ref{TableClassifierParams} shows the configuration and hyperparameters for all the included classifiers.
 We used the same hyperparameter space like that of the original published papers as closely as possible.
@@ -289,16 +290,18 @@ During training, the number of hyperparameter sampling is decided by the framewo
   \label{TableClassifierParams}
 \end{table}
 
-
+After the training processes are finished, the classifiers are then shown the testing data sets to evaluate their performance.
+If the experiment is configured to do hyperparameter optimization,
+then the classifier version that attained the highest validation score, from the 5 cross validation folds, is used for calculating the performance score on the testing data set.
 
 
 \subsubsection{Analysis Report}
 \label{SubsectionAnalysisReport}
 % Analysis Report
-The last step of our framework is the testing and analysis report.
+The last step of our framework is the analysis report preparation.
 After the successful running of the experiments and calculating performance scores using the provided scoring function, we create a single report for each run experiment.
 We produce one report per classifier per data set.
-We refer by data set to each data set that was finally produced by the chopping algorithm.
+We refer here by data set to each data set that was finally produced by the chopping algorithm.
 These reports collect the essential data and statistics that form the basis of our results.
 Table \ref{TableAnalysisReport} shows the structure of the output for the analysis report.
 
@@ -314,11 +317,24 @@ Table \ref{TableAnalysisReport} shows the structure of the output for the analys
     Params                     & List of hyperparameters used and their values                   \\ \hline
     Revealed \%                & Percent of data points used for training from the total length  \\ \hline
     Harmonic Mean              & Harmonic mean between test score and revealed \%                \\ \hline
-    Dataset                    & The name of the data set                                        \\ \hline
+    Data set                   & The name of the data set                                        \\ \hline
   \end{tabularx}
   \caption{Analysis report created for each experiment}
   \label{TableAnalysisReport}
 \end{table}
+
+Most of these information are already available once the testing process is finished; because either they are metadata about the experiment or metrics calculated during training and testing.
+Metadata about the process is already known before the running of the process; like the $Classifier$, $Data set$ and $Revealed \%$.
+While the processes metrics are $Train time$ , $Test time$; which represent the total duration of the learning and testing processes, and the $Test score$ which represents performance of the classifier.
+
+
+There is only one metric which is calculated during the analysis report phase after all the other metrics are calculated; the harmonic mean.
+We previously defined the HM in chapter \ref{EarlyTimeSeriesClassification}, it has been used by \cite{schafer2020teaser} as the objective function for evaluating their algorithm $TEASER$.
+The HM is a popular choice for calculating a score that combines 2 objectives at the same time, which is in our case earliness and performance like the other eTSC problems.
+Earliness is represented by the value of the parameter $Revealed \%$ which is a fraction of the full series length, e.g. 0.5 means 50\% of the total length.
+On the other hand, performance is represented by the value of the parameter $Test score$.
+We use HM as the means of evaluating classifiers in our experiment; due to it's capacity to incorporate both objectives in one score.
+Which allows us to compare the trained classifiers in terms of a one score value without worrying about fixing the value of either the earliness or the performance.
 
 \section{Experiments}
 \label{SectionExperiment}
