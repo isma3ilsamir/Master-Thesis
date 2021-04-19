@@ -2460,6 +2460,12 @@
     <bcf:citekey order="214">scikit-learn</bcf:citekey>
     <bcf:citekey order="215">bagnall2017great</bcf:citekey>
     <bcf:citekey order="216">schafer2020teaser</bcf:citekey>
+    <bcf:citekey order="217">tan2019time</bcf:citekey>
+    <bcf:citekey order="218">fawaz2019deepreview</bcf:citekey>
+    <bcf:citekey order="219">caiado2009comparison</bcf:citekey>
+    <bcf:citekey order="219">tan2019time</bcf:citekey>
+    <bcf:citekey order="219">fawaz2019deepreview</bcf:citekey>
+    <bcf:citekey order="220">bagnall2017great</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="anyt">

@@ -685,6 +685,46 @@
       \field{title}{Multi-scale convolutional neural networks for time series classification}
       \field{year}{2016}
     \endentry
+    \entry{caiado2009comparison}{article}{}
+      \name{author}{3}{}{%
+        {{hash=0c7e925abcffbf8c3e27a7d150057a56}{%
+           family={Caiado},
+           familyi={C\bibinitperiod},
+           given={Jorge},
+           giveni={J\bibinitperiod}}}%
+        {{hash=0ad52aab8c6654901b89339ab2c52eaa}{%
+           family={Crato},
+           familyi={C\bibinitperiod},
+           given={Nuno},
+           giveni={N\bibinitperiod}}}%
+        {{hash=aec0357660773edd048118aa3a9249f6}{%
+           family={Pe{ñ}a},
+           familyi={P\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Taylor \& Francis}%
+      }
+      \strng{namehash}{8f574de5f8240508d515b33e284a0b40}
+      \strng{fullhash}{8f574de5f8240508d515b33e284a0b40}
+      \strng{bibnamehash}{8f574de5f8240508d515b33e284a0b40}
+      \strng{authorbibnamehash}{8f574de5f8240508d515b33e284a0b40}
+      \strng{authornamehash}{8f574de5f8240508d515b33e284a0b40}
+      \strng{authorfullhash}{8f574de5f8240508d515b33e284a0b40}
+      \field{labelalpha}{CCP09}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications in Statistics—Simulation and Computation®}
+      \field{number}{3}
+      \field{title}{Comparison of times series with unequal length in the frequency domain}
+      \field{volume}{38}
+      \field{year}{2009}
+      \field{pages}{527\bibrangedash 540}
+      \range{pages}{14}
+    \endentry
     \entry{chen2004marriage}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=046842e5933d7131df18c28d8bce94ff}{%

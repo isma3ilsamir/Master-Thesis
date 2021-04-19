@@ -376,8 +376,11 @@ def wilcoxon_holm(alpha=0.05, df_perf=None):
     # average the ranks
     average_ranks = df_ranks.rank(ascending=False).mean(axis=1).sort_values(ascending=False)
     # return the p-values and the average ranks
+    import IPython
+    IPython.embed()
+
     return p_values, average_ranks, max_nb_datasets
 
-df_perf = pd.read_csv('pforest_example.csv',index_col=False)
+df_perf = pd.read_csv('all_acc.csv',index_col=False)
 
 draw_cd_diagram(df_perf=df_perf, title='Balanced Accuracy', labels=True)

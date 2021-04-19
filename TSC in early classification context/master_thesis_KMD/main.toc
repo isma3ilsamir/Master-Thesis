@@ -114,12 +114,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.2}Experiments}{40}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}New Framework}{42}{chapter.6}%
+\contentsline {subsection}{\numberline {5.2.1}Excluded Classifiers}{41}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Results}{43}{chapter.7}%
+\contentsline {chapter}{\numberline {6}New Framework}{43}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Findings Discussion}{44}{chapter.8}%
+\contentsline {chapter}{\numberline {7}Results}{44}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Summary and Outlook}{45}{chapter.9}%
+\contentsline {chapter}{\numberline {8}Findings Discussion}{45}{chapter.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Declaration of Authorship}{56}{section.9.1}%
+\contentsline {chapter}{\numberline {9}Summary and Outlook}{46}{chapter.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9.1}Declaration of Authorship}{57}{section.9.1}%

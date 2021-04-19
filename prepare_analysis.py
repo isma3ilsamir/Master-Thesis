@@ -12,6 +12,11 @@ import matplotlib.pyplot as plt
 def round_down(num, divisor):
     return num - (num%divisor)
 
+def adjust_hm(df):
+    df_copy = df.copy()
+    df_copy['harmonic_mean'] = (2 * (1 - (df_copy['revealed_pct_actual']/100)) * df_copy['test_ds_score']) / ((1 - (df_copy['revealed_pct_actual']/100)) + df_copy['test_ds_score'])
+    return df_copy
+
 def create_whole_revpct(df):
     df['revealed_pct_actual'] = df['revealed_pct']
     # round revealed_pct
@@ -80,9 +85,15 @@ def extract_json_data(json_files):
         dfs.append(df)
     return pd.concat(dfs, axis=0, ignore_index=True, sort= False)
 
-def get_cd_df(df):
+def get_cd_df_acc(df):
     # for CD diagram
     cd_df = df[['clf','dataset','test_ds_score']]
+    cd_df.columns = ['classifier_name','dataset_name','accuracy']
+    return cd_df
+
+def get_cd_df_hm(df):
+    # for CD diagram
+    cd_df = df[['clf','dataset','harmonic_mean']]
     cd_df.columns = ['classifier_name','dataset_name','accuracy']
     return cd_df
 
@@ -189,32 +200,63 @@ df['train_length'] = df.apply(get_used_train_length, axis=1)
 df['train_length_std'] = df.apply(get_standard_train_length, axis=1)
 df['train_size_std'] = df.apply(get_standard_train_size, axis=1)
 df['num_classes_std'] = df.apply(get_standard_num_classes, axis=1)
+df = adjust_hm(df)
 ###### across clf analysis ######
 
 ## 10% datasets
 ds_10pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 10, 5)
 ds_10pct_data = filter_by_val(df, 'revealed_pct', 10)
-ds_10pct = filter_by_list(ds_10pct_data, 'dataset', ds_10pct_finished_5clf_list)
+df_10pct = filter_by_list(ds_10pct_data, 'dataset', ds_10pct_finished_5clf_list)
+
+## 20% datasets
+ds_20pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 20, 5)
+ds_20pct_data = filter_by_val(df, 'revealed_pct', 20)
+df_20pct = filter_by_list(ds_20pct_data, 'dataset', ds_20pct_finished_5clf_list)
+
+## 30% datasets
+ds_30pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 30, 5)
+ds_30pct_data = filter_by_val(df, 'revealed_pct', 30)
+df_30pct = filter_by_list(ds_30pct_data, 'dataset', ds_30pct_finished_5clf_list)
+
+## 100% datasets
+ds_100pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 100, 5)
+ds_100pct_data = filter_by_val(df, 'revealed_pct', 100)
+df_100pct = filter_by_list(ds_100pct_data, 'dataset', ds_100pct_finished_5clf_list)
+
+
+# all datasets all classifiers (excluding Dummy and 100 pct classifiers)
+df1 = df[df['classifier']!='Dummy']
+ds1_10pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 10, 5)
+ds1_20pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 20, 5)
+ds1_30pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 30, 5)
+# ds1_100pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 100, 5)
+# ds_all_clf_all_pct = set(ds1_10pct_finished_5clf_list).intersection(set(ds1_20pct_finished_5clf_list),set(ds1_30pct_finished_5clf_list),set(ds1_100pct_finished_5clf_list))
+ds_all_clf_all_pct = set(ds1_10pct_finished_5clf_list).intersection(set(ds1_20pct_finished_5clf_list),set(ds1_30pct_finished_5clf_list))
+df_all = filter_by_list(df1, 'dataset', ds_all_clf_all_pct)
+df_all = df_all[df_all['revealed_pct']!= 100]
+df_all_cd_acc = get_cd_df_acc(df_all)
+df_all_cd_hm = get_cd_df_hm(df_all)
 
 ## CD same pct revealed
-ds_10pct_cd = get_cd_df(ds_10pct)
+ds_10pct_cd_acc = get_cd_df_acc(df_10pct)
+ds_10pct_cd_hm = get_cd_df_hm(df_10pct)
 # ds_10pct_cd.to_csv('pforest_example.csv', index=False)
 
 ## rank on data set
-ds_10_pct_ranked = rank_on_ds_score(ds_10pct)
-ds_10_pct_ranked_1_only = ds_10_pct_ranked[ds_10_pct_ranked['ds_rank']==1]
+df_10_pct_ranked = rank_on_ds_score(df_10pct)
+df_10_pct_ranked_1_only = df_10_pct_ranked[df_10_pct_ranked['ds_rank']==1]
 ### by type
-ds_10_pct_ranked_type = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['type'])
-# ds_10_pct_ranked_type.to_csv('ranking.csv', index=False)
+df_10_pct_ranked_type = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['type'])
+# df_10_pct_ranked_type.to_csv('ranking.csv', index=False)
 ### by length
-ds_10_pct_ranked_length = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_length_std'])
-# ds_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+df_10_pct_ranked_length = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_length_std'])
+# df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
 ### by train size
-ds_10_pct_ranked_size = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_size_std'])
-# ds_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+df_10_pct_ranked_size = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_size_std'])
+# df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
 ### by num classes
-ds_10_pct_ranked_size = pd.pivot_table(ds_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['num_classes_std'])
-# ds_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+df_10_pct_ranked_size = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['num_classes_std'])
+# df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
 
 ###### within clf analysis ######
 
@@ -224,7 +266,8 @@ tsf_data = filter_by_val(df, 'classifier', 'TSF')
 tsf_4chunks = filter_by_list(tsf_data, 'dataset', tsf_finished_4chunks_list)
 
 ## CD between diff pct revealed
-tsf_4chunks_cd = get_cd_df(tsf_4chunks)
+tsf_4chunks_cd_acc = get_cd_df_acc(tsf_4chunks)
+tsf_4chunks_cd_hm = get_cd_df_hm(tsf_4chunks)
 # tsf_4_chunks_cd.to_csv('pforest_example.csv', index=False)
 
 ## scatter tsf100 vs tsf_10
@@ -241,7 +284,7 @@ ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.xaxis.set_ticks_position('bottom')
 ax.yaxis.set_ticks_position('left')
-plt.savefig('TSF100_vs_TSF10.jpg', dpi=200)
+# plt.savefig('TSF100_vs_TSF10.jpg', dpi=200)
 plt.show()
 
 

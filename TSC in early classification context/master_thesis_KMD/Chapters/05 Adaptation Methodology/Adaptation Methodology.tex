@@ -39,17 +39,17 @@ It divides whole timeseries data instances into smaller subseries using a choppi
 In each learning process, the data is exposed incrementally to the classifier by revealing the next sub-series.
 These processess simulate an incremental learning scenario, where the classifier is not exposed to all the data points collected from the beginning to the end at once.
 However in each learning process it gets to know more information about the data instances than the previous process.
-In order to assess the perforance of classifiers that were exposed to less data points, we use the performance of classifiers that were exposed to full length training data as a baseline.
-In the next subsection \ref{SubsectionFrameworkStructureToolkits} we discuss the the details and the structure of the framework and 
+In order to assess the performance of classifiers that were exposed to less data points, we use the performance of classifiers that were exposed to full length training data as a baseline.
+In the next subsection \ref{SubsectionFrameworkStructureToolkits} we discuss the the details and the structure of the framework.
 
 
 \subsection{Structure and Toolkits}
 \label{SubsectionFrameworkStructureToolkits}
 % Libraires we use
 We implemented our framework in python language.
-For the implementation of the non-deep learning algorithms we used the open source libraires $sktime$ \cite{loning2019sktime} and $pyts$ \cite{JMLR:v21:19-763},
-while for the implementation of the deep learning algorithm InceptionTime we used the library $sktimedl$ which provides an interface for the implementation provided
-in the study \cite{fawaz2020inceptiontime}. Finally, we used the library $Tslearn$ \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to it's
+For the implementation of the non-deep learning algorithms we used the open source libraires $sktime V. 0.5.3$ \cite{loning2019sktime} and $pyts V. 0.11.0$ \cite{JMLR:v21:19-763},
+while for the implementation of the deep learning algorithm InceptionTime we used the library $sktime\-dl V .0.2.0$ which provides an interface for the implementation provided
+in the study \cite{fawaz2020inceptiontime}. Finally, we used the library $Tslearn V. 0.5.0.5$ \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to it's
 capacity to transform the raw data into any needed input format for all the other libraires.
 
 The framework can be divided into several consecutive steps:
@@ -118,7 +118,7 @@ We consider \enquote{arff} format as the primary expected data type.
 
 %Multivariate (models initialization)
 As mentioned earlier in section \ref{GreatBakeoffMultivariate}, there are two ways to work on multivariate time series data sets \cite{ruiz2020great}.
-The first way is by using bespoke multivaraite classifiers which can deal with the multiple dimensions available in the data.
+The first way is by using bespoke multivariate classifiers which can deal with the multiple dimensions available in the data.
 While the other is by using ensembles of univariate classifiers, each fit to a separate dimension under the assumption of independence between the dimensions.
 Our framework applies the second technique for handling multivariate data sets.
 
@@ -339,10 +339,54 @@ Which allows us to compare the trained classifiers in terms of a one score value
 \section{Experiments}
 \label{SectionExperiment}
 % Experiments
-For each of the chosen data sets, we have trained 10 
+Our experiments were conducted on univariate data sets from the UCR archive as well as multivariate data sets from the UEA archive.
+The data sets were chosen based on the criteria discussed in the subsection \ref{used data sets}.
+Each of the data archives offers a train and test split of the data which we have used unchanged for all the classifiers.
+All our experiments were run on a LINUX server with an AMD Ryzen 7 1700 Processor and 32GB RAM using Python 3.7.10.
 
-% Models excluded due to performance
+We used the same experimental configuration through out all our experiments.
+We fixed the value of the parameter $Splits$ = 10, that is for every data set the data would be revealed for the classifiers incrementally in batches of 10\% from the total length.
+The chopping algorithm was set to always reveal data from the beginning of the time series.
+Due to time limitations, we restricted our experiments to run only on the \nth{1}, \nth{2}, \nth{3} and \nth{10} chunksof the data sets by setting $ChunksToKeep$ = \{1,2,3,10\}.
+We included the \nth{10} chunk to represent the baseline performance of each classifier if shown the full length data.
+While the first 3 chunks were used to represent the classifiers in the early context scenarios.
+Hyperparameters optimization was always carried out on all data sets with a $NumIterations$ maximum sampling value of 50 iterations, unless proven unfeasible for any of the classifiers due to memory shortage or time constraint.
+In this case the experiment is repeated for all classifiers without hyperparameters optimization.
+The selected performance metric for our experiments was $Balanced Accuracy$.
+Balanced accuracy is a performance metric which can handle data sets with skewed class distributions by avoiding inflated performance estimates.
+To calculate balanced accuracy, the $Recall$ value is computed for each class then averaged over the total number of classes.
+We have set all our experiments to use the same configuration for all classifiers on the same data set.
+
+
+\subsection{Excluded Classifiers}
+\label{SubsectionExcludedClassifiers}
+Some of the included classifiers in the framework were excluded from our experiments; either because they couldn't operate in the early classification context
+or because they couldn't attain comparable results to the published performances by previously published frameworks.
 
 % Models excluded due not handling the context
+For example, KNNED and InceptionTime were excluded due to the nature of their techniques which couldn't handle our created context.
+Both algorithms are clearly able to learn on chopped training data sets.
+However once the testing phase is reached, they would fail to classify instances of the testing data,
+showing errors related to mismatches between the expeccted length of instances and the provided length.
+Yet they would finish the last chunk where the data is provided in it's original full length.
+The reason why KNNED fails such scenario, is that it uses ED which is a point-wise comparison distance measure that cannot compare time series of unequal lengths \cite{tan2019time}.
+On the other hand, InceptionTime is a deep learning model whose input layer architecture, represented by number of nodes, depends on the length of the input time series \cite{fawaz2019deepreview}.
+Since we use full length instances for testing, this caused an overflow of input data than what the model structure was expecting.
+There have been literature discussing adapting TSCAs to unequal time series, but this is out of the scope of our experiments.
+For more details refer to \cite{caiado2009comparison, tan2019time, fawaz2019deepreview}
 
-% Models used 
+
+% Models excluded due to implementation error
+Although KNNDTW has been a competent time series classifier for decades; thanks to the exploitation of the elastic distance measure DTW.
+We couldn't get either implementation of KNNDTW from $sktime$ and $pyts$ to work on the chopped data; due to errors in the data representation needed by lower level internal libraries.
+KNNDTW would have been able to operate in the early classification context if used with a full warping window; which would have been successful in handling extreme classification cases like classifying full length data
+even when learning on the 10\% chunk data set.
+
+
+% Models excluded due to performance
+Two classifiers were excluded because they attained significantly inferior results compared to the published scores; these are KNNMSM and LS.
+Specially on the InsectWingbeatSound data set, for which we attained a difference in performance of -45.71\% for KNNMSM and -20.71\% for LS than the results published by \cite{bagnall2017great}
+
+
+% Models used
+Our experiments proceeded with the remaining 5 classifiers
