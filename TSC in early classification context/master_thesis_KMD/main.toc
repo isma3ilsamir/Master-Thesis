@@ -94,36 +94,36 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1.3}Used Data Sets}{32}{subsection.4.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Karolinska data set}{32}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Karolinska data set}{34}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Framework and Experimental Design}{35}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Framework and Experimental Design}{36}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}The Framework}{35}{section.5.1}%
+\contentsline {section}{\numberline {5.1}The Framework}{36}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Early Classification Context}{35}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.1}Early Classification Context}{36}{subsection.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Structure and Toolkits}{36}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.2}Structure and Toolkits}{37}{subsection.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{User Input}{36}{section*.31}%
+\contentsline {subsubsection}{User Input}{37}{section*.31}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Experiment Preparation}{37}{section*.33}%
+\contentsline {subsubsection}{Experiment Preparation}{38}{section*.33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Experiment Execution}{41}{section*.34}%
+\contentsline {subsubsection}{Experiment Execution}{42}{section*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Analysis Reports and Logging}{41}{section*.36}%
+\contentsline {subsubsection}{Analysis Reports and Logging}{42}{section*.36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Experiments}{43}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Experiments}{44}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Excluded Classifiers}{44}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.1}Excluded Classifiers}{45}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Included Classifiers and Adjustments}{44}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.2}Included Classifiers and Adjustments}{45}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}New Framework}{46}{chapter.6}%
+\contentsline {chapter}{\numberline {6}New Framework}{47}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Results}{47}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Results}{48}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Findings Discussion}{48}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Findings Discussion}{49}{chapter.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Summary and Outlook}{49}{chapter.9}%
+\contentsline {chapter}{\numberline {9}Summary and Outlook}{50}{chapter.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Declaration of Authorship}{60}{section.9.1}%
+\contentsline {section}{\numberline {9.1}Declaration of Authorship}{61}{section.9.1}%
