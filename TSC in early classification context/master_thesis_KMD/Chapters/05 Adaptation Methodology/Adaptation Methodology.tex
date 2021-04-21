@@ -28,9 +28,10 @@ classification problem and the effect it has on the classifiers' performance.
 We define our early classification context as the problem in which a TSCA is trained on labeled but incomplete time series data, then
 used to classify data instances of full length.
 
-The motivation behind experimenting with such a context is driven by the medical field, where sometimes patients have to go through strenuous tests to be diagnosed.
-This is specially the case in audiological examinations; as patients are exposed to signals which pushs the limits of their hearing discomfort to be able to examine their problems.
-A classifier which can attain comparable reasults while only learning on a fraction of the whole time series data would shorten this process and thus relief patients from their discomfort.
+% This paragraph has been moved to the introduction
+%The motivation behind experimenting with such a context is driven by the medical field, where sometimes patients have to go through strenuous tests to be diagnosed.
+%This is specially the case in audiological examinations; as patients are exposed to signals which pushes the limits of their hearing discomfort to be able to examine their problems.
+%A classifier which can attain comparable reasults while only learning on a fraction of the whole time series data would shorten this process and thus relief patients from their discomfort.
 
 To answer our first research question \textbf{\textit{How can we adapt existing ts classification workflow for the early TS scenario ?}}
 
@@ -50,15 +51,33 @@ We implemented our framework in python language.
 For the implementation of the non-deep learning algorithms we used the open source libraires $sktime V. 0.5.3$ \cite{loning2019sktime} and $pyts V. 0.11.0$ \cite{JMLR:v21:19-763},
 while for the implementation of the deep learning algorithm InceptionTime we used the library $sktime\-dl V .0.2.0$ which provides an interface for the implementation provided
 in the study \cite{fawaz2020inceptiontime}. Finally, we used the library $Tslearn V. 0.5.0.5$ \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to it's
-capacity to transform the raw data into any needed input format for all the other libraires.
+capacity to process raw data into the needed input format by any of the libraries, as well as converting data format between the different libraires.
 
-The framework can be divided into several consecutive steps:
+Our framework consists of two components; the comparison testbed and the recommender.
+The testbed is the engine responsible for comparing the implemented algorithms on the data sets provided.
+The testbed mainly collects user input about the experiment configuration, preprocesses the data in preparation for the learning process
+and finally calculates performance metrics using testing data.
+By the end of each performance assessment step, the testbed produces an analysis file and a logs file.
+The logs file provides information about the setup of the experiment, the execution status, the duration and reasons of failure.
+While the analysis file provides information about the cross validation scorese, the final hyperparameter values used, processing time of training and testing steps and the performance measures.
+
+The second step of the framework is learning a recommender which will be able to predict the best performing algorithm(s) for an unseen data set.
+Given the different analysis reports generated from the testbed, these reports are then consolidated and fed to the recommender to learn on.
+First, the logging files are processed and filtered to get the data of the successfully executed processes.
+Then the analysis files for these proccesses are consolidated into a unified structure and the included information is enriched by metadata about the data sets.
+In the end, the data is preprocessed again to be fed to a regression classifier which learns from the results of already carried out experiments.
+When given a new data set, the regression classifier tries to predict the performance of each implemeted classifier on the data set.
+These scores are then used to rank the classifiers and the final recommendation is presented.
+
+Our testbed component can be divided into several consecutive steps:
 \begin{enumerate}
     \item User input
     \item Experiment preparation
-    \item Experiment Execution
-    \item Analysis report
+    \item Experiment execution
+    \item Analysis reports and logging
 \end{enumerate}
+
+In the next subsections, we will discuss the details and implementation of each step involved in the construction of our 2 steps framework.
 
 \subsubsection{User Input}
 \label{SubsectionUserInput}
@@ -85,8 +104,8 @@ Table \ref{TableUserInput} shows a summary of each of the needed information, re
   \label{TableUserInput}
 \end{table}
 
-We implemented the user input interface using $docopt$ \footnote{http://docopt.org}; a library which offers command-line interfaces through
-the use of simple arguments and elements. It also allows to set default values for parameters which can be overriden if a value is passed.
+We implemented the user input interface using $docopt$ \footnote{https://github.com/docopt/}. A library which offers command-line interfaces through
+the use of simple arguments and elements. It also allows setting default values for parameters which can be overriden if a value is passed.
 In order to start running the framework, one provides the necessary parameter values through a simple terminal command.
 Listing \ref{ListingUserInput} shows a sample command for running our master python file $run.py$ on the Computers data set using hyperparameters optimization,
 while applying a split into 10 chunks.
@@ -295,7 +314,7 @@ If the experiment is configured to do hyperparameter optimization,
 then the classifier version that attained the highest validation score, from the 5 cross validation folds, is used for calculating the performance score on the testing data set.
 
 
-\subsubsection{Analysis Report}
+\subsubsection{Analysis Reports and Logging}
 \label{SubsectionAnalysisReport}
 % Analysis Report
 The last step of our framework is the analysis report preparation.
@@ -387,6 +406,26 @@ even when learning on the 10\% chunk data set.
 Two classifiers were excluded because they attained significantly inferior results compared to the published scores; these are KNNMSM and LS.
 Specially on the InsectWingbeatSound data set, for which we attained a difference in performance of -45.71\% for KNNMSM and -20.71\% for LS than the results published by \cite{bagnall2017great}
 
-
+\subsection{Included Classifiers and Adjustments}
+\label{SubsectionIncludedClassifiers}
 % Models used
-Our experiments proceeded with the remaining 5 classifiers
+Our experiments proceeded with the remaining 5 classifiers; PForest, TSF, ST, CBOSS and WEASEL.
+To focus only on the comparison of performance between classifiers and not preprocessing, we consider only data sets where all instances have the same length and no attributes have missing data.
+We also focus our interest on data which is originally a timeseries data. This means that it is a collection of specific measurements across a span of time.
+Which lead us to exclude some data set types from taking part in the experiment, more details are presented in subsection \ref{used data sets}.
+We cover a total of 77 data sets from both the UR and the UEA archives, out of which 55 data sets are univariate and 22 data sets are multivariate.
+
+Time and resources limitations played a big role shaping our experiments. Running classifiers is computationally expensive \cite{schafer2020teaser}
+and takes up to hundreds of processing days.
+This lead us to modify some algorithms to so that they can finish promptly; like in the case of PForest, or to use an enhanced version of the original
+classifier with an option to control the learning phase time; like BOSS and ST.
+
+Due to time limitations; We used the contractable implementations of BOSS and ST offered by $sktime$.
+These implementations allows passing a time parameter which controls the sampling space for BOSS and the shapelets searching time for ST.
+We set the value of the time contract for both to 60 minutes.
+
+We applied 2 adjustments to the PForest classifier.
+Firstly, we excluded ED from the pool of distance measures that PForest selects from; since the ED has previously proven not to be compatible with our early classification context when used with the KNN classifier.
+Secondly, we excluded TWE from the pool of distance measures when the size of the training data set exceeded 150 instances, which is the median of all data sets training sizes.
+TWE is a very slow distance measure. It has been reported by \cite{bagnall2017great} to be the slowest among all elastic distance measures. When measured on classifing 10 test instances from the
+StarlightCurves data set, it performed 10,000 times slower than ED.

@@ -1,52 +1,62 @@
 \chapter{Introduction}
 \label{ChapterIntroduction}
-Time Series Classification is a field of machine learning that has grabbed the attention of many reasearches in the last decade.
-Time series data exists, by nature, in numerous real scenarios; medical examination records of patients\{reference\}, signal processing\{reference\}, weather forecasting\{reference\} and astronomy\{reference\} are some of them.
+Time Series Classification (TSC) is a research field which has grabbed a lot of attention in the data mining community during the last decade.
+This goes back to the fact that time series data exists, by nature, in numerous scenarios in our life; medical examination records of patients \cite{griffin2001toward,ghalwash2012early}, consumption of electrical devices in smart homes and smart grids \cite{gao2014plaid,10.1145/2611286.2611333} and astronomy \cite{protopapas2006finding,rakthanmanon2013fast} are only few examples of them.
 
-Classification of time series data has been tackled with different objectives; the first is concerned with the accuracy of classification as well as space and time complexity. This objective is referred to simply as Time Series Classification (TSC). While the second objective adds the factor of earliness as a primary goal and is referred to as Early Time Series Classification (eTSC).
+The problem of time series data classification has been tackled in different ways and motivated by vairous objectives.
+When the main driving objective is to attain high classification accuracy, then this is referred to simply as Time Series Classification (TSC).
+TSC has also been extended to cover space and time complexity along with accuracy.
+On the other hand, if time plays a critical role in the problem being tackled beside accuracy; like early detection of malfunctions in industrial processes or diagnosis of a patient with a life threatning disease.
+In this case the classification problem is referred to as Early Time Series Classification (eTSC).
 
-Numerous algorithms have been introduced to tackle the problem of Time Series Classification. According to the \cite{bagnall2017great}, these algorithms can be divided, based on their technique, into six groups.
+A lot of algorithms have been introduced to tackle the problem of TSC.
+According to the \cite{bagnall2017great}, these algorithms can be divided, based on their technique, into six groups.
+Distance-based time series algorithms compare instances of time series, usually using 1-NN classifiers and an elastic distance measure between the data points of both time series.
+Phase dependent interval algorithms operate by extracting informative features from intervals of time series, they are more suitable for long and noisy data than distance-based time series algorithms.
+Phase independent interval algorithms are used when a class can be identified using a single or multiple patterns regardless of when they occur during the time series.
+Dictionary based algorithms consider the number of repetitions of patterns as a factor of classification and not just simple occurence of one.
+Ensembles combine the power of different algorithms, either of different or same core technique, then make the final classification decision based on voting.
+In addition to the previous algorithms, there are also deep learning time series algorithms which build classifiers using generative as well as discriminative neural networks models.
 
-Whole time series algorithms\{reference\} compare two time series, usually by employing an elastic distance measure between all data points of both time series.
-Phase dependent interval algorithms\{reference\} operate by extracting informative features from intervals of time series, they are more suitable for long and noisy data than whole time series algorithms.
-Phase independent interval algorithms\{reference\} are used when a class can be identified using a single or multiple patterns regardless of when they occur during the time series.
-Dictionary based algorithms\{reference\} consider the number of repetitions of patterns as a factor of classification and not just simple occurence of one.
-Ensembles\{reference\} combine the power of different algorithms, either of different or same core technique, then make the final classification decision based on voting.
-In addition to the previous algorithms, there are also deep learning time series algorithms which build classifiers using generative as well as discriminative models.
-
-On the other hand, Early Time Series Classification algorithms are designed to deal with less data in order to achieve earliness of prediction, but of course this comes with a price of accuracy.
-Many of the ideas applied in TSC have also been applied in eTSC; including 1-NN with Mimimum Prediction Length (MPL)\{reference\}, Phase independent intervals\{reference\}, generative classifiers\{reference\} and ensembles\{reference\}.
+On the other hand, Early Time Series Classification algorithms are designed to deal with less data in order to achieve earliness of prediction, without sacrificing accuracy as much as possible.
+Since accuracy and earliness are contradicting by nature, eTSC's main goal is to find a tradeoff between both objectives \cite{gupta2020fault}.
+Many of the techniques that have been applied in TSC have also been applied for eTSC.
+Using 1-NN classifiers is a very popular TSC technique, which has been extended for eTSC by combining it with Mimimum Prediction Length (MPL)\cite{xing2012early}.
+Phase independent intervals\cite{ghalwash2012early,he2015early}, generative and discriminative model based classifiers\cite{li2014early,cheng2018predicting} as well as deep learning algorithms \cite{huang2018multivariate, russwurm2019end}
+have all been extended to tackle eTSC problems.
 
 
 Both, Time Series Classification Algorithms (TSCA) and Early Time Series Classification Algorithms (eTSCA), have introduced well performing algorithms in terms of their respective performance measures.
-Their algorithms have been tested on publicly available archives\{reference\}; to benchmark their performance on a diverse set of datasets with different characteristics.
+The existence of comprehensive benchmark data archives \cite{UCRArchive2018,bagnall2018uea} has helped regulate and standardize the process of comparison between classifiers.
+Algorithms can be benchmarked on a diverse set of datasets with different characteristics to avoid biased results and cherry picking.
 
-According to \cite{bagnall2017great}, based on the "No free lunch theorem", no specific algorithm has proven to prevail over all others. This means that different problems with different datasets would require a choice between the algorithms based on how they perform on them, specially for non-public or non-experimented datasets.
-In this thesis, we tackle this idea; by offering a framework that runs state-of-the-art algorithms on the provided dataset and provides analyses about the performance of each algorithm.
+Like other fields, the \emph{No free lunch theorem} exists in the TSC domain as well \cite{bagnall2017great,bostrom2018shapelet}.
+This means that there is no one specific algorithm that can generalize to all problems and prevail over all other competing algorithms.
+With that being the case, this leaves an open door for continuous investigation of how the performance of algorithms would change on different data sets and in different contexts.
 
-Also due to their different objectives, TSCA and eTSCA have been dealt with as two different families. Which leaves studying the relationship between both algorithm families an open area for research.
-We study the relationship between TSCA and eTSCA, by extending TSCA to deal with earliness as a main objective and compare how they perform in an early time series classification problem context.
+Inspired by the of the problem of eTSC and its application in diverse areas.
+We define a situation in which a classifer is put into test to learn on only a part of the available data; to see if it will be able to gracefully degrade.
+We consider a classifier to be graceful, or fault tolerant, if it is able to maintain statistically significant results by learning on less data in comparison to it's results when learning on full length data.
+We refer to this situation as the early classification context.
+
+The motivation behind experimenting with such a context is driven by the medical field, where sometimes patients have to go through strenuous tests to be diagnosed.
+This is specially the case in audiological examinations; as patients are exposed to signals which pushes the limits of their hearing discomfort to be able to examine their problems.
+A classifier which can attain comparable reasults while only learning on a fraction of the whole time series data would shorten this process and thus relief patients from their discomfort.
 
 \subsubsection*{Goal of this Thesis}
 \label{thesisGoals}
-This master thesis had two main goals.
-The first goal was to create a testbed for comparing different algorithms on a non-public dataset.
-While the second one was to study the relationship between the two families of algorithms; TSCAs and eTSCAs.
+The goals of this master thesis can be addressed as:
 
-The first goal was motivated by \cite{bagnall2017great}, one of the most comprehensive review papers in the time series field.
-With it's release, Bagnall et. al has set the foundation methodology for accurately benchmarking the performance of TSCAs for the ,at that time, currently existing and for algorithms that will be developed in the future.
-In their experiment, they have used 85 datasets publicly available from UCR and UEA, the biggest two data archives.
-Our goal was to offer a testbed, which can be used on private datasets. It runs state of the art algorithms, then provides analysis about their classification performance.
-The provided analysis can help, based on empirical evidence, choose the best fitting algorithm in accordance with the problem at hand.
-
-
-As for the second goal, we extended the study of relationship between TSCAs and eTSCAs.
-Both families offer a wide variety of algorithms, but have different objectives and thus have different approaches in their learning processes.
-TSCAs focus primarily on the accuracy of the classification. In order to achieve this goal, full utilization of the whole time series data is done to achieve the highest possible accurate results.
-While eTSCAs objective tries to maximize both accuracy and earliness together, which is hard to attain because of the contradicting nature between both\{reference\}.
-This is why eTSCAs try to learn with as least possible data points as possible while maintaining classification accuracy.
-This study investigated the ability of TSCAs to perform in a simulated early classification context.
-TSCAs were trained on shortened training data, while keeping record of models' accuracy measure in comparison to a baseline utilizing complete training data points.
+\begin{itemize}
+    \item Provide a solution for adapting existing time series workflows for an early classification context. The solution should run experiments on a group of data sets from the UCR/UEA archive and measure the performance of classifiers within the early classification context. By the end of the experiments the solution should collect the results and provide an analysis of the results, the analysis should:
+    \begin{itemize}
+        \item Identify if classifiers can sustain good performance while learning on fewer data points in comparison to learning on the full length
+        \item Identify if there is a winning classifier across the executed erxperiments
+        \item Identify the aspects of the data set which affect the performance of classifiers within the context. Such as train size, number of classes, number of dimensions, length, etc.
+    \end{itemize}
+    \item Evaluate the proposed solution
+    \item Evaluate the performance of the different classifiers within the new context on an Auditory Brainstem Response (ABR) data set.
+\end{itemize}
 
 \subsubsection*{Structure of the Thesis}
 \label{thesisStructure}

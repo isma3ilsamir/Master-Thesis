@@ -725,6 +725,46 @@
       \field{pages}{527\bibrangedash 540}
       \range{pages}{14}
     \endentry
+    \entry{cheng2018predicting}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=ee6ee6eebe65aeda23bf8334d320ddae}{%
+           family={Cheng},
+           familyi={C\bibinitperiod},
+           given={Weihao},
+           giveni={W\bibinitperiod}}}%
+        {{hash=5ffbf23874b2ebb12e958b068247c352}{%
+           family={Erfani},
+           familyi={E\bibinitperiod},
+           given={Sarah\bibnamedelima M},
+           giveni={S\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=0672466dc7c3a8cec050e5ac091fd0ac}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Rui},
+           giveni={R\bibinitperiod}}}%
+        {{hash=b389781580a6743b0b820c0b6fc6f789}{%
+           family={Kotagiri},
+           familyi={K\bibinitperiod},
+           given={Ramamohanarao},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{f983b9f20ff382132cf1321e377557c5}
+      \strng{fullhash}{48bf3016fadb798fbf80f839c4f243a9}
+      \strng{bibnamehash}{f983b9f20ff382132cf1321e377557c5}
+      \strng{authorbibnamehash}{f983b9f20ff382132cf1321e377557c5}
+      \strng{authornamehash}{f983b9f20ff382132cf1321e377557c5}
+      \strng{authorfullhash}{48bf3016fadb798fbf80f839c4f243a9}
+      \field{labelalpha}{Che+18}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{IJCAI}
+      \field{title}{Predicting Complex Activities from Ongoing Multivariate Time Series.}
+      \field{year}{2018}
+      \field{pages}{3322\bibrangedash 3328}
+      \range{pages}{7}
+    \endentry
     \entry{chen2004marriage}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=046842e5933d7131df18c28d8bce94ff}{%
@@ -1257,6 +1297,46 @@
       \field{pages}{419\bibrangedash 429}
       \range{pages}{11}
     \endentry
+    \entry{gao2014plaid}{inproceedings}{}
+      \name{author}{4}{}{%
+        {{hash=5b9e8dbe3c60034d9f4bbbfb57cca093}{%
+           family={Gao},
+           familyi={G\bibinitperiod},
+           given={Jingkun},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bbee0c4778c772922fb20f8f5bb20488}{%
+           family={Giri},
+           familyi={G\bibinitperiod},
+           given={Suman},
+           giveni={S\bibinitperiod}}}%
+        {{hash=232175b2f8c571e179d76e1231c5d7cf}{%
+           family={Kara},
+           familyi={K\bibinitperiod},
+           given={Emre\bibnamedelima Can},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=93f1a1b39c722a603916c128c7ac8612}{%
+           family={Berg{é}s},
+           familyi={B\bibinitperiod},
+           given={Mario},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{0a6671549a813df4f5fa06cccdde7bb5}
+      \strng{fullhash}{0ca1d3ecf33cb2e657857c142e24cb9a}
+      \strng{bibnamehash}{0a6671549a813df4f5fa06cccdde7bb5}
+      \strng{authorbibnamehash}{0a6671549a813df4f5fa06cccdde7bb5}
+      \strng{authornamehash}{0a6671549a813df4f5fa06cccdde7bb5}
+      \strng{authorfullhash}{0ca1d3ecf33cb2e657857c142e24cb9a}
+      \field{labelalpha}{Gao+14}
+      \field{sortinit}{G}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{proceedings of the 1st ACM Conference on Embedded Systems for Energy-Efficient Buildings}
+      \field{title}{Plaid: a public dataset of high-resoultion electrical appliance measurements for load identification research: demo abstract}
+      \field{year}{2014}
+      \field{pages}{198\bibrangedash 199}
+      \range{pages}{2}
+    \endentry
     \entry{glorot2010understanding}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=0b3943c3bfdbb5867b3760f7c7d488c2}{%
@@ -1711,6 +1791,44 @@
       \field{pages}{851\bibrangedash 881}
       \range{pages}{31}
     \endentry
+    \entry{huang2018multivariate}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=6f2321e697952173298368cacab5e834}{%
+           family={Huang},
+           familyi={H\bibinitperiod},
+           given={Huai-Shuo},
+           giveni={H\bibinithyphendelim S\bibinitperiod}}}%
+        {{hash=e0074c08a42c7d104f4869768e2f5e50}{%
+           family={Liu},
+           familyi={L\bibinitperiod},
+           given={Chien-Liang},
+           giveni={C\bibinithyphendelim L\bibinitperiod}}}%
+        {{hash=42b42d9d10bbc93b4d7dbd5b26a8cfdf}{%
+           family={Tseng},
+           familyi={T\bibinitperiod},
+           given={Vincent\bibnamedelima S},
+           giveni={V\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{63f12bc16ea804c5c83c4839875fd4bc}
+      \strng{fullhash}{63f12bc16ea804c5c83c4839875fd4bc}
+      \strng{bibnamehash}{63f12bc16ea804c5c83c4839875fd4bc}
+      \strng{authorbibnamehash}{63f12bc16ea804c5c83c4839875fd4bc}
+      \strng{authornamehash}{63f12bc16ea804c5c83c4839875fd4bc}
+      \strng{authorfullhash}{63f12bc16ea804c5c83c4839875fd4bc}
+      \field{labelalpha}{HLT18}
+      \field{sortinit}{H}
+      \field{sortinithash}{6db6145dae8dc9e1271a8d556090b50a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2018 IEEE 5th International Conference on Data Science and Advanced Analytics (DSAA)}
+      \field{title}{Multivariate time series early classification using multi-domain deep neural network}
+      \field{year}{2018}
+      \field{pages}{90\bibrangedash 98}
+      \range{pages}{9}
+    \endentry
     \entry{itakura1975minimum}{article}{}
       \name{author}{1}{}{%
         {{hash=cda060baa860382af900bbb274ad26ec}{%
@@ -1780,6 +1898,55 @@
       \field{year}{2011}
       \field{pages}{2231\bibrangedash 2240}
       \range{pages}{10}
+    \endentry
+    \entry{10.1145/2611286.2611333}{inproceedings}{}
+      \name{author}{2}{}{%
+        {{hash=a4be5e660602a12202682c6fe52189b3}{%
+           family={Jerzak},
+           familyi={J\bibinitperiod},
+           given={Zbigniew},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=309b46e7ef1d46efb8d32cdadbf85c80}{%
+           family={Ziekow},
+           familyi={Z\bibinitperiod},
+           given={Holger},
+           giveni={H\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Mumbai, India}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{60c9072f78f61ed00c4f8e4515fa2468}
+      \strng{fullhash}{60c9072f78f61ed00c4f8e4515fa2468}
+      \strng{bibnamehash}{60c9072f78f61ed00c4f8e4515fa2468}
+      \strng{authorbibnamehash}{60c9072f78f61ed00c4f8e4515fa2468}
+      \strng{authornamehash}{60c9072f78f61ed00c4f8e4515fa2468}
+      \strng{authorfullhash}{60c9072f78f61ed00c4f8e4515fa2468}
+      \field{labelalpha}{JZ14}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Event processing systems in general and data stream processing systems in particular focus on processing of queries over unbounded event streams. The goal of the DEBS 2014 Grand Challenge is to provide a specific problem, originating from the domain of energy data management, which can be leveraged by both commercial and academic event processing systems. The problem provided by this year's challenge seeks to highlight the capability of event stream processing systems towards combining of the processing of live and historical event data as well as scaling out for coping with high velocity data streams and complex analysis.}
+      \field{booktitle}{Proceedings of the 8th ACM International Conference on Distributed Event-Based Systems}
+      \field{isbn}{9781450327374}
+      \field{series}{DEBS '14}
+      \field{title}{The DEBS 2014 Grand Challenge}
+      \field{year}{2014}
+      \field{pages}{266\bibrangedash 269}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1145/2611286.2611333
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1145/2611286.2611333
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1145/2611286.2611333
+      \endverb
+      \keyw{utilities,streaming,event processing}
     \endentry
     \entry{kate2016using}{article}{}
       \name{author}{1}{}{%
@@ -2150,6 +2317,44 @@
       \field{year}{2012}
       \field{pages}{287\bibrangedash 315}
       \range{pages}{29}
+    \endentry
+    \entry{li2014early}{inproceedings}{}
+      \name{author}{3}{}{%
+        {{hash=f32edc767f7574ca356c7480491fa999}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Kang},
+           giveni={K\bibinitperiod}}}%
+        {{hash=d8125976d0f2f0c4fddc5c4adeda313d}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Sheng},
+           giveni={S\bibinitperiod}}}%
+        {{hash=af5bb174cec505de4887d6186d3823ae}{%
+           family={Fu},
+           familyi={F\bibinitperiod},
+           given={Yun},
+           giveni={Y\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IEEE}%
+      }
+      \strng{namehash}{041a79c85a820f226b1890e14e9c6b8b}
+      \strng{fullhash}{041a79c85a820f226b1890e14e9c6b8b}
+      \strng{bibnamehash}{041a79c85a820f226b1890e14e9c6b8b}
+      \strng{authorbibnamehash}{041a79c85a820f226b1890e14e9c6b8b}
+      \strng{authornamehash}{041a79c85a820f226b1890e14e9c6b8b}
+      \strng{authorfullhash}{041a79c85a820f226b1890e14e9c6b8b}
+      \field{labelalpha}{LLF14}
+      \field{sortinit}{L}
+      \field{sortinithash}{dad3efd0836470093a7b4a7bb756eb8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{2014 IEEE International Conference on Data Mining}
+      \field{title}{Early classification of ongoing observation}
+      \field{year}{2014}
+      \field{pages}{310\bibrangedash 319}
+      \range{pages}{10}
     \endentry
     \entry{liao2017separable}{article}{}
       \name{author}{3}{}{%
@@ -2881,6 +3086,61 @@
       \field{pages}{1\bibrangedash 26}
       \range{pages}{26}
     \endentry
+    \entry{protopapas2006finding}{article}{}
+      \name{author}{6}{}{%
+        {{hash=fdc9616728b141c7487d4e014be5a68f}{%
+           family={Protopapas},
+           familyi={P\bibinitperiod},
+           given={Pavlos},
+           giveni={P\bibinitperiod}}}%
+        {{hash=08b741f1f7439be0b3e82511db4f6326}{%
+           family={Giammarco},
+           familyi={G\bibinitperiod},
+           given={JM},
+           giveni={J\bibinitperiod}}}%
+        {{hash=c83e52a92d88dc84e308ce6e686a1d5a}{%
+           family={Faccioli},
+           familyi={F\bibinitperiod},
+           given={L},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bf3a5b3f6ebe410680c368dbab5a2ebf}{%
+           family={Struble},
+           familyi={S\bibinitperiod},
+           given={MF},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b55117ca22f47429c89c73bf8552c908}{%
+           family={Dave},
+           familyi={D\bibinitperiod},
+           given={Rahul},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3a6334ad7c18c7f43fd00e64b5369c0c}{%
+           family={Alcock},
+           familyi={A\bibinitperiod},
+           given={Charles},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Blackwell Publishing Ltd Oxford, UK}%
+      }
+      \strng{namehash}{418eecd10e2da1cbe2a10456d06bc011}
+      \strng{fullhash}{df08378cc1637e8d058b462279b70658}
+      \strng{bibnamehash}{418eecd10e2da1cbe2a10456d06bc011}
+      \strng{authorbibnamehash}{418eecd10e2da1cbe2a10456d06bc011}
+      \strng{authornamehash}{418eecd10e2da1cbe2a10456d06bc011}
+      \strng{authorfullhash}{df08378cc1637e8d058b462279b70658}
+      \field{labelalpha}{Pro+06}
+      \field{sortinit}{P}
+      \field{sortinithash}{bb5b15f2db90f7aef79bb9e83defefcb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Monthly Notices of the Royal Astronomical Society}
+      \field{number}{2}
+      \field{title}{Finding outlier light curves in catalogues of periodic variable stars}
+      \field{volume}{369}
+      \field{year}{2006}
+      \field{pages}{677\bibrangedash 696}
+      \range{pages}{20}
+    \endentry
     \entry{rodriguez2004support}{inproceedings}{}
       \name{author}{2}{}{%
         {{hash=0557f4037ba8d46bf230e7a74386b427}{%
@@ -3062,6 +3322,54 @@
       \field{year}{2020}
       \field{pages}{1\bibrangedash 49}
       \range{pages}{49}
+    \endentry
+    \entry{russwurm2019end}{article}{}
+      \name{author}{6}{}{%
+        {{hash=79459fbb8b30a6b984f147d458fe144d}{%
+           family={Ru{ß}wurm},
+           familyi={R\bibinitperiod},
+           given={Marc},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7c002a374ccdb7c5c5bb830fb4aacfe9}{%
+           family={Lef{è}vre},
+           familyi={L\bibinitperiod},
+           given={S{é}bastien},
+           giveni={S\bibinitperiod}}}%
+        {{hash=b5231a6c7af3f041f02b5945fb649993}{%
+           family={Courty},
+           familyi={C\bibinitperiod},
+           given={Nicolas},
+           giveni={N\bibinitperiod}}}%
+        {{hash=540707691b59449b98fb81f7ccc929be}{%
+           family={Emonet},
+           familyi={E\bibinitperiod},
+           given={R{é}mi},
+           giveni={R\bibinitperiod}}}%
+        {{hash=8a8d7b49c90bea2bda320d9c990f9572}{%
+           family={K{ö}rner},
+           familyi={K\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3d8260acdd72b376866455e65a3b46f6}{%
+           family={Tavenard},
+           familyi={T\bibinitperiod},
+           given={Romain},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{71cf86659238d53165bf9c9b02a15ea6}
+      \strng{fullhash}{6c11cc8b1d9ba575667fdc54df49de42}
+      \strng{bibnamehash}{71cf86659238d53165bf9c9b02a15ea6}
+      \strng{authorbibnamehash}{71cf86659238d53165bf9c9b02a15ea6}
+      \strng{authornamehash}{71cf86659238d53165bf9c9b02a15ea6}
+      \strng{authorfullhash}{6c11cc8b1d9ba575667fdc54df49de42}
+      \field{labelalpha}{Ruß+19}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1901.10681}
+      \field{title}{End-to-end learning for early classification of time series}
+      \field{year}{2019}
     \endentry
     \entry{stefan2012move}{article}{}
       \name{author}{3}{}{%

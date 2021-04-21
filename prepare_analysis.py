@@ -12,10 +12,25 @@ import matplotlib.pyplot as plt
 def round_down(num, divisor):
     return num - (num%divisor)
 
+def get_error(df):
+    df_copy = df.copy()
+    df_copy['error_rate'] = 1 - df_copy['test_ds_score']
+    return df_copy
+
+def get_rev_hm(df):
+    df_copy = df.copy()
+    df_copy['reversed_hm'] = (2 * (df_copy['revealed_pct_actual']/100) * df_copy['error_rate']) / ((df_copy['revealed_pct_actual']/100) + df_copy['error_rate'])
+    return df_copy
+
 def adjust_hm(df):
     df_copy = df.copy()
-    df_copy['harmonic_mean'] = (2 * (1 - (df_copy['revealed_pct_actual']/100)) * df_copy['test_ds_score']) / ((1 - (df_copy['revealed_pct_actual']/100)) + df_copy['test_ds_score'])
+    df_copy['harmonic_mean'] = 1- df_copy['reversed_hm']
     return df_copy
+
+# def adjust_hm(df):
+#     df_copy = df.copy()
+#     df_copy['harmonic_mean'] = (2 * (1 - (df_copy['revealed_pct_actual']/100)) * df_copy['test_ds_score']) / ((1 - (df_copy['revealed_pct_actual']/100)) + df_copy['test_ds_score'])
+#     return df_copy
 
 def create_whole_revpct(df):
     df['revealed_pct_actual'] = df['revealed_pct']
@@ -183,118 +198,128 @@ def get_extended_datasets(dataset_df, revealed_pct, classifiers):
     datasets_extended = pd.concat([datasets_extended] * len(classifiers) , keys = classifiers).reset_index(level = 1, drop = True).rename_axis('model').reset_index()
     return datasets_extended
 
-pcts= [10, 20, 30, 100]
+def get_extended_dataset_df(dataset_df, pcts, classifiers):
+    dataset_extended = get_extended_datasets(dataset_df, pcts, classifiers)
+    return dataset_extended
 
-classifiers = ['ST', 'CBoss', 'TSF', 'PForest', 'WEASEL', 'Dummy']
-analysis_filenames = 'log_filenames.csv'
-
-dataset_df = get_datasets_df()
-dataset_extended = get_extended_datasets(dataset_df, pcts, classifiers)
-
-json_files = get_json_files(analysis_filenames)
-df = extract_json_data(json_files)
-df = get_analysis_df(df)
-df = create_clf_pct_col(df)
-df = get_joined_df(df, dataset_df)
-df['train_length'] = df.apply(get_used_train_length, axis=1)
-df['train_length_std'] = df.apply(get_standard_train_length, axis=1)
-df['train_size_std'] = df.apply(get_standard_train_size, axis=1)
-df['num_classes_std'] = df.apply(get_standard_num_classes, axis=1)
-df = adjust_hm(df)
-###### across clf analysis ######
-
-## 10% datasets
-ds_10pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 10, 5)
-ds_10pct_data = filter_by_val(df, 'revealed_pct', 10)
-df_10pct = filter_by_list(ds_10pct_data, 'dataset', ds_10pct_finished_5clf_list)
-
-## 20% datasets
-ds_20pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 20, 5)
-ds_20pct_data = filter_by_val(df, 'revealed_pct', 20)
-df_20pct = filter_by_list(ds_20pct_data, 'dataset', ds_20pct_finished_5clf_list)
-
-## 30% datasets
-ds_30pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 30, 5)
-ds_30pct_data = filter_by_val(df, 'revealed_pct', 30)
-df_30pct = filter_by_list(ds_30pct_data, 'dataset', ds_30pct_finished_5clf_list)
-
-## 100% datasets
-ds_100pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 100, 5)
-ds_100pct_data = filter_by_val(df, 'revealed_pct', 100)
-df_100pct = filter_by_list(ds_100pct_data, 'dataset', ds_100pct_finished_5clf_list)
+def get_main_df(dataset_df):
+    json_files = get_json_files(analysis_filenames)
+    df = extract_json_data(json_files)
+    df = get_analysis_df(df)
+    df = create_clf_pct_col(df)
+    df = get_joined_df(df, dataset_df)
+    df['train_length'] = df.apply(get_used_train_length, axis=1)
+    df['train_length_std'] = df.apply(get_standard_train_length, axis=1)
+    df['train_size_std'] = df.apply(get_standard_train_size, axis=1)
+    df['num_classes_std'] = df.apply(get_standard_num_classes, axis=1)
+    df = get_error(df)
+    df = get_rev_hm(df)
+    df = adjust_hm(df)
+    return df
 
 
-# all datasets all classifiers (excluding Dummy and 100 pct classifiers)
-df1 = df[df['classifier']!='Dummy']
-ds1_10pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 10, 5)
-ds1_20pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 20, 5)
-ds1_30pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 30, 5)
-# ds1_100pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 100, 5)
-# ds_all_clf_all_pct = set(ds1_10pct_finished_5clf_list).intersection(set(ds1_20pct_finished_5clf_list),set(ds1_30pct_finished_5clf_list),set(ds1_100pct_finished_5clf_list))
-ds_all_clf_all_pct = set(ds1_10pct_finished_5clf_list).intersection(set(ds1_20pct_finished_5clf_list),set(ds1_30pct_finished_5clf_list))
-df_all = filter_by_list(df1, 'dataset', ds_all_clf_all_pct)
-df_all = df_all[df_all['revealed_pct']!= 100]
-df_all_cd_acc = get_cd_df_acc(df_all)
-df_all_cd_hm = get_cd_df_hm(df_all)
 
-## CD same pct revealed
-ds_10pct_cd_acc = get_cd_df_acc(df_10pct)
-ds_10pct_cd_hm = get_cd_df_hm(df_10pct)
-# ds_10pct_cd.to_csv('pforest_example.csv', index=False)
+if __name__ == "__main__":
+    pcts= [10, 20, 30, 100]
+    classifiers = ['ST', 'CBoss', 'TSF', 'PForest', 'WEASEL', 'Dummy']
+    analysis_filenames = 'log_filenames.csv'
+    dataset_df = get_datasets_df()
+    dataset_extended = get_extended_dataset_df(dataset_df, pcts, classifiers)
+    df = get_main_df(dataset_df)
 
-## rank on data set
-df_10_pct_ranked = rank_on_ds_score(df_10pct)
-df_10_pct_ranked_1_only = df_10_pct_ranked[df_10_pct_ranked['ds_rank']==1]
-### by type
-df_10_pct_ranked_type = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['type'])
-# df_10_pct_ranked_type.to_csv('ranking.csv', index=False)
-### by length
-df_10_pct_ranked_length = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_length_std'])
-# df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
-### by train size
-df_10_pct_ranked_size = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_size_std'])
-# df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
-### by num classes
-df_10_pct_ranked_size = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['num_classes_std'])
-# df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+    ###### across clf analysis ######
+    ## 10% datasets
+    ds_10pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 10, 5)
+    ds_10pct_data = filter_by_val(df, 'revealed_pct', 10)
+    df_10pct = filter_by_list(ds_10pct_data, 'dataset', ds_10pct_finished_5clf_list)
 
-###### within clf analysis ######
+    ## 20% datasets
+    ds_20pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 20, 5)
+    ds_20pct_data = filter_by_val(df, 'revealed_pct', 20)
+    df_20pct = filter_by_list(ds_20pct_data, 'dataset', ds_20pct_finished_5clf_list)
 
-## TSF
-tsf_finished_4chunks_list = get_ds_finished_chunks_for_clf(df, 'TSF', 4)
-tsf_data = filter_by_val(df, 'classifier', 'TSF')
-tsf_4chunks = filter_by_list(tsf_data, 'dataset', tsf_finished_4chunks_list)
+    ## 30% datasets
+    ds_30pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 30, 5)
+    ds_30pct_data = filter_by_val(df, 'revealed_pct', 30)
+    df_30pct = filter_by_list(ds_30pct_data, 'dataset', ds_30pct_finished_5clf_list)
 
-## CD between diff pct revealed
-tsf_4chunks_cd_acc = get_cd_df_acc(tsf_4chunks)
-tsf_4chunks_cd_hm = get_cd_df_hm(tsf_4chunks)
-# tsf_4_chunks_cd.to_csv('pforest_example.csv', index=False)
-
-## scatter tsf100 vs tsf_10
-tsf100_vs_tsf10= pd.pivot_table(tsf_4chunks, values='test_ds_score', columns=['revealed_pct'], aggfunc=np.sum, index=['dataset'])
-plt.plot(tsf100_vs_tsf10[10], tsf100_vs_tsf10[100], 'o', color='black')
-# plt.plot([0,1], [0, 1], 'k-')
-plt.xlabel('TSF_10', fontsize=16)
-# plt.margins(x=0)
-plt.ylabel('TSF_100', fontsize=16)
-# plt.margins(y=0)
-plt.fill([0,0,1,0], [0,1,1,0], 'lightskyblue', alpha=0.2, edgecolor='lightskyblue')
-ax = plt.gca()
-ax.spines['right'].set_visible(False)
-ax.spines['top'].set_visible(False)
-ax.xaxis.set_ticks_position('bottom')
-ax.yaxis.set_ticks_position('left')
-# plt.savefig('TSF100_vs_TSF10.jpg', dpi=200)
-plt.show()
+    ## 100% datasets
+    ds_100pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df, 100, 5)
+    ds_100pct_data = filter_by_val(df, 'revealed_pct', 100)
+    df_100pct = filter_by_list(ds_100pct_data, 'dataset', ds_100pct_finished_5clf_list)
 
 
-import IPython
-IPython.embed()
+    # all datasets all classifiers (excluding Dummy and 100 pct classifiers)
+    df1 = df[df['classifier']!='Dummy']
+    ds1_10pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 10, 5)
+    ds1_20pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 20, 5)
+    ds1_30pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 30, 5)
+    ds1_100pct_finished_5clf_list = get_ds_finished_clfs_for_revpct(df1, 100, 5)
+    ds_all_clf_all_pct = set(ds1_10pct_finished_5clf_list).intersection(set(ds1_20pct_finished_5clf_list),set(ds1_30pct_finished_5clf_list),set(ds1_100pct_finished_5clf_list))
+    # ds_all_clf_all_pct = set(ds1_10pct_finished_5clf_list).intersection(set(ds1_20pct_finished_5clf_list),set(ds1_30pct_finished_5clf_list))
+    df_all = filter_by_list(df1, 'dataset', ds_all_clf_all_pct)
+    # df_all = df_all[df_all['revealed_pct']!= 100]
+    df_all_cd_acc = get_cd_df_acc(df_all)
+    df_all_cd_hm = get_cd_df_hm(df_all)
 
-# datasets = list(joined['dataset'].unique())
-# dataset_types = list(joined['type'].unique())
+    ## CD same pct revealed
+    ds_10pct_cd_acc = get_cd_df_acc(df_10pct)
+    ds_10pct_cd_hm = get_cd_df_hm(df_10pct)
+    # ds_10pct_cd.to_csv('pforest_example.csv', index=False)
 
-# df_10 = filter_by_val(df, 'revealed_pct', 10)
-# df_20 = filter_by_val(df, 'revealed_pct', 20)
-# df_30 = filter_by_val(df, 'revealed_pct', 30)
-# df_100 = filter_by_val(df, 'revealed_pct', 100)
+    ## rank on data set
+    df_10_pct_ranked = rank_on_ds_score(df_10pct)
+    df_10_pct_ranked_1_only = df_10_pct_ranked[df_10_pct_ranked['ds_rank']==1]
+    ### by type
+    df_10_pct_ranked_type = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['type'])
+    # df_10_pct_ranked_type.to_csv('ranking.csv', index=False)
+    ### by length
+    df_10_pct_ranked_length = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_length_std'])
+    # df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+    ### by train size
+    df_10_pct_ranked_size = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['train_size_std'])
+    # df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+    ### by num classes
+    df_10_pct_ranked_size = pd.pivot_table(df_10_pct_ranked_1_only, values='ds_rank', columns=['classifier'], aggfunc=np.sum, index=['num_classes_std'])
+    # df_10_pct_ranked_length.to_csv('ranking.csv', index=False)
+
+    ###### within clf analysis ######
+
+    ## TSF
+    tsf_finished_4chunks_list = get_ds_finished_chunks_for_clf(df, 'TSF', 4)
+    tsf_data = filter_by_val(df, 'classifier', 'TSF')
+    tsf_4chunks = filter_by_list(tsf_data, 'dataset', tsf_finished_4chunks_list)
+
+    ## CD between diff pct revealed
+    tsf_4chunks_cd_acc = get_cd_df_acc(tsf_4chunks)
+    tsf_4chunks_cd_hm = get_cd_df_hm(tsf_4chunks)
+    # tsf_4_chunks_cd.to_csv('pforest_example.csv', index=False)
+
+    ## scatter tsf100 vs tsf_10
+    tsf100_vs_tsf10= pd.pivot_table(tsf_4chunks, values='test_ds_score', columns=['revealed_pct'], aggfunc=np.sum, index=['dataset'])
+    plt.plot(tsf100_vs_tsf10[10], tsf100_vs_tsf10[100], 'o', color='black')
+    # plt.plot([0,1], [0, 1], 'k-')
+    plt.xlabel('TSF_10', fontsize=16)
+    # plt.margins(x=0)
+    plt.ylabel('TSF_100', fontsize=16)
+    # plt.margins(y=0)
+    plt.fill([0,0,1,0], [0,1,1,0], 'lightskyblue', alpha=0.2, edgecolor='lightskyblue')
+    ax = plt.gca()
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    ax.xaxis.set_ticks_position('bottom')
+    ax.yaxis.set_ticks_position('left')
+    # plt.savefig('TSF100_vs_TSF10.jpg', dpi=200)
+    plt.show()
+
+
+    import IPython
+    IPython.embed()
+
+    # datasets = list(joined['dataset'].unique())
+    # dataset_types = list(joined['type'].unique())
+
+    # df_10 = filter_by_val(df, 'revealed_pct', 10)
+    # df_20 = filter_by_val(df, 'revealed_pct', 20)
+    # df_30 = filter_by_val(df, 'revealed_pct', 30)
+    # df_100 = filter_by_val(df, 'revealed_pct', 100)
