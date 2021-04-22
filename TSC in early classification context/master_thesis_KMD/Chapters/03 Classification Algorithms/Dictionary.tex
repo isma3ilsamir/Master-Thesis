@@ -1,11 +1,36 @@
 \subsection{Dictionary Based Algorithms}
 \label{SubsectionDictionary}
-Here should be intro for Dictionary
+As previously discussed, shapelet algorithms are very good at identifying unique subseries which can be related to class labels either by their presence or absence.
+This technique although very helpful for some problems, but it can deceived if the class labels are defined by the relative frequency of some patterns and not just the a single match \cite{large2018bop,bagnall2017great}.
+Dictionary based algorithms is a family of algorithms that uses the frequency of words as the foundation of finding discriminatory features of classes \cite{middlehurst2019scalable}.
+They can address this type of problems by tracking the frequency counts of repeating patterns, which makes same resilient to noisy data \cite{shifaz2020ts}.
+To achieve this, dictionary based algorithms transform time series data into words; to reduce their dimensionality and approximate their values.
+Then based on the distribution of the words they measure similarity between instances \cite{lin2012rotation,schafer2015boss}.
+
+In general, the process of dictionary based classifiers involves using a sliding window, of some length $w$, over the data.
+Then for each window, an approximation process is carried out to reduce it's length to from $w$ to a shorter length $l$ \cite{bagnall2020tale}.
+A quantization process then follows; to discretize the real values into words by assigning letters to each value.
+When all the windows are finished, the number of occurences of words is calcualted and each time series is represented by a histogram \cite{shifaz2020ts}.
+In the end, similarity between instances is calculated based on similarity between histograms.
+
+Differrent dictionary based algorithms apply different approximation and discretization techniques.
+For example two of the older algorithms; Bag of Patterns (BoP) \cite{lin2012rotation} and Symbolic Aggregate Approximation-Vector Space Model (SAX-VSM) \cite{senin2013sax}
+use an approximation method called Symbolic Aggregate Approximation (SAX) \cite{lin2007experiencing}.
+SAX extends Piecewise Aggregate Approximation (PAA), a method that divides a time series into equal consecutive segments and concatenates their means \cite{shifaz2020ts}
+Then to transform the series to words, it creates break points using quantiles from the normal distribution.
+In addition to using SAX, SAX-VSM merges it with the vector space model from the Information Retrieval domain.
+The major difference between BOP and SAX-VSM, is that SAX-VSM calcualtes it's frequencies on the class level rather than on the series level.
+Then applies weighting using inverse document frequency \cite{bagnall2017great}.
+
+On the other hand, the newer algorithms; BOSS \cite{schafer2015boss}, BOSS-VS \cite{schafer2016scalable} and WEASEL \cite{schafer2017fast}
+use another method which is called Symbolic Fourier Approximation (SFA) which approximates data using coefficients of Discrete Fourier Transformation (DFT).
+Then apply an adaptive technique called Multiple Coefficient Binning (MCB) to quantize the data.
+These two techniques; SFA and MCB, will be discussed in more details in the next parts.
 
 \subsubsection{BOSS}
 \label{SubsubsectionBOSS}
 Bag of SFA Symbols (BOSS) is a dictionary based algorithm that was introduced by \cite{schafer2015boss} in 2015.
-Like the previous dictionary based classifiers, Bag Of Patterns (BOP) and Symbolic Aggregate approXimation in Vector Space Model (SAXVSM),
+Like the previous dictionary based classifiers, BOP and SAX-VSM,
 BOSS also used a windowing technique to extract patterns from the data and transform them into words, but it had other significant differences to them \cite{bagnall2017great}.
 BOSS was concerned with the issue of dealing with noisy data which, at that time, received little attention; due to the common practice of
 either using raw data directly or handling noise in a preprocessing stage. The goal was to introduce an algorithm faster than it's rivals of the same group,
@@ -23,7 +48,7 @@ that ignores multiple sequential occurences of the same word.
 Finally time series instances can be compared for differences, using the noise reduced substructures using a customized distance measure inspired by Euclidean distance.
 We will, briefly, discuss the main components that are used for each of the previously mentioned steps.
 
-\begin{figure}
+\begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{BossFlow.JPG}
@@ -33,17 +58,17 @@ We will, briefly, discuss the main components that are used for each of the prev
 \end{figure}
 
 % Windowing
-To extract the substructures from a given time series instance $T = [t\textsubscript{1},t\textsubscript{2},...t\textsubscript{n}$],
-a windowing function is used to split it into fixed sized windows $S\textsubscript{i;w} = (t\textsubscript{i},,...t\textsubscript{i+w-1}$), each of them is of a size $w$.
+To extract the substructures from a given time series instance $T = [t_{1},t_{2},...t_{n}$],
+a windowing function is used to split it into fixed sized windows $S_{i;w} = (t_{i},,...t_{i+w-1}$), each of them is of a size $w$.
 The total number of windows that can be created for a time series of length n is $n-w+1$, and each consecutive windows overlap on $w-1$ points.
 In order to achieve offset and amplitude invariance, each window is z-normalized by subtracting the mean from it's original values and then dividing the difference
 by the standard deviation.
 \begin{equation}
-    windows(T,w) = \{ S\textsubscript{1;w}, S\textsubscript{2;w}, ...,  S\textsubscript{n-w+1;w} \}
+    windows(T,w) = \{ S_{1;w}, S_{2;w}, ...,  S_{n-w+1;w} \}
 \end{equation}
 
 %SFA
-After running the windowing function, the real values of the time points inside the windows are transformed into words using Symbolic Fourier Approximation (SFA) \cite{schafer2012sfa}.
+After running the windowing function, the real values of the time points inside the windows are transformed into words using SFA \cite{schafer2012sfa}.
 SFA is an alternative way of representing time series data, that instead of using real values, uses a sequence of symbols which are referred to as SFA words based on a predefined alphabet of specific length.
 SFA accomplishes two things; low pass filtering through removal of noisy components from the data and string representation which allows for the use of string matching algorithms.
 
@@ -70,18 +95,18 @@ instances, is considered to be a notion of similarity. While the absence of SFA 
 or due to the presence of noise which disfigures the time series. Instances under BOSS distance are compared based on shared SFA words only, thus excluding words of frequencies equal to 0.
 BOSS distance as noted by \cite{schafer2015boss} is:
 
-Given two time series instances $T\textsubscript{1}$ and $T\textsubscript{2}$ and their corresponding
-BOSS histograms $B\textsubscript{1}$ : $\Sigma\textsuperscript{l}$ $\to$ $\mathbb{N}$
-and $B\textsubscript{2}$ : $\Sigma\textsuperscript{l}$ $\to$ $\mathbb{N}$, where l is the word length and $\Sigma$ is an alphabet of size c. Their BOSS distance is:
+Given two time series instances $T_{1}$ and $T_{2}$ and their corresponding
+BOSS histograms $B_{1}$ : $\Sigma\textsuperscript{l}$ $\to$ $\mathbb{N}$
+and $B_{2}$ : $\Sigma\textsuperscript{l}$ $\to$ $\mathbb{N}$, where l is the word length and $\Sigma$ is an alphabet of size c. Their BOSS distance is:
 \begin{equation}
-        D(T\textsubscript{1},T\textsubscript{2}) = dist(B\textsubscript{1},B\textsubscript{2})
+        D(T_{1},T_{2}) = dist(B_{1},B_{2})
 \end{equation}
 where
 \begin{equation}
-    dist(B\textsubscript{1},B\textsubscript{2}) = \sum_{a \epsilon B\textsubscript{1};B\textsubscript{1}(a)>0}^{} [B\textsubscript{1}(a) - B\textsubscript{2}(a)]\textsuperscript{2}
+    dist(B_{1},B_{2}) = \sum_{a \epsilon B_{1};B_{1}(a)>0}^{} [B_{1}(a) - B_{2}(a)]\textsuperscript{2}
 \end{equation}
 
-\begin{figure}
+\begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{BOSS_SFA.JPG}
@@ -102,6 +127,23 @@ To classify a query instance, BOSS Ensemble acquires the best accuracy score fro
 Then considers all window lengths that obtained accuracies within a factor of the best accuracy score.
 Each of the considered windows predicts a class label for the query instance using 1-NN. Majority voting is applied and the most dominant
 class label is assigned.
+
+In \cite{middlehurst2019scalable}, some enhancements were introduced to BOSS.
+These included randomising the parameter settings, subsampling training data for each classifier,
+adding a voting scheme to assign weights to classifiers based on the probability distribution from cross validation on training dataset,
+fixing the number of classifiers and adding a time contract.
+
+The new enhanced version of BOSS is named the Contractable BOSS or CBoss.
+In the contractable BOSS, the ensemble is assigned to build as many individual BOSS classifiers as possible during a specified duration of time (the contracting time) despite the properties of the data set.
+In cases of small data sets, this might require huge memory resources; as the number of possible classifiers to create would increase.
+This was overcome by introducing a parameter to limit the number of maximum classifiers to create.
+On the other side, for huge data sets there is a chance of building problems to happen and the loss of progress.
+Which was overcome by adding checkpoints to periodically save the current state of the classifier.
+
+Multiple experiments were carried out using different variations of the enhancements.
+None of the enhancements alone proved competence to the original BOSS performance, but a combination of them together made it possible to achieve significant results.
+More details about the experiments an be found in \cite{middlehurst2019scalable}.
+In our framework, we use the implemented contractable version of BOSS as a replacement for the original BOSS, as suggested by \cite{middlehurst2019scalable}.
 
 \subsubsection{WEASEL}
 \label{SubsubsectionWEASEL}
@@ -130,7 +172,7 @@ binning technique; which further more helps separating instances of classes.
 In the end, a histogram is built using all the windows lengths and the extracted features, uni-grams and bi-grams.
 Irrelevant features are then filtered out using a Chi-squared test. The final highly discriminative feature vector produced is then used to learn a logistic regression classifier.
 
-\begin{figure}
+\begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{WEASELFlow.JPG}
@@ -153,13 +195,13 @@ As mentioned earlier, approximation involves representing a time series of lengt
 WEASEL aims at keeping the best class separating $l$, real and imaginary, Fourier coefficients by applying a one-way ANOVA F-test.
 The test verifies the hypothesis that the means of two or more distributions/groups differ from each other \cite{lowry2014concepts}.
 This can be tested by comparing two variances; the variance between groups and the variance within the groups.
-Using the notations in \cite{schafer2017fast}, $mean square between$ ($MS\textsubscript{B}$) and $mean square within$ ($MS\textsubscript{W}$) respectively.
+Using the notations in \cite{schafer2017fast}, \emph{mean square between} ($MS_{B}$) and \emph{mean square within} ($MS_{W}$) respectively.
 The F-values is then calculated as :
 \begin{equation}
-    F= \frac{MS\textsubscript{B}}{MS\textsubscript{W}}
+    F= \frac{MS_{B}}{MS_{W}}
 \end{equation}
-Then $l$ coefficients with the highest F-values are kept; as these represent features which have big differences between the classes (high $MS\textsubscript{B}$) and
-small differences within the same class (low $MS\textsubscript{W}$).
+Then $l$ coefficients with the highest F-values are kept; as these represent features which have big differences between the classes (high $MS_{B}$) and
+small differences within the same class (low $MS_{W}$).
 
 % Feature Extraction - quantization
 After that, discretization is carried out to set the split thresholds for each of the extracted Fourier value.
@@ -167,6 +209,15 @@ Discretization involves a binning process, where each Fourier value is divided i
 Each bin is represented by an upper and a lower boundary, and assigned a letter from an alphabet $c$.
 Previous quantization techniques used equi-depth or equi-width binning, but these techniques are solely based on values and ignore the distribution of classes.
 WEASEL applies a binning technique based on IG; assuring that for each partition the majority of the values would belong to the same class.
+
+\begin{figure}[!htbp]
+    \captionsetup{justification=raggedright}
+    \centering
+    \includegraphics[scale = 0.5]{WEASEL_FEATURE.JPG}
+    \centering
+    \caption{On the left: Distribution of Fourier coefficients for a sample dataset. The high F-values on imag3 and real0 (red text at bottom) should be selected to best separate the samples from class labels ’A’ and ’B’. On the right: Zoom in on imag3. Information gain splitting is applied to find the best bins for the subsequent quantization. High information gain (IG) indicates pure (good) split points \cite{schafer2017fast}}
+    \label{Img:WEASEL_FEATURE}
+\end{figure}
 
 % Feature Selection
 The result of the feature extraction phase is a high dimensional feature vector with a dimensionality of $\mathcal{O}(min(Nn^{2},c^{l})$,
@@ -176,12 +227,3 @@ This enormous feature space is then reduced using a Chi-squared ($\chi^{2}$) tes
 between the recognised frequencies and the expected frequencies of of a features within a group. This implies that features which have high ($\chi^{2}$) values are statistically
 frequent in certain classes. By comparing the ($\chi^{2}$) values of features to a threshold, all features with scores lower than the threshold can be excluded from the faeture space.
 This usually reduced the feature space by 30\% - 70\% and helped train the logistic regresion classifier in a timely manner.
-
-\begin{figure}
-    \captionsetup{justification=raggedright}
-    \centering
-    \includegraphics[scale = 0.5]{WEASEL_FEATURE.JPG}
-    \centering
-    \caption{On the left: Distribution of Fourier coefficients for a sample dataset. The high F-values on imag3 and real0 (red text at bottom) should be selected to best separate the samples from class labels ’A’ and ’B’. On the right: Zoom in on imag3. Information gain splitting is applied to find the best bins for the subsequent quantization. High information gain (IG) indicates pure (good) split points \cite{schafer2017fast}}
-    \label{Img:WEASEL_FEATURE}
-\end{figure}

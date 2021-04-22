@@ -17,16 +17,16 @@ But there were also other distance metrics that have been introduced in literatu
 and Derivative Dynamic Time Warping (DDTW) \cite{keogh2001derivative,gorecki2013using} which uses derivatives of sequences as features rather than raw data to avoid singularities.
 On the other hand, Edit Distance with Real Penalty (ERP) \cite{chen2004marriage}, Time Warp Edit (TWE) \cite{marteau2008time}, Longest Common Subsequence (LCSS) \cite{das1997finding} and Move-Split-Merge (MSM) \cite{stefan2012move}
 are all alternatives for distance measures, yet multiple experiments have considered DTW to be relatively unbeatable \cite{bagnall2017great,abanda2019review,bostrom2017shapelet}.
-To the extend of our knowledge, the most powerful whole time series classifiers are Elastic Ensemble (EE) \cite{lines2015time} and Proximity Forest (PF) \cite{lucas2019proximity}.
+To the extend of our knowledge, the most powerful whole time series classifiers is Proximity Forest (PF) \cite{lucas2019proximity}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Nearest Neighbor with ED}
 The Euclidean distance is a remarkably simple technique to calculate the distance between time series instances.
-Given two instances  $T\textsubscript{1}$ = [$t1\textsubscript{1}$,$t1\textsubscript{2}$,...$t1\textsubscript{n}$]
-and $T\textsubscript{2}$ = [$t2\textsubscript{1}$,$t2\textsubscript{2}$,...$t2\textsubscript{n}$], the euclidean distance
+Given two instances  $T_{1}$ = [$t1_{1}$,$t1_{2}$,...$t1_{n}$]
+and $T_{2}$ = [$t2_{1}$,$t2_{2}$,...$t2_{n}$], the euclidean distance
 between them can be determined as:
 \begin{equation}
-    ED(T\textsubscript{1},T\textsubscript{2})= \sqrt{\sum_{i=1}^{n} (t1\textsubscript{i} - t2\textsubscript{i})^{2}}
+    ED(T_{1},T_{2})= \sqrt{\sum_{i=1}^{n} (t1_{i} - t2_{i})^{2}}
 \end{equation}
 Euclidean distnace has been preferred to other classifiers due to it's space and time efficiency, but it suffers from two main shortcomings \cite{baydogan2013bag, jeong2011weighted,kate2016using}.
 The first one is that it cannot handle comparisons between time series of different lengths.
@@ -42,32 +42,9 @@ converge with euclidean distance \cite{hills2014classification,ding2008querying,
 Dynamic Time Warping was a very strong baseline for time series classification for a long time \cite{abanda2019review,bagnall2017great}.
 It was first introduced as a technique to recognize spoken words that can deal with misallignments between time series
 that Euclidean Distance couldn't handle \cite{tan2020fastee}.
+Figure \ref{Img:ED_vs_DTW} shows a comparison between ED and DTW while computing the distance between two time series instances.
 
-To calculate the distance between two time series instances  $T\textsubscript{1} = [t1\textsubscript{1},t1\textsubscript{2},...t1\textsubscript{n}$]
-and $T\textsubscript{2} = [t2\textsubscript{1},t2\textsubscript{2},...t2\textsubscript{n}$];
-a distance matrix $M(T\textsubscript{1},T\textsubscript{2})$, of size n $\times$ n, is calculated for $T\textsubscript{1}$ and $T\textsubscript{2}$.
-With $M\textsubscript{i,j}(t1\textsubscript{i},t2\textsubscript{j})$ representing the distance between $t1\textsubscript{i}$ $\in$ $T\textsubscript{1}$
-and $t2\textsubscript{j}$ $\in$ $T\textsubscript{2}$.
-The goal of DTW is to find an optimal path that minimizes the cumulative distance between points of $T\textsubscript{1}$ and $T\textsubscript{2}$.
-
-A candidate path $P = [p\textsubscript{1},p\textsubscript{2},...p\textsubscript{p}]$ is to be found by traversing M.
-For a path to be valid it must conform to some conditions:
-\begin{itemize}
-    \item $p\textsubscript{1} = (t1\textsubscript{1},t2\textsubscript{1})$
-    \item $p\textsubscript{p} = (t1\textsubscript{n},t2\textsubscript{n})$
-    \item for all i \textless m :
-        \begin{itemize}
-            \item $0 \leq t1\textsubscript{i+1} - t1\textsubscript{i} \leq 1$
-            \item $0 \leq t2\textsubscript{i+1} - t2\textsubscript{i} \leq 1$
-        \end{itemize}
-\end{itemize}
-
-Finding an optimal path under DTW can be computationally expensive with complexity of $O(n^2)$ for a time series of length n \cite{schafer2017fast,petitjean2016faster}.
-Consequently it is usual to use a contraint with the path; to prevent comparison of points outside a certain window \cite{tan2020fastee}; like the famous Sakoe-Chiba Band \cite{sakoe1978dynamic}, Itakura Parallelogram \cite{itakura1975minimum} and Ratanamahatana-Keogh Band \cite{ratanamahatana2004making}.
-Typically DTW can make use of it's warping window to handle distortion in time series,
-but still it is vulnerable to cases where the differene in length between instances length is larger than the warping window \cite{tan2019time}.
-
-\begin{figure}
+\begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{ED_vs_DTW.JPG}
@@ -75,6 +52,30 @@ but still it is vulnerable to cases where the differene in length between instan
     \caption{Mapping of Euclidean distance (lock-step measure) versus mapping of DTW distance (elastic measure) \cite{abanda2019review}.}
     \label{Img:ED_vs_DTW}
 \end{figure}
+
+To calculate the distance between two time series instances  $T_{1} = [t1_{1},t1_{2},...t1_{n}$]
+and $T_{2} = [t2_{1},t2_{2},...t2_{n}$];
+a distance matrix $M(T_{1},T_{2})$, of size n $\times$ n, is calculated for $T_{1}$ and $T_{2}$.
+With $M_{i,j}(t1_{i},t2_{j})$ representing the distance between $t1_{i}$ $\in$ $T_{1}$
+and $t2_{j}$ $\in$ $T_{2}$.
+The goal of DTW is to find an optimal path that minimizes the cumulative distance between points of $T_{1}$ and $T_{2}$.
+
+A candidate path $P = [p_{1},p_{2},...p_{p}]$ is to be found by traversing M.
+For a path to be valid it must conform to three conditions:
+\begin{itemize}
+    \item $p_{1} = (t1_{1},t2_{1})$
+    \item $p_{p} = (t1_{n},t2_{n})$
+    \item for all i \textless m :
+        \begin{itemize}
+            \item $0 \leq t1_{i+1} - t1_{i} \leq 1$
+            \item $0 \leq t2_{i+1} - t2_{i} \leq 1$
+        \end{itemize}
+\end{itemize}
+
+Finding an optimal path under DTW can be computationally expensive with complexity of $O(n^2)$ for a time series of length n \cite{schafer2017fast,petitjean2016faster}.
+Consequently it is usual to use a contraint with the path; to prevent comparison of points outside a certain window \cite{tan2020fastee}; like the famous Sakoe-Chiba Band \cite{sakoe1978dynamic}, Itakura Parallelogram \cite{itakura1975minimum} and Ratanamahatana-Keogh Band \cite{ratanamahatana2004making}.
+Typically DTW can make use of it's warping window to handle distortion in time series,
+but still it is vulnerable to cases where the difference in length between instances length is larger than the warping window \cite{tan2019time}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Nearest Neighbor with MSM Distance}
@@ -91,7 +92,7 @@ Move is the substitution of one single time point of a series with another.
 Split divides a single time point of a series into two consecutive time points holding the same value as the originial time point.
 Merge can be seen as the opposite of Split, it combines two consecutive time points holding the same value into one time point.
 
-\begin{figure}
+\begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{MSM.JPG}
@@ -159,7 +160,7 @@ Then the query travels down the branch of the nearest examplar. This processes i
 till the query reaches a leaf node, where it is assigned the class label of that node. This whole process is then repeated for all the trees
 constituting the forest. The final classification of the forest is made by majority voting between it's trees.
 
-\begin{figure}
+\begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{PForest.JPG}

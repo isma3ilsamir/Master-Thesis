@@ -83,7 +83,8 @@ The second step is to use a suitable performance metric which can give actual pe
 We discuss the first step here as it is a feature of the data set, the other step we consider in the design of our experiments in section \ref{SectionExperiment}.
 To be able to inform our recommender about the skewness property of a data set, we create a new feature, in addition to the previously discussed ones ; to indicate whether a data set is balanced in terms of class distribution or skewed.
 We define a data set to be skewed if there exists a class in this data set which is, at least, as twice as likely as any other class.
-To better exaplain how this property works, considerthe two data sets $DS_{1}$ and $DS_{2}$ with 5 classes.
+
+To better exaplain how this property works, consider the two data sets; $DS_{1}$ and $DS_{2}$ each of which contains 5 classes.
 $DS_{1}$ has a class distribution: $P(C_{1})$ =20\%, $P(C_{2})$ = 15\%, $P(C_{3})$ = 15\%, $P(C_{4})$ = 25\% and $P(C_{5})$ = 25\%.
 While $DS_{2}$ has a class distribution: $P(C_{1})$ = 20\%, $P(C_{2})$ = 15\%, $P(C_{3})$ = 15\%, $P(C_{4})$ = 30\% and $P(C_{5})$ = 20\%.
 In this case we would flag $DS_{1}$ as a balanced data set; because there is no prior class probability which is double any other.

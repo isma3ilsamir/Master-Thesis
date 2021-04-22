@@ -14,40 +14,46 @@ as it motivates the context in which the framework operates.
 \label{TSDefinitions}
 A time series is a finite sequence of ordered observations, either based on time or another aspect \cite{abanda2019review,bagnall2017great}.
 The existence of the time component makes time series an abundant form of data that covers various domains like; medicine, finance, engineering and biology \cite{lines2018time}.
+
 A time series dataset is a collection of time series instances.
 \begin{definition}
     \[ \textstyle \text{A set T of n time series instances, T = } \{T_{1}, T_{2}, \ldots ,T_{n}\}. \]
 \end{definition}
-Each of the time series instances $T_{i}$ consists of a sequence of observations.
+Each of the time series instances $T_{i}$ consists of a sequence of observations collected at consequent time points.
 \begin{definition}
     \[ \textstyle \text{A time series } T_{i} \text{, of length L is represented as } T_{i} = [t_{1}, t_{2}, \ldots t_{L}]. \]
 \end{definition}
+An observation $t_{i}$ represents the value of the collected measurement at some point of time $i$.
+
 Time series data can come in different forms. It is important to comprehend what different forms the data can take and what implicit assumptions they convey; to be able to choose the suitable algorithms and tools to deal with it.
 
-The first form is when the observations of instances capture a singular value, this is referred to as univariate time series.
+The first form of time series data is referred to as univariate time series.
+This form of data exists when the observations of instances capture a singular value across time.
 \begin{definition}
-    Univariate time series $T_{i}$, of length L is represented as 
-    $T_{i}$ = [$t_{1}$,$t_{2}$, $\ldots$ $t_{L}$].
-    With $t_{j}$ as a real valued number.
+    \begin{align*} 
+        & \text{Univariate time series } T_{i} \text{, of length L is represented as } T_{i} = [t_{1},t_{2}, \ldots t_{L}] \\
+        & \text{ With } t_{j} \text{ as a real valued number.}
+    \end{align*}
 \end{definition}
-While the other form is when multiple measurments are captured by the observations.
-According to \cite{loning2019sktime}, it is essential to differentiate between the two ways multiple time series can be generated; panel data and multivariate time series data.
 
+The other form is when multiple measurments are captured by the observations.
+According to \cite{loning2019sktime}, it is essential to differentiate between the two ways multiple time series can be generated; panel data and multivariate time series data.
 If more than one variable is being observed during a single experiment, with each variable representing a different measurement; this is called multivariate time series.
 \begin{definition}
-    Multivariate time series $T_{i}$ of length L is represented as $T_{i} = [t_{1},t_{2},\ldots t_{L}$].
-    With $t_{j}$ having M dimensions, each is a univariate time series.
+    \begin{align*} 
+        & \text{Multivariate time series } T_{i} \text{, of length L is represented as } T_{i} = [t_{1},t_{2}, \ldots t_{L}] \\
+        & \text{ With } t_{j} \text{  having M dimensions, each one of them is a univariate time series.}
+    \end{align*}
 \end{definition}
 While panel data is when the same kind of measurments is collected from independent instances; like different patients or diverse industrial processes.
-
-For panel data, it is possible to assume that the different instances are i.i.d, but this assumption doesn't hold for observation of a single instance.
+For panel data, it is possible to assume that the different instances are independent and identically distributed (i.i.d), but this assumption doesn't hold for observation of a single instance.
 The same goes for multivariate time series, individual univariate observations are assumed to be statistically dependant.
 
 \subsection{Nature of Time Series Data}
 \label{NatureOfTimeSeriesData}
 Having discussed the dependency assumptions in time the different forms of time series data.
 It is this dependency that makes time series data challenging for conventional machine learning algorithms, which are used for tabular and cross-sectional data.
-Tabular and cross-sectional data assume observations to be independent and identically distributed (i.i.d) \cite{loning2019sktime}.
+Tabular and cross-sectional data assume observations to be i.i.d \cite{loning2019sktime}.
 
 If we were to tabularize time series data; convert it into a tabular form by considering each observation as an individual feature.
 Then it would be possible to apply conventional machine learning algorithms, under the implicit modelling assumption that observations are not ordered.

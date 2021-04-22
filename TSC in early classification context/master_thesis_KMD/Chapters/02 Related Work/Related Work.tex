@@ -21,30 +21,32 @@ and the availability of the code.
 
 In order to better describe the various techniques applied by the algorithms and what differences characterize each of them, they formulated a taxonomy which 
 groups algorithms based on the features they try to find to discriminate between different classes.
-These groups were; whole series similarity, phase dependent intervals, phase independent intervals, dictionary based and ensemble algorithms.
-We followed the same taxonomy for our experiment as well.
+These groups were; whole series similarity (also referred to as distance-based algorithms), phase dependent intervals, phase independent intervals (shapelets), dictionary based and ensemble algorithms.
+We follow the same taxonomy for our experiment as well and describe these groups in more details in section \ref{SectionTSCA}.
 
 \subsection{Experimental Design}
 \label{subsectionUniBakeoffExperiment}
 The framework ran 100 resampling folds for each of the data sets for each classifier, totalling 8500 (85 data sets $\times$ 100 resamples) experiments for each classifier.
 The first run used the default train/test split provided with the data set, while the remaining resamples were stratified to preserve the class distribution in the default split.
-Using the same parameters as the relvent published papers, the experiment limited the number of parameter values for each classifier to a maximum of 100.
+Using the same parameters as the relevant published papers, the experiment limited the number of parameter values for each classifier to a maximum of 100.
 They used different number of cross validation folds based on the type of algorithm. LOOCV was used for algorithms utilizing distance based measures,
-while for the other classifiers a new model was created for each parameter set. Resulting in a total of 850,000 model per classifier.
+while for the other classifiers a new model was created for each parameter set. Resulting in a total of 850,000 models per classifier.
 
 \section{Deep learning for time series classification: a review}
 \label{DeepLearningReview}
 Another paper that focused on comparison of deep learning algorithms for TSC was \cite{fawaz2019deepreview}.
 Deep learning algorithms had already proved competency in many application fields including image classification, speech recognition and natural language processing \cite{he2016deep,santos2016literature,krizhevsky2012imagenet,guan2019towards}
 and was gaining more popularity in TSC problems \cite{zheng2014time,zheng2016exploiting,zhao2017convolutional}.
-The main goal was to benchmark the performance of deep learning algorithms on TSC problems; as they were less studied than the other algorithms and provide an open source framework for deep learning on TSC.
+The main goals were to benchmark the performance of deep learning algorithms on TSC problems; as they were less studied than the other algorithms and to provide an open source framework for deep learning on TSC.
 
 \subsection{Inclusion Criteria}
 \label{subsectionDeepLearningReviewInclusion}
 The framework included 9 discriminative model end-to-end deep learning algorithms developed to work on TSC problems.
 They started by grouping deep learning algorithms into two main groups; generative and discriminative approaches.
+
 Generative models involve an unsupervised step which tries to learn a quality representation of the time series, then this new representation is fed to another classifier in a learning phase.
 But this family of algorithms was excluded due to it's complexity and incompetence compared to the other group \cite{le2017time,bagnall2017great}.
+
 As for the discriminative models, algorithms that needed preprocessing of features prior to learning were also excluded; to avoid the bias of hand crafted features.
 The remaining discriminative approaches were; Multi Layer Perceptron (MLP), Fully Convolutional Neural Network (FCN), Residual Network (ResNet), Encoder, Multi-scale Convolutional Neural Network (MCNN),
 Time Le-Net, Multi Channel Deep Convolutional Neural Network (MCDCNN), Time Convolutional Neural Network (Time-CNN) and Time Warping Invariant Echo State Network (TWIESN).
@@ -53,8 +55,8 @@ These 9 algorithms were to be compared to each other and to 7 other classifiers.
 A group consisting of the best 4, out of the 18, classifiers that were included in the experiment by \cite{bagnall2017great} which are; Elastic Ensemble (EE), Bag Of SFA Symbols (BOSS), Shapelet Transform (ST), Collective of Transformation-based Ensemble(COTE).
 They have also included Hierarchical Vote Collective of Transformation-Based Ensembles (HIVE-COTE), which is an extension of COTE using hierarchical voting and two extra classifiers.
 In addition to Proximity Forest, an ensemble based on the same concept of Random Forests but using class examplars instead of feature split values.
-Finally, the classic 1-NN classifier utilizing Dynamic Time warping (DTW) elastic distance measure with warping window set through cross-validation on training data set.
-Many of these classifiers we cover in Chapter \ref{ChapterClassificationAlgorithms}
+Finally, the classic 1-NN classifier utilizing Dynamic Time warping (DTW) elastic distance measure with the warping window set through cross-validation on training data set.
+Many of these classifiers we cover later on in section \ref{SectionTSCA}.
 
 \subsection{Experimental Design}
 \label{subsectionDeepLearningReviewExperiment}
@@ -106,9 +108,10 @@ Most of the algorithms are implemented in both, but few exist only in one. More 
 \subsection{Experimental Design}
 \label{subsectionMultiBakeoffExperiment}
 The framework ran 30 resamples for each data set for each classifier to calculate performance metrics, the first run using the default train/test split of the data set, while the remaining 29 runs using
-stratified to maintain the class distribution of the original split.
+stratified sampling; to maintain the class distribution of the original split.
 In contrast to the previous experiments where only accuracy was measured, this experiment had other measures beside which are; area under the ROC, balanced accuracy, F1, negative log likelihood,
 Matthew’s correlation coefficient, recall/sensitivity, precision and specificity. Still accuracy was the primary performance measure used in comparisons; due to it's easier interpretation.
+
 The classifiers were initialized using the default structure and hyperparameters in their original published papers.
 Apart from the classifiers that have internal tuning processes, no other external tunings were applied.
 Even for the window size of DTW, which is a was proved to have a small but significant improvement of performance for univariate data sets \cite{ratanamahatana2005three}.
@@ -120,7 +123,7 @@ The data sets of the UEA archive are not normalized and were presented to the cl
 This might had caused a disadvantage for WEASEL+MUSE, which doesn't have an internal normalization process, against other classifiers like,
 ROCKET; gRSF; TapNet; InceptionTime; ResNet; CBOSS; STC and CIF, which do.
 The decision of excluding data normalization was based on another side experiment that they carried out.
-A comparison was done sing the three DTW variants, once on normalized data and once on non-normalized data.
+A comparison was done using the three DTW variants, once on normalized data and once on non-normalized data.
 The experiment had proved that data normalization had no significant effect on the performance of the classifiers, but overall the performance of DTW declined with normalization.
 The same experiment was repeated for HIVE-COTE and it's components and the same result was observed.
 This meant that data normalization was also not considered important for the scope of the experiment.
@@ -131,7 +134,6 @@ All three frameworks follow the same methodology, introduced by \cite{demvsar200
 When using multiple resamples over data sets, the score of a classifier on a given data set is calculated as the average of it's accuracy over all resamples.
 The methodology recommends using a Friedman ranking test to refute the null hypothesis; that there is no difference between the ranks of the classifiers.
 After refuting the null hypothesis and applying ranks to each classifier, a pairwise post-hoc analysis is done according to the recommendation of \cite{benavoli2016should}.
-Which applies a Wilcoxon signed rank test using a Holm's alpha correction forming cliques of classifiers. Each clique represents a group of classifiers where there is no
-significance between their pairwise comparisons. Results are described by a critical difference diagram, where the average rank of each classifier is noted
-and cliques are expressed by a thick line.
-We use the same code for drawing our critical difference diagrams from \cite{fawaz2019deepreview}
+Which applies a Wilcoxon signed rank test using a Holm's alpha correction of value 5\% to form cliques of classifiers.
+Each clique represents a group of classifiers where there is no significance between their pairwise comparisons.
+Results are described by a critical difference diagram, where the average rank of each classifier is noted and cliques are expressed by a thick line.
