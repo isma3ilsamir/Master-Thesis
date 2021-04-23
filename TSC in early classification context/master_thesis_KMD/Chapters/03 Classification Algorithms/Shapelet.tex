@@ -69,3 +69,24 @@ They also introduced a balancing technique to represent each of the classes with
 For the classification, a combination of tree based, kernel based and probabilistic classifiers were used in an ensemble on the transformed data set \cite{shifaz2020ts,lines2018time}.
 Each of the classifiers was given a weight based on it's training accuracy and the final classification used weighted voting \cite{Bostrom2017}.
 Although ST has proved to be a competent accurate classifier, it suffers from high training-time complexity \cite{shifaz2020ts}.
+
+ST is one of multiple classifier in the bigger ensemble HIVE-COTE \cite{lines2018time}.
+It also is among the slowest components of the ensemble; due to the exhaustive shapelet enumeration which reaches a complexity of $O(n^{2} \centerdot l^{4})$,
+where $n$ is the size of the data set and $l$ is the length of the time series \cite{shifaz2020ts}.
+During a modification that was introduced in \cite{bagnall2020tale} for HIVE-COTE, some enhancements were applied to ST.
+Some of these enhancements were new, others were already suggested before.
+The first enhancement was to add a time contract; so that it limits the exhaustive enumeration process to happen only during the contracted time.
+The value of the time contract is configured using a new added parameter.
+The second enhancement was to train a Rotation Forest classifier on the transformed data instead of the mixed ensemble.
+
+In the beginning of the training process, ST explores the number of shapelets that exist in the data set during the contract time, then approximates the number of shapelet
+samples it can acquire from each time series.
+Based on the results, it modifies the time of the model using a reinforcement learning technique.
+For the shapelets sampling process a random search is executed. If the time contract is long enough, then all shapelets are considered.
+Then, an evaluation process starts, where all the acquired samples are compared and filtered; to exclude redundant shapelets.
+The filtered samples are then evaluated using information gain (IG); to keep the best distinctive shapelets of the classes.
+For multi-class problems, a one vs all evaluation is carried out as per the suggestion by \cite{Bostrom2017}.
+After that the weak shapelets are excluded and the remaining shapelets are merged into a pool and the transformation process starts.
+Finally, the rotation forest classifier is trained.
+In our framework, we use a contractable version of ST instead of the original. The implemented version allows for specifying a contrat time
+and uses a random forest classifier.

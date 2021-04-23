@@ -349,11 +349,43 @@ While the processes metrics are $Train time$ , $Test time$; which represent the 
 
 There is only one metric which is calculated during the analysis report phase after all the other metrics are calculated; the harmonic mean.
 We previously defined the HM in chapter \ref{EarlyTimeSeriesClassification}, it has been used by \cite{schafer2020teaser} as the objective function for evaluating their algorithm $TEASER$.
-The HM is a popular choice for calculating a score that combines 2 objectives at the same time, which is in our case earliness and performance like the other eTSC problems.
-Earliness is represented by the value of the parameter $Revealed \%$ which is a fraction of the full series length, e.g. 0.5 means 50\% of the total length.
-On the other hand, performance is represented by the value of the parameter $Test score$.
-We use HM as the means of evaluating classifiers in our experiment; due to it's capacity to incorporate both objectives in one score.
+The HM is a popular choice for calculating a score that combines 2 objectives at the same time, which are earliness and performance for eTSC problems.
+Likewise, we use HM as the means of evaluating classifiers in our experiments; due to it's capacity to incorporate both objectives in one score.
 Which allows us to compare the trained classifiers in terms of a one score value without worrying about fixing the value of either the earliness or the performance.
+
+On the other hand, the HM equation that was discussed in chapter \ref{EarlyTimeSeriesClassification} doesn't fit directly into our evaluation framework.
+If we try to substitute the results for a classifier trained on the full length data into this equation, we would always get a value of 0.
+The reason is that the equation is designed to do reverse scoring to the value or earliness, by re-coding its value so that the less seen data points, the higher the contribution of earliness in the equation.
+This is simply achieved by using (1 - earliness) instead of using the value of earliness directly.
+In case of calculating scores at full length, this would yield a value of 0 regardless of the performance of the classifier;
+since the earliness value at full length is 1, then the equation (1 - earliness) would always give a 0 score causing the numerator to be always 0.
+
+Our modification to the HM is a two fold procedure.
+First, we reverse its scale, so that the lower the value the better. Then we reverse score the result again so that it returns to the original scale.
+We represent our 2 steps modification in equations \ref{Equation:HMNew1} and \ref{Equation:HMNew2}.
+
+\begin{align}
+    & F_{\beta} =
+        \begin{cases}
+          1 & \text{if earliness = 1 $\land$ performance = 0} \\
+          1 & \text{if earliness = 0 $\land$ performance = 0} \\
+          (1 + \beta^2)\frac{\text{earliness(1 - performance)}}{\beta^2 \text{(1 - performance) + earliness}} & \text{otherwise} \\
+        \end{cases} \label{Equation:HMNew1} \\
+    & \text{Harmonic Mean = 1 - } F_{\beta} \label{Equation:HMNew2}
+\end{align}
+
+In the first step, we reverse the scale of the original HM equation.
+Instead of reverse scoring earliness and using the actual performance score value, we use the actual earliness value and reverse the performance metric score.
+Now when we consider the classifiers learning at full length, 
+This would solve the problem of attaining a score of 0  and replace it with a real value. Which at best could be 0.5 if 100\% accuracy is scored.
+
+There are 2 special cases to be handled during this step.
+First, if the classifier doesn't predict anything correct but at the earliest point in time.
+Second, if the classifier doesn't predict anything correct while seeing the full length.
+These two cases are then assigned the lowest value, which is 1.
+In the second step, we reverse score the value from the first step again; to math the expected input for generating critical difference diagrams.
+We feed these equation with the values of the features $Revealed \%$ and $Test score$, for the attibutes earliness and performance respectively.
+
 
 \section{Experiments}
 \label{SectionExperiment}
@@ -421,8 +453,10 @@ This lead us to modify some algorithms to so that they can finish promptly; like
 classifier with an option to control the learning phase time; like BOSS and ST.
 
 Due to time limitations; We used the contractable implementations of BOSS and ST offered by $sktime$.
-These implementations allows passing a time parameter which controls the sampling space for BOSS and the shapelets searching time for ST.
+These implementations allows passing a time parameter which controls the sampling space for BOSS and the shapelets searching time for ST
+beside other performance enhancements.
 We set the value of the time contract for both to 60 minutes.
+We have discussed the literature details of these enhancements for ST in subsection \ref{SubsubsectionST} and for BOSS in subsection \ref{SubsubsectionBOSS}.
 
 We applied 2 adjustments to the PForest classifier.
 Firstly, we excluded ED from the pool of distance measures that PForest selects from; since the ED has previously proven not to be compatible with our early classification context when used with the KNN classifier.

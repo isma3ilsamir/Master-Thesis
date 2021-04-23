@@ -64,9 +64,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.4}Dictionary Based Algorithms}{19}{subsection.3.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{BOSS}{19}{section*.21}%
+\contentsline {subsubsection}{BOSS}{20}{section*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{WEASEL}{22}{section*.24}%
+\contentsline {subsubsection}{WEASEL}{23}{section*.24}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.5}Deep Learning Algorithms}{25}{subsection.3.3.5}%
 \defcounter {refsection}{0}\relax 
@@ -74,56 +74,54 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Early Time Series Classification}{28}{section.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Early Time Series Classification Algorithms}{28}{section.3.5}%
+\contentsline {section}{\numberline {3.5}Early Time Series Classification Algorithms}{29}{section.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.1}ECTS}{28}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.1}ECTS}{29}{subsection.3.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.2}Shapelet Based Algorithms}{29}{subsection.3.5.2}%
+\contentsline {subsection}{\numberline {3.5.2}Shapelet Based Algorithms}{30}{subsection.3.5.2}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.5.3}ECDIRE}{30}{subsection.3.5.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5.4}TEASER}{30}{subsection.3.5.4}%
+\contentsline {subsection}{\numberline {3.5.4}TEASER}{31}{subsection.3.5.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Data Sets}{32}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Data Sets}{33}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}UCR/UEA Archives}{32}{section.4.1}%
+\contentsline {section}{\numberline {4.1}UCR/UEA Archives}{33}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}UCR Archive}{32}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.1}UCR Archive}{33}{subsection.4.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}UEA Archive}{32}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.2}UEA Archive}{33}{subsection.4.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Used Data Sets}{33}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.3}Used Data Sets}{34}{subsection.4.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Karolinska data set}{35}{section.4.2}%
+\contentsline {section}{\numberline {4.2}Karolinska data set}{36}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Framework and Experimental Design}{37}{chapter.5}%
+\contentsline {chapter}{\numberline {5}Framework and Experimental Design}{38}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}The Framework}{37}{section.5.1}%
+\contentsline {section}{\numberline {5.1}The Framework}{38}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Early Classification Context}{37}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.1}Early Classification Context}{38}{subsection.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Structure and Toolkits}{38}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.2}Structure and Toolkits}{39}{subsection.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{User Input}{38}{section*.32}%
+\contentsline {subsubsection}{User Input}{39}{section*.32}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Experiment Preparation}{39}{section*.34}%
+\contentsline {subsubsection}{Experiment Preparation}{40}{section*.34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Experiment Execution}{43}{section*.35}%
+\contentsline {subsubsection}{Experiment Execution}{44}{section*.35}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Analysis Reports and Logging}{43}{section*.37}%
+\contentsline {subsubsection}{Analysis Reports and Logging}{44}{section*.37}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Experiments}{45}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Experiments}{47}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Excluded Classifiers}{46}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.1}Excluded Classifiers}{47}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Included Classifiers and Adjustments}{46}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.2}Included Classifiers and Adjustments}{48}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}New Framework}{48}{chapter.6}%
+\contentsline {chapter}{\numberline {6}Results}{50}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Results}{49}{chapter.7}%
+\contentsline {chapter}{\numberline {7}Findings Discussion}{51}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Findings Discussion}{50}{chapter.8}%
+\contentsline {chapter}{\numberline {8}Summary and Outlook}{52}{chapter.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {9}Summary and Outlook}{51}{chapter.9}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9.1}Declaration of Authorship}{63}{section.9.1}%
+\contentsline {section}{\numberline {8.1}Declaration of Authorship}{64}{section.8.1}%
