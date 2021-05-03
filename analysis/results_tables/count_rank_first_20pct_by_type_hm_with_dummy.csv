@@ -1,0 +1,9 @@
+type,CBoss,Dummy,PForest,ST,TSF,WEASEL,num_datasets
+ECG,2,0,5,3,4,2,5
+SPECTRO,5,0,5,6,8,3,8
+SENSOR,10,0,10,7,12,10,13
+Traffic,1,0,0,1,1,0,1
+DEVICE,5,0,5,5,5,4,5
+EPG,2,0,2,0,2,2,2
+HAR,0,0,0,0,1,0,1
+SOUND,1,0,0,1,1,1,1

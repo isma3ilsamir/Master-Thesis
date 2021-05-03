@@ -26,6 +26,8 @@ pexpect = "*"
 psutil = "*"
 sktime = {git = "https://github.com/alan-turing-institute/sktime.git"}
 xlrd = "*"
+orange3 = "*"
+plotly = "*"
 
 [requires]
 python_version = "3.7"

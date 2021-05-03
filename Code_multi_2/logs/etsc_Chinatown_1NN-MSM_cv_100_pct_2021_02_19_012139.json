@@ -1,0 +1,1 @@
+{"process":{"0":"etsc"},"ts":{"0":"19-02-2021 01:21:39"},"dataset":{"0":"Chinatown"},"model":{"0":"1NN-MSM"},"cv":{"0":true},"n_iter":{"0":50},"score_function":{"0":"balanced_accuracy"},"from_beg":{"0":true},"split":{"0":10},"revealed_pct":{"0":100},"success":{"0":false},"error":{"0":{"args":["apply_split() got an unexpected keyword argument 'desc'"]}},"duration":{"0":0.4883532}}
