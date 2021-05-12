@@ -33,29 +33,29 @@ def get_error(df):
     return df_copy
 
 
-def get_rev_hm(row, beta=1):
+def get_rev_f_score(row, beta=1):
     revealed_pct = row['revealed_pct_actual']
     err = row['error_rate']
-    rev_hm = None
+    rev_f_score = None
     if err == 1 and revealed_pct == 0:
-        rev_hm = 1
+        rev_f_score = 1
     elif err == 1 and revealed_pct == 1:
-        rev_hm = 1
+        rev_f_score = 1
     else:
-        rev_hm = (1 + pow(beta, 2)) * ((err * (revealed_pct/100)) /
+        rev_f_score = (1 + pow(beta, 2)) * ((err * (revealed_pct/100)) /
                                        ((pow(beta, 2) * err) + (revealed_pct/100)))
-        # rev_hm = (2 * (revealed_pct/100) * err) / ((revealed_pct/100) + err)
-    return rev_hm
+        # rev_f_score = (2 * (revealed_pct/100) * err) / ((revealed_pct/100) + err)
+    return rev_f_score
 
 
-def adjust_hm(df):
+def adjust_f_score(df):
     df_copy = df.copy()
-    df_copy['harmonic_mean'] = 1 - df_copy['reversed_hm']
+    df_copy['f_score'] = 1 - df_copy['reversed_f_score']
     return df_copy
 
-# def adjust_hm(df):
+# def adjust_f_score(df):
 #     df_copy = df.copy()
-#     df_copy['harmonic_mean'] = (2 * (1 - (df_copy['revealed_pct_actual']/100)) * df_copy['test_ds_score']) / ((1 - (df_copy['revealed_pct_actual']/100)) + df_copy['test_ds_score'])
+#     df_copy['f_score'] = (2 * (1 - (df_copy['revealed_pct_actual']/100)) * df_copy['test_ds_score']) / ((1 - (df_copy['revealed_pct_actual']/100)) + df_copy['test_ds_score'])
 #     return df_copy
 
 
@@ -101,6 +101,8 @@ def get_analysis_df(df):
             'std_score_time', 'params', 'mean_test_score', 'std_test_score',
             'train_time', 'test_ds_score', 'test_ds_score_time',
             'revealed_pct', 'harmonic_mean', 'dataset']
+    df_copy = df[cols].copy()
+    df_copy.rename(columns={'harmonic_mean': 'f_score'})
     return df[cols].copy()
 
 
@@ -152,9 +154,9 @@ def get_cd_df_acc(df):
     return cd_df
 
 
-def get_cd_df_hm(df):
+def get_cd_df_f_score(df):
     # for CD diagram
-    cd_df = df[['clf', 'dataset', 'harmonic_mean']]
+    cd_df = df[['clf', 'dataset', 'f_score']]
     cd_df.columns = ['classifier_name', 'dataset_name', 'accuracy']
     return cd_df
 
@@ -164,10 +166,10 @@ def get_cd_diagram(df, ds_list, metric, image_name):
     ds_len = len(ds_list)
     if metric == 'accuracy':
         cd_df = get_cd_df_acc(df)
-    elif metric == 'hm':
-        cd_df = get_cd_df_hm(df)
+    elif metric == 'f_score':
+        cd_df = get_cd_df_f_score(df)
     else:
-        raise("metric should be either accuracy or hm")
+        raise("metric should be either accuracy or f_score")
     p_values, average_ranks, _ = wilcoxon_holm(df_perf=cd_df)
 
     names = average_ranks.index.tolist()
@@ -205,13 +207,23 @@ def rank_on_ds_score(df):
     ranked = pd.concat(dfs, axis=0, ignore_index=True)
     return ranked
 
-
-def rank_on_hm(df):
+def rank_on_f_score(df):
     dfs = []
     datasets = list(df['dataset'].unique())
     for ds in datasets:
         filtered = filter_by_val(df, 'dataset', ds).copy()
-        filtered['ds_rank_hm'] = filtered['harmonic_mean'].rank(
+        filtered['ds_rank_f_score'] = filtered['f_score'].rank(
+            ascending=False, method='min')
+        dfs.append(filtered)
+    ranked = pd.concat(dfs, axis=0, ignore_index=True)
+    return ranked
+
+def rank_on_col(df, col):
+    dfs = []
+    datasets = list(df['dataset'].unique())
+    for ds in datasets:
+        filtered = filter_by_val(df, 'dataset', ds).copy()
+        filtered[f'ds_rank_{col}'] = filtered[col].rank(
             ascending=False, method='min')
         dfs.append(filtered)
     ranked = pd.concat(dfs, axis=0, ignore_index=True)
@@ -348,8 +360,8 @@ def get_main_df(dataset_df, analysis_filenames):
     df['train_size_std'] = df.apply(get_standard_train_size, axis=1)
     df['num_classes_std'] = df.apply(get_standard_num_classes, axis=1)
     df = get_error(df)
-    df['reversed_hm'] = df.apply(get_rev_hm, beta=1, axis=1)
-    df = adjust_hm(df)
+    df['reversed_f_score'] = df.apply(get_rev_f_score, beta=0.5, axis=1)
+    df = adjust_f_score(df)
     return df
 
 
@@ -423,28 +435,31 @@ def get_boxplot_all_pct_by_clf(df, metric, image_name):
     if metric == 'accuracy':
         # sns.catplot(kind='box', y="test_ds_score", x="clf", data=df, showfliers = False)
         box_plot = sns.catplot(kind='box', y="test_ds_score", x="clf", data=df.sort_values(
-            "revealed_pct"), flierprops=dict(markerfacecolor='0.50', markersize=2))
+            "revealed_pct"), flierprops=dict(markerfacecolor='0.50', markersize=2)).set(
+                xlabel='Classifier', ylabel='Balanced Accuracy')
         medians = df.groupby(['revealed_pct'])[
             'test_ds_score'].median().round(3)
         # offset from median for display
         vertical_offset = df['test_ds_score'].median() * 0.03
-    elif metric == 'hm':
-        # sns.catplot(kind='box', y="harmonic_mean", x="clf", data=df, showfliers = False)
-        box_plot = sns.catplot(kind='box', y="harmonic_mean", x="clf", data=df.sort_values(
-            "revealed_pct"), flierprops=dict(markerfacecolor='0.50', markersize=2))
+    elif metric == 'f_score':
+        # sns.catplot(kind='box', y="f_score", x="clf", data=df, showfliers = False)
+        box_plot = sns.catplot(kind='box', y="f_score", x="clf", data=df.sort_values(
+            "revealed_pct"), flierprops=dict(markerfacecolor='0.50', markersize=2)).set(
+                xlabel='Classifier', ylabel='F-Score')
         medians = df.groupby(['revealed_pct'])[
-            'harmonic_mean'].median().round(3)
+            'f_score'].median().round(3)
         # offset from median for display
-        vertical_offset = df['harmonic_mean'].median() * 0.03
+        vertical_offset = df['f_score'].median() * 0.03
     elif metric == 'train_time':
         # sns.catplot(kind='box', y="train_time", x="clf", data=df, showfliers = False)
         box_plot = sns.catplot(kind='box', y="train_time", x="clf", data=df.sort_values(
-            "revealed_pct"), flierprops=dict(markerfacecolor='0.50', markersize=2))
+            "revealed_pct"), flierprops=dict(markerfacecolor='0.50', markersize=2)).set(
+                xlabel='Classifier', ylabel='Training Time')
         medians = df.groupby(['revealed_pct'])['train_time'].median().round(3)
         # offset from median for display
         vertical_offset = df['train_time'].median() * 0.03
     else:
-        raise("metric should be accuracy, train_time or hm")
+        raise("metric should be accuracy, train_time or f_score")
     for xtick in box_plot.ax.get_xticks():
         box_plot.ax.text(xtick, medians.iloc[xtick] + vertical_offset, medians.iloc[xtick],
                          horizontalalignment='center', size='x-small', color='w', weight='semibold')
@@ -462,8 +477,8 @@ def get_boxplot_all_pct_by_clf(df, metric, image_name):
 def export_results_df(df, metric, file_name):
     if metric == 'test_ds_score':
         df_result = get_pivot(df, 'test_ds_score', 'clf', 'dataset', 'mean')
-    elif metric == 'harmonic_mean':
-        df_result = get_pivot(df, 'harmonic_mean', 'clf', 'dataset', 'mean')
+    elif metric == 'f_score':
+        df_result = get_pivot(df, 'f_score', 'clf', 'dataset', 'mean')
     export_folder = os.path.join(curr_folder, 'results_tables')
     if not os.path.exists(export_folder):
         os.makedirs(export_folder)
@@ -476,8 +491,8 @@ def get_count_first_rank_by_feature(df, feature, measure, pcts):
         df_temp = df[mask].copy()
         if measure == 'accuracy':
             df_temp_ranked = rank_on_ds_score(df_temp)
-        elif measure == 'hm':
-            df_temp_ranked = rank_on_hm(df_temp)
+        elif measure == 'f_score':
+            df_temp_ranked = rank_on_f_score(df_temp)
         df_temp_ranked[f'ds_rank_{measure}_calc'] = np.where(
             df_temp_ranked[f'ds_rank_{measure}'] == 1, 1, 0)
         values_list = df_temp_ranked[feature].unique().tolist()
@@ -515,8 +530,8 @@ def get_count_first_rank_by_feature_with_dummy(df, feature, measure, pcts, df_du
             [df_temp, df_dummy_pct], axis=0, ignore_index=True, sort=False)
         if measure == 'accuracy':
             df_temp_ranked = rank_on_ds_score(data_with_dummy)
-        elif measure == 'hm':
-            df_temp_ranked = rank_on_hm(data_with_dummy)
+        elif measure == 'f_score':
+            df_temp_ranked = rank_on_f_score(data_with_dummy)
         df_temp_ranked = rank_relative_to_dummy(df_temp_ranked, measure)
         values_list = df_temp_ranked[feature].unique().tolist()
         dfs = []
@@ -562,8 +577,8 @@ def get_avg_rank_by_feature(df, feature, measure, pcts):
         df_temp = df[mask].copy()
         if measure == 'accuracy':
             df_temp_ranked = rank_on_ds_score(df_temp)
-        elif measure == 'hm':
-            df_temp_ranked = rank_on_hm(df_temp)
+        elif measure == 'f_score':
+            df_temp_ranked = rank_on_f_score(df_temp)
         values_list = df_temp_ranked[feature].unique().tolist()
         dfs = []
         for val in values_list:
@@ -599,8 +614,8 @@ def get_avg_rank_by_feature_with_dummy(df, feature, measure, pcts, df_dummy):
             [df_temp, df_dummy_pct], axis=0, ignore_index=True, sort=False)
         if measure == 'accuracy':
             df_temp_ranked = rank_on_ds_score(data_with_dummy)
-        elif measure == 'hm':
-            df_temp_ranked = rank_on_hm(data_with_dummy)
+        elif measure == 'f_score':
+            df_temp_ranked = rank_on_f_score(data_with_dummy)
         values_list = df_temp_ranked[feature].unique().tolist()
         dfs = []
         for val in values_list:
@@ -636,7 +651,7 @@ def export_data_for_recommendation(df):
                     'num_dim',
                     'balanced',
                     'length',
-                    'harmonic_mean'
+                    'f_score'
                     ]].copy()
     export_folder = os.path.join(os.path.dirname(curr_folder), 'recommendation')
     df_export.to_csv(os.path.join(
@@ -734,59 +749,59 @@ if __name__ == "__main__":
 
     ###### table of results ######
     export_results_df(df, 'test_ds_score', 'accuracies_results.csv')
-    export_results_df(df, 'harmonic_mean', 'hm_results.csv')
+    export_results_df(df, 'f_score', 'f_score_results.csv')
 
     # for p in pcts:
     #     mask = df['revealed_pct'] == p
     #     df_temp = df[mask].copy()
     #     IPython.embed()
     #     df_temp_ranked = rank_on_ds_score(df_temp)
-    #     df_temp_ranked = rank_on_hm(df_temp)
+    #     df_temp_ranked = rank_on_f_score(df_temp)
 
     # ######## AVG Ranking #############
 
     # ###### Ranking each percent by dimension (tables exported as csv) ######
     # ### by type
     # # get_avg_rank_by_feature(df_all_pct_all_clf, 'type', 'accuracy', pcts)
-    # get_avg_rank_by_feature(df_all_pct_all_clf, 'type', 'hm', pcts)
+    # get_avg_rank_by_feature(df_all_pct_all_clf, 'type', 'f_score', pcts)
     # ### by length
     # # get_avg_rank_by_feature(df_all_pct_all_clf, 'train_length_std', 'accuracy', pcts)
-    # get_avg_rank_by_feature(df_all_pct_all_clf, 'train_length_std', 'hm', pcts)
+    # get_avg_rank_by_feature(df_all_pct_all_clf, 'train_length_std', 'f_score', pcts)
     # ### by train size
     # # get_avg_rank_by_feature(df_all_pct_all_clf, 'train_size_std', 'accuracy', pcts)
-    # get_avg_rank_by_feature(df_all_pct_all_clf, 'train_size_std', 'hm', pcts)
+    # get_avg_rank_by_feature(df_all_pct_all_clf, 'train_size_std', 'f_score', pcts)
     # ### by num classes
     # # get_avg_rank_by_feature(df_all_pct_all_clf, 'num_classes_std', 'accuracy', pcts)
-    # get_avg_rank_by_feature(df_all_pct_all_clf, 'num_classes_std', 'hm', pcts)
+    # get_avg_rank_by_feature(df_all_pct_all_clf, 'num_classes_std', 'f_score', pcts)
 
     # ###### Ranking each percent by dimension with Dummy (tables exported as csv) ######
     # ### by type
-    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'type', 'hm', pcts, df_dummy)
+    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'type', 'f_score', pcts, df_dummy)
     # ### by length
-    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'train_length_std', 'hm', pcts, df_dummy)
+    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'train_length_std', 'f_score', pcts, df_dummy)
     # ### by train size
-    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'train_size_std', 'hm', pcts, df_dummy)
+    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'train_size_std', 'f_score', pcts, df_dummy)
     # ### by num classes
-    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'num_classes_std', 'hm', pcts, df_dummy)
+    # get_avg_rank_by_feature_with_dummy(df_all_pct_all_clf, 'num_classes_std', 'f_score', pcts, df_dummy)
 
     ###### Ranking each percent by dimension with Dummy (tables exported as csv) ######
     # by type
     get_count_first_rank_by_feature_with_dummy(
-        df_all_pct_all_clf, 'type', 'hm', pcts, df_dummy)
+        df_all_pct_all_clf, 'type', 'f_score', pcts, df_dummy)
     # by length
     get_count_first_rank_by_feature_with_dummy(
-        df_all_pct_all_clf, 'train_length_std', 'hm', pcts, df_dummy)
+        df_all_pct_all_clf, 'train_length_std', 'f_score', pcts, df_dummy)
     # by train size
     get_count_first_rank_by_feature_with_dummy(
-        df_all_pct_all_clf, 'train_size_std', 'hm', pcts, df_dummy)
+        df_all_pct_all_clf, 'train_size_std', 'f_score', pcts, df_dummy)
     # by num classes
     get_count_first_rank_by_feature_with_dummy(
-        df_all_pct_all_clf, 'num_classes_std', 'hm', pcts, df_dummy)
+        df_all_pct_all_clf, 'num_classes_std', 'f_score', pcts, df_dummy)
 
     ###### boxplot distribution ######
     for data, clf in clf_df_list:
         get_boxplot_all_pct_by_clf(data, 'accuracy', f'boxplot_accuracy_{clf}')
-        get_boxplot_all_pct_by_clf(data, 'hm', f'boxplot_hm_{clf}')
+        get_boxplot_all_pct_by_clf(data, 'f_score', f'boxplot_f_score_{clf}')
         get_boxplot_all_pct_by_clf(
             data, 'train_time', f'boxplot_train_time_{clf}')
 
@@ -794,7 +809,7 @@ if __name__ == "__main__":
     # within classifiers
     for data, ds_list, clf in all_pct_same_clf_list:
         get_cd_diagram(data, ds_list, 'accuracy', f'cd_accuracy_within_{clf}')
-        get_cd_diagram(data, ds_list, 'hm', f'cd_hm_within_{clf}')
+        get_cd_diagram(data, ds_list, 'f_score', f'cd_f_score_within_{clf}')
 
     # between classifiers (same percent WITHOUT dummy)
     for data, ds_list, pct in same_pct_all_clf_list:
@@ -805,19 +820,19 @@ if __name__ == "__main__":
             [data, df_dummy_pct], axis=0, ignore_index=True, sort=False)
         get_cd_diagram(data_with_dummy, ds_list, 'accuracy',
                        f'cd_accuracy_across_{pct}_with_dummy')
-        get_cd_diagram(data_with_dummy, ds_list, 'hm',
-                       f'cd_hm_across_{pct}_with_dummy')
+        get_cd_diagram(data_with_dummy, ds_list, 'f_score',
+                       f'cd_f_score_across_{pct}_with_dummy')
 
     # between classifiers (same percent with dummy)
     for data, ds_list, pct in same_pct_all_clf_list:
         get_cd_diagram(data, ds_list, 'accuracy', f'cd_accuracy_across_{pct}')
-        get_cd_diagram(data, ds_list, 'hm', f'cd_hm_across_{pct}')
+        get_cd_diagram(data, ds_list, 'f_score', f'cd_f_score_across_{pct}')
 
     # between classifiers (all WITHOUT dummy)
     get_cd_diagram(df_all_pct_all_clf, df_all_pct_all_clf_ds_list,
                    'accuracy', f'cd_accuracy_all_pct_all_clf')
     get_cd_diagram(df_all_pct_all_clf, df_all_pct_all_clf_ds_list,
-                   'hm', f'cd_hm_all_pct_all_clf')
+                   'f_score', f'cd_f_score_all_pct_all_clf')
 
     # between classifiers (all with dummy)
     df_dummy_join_with_all = filter_by_list(
@@ -828,7 +843,7 @@ if __name__ == "__main__":
     # EXCLUDED BECAUSE THE PAIRWISE TESTING FAILS TO DISTINGUISH DUMMY VERSIONS FROM EACH OTHER
     # get_cd_diagram(df_all_pct_all_clf_dummy, df_all_pct_all_clf_ds_list,'accuracy',f'cd_accuracy_all_pct_all_clf_dummy')
     get_cd_diagram(df_all_pct_all_clf_dummy, df_all_pct_all_clf_ds_list,
-                   'hm', f'cd_hm_all_pct_all_clf_dummy')
+                   'f_score', f'cd_f_score_all_pct_all_clf_dummy')
 
     ###### scatter plot ######
     # between w percenteges same classifier
@@ -838,11 +853,14 @@ if __name__ == "__main__":
             get_scatter_plot_same_clf_two_pct(
                 data_df, pct1, pct2, clf, 'test_ds_score', f'{clf}{pct1}_vs_{clf}{pct2}_accuracy')
             get_scatter_plot_same_clf_two_pct(
-                data_df, pct1, pct2, clf, 'harmonic_mean', f'{clf}{pct1}_vs_{clf}{pct2}_hm')
+                data_df, pct1, pct2, clf, 'f_score', f'{clf}{pct1}_vs_{clf}{pct2}_f_score')
 
-    export_data_for_recommendation(df_all_pct_all_clf)
-
+    # export_data_for_recommendation(df_all_pct_all_clf_dummy)
+    q= df_main[df_main['classifier'] == 'Dummy']['dataset'].tolist()
+    w = filter_by_list(df_main, 'dataset', q)
+    export_data_for_recommendation(w)
     IPython.embed()
+
 
     ###### Training Time ######
 
@@ -888,13 +906,13 @@ if __name__ == "__main__":
     #     df_dummy_join = filter_by_list(df_dummy, 'dataset', w)
     #     df_comb = pd.concat([q, df_dummy_join], axis=0, ignore_index=True, sort= False)
     #     get_cd_diagram(df_comb, w,'accuracy',f'36_cd_accuracy_all_pct_{i}_clf_dummy')
-    #     get_cd_diagram(df_comb, w,'hm',f'36_cd_hm_all_pct_{i}_clf_dummy')
+    #     get_cd_diagram(df_comb, w,'f_score',f'36_cd_f_score_all_pct_{i}_clf_dummy')
 
     # IPython.embed()
 
     ##
     df_all_cd_acc = get_cd_df_acc(df_all_pct_all_clf)
-    df_all_cd_hm = get_cd_df_hm(df_all_pct_all_clf)
+    df_all_cd_f_score = get_cd_df_f_score(df_all_pct_all_clf)
 
     # datasets = list(joined['dataset'].unique())
     # dataset_types = list(joined['type'].unique())

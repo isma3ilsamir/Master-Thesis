@@ -2,9 +2,11 @@
 \label{ChapterResults}
 This chapter analyzes the results of our experiments.
 We will divide our analysis as follows;
-analysis for the results of the same classifier across different revealed percentages of data,
-analysis for the results of different classifiers across the same revealed percentages of data
+analysis for the results of the same classifier across different revealed percentages of data (chunks),
+analysis for the results of different classifiers across the same revealed percentages of data (chunks)
 and analysis for different classifiers and different percentages all together using the $F_{\beta}-measure$.
+% could also be reorganized as results for testbed and results for recommender
+
 
 % Results we couldn't attain
 We couldn't obtain results for all the classifiers we intended to use.
@@ -13,7 +15,7 @@ others couldn't attain comparable results to the published performances by previ
 and some runs exceeded our time constraint.
 
 % Models excluded due not handling the context
-For example, KNNED and InceptionTime were excluded due to the nature of their techniques which couldn't handle our created context.
+For example, KNNED and InceptionTime were excluded due to the nature of their techniques which couldn't handle our proposed early classifcation context.
 Both algorithms are clearly able to learn on chopped training data sets.
 However once the testing phase is reached, they would fail to classify instances of the testing data,
 showing errors related to mismatches between the expected length of instances and the provided length.
@@ -60,7 +62,7 @@ Table 12335345345
 
 
 presents the results of our experiments for the used 5 classifiers on all 77 data sets.
-We display values for balanced accuracy and $F_{\beta}-measure$ value for each classifier and revealed\%.
+We display values for balanced accuracy, $F_{\beta}-measure$ value and revealed\% for each classifier.
 The default train/test split of the data sets was used for all data runs.
 We divide our analysis into three parts: a comparison of the effect of data chopping within the same classifier,
 comparison on the effect of data chopping across different classifiers and unified comparison between all classifiers

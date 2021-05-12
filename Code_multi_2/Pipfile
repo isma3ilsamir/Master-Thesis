@@ -28,6 +28,7 @@ sktime = {git = "https://github.com/alan-turing-institute/sktime.git"}
 xlrd = "*"
 orange3 = "*"
 plotly = "*"
+dtreeviz = "*"
 
 [requires]
 python_version = "3.7"

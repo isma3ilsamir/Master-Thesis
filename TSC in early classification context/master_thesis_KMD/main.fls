@@ -188,6 +188,12 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstmisc.s
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstmisc.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\listings.cfg
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\listings.cfg
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\graphics\rotating.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\graphics\rotating.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\tabu\tabu.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\tabu\tabu.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\varwidth\varwidth.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\varwidth\varwidth.sty
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
@@ -368,6 +374,11 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\sy
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Adaptation Methodology.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Adaptation Methodology.tex
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbxti10.tfm
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Framework Diagram.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Framework Diagram.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Framework Diagram.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Framework Diagram.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Framework Diagram.jpg
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang1.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang2.sty
@@ -376,44 +387,50 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang3.
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang3.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt9.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Datasets.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Datasets.tex
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\boxplot_accuracy_CBoss.jpg
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Datasets.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Datasets.tex
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Train_size_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Length_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Classes_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
-INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_1_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_1_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_1_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_1_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_1_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_05_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_05_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_05_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_05_CBoss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_05_CBoss.png
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\Results.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\Results.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\07 Findings Discussion\Findings Discussion.tex

@@ -22,33 +22,33 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.1}Whole Time Series Algorithms}{6}{subsection.2.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Nearest Neighbor with ED}{6}{section*.10}%
+\contentsline {subsubsection}{Nearest Neighbor with ED}{6}{section*.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Nearest Neighbor with DTW}{7}{section*.11}%
+\contentsline {subsubsection}{Nearest Neighbor with DTW}{7}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Nearest Neighbor with MSM Distance}{8}{section*.13}%
+\contentsline {subsubsection}{Nearest Neighbor with MSM Distance}{8}{section*.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Proximity Forest}{8}{section*.15}%
+\contentsline {subsubsection}{Proximity Forest}{8}{section*.14}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.2}Phase Dependent intervals Algorithms}{10}{subsection.2.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Time Series Forest}{11}{section*.17}%
+\contentsline {subsubsection}{Time Series Forest}{11}{section*.16}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.3}Phase Independent intervals Algorithms}{12}{subsection.2.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Learned Shapelets}{13}{section*.19}%
+\contentsline {subsubsection}{Learned Shapelets}{13}{section*.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Shapelet Transform}{13}{section*.20}%
+\contentsline {subsubsection}{Shapelet Transform}{13}{section*.19}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.4}Dictionary Based Algorithms}{14}{subsection.2.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{BOSS}{15}{section*.21}%
+\contentsline {subsubsection}{BOSS}{15}{section*.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{WEASEL}{18}{section*.24}%
+\contentsline {subsubsection}{WEASEL}{18}{section*.23}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.5}Deep Learning Algorithms}{20}{subsection.2.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{InceptionTime}{21}{section*.27}%
+\contentsline {subsubsection}{InceptionTime}{21}{section*.26}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}Early Time Series Classification}{23}{section.2.4}%
 \defcounter {refsection}{0}\relax 
@@ -84,62 +84,66 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.4}Evaluation Criteria}{32}{section.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Framework for Comparing Time Series Classification Algorithms in Early Classification Context and Experimental Design}{33}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Framework for Comparing Time Series Classification Algorithms in Early Classification Context}{33}{chapter.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Framework for Comparing Time Series Classification Algorithms in Early Classification Context}{33}{section.4.1}%
+\contentsline {section}{\numberline {4.1}Early Classification Context}{33}{section.4.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Early Classification Context}{34}{subsection.4.1.1}%
+\contentsline {section}{\numberline {4.2}Conceptual Design}{34}{section.4.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Structure and Toolkits}{34}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.2.1}The Testbed}{34}{subsection.4.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{User Input}{35}{section*.30}%
+\contentsline {subsection}{\numberline {4.2.2}The Recommender}{36}{subsection.4.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Experiment Preparation}{36}{section*.32}%
+\contentsline {section}{\numberline {4.3}Implementation}{36}{section.4.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Experiment Execution}{39}{section*.33}%
+\contentsline {subsection}{\numberline {4.3.1}Design Protocol}{36}{subsection.4.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Analysis Reports and Logging}{41}{section*.35}%
+\contentsline {subsection}{\numberline {4.3.2}Toolkits}{37}{subsection.4.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Experiments}{42}{section.4.2}%
+\contentsline {subsection}{\numberline {4.3.3}The Testbed Implementation}{37}{subsection.4.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Excluded Classifiers}{43}{subsection.4.2.1}%
+\contentsline {subsubsection}{The Testbed Management Console Implementation}{37}{section*.37}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Included Classifiers and Adjustments}{43}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.3.4}The Recommender Implementation}{45}{subsection.4.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}Learning weights for the $F_{\beta }-measure$}{44}{subsection.4.2.3}%
+\contentsline {chapter}{\numberline {5}Data Sets and Experimental Design}{46}{chapter.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Data Sets}{47}{chapter.5}%
+\contentsline {section}{\numberline {5.1}UCR/UEA Archives}{46}{section.5.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}UCR/UEA Archives}{47}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}UCR Archive}{46}{subsection.5.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}UCR Archive}{47}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}UEA Archive}{46}{subsection.5.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}UEA Archive}{47}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Used Data Sets}{47}{subsection.5.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Used Data Sets}{48}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Experiments}{54}{section.5.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Karolinska data set}{50}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Excluded Classifiers}{54}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Results}{52}{chapter.6}%
+\contentsline {subsection}{\numberline {5.2.2}Included Classifiers and Adjustments}{55}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Results Across Classifiers}{54}{section.6.1}%
+\contentsline {subsection}{\numberline {5.2.3}Learning weights for the $F_{\beta }-measure$}{55}{subsection.5.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Data Set characteristics and performance in early classification context}{55}{section.6.2}%
+\contentsline {chapter}{\numberline {6}Results}{58}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.1}Length of Series}{55}{subsection.6.2.1}%
+\contentsline {section}{\numberline {6.1}Results Across Classifiers}{60}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.2}Training Data Set Size}{55}{subsection.6.2.2}%
+\contentsline {section}{\numberline {6.2}Data Set characteristics and performance in early classification context}{61}{section.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.3}Type of Problem}{56}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.1}Length of Series}{61}{subsection.6.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.4}Number of classes}{56}{subsection.6.2.4}%
+\contentsline {subsection}{\numberline {6.2.2}Training Data Set Size}{61}{subsection.6.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Results Within Classifier}{56}{section.6.3}%
+\contentsline {subsection}{\numberline {6.2.3}Type of Problem}{62}{subsection.6.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}Results on Runtime Duration}{57}{section.6.4}%
+\contentsline {subsection}{\numberline {6.2.4}Number of classes}{62}{subsection.6.2.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Findings Discussion}{59}{chapter.7}%
+\contentsline {section}{\numberline {6.3}Results Within Classifier}{62}{section.6.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {8}Summary and Outlook}{60}{chapter.8}%
+\contentsline {section}{\numberline {6.4}Results on Runtime Duration}{63}{section.6.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8.1}Declaration of Authorship}{72}{section.8.1}%
+\contentsline {chapter}{\numberline {7}Findings Discussion}{65}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {8}Summary and Outlook}{66}{chapter.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8.1}Declaration of Authorship}{78}{section.8.1}%

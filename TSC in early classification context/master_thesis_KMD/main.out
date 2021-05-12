@@ -30,29 +30,34 @@
 \BOOKMARK [2][-]{subsection.3.3.1}{Inclusion Criteria}{section.3.3}% 30
 \BOOKMARK [2][-]{subsection.3.3.2}{Experimental Design}{section.3.3}% 31
 \BOOKMARK [1][-]{section.3.4}{Evaluation Criteria}{chapter.3}% 32
-\BOOKMARK [0][-]{chapter.4}{Framework for Comparing Time Series Classification Algorithms in Early Classification Context and Experimental Design}{}% 33
-\BOOKMARK [1][-]{section.4.1}{Framework for Comparing Time Series Classification Algorithms in Early Classification Context}{chapter.4}% 34
-\BOOKMARK [2][-]{subsection.4.1.1}{Early Classification Context}{section.4.1}% 35
-\BOOKMARK [2][-]{subsection.4.1.2}{Structure and Toolkits}{section.4.1}% 36
-\BOOKMARK [1][-]{section.4.2}{Experiments}{chapter.4}% 37
-\BOOKMARK [2][-]{subsection.4.2.1}{Excluded Classifiers}{section.4.2}% 38
-\BOOKMARK [2][-]{subsection.4.2.2}{Included Classifiers and Adjustments}{section.4.2}% 39
-\BOOKMARK [2][-]{subsection.4.2.3}{Learning weights for the F-measure}{section.4.2}% 40
-\BOOKMARK [0][-]{chapter.5}{Data Sets}{}% 41
-\BOOKMARK [1][-]{section.5.1}{UCR/UEA Archives}{chapter.5}% 42
-\BOOKMARK [2][-]{subsection.5.1.1}{UCR Archive}{section.5.1}% 43
-\BOOKMARK [2][-]{subsection.5.1.2}{UEA Archive}{section.5.1}% 44
-\BOOKMARK [2][-]{subsection.5.1.3}{Used Data Sets}{section.5.1}% 45
-\BOOKMARK [1][-]{section.5.2}{Karolinska data set}{chapter.5}% 46
-\BOOKMARK [0][-]{chapter.6}{Results}{}% 47
-\BOOKMARK [1][-]{section.6.1}{Results Across Classifiers}{chapter.6}% 48
-\BOOKMARK [1][-]{section.6.2}{Data Set characteristics and performance in early classification context}{chapter.6}% 49
-\BOOKMARK [2][-]{subsection.6.2.1}{Length of Series}{section.6.2}% 50
-\BOOKMARK [2][-]{subsection.6.2.2}{Training Data Set Size}{section.6.2}% 51
-\BOOKMARK [2][-]{subsection.6.2.3}{Type of Problem}{section.6.2}% 52
-\BOOKMARK [2][-]{subsection.6.2.4}{Number of classes}{section.6.2}% 53
-\BOOKMARK [1][-]{section.6.3}{Results Within Classifier}{chapter.6}% 54
-\BOOKMARK [1][-]{section.6.4}{Results on Runtime Duration}{chapter.6}% 55
-\BOOKMARK [0][-]{chapter.7}{Findings Discussion}{}% 56
-\BOOKMARK [0][-]{chapter.8}{Summary and Outlook}{}% 57
-\BOOKMARK [1][-]{section.8.1}{Declaration of Authorship}{chapter.8}% 58
+\BOOKMARK [0][-]{chapter.4}{Framework for Comparing Time Series Classification Algorithms in Early Classification Context}{}% 33
+\BOOKMARK [1][-]{section.4.1}{Early Classification Context}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.2}{Conceptual Design}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.2.1}{The Testbed}{section.4.2}% 36
+\BOOKMARK [2][-]{subsection.4.2.2}{The Recommender}{section.4.2}% 37
+\BOOKMARK [1][-]{section.4.3}{Implementation}{chapter.4}% 38
+\BOOKMARK [2][-]{subsection.4.3.1}{Design Protocol}{section.4.3}% 39
+\BOOKMARK [2][-]{subsection.4.3.2}{Toolkits}{section.4.3}% 40
+\BOOKMARK [2][-]{subsection.4.3.3}{The Testbed Implementation}{section.4.3}% 41
+\BOOKMARK [2][-]{subsection.4.3.4}{The Recommender Implementation}{section.4.3}% 42
+\BOOKMARK [0][-]{chapter.5}{Data Sets and Experimental Design}{}% 43
+\BOOKMARK [1][-]{section.5.1}{UCR/UEA Archives}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.1.1}{UCR Archive}{section.5.1}% 45
+\BOOKMARK [2][-]{subsection.5.1.2}{UEA Archive}{section.5.1}% 46
+\BOOKMARK [2][-]{subsection.5.1.3}{Used Data Sets}{section.5.1}% 47
+\BOOKMARK [1][-]{section.5.2}{Experiments}{chapter.5}% 48
+\BOOKMARK [2][-]{subsection.5.2.1}{Excluded Classifiers}{section.5.2}% 49
+\BOOKMARK [2][-]{subsection.5.2.2}{Included Classifiers and Adjustments}{section.5.2}% 50
+\BOOKMARK [2][-]{subsection.5.2.3}{Learning weights for the F-measure}{section.5.2}% 51
+\BOOKMARK [0][-]{chapter.6}{Results}{}% 52
+\BOOKMARK [1][-]{section.6.1}{Results Across Classifiers}{chapter.6}% 53
+\BOOKMARK [1][-]{section.6.2}{Data Set characteristics and performance in early classification context}{chapter.6}% 54
+\BOOKMARK [2][-]{subsection.6.2.1}{Length of Series}{section.6.2}% 55
+\BOOKMARK [2][-]{subsection.6.2.2}{Training Data Set Size}{section.6.2}% 56
+\BOOKMARK [2][-]{subsection.6.2.3}{Type of Problem}{section.6.2}% 57
+\BOOKMARK [2][-]{subsection.6.2.4}{Number of classes}{section.6.2}% 58
+\BOOKMARK [1][-]{section.6.3}{Results Within Classifier}{chapter.6}% 59
+\BOOKMARK [1][-]{section.6.4}{Results on Runtime Duration}{chapter.6}% 60
+\BOOKMARK [0][-]{chapter.7}{Findings Discussion}{}% 61
+\BOOKMARK [0][-]{chapter.8}{Summary and Outlook}{}% 62
+\BOOKMARK [1][-]{section.8.1}{Declaration of Authorship}{chapter.8}% 63

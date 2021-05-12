@@ -4,37 +4,39 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Mapping of Euclidean distance (lock-step measure) versus mapping of DTW distance (elastic measure) \cite {abanda2019review}.\relax }}{7}{figure.caption.12}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Mapping of Euclidean distance (lock-step measure) versus mapping of DTW distance (elastic measure) \cite {abanda2019review}.\relax }}{7}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Examples of the Move, Split, Merge operations \cite {stefan2012move}.\relax }}{8}{figure.caption.14}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Examples of the Move, Split, Merge operations \cite {stefan2012move}.\relax }}{8}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Visual depiction of the root node for the ‘Trace’ dataset (simplified to 2 classes). The top chart represents the data at the root node (one colour per class) while the data at the bottom left and right represent the data once split by the tree. The two time series in the middle left and right are the exemplars on which the tree is splitting. The scatter plot at the center represents the distance of each time series at the root node with respect to the left and right exemplars (resp. x- and y-axes) (Color figure online) \cite {lucas2019proximity}.\relax }}{10}{figure.caption.16}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Visual depiction of the root node for the ‘Trace’ dataset (simplified to 2 classes). The top chart represents the data at the root node (one colour per class) while the data at the bottom left and right represent the data once split by the tree. The two time series in the middle left and right are the exemplars on which the tree is splitting. The scatter plot at the center represents the distance of each time series at the root node with respect to the left and right exemplars (resp. x- and y-axes) (Color figure online) \cite {lucas2019proximity}.\relax }}{10}{figure.caption.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.4}{\ignorespaces An illustration of two shapelets S1, S2 (leftmost plots) learned on the Coffee dataset. Series’ distances to shapelets can optimally project the series into a 2-dimensional space, called the shapelet-transformed representation \cite {lines2012shapelet} (rightmost plot). The middle plots show the closest matches of the shapelets on series of two classes having light-blue and black colors \cite {grabocka2014learning}.\relax }}{12}{figure.caption.18}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces An illustration of two shapelets S1, S2 (leftmost plots) learned on the Coffee dataset. Series’ distances to shapelets can optimally project the series into a 2-dimensional space, called the shapelet-transformed representation \cite {lines2012shapelet} (rightmost plot). The middle plots show the closest matches of the shapelets on series of two classes having light-blue and black colors \cite {grabocka2014learning}.\relax }}{12}{figure.caption.17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.5}{\ignorespaces The BOSS workflow \cite {schafer2015boss}\relax }}{16}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces The BOSS workflow \cite {schafer2015boss}\relax }}{16}{figure.caption.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.6}{\ignorespaces A time series is (a) approximated (low pass filtered) using DFT and (b) quantised using MCB resulting in the SFA word DAAC \cite {schafer2015boss}\relax }}{17}{figure.caption.23}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces A time series is (a) approximated (low pass filtered) using DFT and (b) quantised using MCB resulting in the SFA word DAAC \cite {schafer2015boss}\relax }}{17}{figure.caption.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.7}{\ignorespaces WEASEL Pipeline: Feature extraction using a novel supervised symbolic representation, and a novel bag-of-patterns model \cite {schafer2017fast}\relax }}{19}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces WEASEL Pipeline: Feature extraction using a novel supervised symbolic representation, and a novel bag-of-patterns model \cite {schafer2017fast}\relax }}{19}{figure.caption.24}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.8}{\ignorespaces On the left: Distribution of Fourier coefficients for a sample dataset. The high F-values on imag3 and real0 (red text at bottom) should be selected to best separate the samples from class labels ’A’ and ’B’. On the right: Zoom in on imag3. Information gain splitting is applied to find the best bins for the subsequent quantization. High information gain (IG) indicates pure (good) split points \cite {schafer2017fast}\relax }}{20}{figure.caption.26}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces On the left: Distribution of Fourier coefficients for a sample dataset. The high F-values on imag3 and real0 (red text at bottom) should be selected to best separate the samples from class labels ’A’ and ’B’. On the right: Zoom in on imag3. Information gain splitting is applied to find the best bins for the subsequent quantization. High information gain (IG) indicates pure (good) split points \cite {schafer2017fast}\relax }}{20}{figure.caption.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Inside Inception module for time series classification. For simplicity a bottleneck layer of size m = 1 is used \cite {fawaz2020inceptiontime}\relax }}{23}{figure.caption.28}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Inside Inception module for time series classification. For simplicity a bottleneck layer of size m = 1 is used \cite {fawaz2020inceptiontime}\relax }}{23}{figure.caption.27}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.10}{\ignorespaces TEASER is given a snapshot of an energy consumption time series. After seeing the first s measurements, the first slave classifier $sc_{1}$ performs a prediction which the master classifier $mc_{1}$ rejects due to low class probabilities. After observing the i-th interval which includes a characteristic energy burst, the slave classifier $sc_{i}$ (correctly) predicts RECEIVER, and the master classifier $mc_{i}$ eventually accepts this prediction. When the prediction of RECEIVER has been consistently derived v times, it is output as final prediction \cite {schafer2020teaser}\relax }}{27}{figure.caption.29}%
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.10}{\ignorespaces TEASER is given a snapshot of an energy consumption time series. After seeing the first s measurements, the first slave classifier $sc_{1}$ performs a prediction which the master classifier $mc_{1}$ rejects due to low class probabilities. After observing the i-th interval which includes a characteristic energy burst, the slave classifier $sc_{i}$ (correctly) predicts RECEIVER, and the master classifier $mc_{i}$ eventually accepts this prediction. When the prediction of RECEIVER has been consistently derived v times, it is output as final prediction \cite {schafer2020teaser}\relax }}{27}{figure.caption.28}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Metadata of the used data sets\relax }}{45}{figure.caption.37}%
+\addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Metadata of the used data sets\relax }}{45}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Conceptual design of the proposed framework\relax }}{35}{figure.caption.29}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Metadata of the used data sets\relax }}{49}{figure.caption.39}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Metadata of the used data sets\relax }}{48}{figure.caption.47}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{1}$ (right) for CBoss\relax }}{56}{figure.caption.48}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{0.5}$ (right) for CBoss\relax }}{57}{figure.caption.49}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

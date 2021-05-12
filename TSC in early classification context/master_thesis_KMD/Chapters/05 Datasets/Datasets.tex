@@ -1,4 +1,4 @@
-\chapter{Data Sets}
+\chapter{Data Sets and Experimental Design}
 \label{Chapter data sets}
 In order to address our research questions, this thesis considered a group of  data sets from the UCR data archive \cite{UCRArchive2018} and the UEA data archive \cite{bagnall2018uea}.
 This Chapter will describe the  data sets that were used to conduct this empirical experiment and their general properties.
@@ -37,7 +37,7 @@ Based on the previously mentioned criteria, we excluded data sets that belonged 
 For the other two criteria; we avoided any further preprocessing than what is offered by the data archives.
 As mentioned before, the univariate data sets from the UCR are already Z-normalized.
 Z-normalization is a common and recommended practice for time series data as it has shown to have a positive impact on the performance of classifiers \cite{bagnall2017great,fawaz2019deepreview}
-This form of preprocessing is not true for the multivariate data sets from the UEA archive.
+This form of preprocessing is not T for the multivariate data sets from the UEA archive.
 
 We excluded data sets with missing data and avoided filling these missing values; as we believe that data imputation is a whole another topic.
 We also avoided any interpolation of data. A technique which has been previously used in \cite{ratanamahatana2005three, fawaz2019deepreview} to make all instances of the data set of the same length as the longest instance.
@@ -50,7 +50,7 @@ Since the smallest data set (StandWalkJump) and the largest data set (InsectWing
 The data sets covers covers from binary classification problems up to problems with 52 classes, the range [2, 52].
 The range of the time series length is [24, 3000], with Chinatown being the shortest and MotorImagery the longest data set.
 For the 22 multivariate data sets, the number of dimensions still covered the whole range [2, 1345] like the UEA archive.
-Finally after our exclusion criteria, the remaining 14 problem types are AUDIO, DEVICE, ECG, EEG, EOG, EPG, HAR, HEMODYNAMICS, MISC, OTHER, SENSOR, SOUND, SPECTRO and Traffic.
+Finally after our exclusion criteria, the remaining 14 problem types are AUDIO, DEVICE, ECG, EEG, EOG, EPG, HAR, HEMO, MISC, OTHER, SENSOR, SOUND, SPECTRO and Traffic.
 
 \begin{figure}
     \captionsetup{justification=raggedright}
@@ -91,141 +91,304 @@ In this case we would flag $DS_{1}$ as a balanced data set; because there is no 
 On the other hand, $DS_{2}$ would be flaged as skewed/imbalanced because class $C_{4}$ has a probability of 30\% which is double the value
 of $C_{2}$ and $C_{3}$. We denote this feature with the parameter $Balanced$, which is a boolean flag.
 
-\begin{table}
-\begin{center}
- \begin{longtable}{||c|c|c|c|c|c||} 
- 
- \hline
-  data set & Train & Test & Length & Classes & Type \\ [0.5ex]
- \hline\hline
- ACSF1 & 100 & 100 & 1460 & 10 & DEVICE \\[1ex]
- \hline
- Beef & 30 & 30 & 470 & 5 & SPECTRO \\[1ex]
- \hline
- Car & 60 & 60 & 577 & 4 & SENSOR \\[1ex]
- \hline
- Chinatown & 20 & 345 & 24 & 2 & Traffic \\[1ex]
- \hline
- CinCECGtorso & 40 & 1380 & 1639 & 4 & ECG \\[1ex]
- \hline
- Coffee & 28 & 28 & 286 & 2 & SPECTRO \\[1ex]
- \hline
- Computers & 250 & 250 & 720 & 2 & DEVICE \\[1ex]
- \hline
- DodgerLoopDay & 78 & 80 & 288 & 7 & SENSOR \\[1ex]
- \hline
- DodgerLoopGame & 20 & 138 & 288 & 2 & SENSOR \\[1ex]
- \hline
- DodgerLoopWeekend & 20 & 138 & 288 & 2 & SENSOR \\[1ex]
- \hline
- Earthquakes & 322 & 139 & 512 & 2 & SENSOR \\[1ex]
- \hline
- ECG200 & 100 & 100 & 96 & 2 & ECG \\[1ex]
- \hline
- ECG5000 & 500 & 4500 & 140 & 5 & ECG \\[1ex]
- \hline
- ECGFiveDays & 23 & 861 & 136 & 2 & ECG \\[1ex]
- \hline
- ElectricDevices & 8926 & 7711 & 96 & 7 & DEVICE \\[1ex]
- \hline
- EOGHorizontalSignal & 362 & 362 & 1250 & 12 & EOG \\[1ex]
- \hline
- EOGVerticalSignal & 362 & 362 & 1250 & 12 & EOG \\[1ex]
- \hline
- EthanolLevel & 504 & 500 & 1751 & 4 & SPECTRO \\[1ex]
- \hline
- FordA & 3601 & 1320 & 500 & 2 & SENSOR \\[1ex]
- \hline
- FordB & 3636 & 810 & 500 & 2 & SENSOR \\[1ex]
- \hline
- FreezerRegularTrain & 150 & 2850 & 301 & 2 & SENSOR \\[1ex]
- \hline
- FreezerSmallTrain & 28 & 2850 & 301 & 2 & SENSOR \\[1ex]
- \hline
- Fungi & 18 & 186 & 201 & 18 & OTHER \\[1ex]
- \hline
- Ham & 109 & 105 & 431 & 2 & SPECTRO \\[1ex]
- \hline
- HouseTwenty & 34 & 101 & 3000 & 2 & DEVICE \\[1ex]
- \hline
- InsectEPGRegularTrain & 62 & 249 & 601 & 3 & EPG \\[1ex]
- \hline
- InsectEPGSmallTrain & 17 & 249 & 601 & 3 & EPG \\[1ex]
- \hline
- InsectWingbeatSound & 25000 & 25000 & 600 & 10 & AUDIO \\[1ex]
- \hline
- ItalyPowerDemand & 67 & 1029 & 24 & 2 & SENSOR \\[1ex]
- \hline
- LargeKitchenAppliances & 375 & 375 & 720 & 3 & DEVICE \\[1ex]
- \hline
- Lightning2 & 60 & 61 & 637 & 2 & SENSOR \\[1ex]
- \hline
- Lightning7 & 70 & 73 & 319 & 7 & SENSOR \\[1ex]
- \hline
- Meat & 60 & 60 & 448 & 3 & SPECTRO \\[1ex]
- \hline
- MelbournePedestrian & 1194 & 2439 & 24 & 10 & TRAFFIC \\[1ex]
- \hline
- MoteStrain & 20 & 1252 & 84 & 2 & SENSOR \\[1ex]
- \hline
- NonInvasiveFetalECGThorax1 & 1800 & 1965 & 750 & 42 & ECG \\[1ex]
- \hline
- NonInvasiveFetalECGThorax2 & 1800 & 1965 & 750 & 42 & ECG \\[1ex]
- \hline
- OliveOil & 30 & 30 & 570 & 4 & SPECTRO \\[1ex]
- \hline
- Phoneme & 214 & 1896 & 1024 & 39 & SOUND \\[1ex]
- \hline
- PickupGestureWiimoteZ & 50 & 50 & 0 & 10 & SENSOR \\[1ex]
- \hline
- PigAirwayPressure & 104 & 208 & 2000 & 52 & HEMODYNAMICS \\[1ex]
- \hline
- PigArtPressure & 104 & 208 & 2000 & 52 & HEMODYNAMICS \\[1ex]
- \hline
- PigCVP & 104 & 208 & 2000 & 52 & HEMODYNAMICS \\[1ex]
- \hline
- PLAID & 537 & 537 & 0 & 11 & DEVICE \\[1ex]
- \hline
- Plane & 105 & 105 & 144 & 7 & SENSOR \\[1ex]
- \hline
- PowerCons & 180 & 180 & 144 & 2 & DEVICE \\[1ex]
- \hline
- RefrigerationDevices & 375 & 375 & 720 & 3 & DEVICE \\[1ex]
- \hline
- Rock & 20 & 50 & 2844 & 4 & SPECTRO \\[1ex]
- \hline
- ScreenType & 375 & 375 & 720 & 3 & DEVICE \\[1ex]
- \hline
- SemgHandGenderCh2 & 300 & 600 & 1500 & 2 & SPECTRO \\[1ex]
- \hline
- SemgHandMovementCh2 & 450 & 450 & 1500 & 6 & SPECTRO \\[1ex]
- \hline
- SemgHandSubjectCh2 & 450 & 450 & 1500 & 5 & SPECTRO \\[1ex]
- \hline
- ShakeGestureWiimoteZ & 50 & 50 & 0 & 10 & SENSOR \\[1ex]
- \hline
- SmallKitchenAppliances & 375 & 375 & 720 & 3 & DEVICE \\[1ex]
- \hline
- SonyAIBORobotSurface1 & 20 & 601 & 70 & 2 & SENSOR \\[1ex]
- \hline
- SonyAIBORobotSurface2 & 27 & 953 & 65 & 2 & SENSOR \\[1ex]
- \hline
- StarlightCurves & 1000 & 8236 & 1024 & 3 & SENSOR \\[1ex]
- \hline
- Strawberry & 613 & 370 & 235 & 2 & SPECTRO \\[1ex]
- \hline
- Trace & 100 & 100 & 275 & 4 & SENSOR \\[1ex]
- \hline
- TwoLeadECG & 23 & 1139 & 82 & 2 & ECG \\[1ex]
- \hline
- Wafer & 1000 & 6164 & 152 & 2 & SENSOR \\[1ex]
- \hline
- Wine & 57 & 54 & 234 & 2 & SPECTRO
- \end{longtable}
-\end{center}
-\caption{List of used Univariate  data sets}
-\label{table:Univariate}
-\end{table}
+\begin{landscape}
+    \begin{longtable}{|*{8}l|}
+    %\begin{longtable}{\textwidth}{|c|c|c|c|c|c|c|c|}
+        \caption{Summary of the 77 data sets used in the experiments} \label{tab:long} \\
+        \hline
+        \textbf{Dataset} & \textbf{Train Size} & \textbf{Test Size} & \textbf{Length} & \textbf{\#Classes} & \textbf{Type} & \textbf{\#Dim} & \textbf{Balanced} \\ [0.5ex]
+        \hline
+        \endfirsthead % <-- This denotes the end of the header, which will be shown on the first page only
+        \hline
+        \textbf{Dataset} & \textbf{Train Size} & \textbf{Test Size} & \textbf{Length} & \textbf{\#Classes} & \textbf{Type} & \textbf{\#Dim} & \textbf{Balanced} \\ [0.5ex]
+        \hline
+        \endhead % <-- Everything between \endfirsthead and \endhead will be shown as a header on every page
+        ACSF1 & 100 & 100 & 1460 & 10 & DEVICE & 1 & T \\[1ex]
+        \hline
+        AtrialFibrillation & 15 & 15 & 640 & 3 & ECG & 2 & T \\[1ex]
+        \hline
+        BasicMotions & 40 & 40 & 100 & 4 & HAR & 6 & T \\[1ex]
+        \hline
+        Beef & 30 & 30 & 470 & 5 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        Car & 60 & 60 & 577 & 4 & SENSOR & 1 & T \\[1ex]
+        \hline
+        Chinatown & 20 & 345 & 24 & 2 & Traffic & 1 & T \\[1ex]
+        \hline
+        CinCECGTorso & 40 & 1380 & 1639 & 4 & ECG & 1 & F \\[1ex]
+        \hline
+        Coffee & 28 & 28 & 286 & 2 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        Computers & 250 & 250 & 720 & 2 & DEVICE & 1 & T \\[1ex]
+        \hline
+        Cricket & 108 & 72 & 1197 & 12 & HAR & 6 & T \\[1ex]
+        \hline
+        DuckDuckGeese & 60 & 40 & 270 & 5 & AUDIO & 1345 & T \\[1ex]
+        \hline
+        Earthquakes & 322 & 139 & 512 & 2 & SENSOR & 1 & F \\[1ex]
+        \hline
+        ECG200 & 100 & 100 & 96 & 2 & ECG & 1 & F \\[1ex]
+        \hline
+        ECG5000 & 500 & 4500 & 140 & 5 & ECG & 1 & F \\[1ex]
+        \hline
+        ECGFiveDays & 23 & 861 & 136 & 2 & ECG & 1 & T \\[1ex]
+        \hline
+        ElectricDevices & 8926 & 7711 & 96 & 7 & DEVICE & 1 & F \\[1ex]
+        \hline
+        EOGHorizontalSignal & 362 & 362 & 1250 & 12 & EOG & 1 & T \\[1ex]
+        \hline
+        EOGVerticalSignal & 362 & 362 & 1250 & 12 & EOG & 1 & T \\[1ex]
+        \hline
+        Epilepsy & 137 & 138 & 207 & 4 & HAR & 3 & T \\[1ex]
+        \hline
+        ERing & 30 & 270 & 65 & 6 & HAR & 4 & T \\[1ex]
+        \hline
+        EthanolConcentration & 261 & 263 & 1751 & 4 & OTHER & 3 & T \\[1ex]
+        \hline
+        EthanolLevel & 504 & 500 & 1751 & 4 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        FaceDetection & 5890 & 3524 & 62 & 2 & EEG & 144 & T \\[1ex]
+        \hline
+        FingerMovements & 316 & 100 & 50 & 2 & EEG & 28 & T \\[1ex]
+        \hline
+        FordA & 3601 & 1320 & 500 & 2 & SENSOR & 1 & T \\[1ex]
+        \hline
+        FordB & 3636 & 810 & 500 & 2 & SENSOR & 1 & T \\[1ex]
+        \hline
+        FreezerRegularTrain & 150 & 2850 & 301 & 2 & SENSOR & 1 & T \\[1ex]
+        \hline
+        FreezerSmallTrain & 28 & 2850 & 301 & 2 & SENSOR & 1 & T \\[1ex]
+        \hline
+        Fungi & 18 & 186 & 201 & 18 & OTHER & 1 & T \\[1ex]
+        \hline
+        Ham & 109 & 105 & 431 & 2 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        HandMovementDirection & 160 & 74 & 400 & 4 & EEG & 10 & T \\[1ex]
+        \hline
+        Handwriting & 150 & 850 & 152 & 26 & HAR & 3 & F \\[1ex]
+        \hline
+        Heartbeat & 204 & 205 & 405 & 2 & AUDIO & 61 & F \\[1ex]
+        \hline
+        HouseTwenty & 34 & 101 & 3000 & 2 & DEVICE & 1 & T \\[1ex]
+        \hline
+        InsectEPGRegularTrain & 62 & 249 & 601 & 3 & EPG & 1 & F \\[1ex]
+        \hline
+        InsectEPGSmallTrain & 17 & 249 & 601 & 3 & EPG & 1 & F \\[1ex]
+        \hline
+        InsectWingbeatSound & 25000 & 25000 & 600 & 10 & AUDIO & 1 & T \\[1ex]
+        \hline
+        ItalyPowerDemand & 67 & 1029 & 24 & 2 & SENSOR & 1 & T \\[1ex]
+        \hline
+        LargeKitchenAppliances & 375 & 375 & 720 & 3 & DEVICE & 1 & T \\[1ex]
+        \hline
+        Libras & 180 & 180 & 45 & 15 & HAR & 2 & T \\[1ex]
+        \hline
+        Lightning2 & 60 & 61 & 637 & 2 & SENSOR & 1 & F \\[1ex]
+        \hline
+        Lightning7 & 70 & 73 & 319 & 7 & SENSOR & 1 & F \\[1ex]
+        \hline
+        LSST & 2459 & 2466 & 36 & 14 & OTHER & 6 & F \\[1ex]
+        \hline
+        Meat & 60 & 60 & 448 & 3 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        MoteStrain & 20 & 1252 & 84 & 2 & SENSOR & 1 & T \\[1ex]
+        \hline
+        MotorImagery & 278 & 100 & 3000 & 2 & EEG & 64 & T \\[1ex]
+        \hline
+        NATOPS & 180 & 180 & 51 & 6 & HAR & 24 & T \\[1ex]
+        \hline
+        NonInvasiveFetalECGThorax1 & 1800 & 1965 & 750 & 42 & ECG & 1 & T \\[1ex]
+        \hline
+        NonInvasiveFetalECGThorax2 & 1800 & 1965 & 750 & 42 & ECG & 1 & T \\[1ex]
+        \hline
+        OliveOil & 30 & 30 & 570 & 4 & SPECTRO & 1 & F \\[1ex]
+        \hline
+        PEMS-SF & 267 & 173 & 144 & 7 & MISC & 963 & T \\[1ex]
+        \hline
+        Phoneme & 214 & 1896 & 1024 & 39 & SOUND & 1 & F \\[1ex]
+        \hline
+        PigAirwayPressure & 104 & 208 & 2000 & 52 & HEMO & 1 & T \\[1ex]
+        \hline
+        PigArtPressure & 104 & 208 & 2000 & 52 & HEMO & 1 & T \\[1ex]
+        \hline
+        PigCVP & 104 & 208 & 2000 & 52 & HEMO & 1 & T \\[1ex]
+        \hline
+        Plane & 105 & 105 & 144 & 7 & SENSOR & 1 & F \\[1ex]
+        \hline
+        PowerCons & 180 & 180 & 144 & 2 & DEVICE & 1 & T \\[1ex]
+        \hline
+        RacketSports & 151 & 152 & 30 & 4 & HAR & 6 & T \\[1ex]
+        \hline
+        RefrigerationDevices & 375 & 375 & 720 & 3 & DEVICE & 1 & T \\[1ex]
+        \hline
+        Rock & 20 & 50 & 2844 & 4 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        ScreenType & 375 & 375 & 720 & 3 & DEVICE & 1 & T \\[1ex]
+        \hline
+        SelfRegulationSCP1 & 268 & 293 & 896 & 2 & EEG & 6 & T \\[1ex]
+        \hline
+        SelfRegulationSCP2 & 200 & 180 & 1152 & 2 & EEG & 7 & T \\[1ex]
+        \hline
+        SemgHandGenderCh2 & 300 & 600 & 1500 & 2 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        SemgHandMovementCh2 & 450 & 450 & 1500 & 6 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        SemgHandSubjectCh2 & 450 & 450 & 1500 & 5 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        SmallKitchenAppliances & 375 & 375 & 720 & 3 & DEVICE & 1 & T \\[1ex]
+        \hline
+        SonyAIBORobotSurface1 & 20 & 601 & 70 & 2 & SENSOR & 1 & F \\[1ex]
+        \hline
+        SonyAIBORobotSurface2 & 27 & 953 & 65 & 2 & SENSOR & 1 & T \\[1ex]
+        \hline
+        StandWalkJump & 12 & 15 & 2500 & 3 & ECG & 4 & T \\[1ex]
+        \hline
+        StarlightCurves & 1000 & 8236 & 1024 & 3 & SENSOR & 1 & F \\[1ex]
+        \hline
+        Strawberry & 613 & 370 & 235 & 2 & SPECTRO & 1 & T \\[1ex]
+        \hline
+        Trace & 100 & 100 & 275 & 4 & SENSOR & 1 & T \\[1ex]
+        \hline
+        TwoLeadECG & 23 & 1139 & 82 & 2 & ECG & 1 & T \\[1ex]
+        \hline
+        UWaveGestureLibrary & 2238 & 2241 & 315 & 8 & HAR & 3 & T \\[1ex]
+        \hline
+        Wafer & 1000 & 6164 & 152 & 2 & SENSOR & 1 & F \\[1ex]
+        \hline
+        Wine & 57 & 54 & 234 & 2 & SPECTRO & 1 & T \\
+        \hline
+    %\end{longtabu}
+    \end{longtable}
+\end{landscape}
 
-\section{Karolinska  data set}
-\label{Karolinska}
+
+
+\section{Experiments}
+\label{SectionExperiment}
+% Experiments
+Our experiments were conducted on univariate data sets from the UCR archive as well as multivariate data sets from the UEA archive.
+The data sets were chosen based on the criteria discussed in the subsection \ref{used data sets}.
+Each of the data archives offers a train and test split of the data which we have used unchanged for all the classifiers.
+All our experiments were run on a LINUX server with an AMD Ryzen 7 1700 Processor and 32GB RAM using Python 3.7.10.
+
+We used the same experimental configuration through out all our experiments.
+We fixed the value of the parameter $Splits$ = 10, that is for every data set the data would be revealed for the classifiers incrementally in batches of 10\% from the total length.
+The chopping algorithm was set to always reveal data from the beginning of the time series.
+Due to time limitations, we restricted our experiments to run only on the \nth{1}, \nth{2}, \nth{3} and \nth{10} chunksof the data sets by setting $ChunksToKeep$ = \{1,2,3,10\}.
+We included the \nth{10} chunk to represent the baseline performance of each classifier if shown the full length data.
+While the first 3 chunks were used to represent the classifiers in the early context scenarios.
+Hyperparameters optimization was always carried out on all data sets with a $NumIterations$ maximum sampling value of 50 iterations, unless proven unfeasible for any of the classifiers due to memory shortage or time constraint.
+In this case the experiment is repeated for all classifiers without hyperparameters optimization. We fixed the number of cross validation folds to 5.
+The selected performance metric for our experiments was $Balanced Accuracy$.
+Balanced accuracy is a performance metric which can handle data sets with skewed class distributions by avoiding inflated performance estimates.
+To calculate balanced accuracy, the $Recall$ value is computed for each class then averaged over the total number of classes.
+We have set all our experiments to use the same configuration for all classifiers on the same data set.
+
+
+\subsection{Excluded Classifiers}
+\label{SubsectionExcludedClassifiers}
+Some of the included classifiers in the framework were excluded from our experiments; either because they couldn't operate in the early classification context
+or because they couldn't attain comparable results to the published performances by previously published frameworks.
+
+% Models excluded due not handling the context
+For example, KNNED and InceptionTime were excluded due to the nature of their techniques which couldn't handle our created context.
+Both algorithms are clearly able to learn on chopped training data sets.
+However once the testing phase is reached, they would fail to classify instances of the testing data,
+showing errors related to mismatches between the expeccted length of instances and the provided length.
+Yet they would finish the last chunk where the data is provided in it's original full length.
+The reason why KNNED fails such scenario, is that it uses ED which is a point-wise comparison distance measure that cannot compare time series of unequal lengths \cite{tan2019time}.
+On the other hand, InceptionTime is a deep learning model whose input layer architecture, represented by number of nodes, depends on the length of the input time series \cite{fawaz2019deepreview}.
+Since we use full length instances for testing, this caused an overflow of input data than what the model structure was expecting.
+There have been literature discussing adapting TSCAs to unequal time series, but this is out of the scope of our experiments.
+For more details refer to \cite{caiado2009comparison, tan2019time, fawaz2019deepreview}
+
+
+% Models excluded due to implementation error
+Although KNNDTW has been a competent time series classifier for decades; thanks to the exploitation of the elastic distance measure DTW.
+We couldn't get either implementation of KNNDTW from $sktime$ and $pyts$ to work on the chopped data; due to errors in the data representation needed by lower level internal libraries.
+KNNDTW would have been able to operate in the early classification context if used with a full warping window; which would have been successful in handling extreme classification cases like classifying full length data
+even when learning on the 10\% chunk data set.
+
+
+% Models excluded due to performance
+Two classifiers were excluded because they attained significantly inferior results compared to the published scores; these are KNNMSM and LS.
+Specially on the InsectWingbeatSound data set, for which we attained a difference in performance of -45.71\% for KNNMSM and -20.71\% for LS than the results published by \cite{bagnall2017great}
+
+\subsection{Included Classifiers and Adjustments}
+\label{SubsectionIncludedClassifiers}
+% Models used
+Our experiments proceeded with the remaining 5 classifiers; PForest, TSF, ST, CBOSS and WEASEL.
+To focus only on the comparison of performance between classifiers and not preprocessing, we consider only data sets where all instances have the same length and no attributes have missing data.
+We also focus our interest on data which is originally a timeseries data. This means that it is a collection of specific measurements across a span of time.
+Which lead us to exclude some data set types from taking part in the experiment, more details are presented in subsection \ref{used data sets}.
+We cover a total of 77 data sets from both the UR and the UEA archives, out of which 55 data sets are univariate and 22 data sets are multivariate.
+
+Time and resources limitations played a big role shaping our experiments. Running classifiers is computationally expensive \cite{schafer2020teaser}
+and takes up to hundreds of processing days.
+This lead us to modify some algorithms to so that they can finish promptly; like in the case of PForest, or to use an enhanced version of the original
+classifier with an option to control the learning phase time; like BOSS and ST.
+
+Due to time limitations; We used the contractable implementations of BOSS and ST offered by $sktime$.
+These implementations allows passing a time parameter which controls the sampling space for BOSS and the shapelets searching time for ST
+beside other performance enhancements.
+We set the value of the time contract for both to 60 minutes.
+We have discussed the literature details of these enhancements for ST in subsection \ref{SubsubsectionST} and for BOSS in subsection \ref{SubsubsectionBOSS}.
+
+We applied 2 adjustments to the PForest classifier.
+Firstly, we excluded ED from the pool of distance measures that PForest selects from; since the ED has previously proven not to be compatible with our early classification context when used with the KNN classifier.
+Secondly, we excluded TWE from the pool of distance measures when the size of the training data set exceeded 150 instances, which is the median of all data sets training sizes.
+TWE is a very slow distance measure. It has been reported by \cite{bagnall2017great} to be the slowest among all elastic distance measures. When measured on classifing 10 test instances from the
+StarlightCurves data set, it performed 10,000 times slower than ED.
+
+\subsection{Learning weights for the $F_{\beta}-measure$}
+\label{SubsectionLearningFBetaMeasure}
+We use the $F_{\beta}-measure$ as an objective score for the performance of the classifiers.
+The $F_{\beta}-measure$ has been a popular choice for evlauating eTSC algorithms \cite{schafer2020teaser} because of its
+capacity to combine both earliness and accuracy.
+Previous literature has always considered using a special case of the scoring function in which both earliness and accuracy contribute with the same weights.
+This case is referred to as the Harmonic mean or the F-1 score and can be simply achieved by assigning the value of $\beta$ to 1.
+
+For our experiments we conducted some experiments to decide if the use of equal weights for accuracy and earliness best suits our newly created context.
+We experimented with the harmonic mean (i.e. $\beta$ = 1) like the previous papers and plotted the distribution of values for $F_{\beta}-measure$.
+Figures \ref{fig:FBeta1} show a comparison between the distribution of values of $F_{1}$ and the distribution values of $Balanced Accuracy$ for CBoss.
+The boxplots from the accuracy image shows that CBoss on the full length of the data has a median value of \textbf{0.829}, while on the 10\% data it shows a median value of \textbf{0.44}.
+The two boxes do not overlap which means that there is a significant difference in the scores of the two versions.
+What we would like for the $F_{\beta}-measure$ in this scenario, is to give a privilege for the 10\% version of the classifier as it learns on less training data, such that it would have
+a high score if it can score a balanced accuracy close to that of the 100\% version.
+
+
+\begin{figure}[!htbp]
+  \captionsetup{justification=raggedright}
+  \includegraphics[width=0.49\textwidth,keepaspectratio]{boxplot_accuracy_CBoss.png}
+  \includegraphics[width=0.49\textwidth,keepaspectratio]{boxplot_f_score_1_CBoss.png}
+  \caption{Comparison between Balanced Accuracy (left) and $F_{1}$ (right) for CBoss}
+  \label{fig:FBeta1}
+\end{figure}
+
+By checking the boxplots for the $F_{1}$, we find that the median value for the 10\% version is \textbf{0.83}, while the median value of the 100\% version is \textbf{0.708}.
+Also the distribution of the values for the 10\% version is very close to the median and the minimum value is higher than the median of the 100\% version.
+Which means that even for the data sets on which the 10\% version of CBoss scores very low accuracy scores, it will still get a high $F_{1}$ relative to the 100\% version.
+The harmonic mean over-compensates for the lower accuracy scores with very high values for earliness causing misleading values.
+
+To decide which $\beta$ value is best to use, we carried out a sequence of experiments using $\beta$ = [0.1, 0.9].
+The value that gave the most reasonable results was 0.5.
+Figure shows the same comparison between the boxplots of $Balanced Accuracy$ and $F_{\beta}-measure$ for CBoss but with $\beta$ = 0.5.
+Still $F_{1}$ allows for compensation between accuracy and earliness for the 10\% version, but it refines the values.
+The median value for the 10\% version became \textbf{0.705} while that of the 100\% is \textbf{0.795}.
+The distribution of values for the 10\% is spread more and the maximum value is falling near the median value of the 100\%.
+
+\begin{figure}[!htbp]
+  \captionsetup{justification=raggedright}
+  \includegraphics[width=0.49\textwidth,keepaspectratio]{boxplot_accuracy_CBoss.png}
+  \includegraphics[width=0.49\textwidth,keepaspectratio]{boxplot_f_score_05_CBoss.png}
+  \caption{Comparison between Balanced Accuracy (left) and $F_{0.5}$ (right) for CBoss}
+  \label{fig:FBeta1}
+\end{figure}
+
+We believe that selecting the best value of $\beta$ is not trivial.
+It is problem dependant and not one specific value can fit for all problems.
+For our experiments we decided to give earliness less priority than performance,
+but in other situations it might be the case that both of them contribute with the same importance or even earliness is more critical.
+
+
+
