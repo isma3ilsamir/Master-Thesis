@@ -32,13 +32,25 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Metadata of the used data sets\relax }}{48}{figure.caption.47}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Metadata of the used data sets\relax }}{50}{figure.caption.47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{1}$ (right) for CBoss\relax }}{56}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{1}$ (right) for CBoss\relax }}{59}{figure.caption.51}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{0.5}$ (right) for CBoss\relax }}{57}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{0.5}$ (right) for CBoss\relax }}{59}{figure.caption.52}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Critical Difference diagrams per percentage across all classifiers\relax }}{65}{figure.caption.53}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces \textbf {(a)} CBoss \textbf {(b)} PForest \textbf {(c)} ST \textbf {(d)} TSF \textbf {(e)} WEASEL\relax }}{69}{figure.caption.54}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Histograms for distribution of RMSE per chunk over 50 runs\relax }}{72}{figure.caption.56}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Avg MAE for classifiers per chunk over 50 runs\relax }}{73}{figure.caption.57}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Avg RMSE for classifiers per chunk over 50 runs\relax }}{73}{figure.caption.58}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Mean Feature Importance per chunk across 50 runs\relax }}{74}{figure.caption.59}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

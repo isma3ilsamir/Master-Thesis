@@ -1,7 +1,8 @@
 \chapter{Data Sets and Experimental Design}
 \label{Chapter data sets}
-In order to address our research questions, this thesis considered a group of  data sets from the UCR data archive \cite{UCRArchive2018} and the UEA data archive \cite{bagnall2018uea}.
-This Chapter will describe the  data sets that were used to conduct this empirical experiment and their general properties.
+In order to address our research questions, this thesis considered a group of data sets from the UCR data archive \cite{UCRArchive2018} and the UEA data archive \cite{bagnall2018uea}.
+This Chapter will describe the data sets that were used to conduct our experiments and their general properties.
+Then we will describe our experimental setup.
 
 \section{UCR/UEA Archives}
 \label{DataArchives}
@@ -262,31 +263,41 @@ of $C_{2}$ and $C_{3}$. We denote this feature with the parameter $Balanced$, wh
 \end{landscape}
 
 
-
-\section{Experiments}
+\section{Experimental Design}
 \label{SectionExperiment}
 % Experiments
+In this section we discuss the design of the experiments for the 2 components of our framework; the testbed and the recommender.
+The experiments for the testbed include running the implemented TSCAs on the data archives using different data chunks and calculating their performance using
+our implementation for the $F_{\beta}-measure$ previously discussed in subsection \ref{ExperimentExecutorImplementation}.
+While the experiments for the recommender include learning classifiers on the results of the testbed to predict the best performing
+classifiers for unseen data sets.
+
+\subsection{The Testbed Experimental Design}
+\label{SubsectionTestbedExperiment}
 Our experiments were conducted on univariate data sets from the UCR archive as well as multivariate data sets from the UEA archive.
 The data sets were chosen based on the criteria discussed in the subsection \ref{used data sets}.
 Each of the data archives offers a train and test split of the data which we have used unchanged for all the classifiers.
-All our experiments were run on a LINUX server with an AMD Ryzen 7 1700 Processor and 32GB RAM using Python 3.7.10.
+All our experiments were run on a LINUX server with an AMD Ryzen 7 1700 Processor and 32GB RAM using Python version 3.7.10.
 
-We used the same experimental configuration through out all our experiments.
+We used the same testbed configuration through out all our experiments, which we will discuss as follows.
 We fixed the value of the parameter $Splits$ = 10, that is for every data set the data would be revealed for the classifiers incrementally in batches of 10\% from the total length.
 The chopping algorithm was set to always reveal data from the beginning of the time series.
-Due to time limitations, we restricted our experiments to run only on the \nth{1}, \nth{2}, \nth{3} and \nth{10} chunksof the data sets by setting $ChunksToKeep$ = \{1,2,3,10\}.
-We included the \nth{10} chunk to represent the baseline performance of each classifier if shown the full length data.
+
+Due to time limitations, we imposed a constraint on the number of chunks to be used and a time constraint for each experiment.
+We restricted our experiments to run only on the \nth{1}, \nth{2}, \nth{3} and \nth{10} chunks of the data sets by setting $ChunksToKeep$ = \{1,2,3,10\}.
+The \nth{10} chunk was included to represent the baseline performance of each classifier if shown the full length data.
 While the first 3 chunks were used to represent the classifiers in the early context scenarios.
+We defined a time constraint of 2 days for each experiment.
+Experiments that didn't finish within the time constraint were stopped to make space for other experiments to run.
+
 Hyperparameters optimization was always carried out on all data sets with a $NumIterations$ maximum sampling value of 50 iterations, unless proven unfeasible for any of the classifiers due to memory shortage or time constraint.
 In this case the experiment is repeated for all classifiers without hyperparameters optimization. We fixed the number of cross validation folds to 5.
 The selected performance metric for our experiments was $Balanced Accuracy$.
 Balanced accuracy is a performance metric which can handle data sets with skewed class distributions by avoiding inflated performance estimates.
 To calculate balanced accuracy, the $Recall$ value is computed for each class then averaged over the total number of classes.
-We have set all our experiments to use the same configuration for all classifiers on the same data set.
 
-
-\subsection{Excluded Classifiers}
-\label{SubsectionExcludedClassifiers}
+\subsubsection{Classifiers that failed the experiments}
+\label{SubsubsectionExcludedClassifiers}
 Some of the included classifiers in the framework were excluded from our experiments; either because they couldn't operate in the early classification context
 or because they couldn't attain comparable results to the published performances by previously published frameworks.
 
@@ -314,7 +325,7 @@ even when learning on the 10\% chunk data set.
 Two classifiers were excluded because they attained significantly inferior results compared to the published scores; these are KNNMSM and LS.
 Specially on the InsectWingbeatSound data set, for which we attained a difference in performance of -45.71\% for KNNMSM and -20.71\% for LS than the results published by \cite{bagnall2017great}
 
-\subsection{Included Classifiers and Adjustments}
+\subsubsection{Adjustments applied to remaining classifiers}
 \label{SubsectionIncludedClassifiers}
 % Models used
 Our experiments proceeded with the remaining 5 classifiers; PForest, TSF, ST, CBOSS and WEASEL.
@@ -325,23 +336,30 @@ We cover a total of 77 data sets from both the UR and the UEA archives, out of w
 
 Time and resources limitations played a big role shaping our experiments. Running classifiers is computationally expensive \cite{schafer2020teaser}
 and takes up to hundreds of processing days.
-This lead us to modify some algorithms to so that they can finish promptly; like in the case of PForest, or to use an enhanced version of the original
+This lead us to modify some algorithms so that they can finish promptly; like in the case of PForest, or to use an enhanced version of the original
 classifier with an option to control the learning phase time; like BOSS and ST.
 
 Due to time limitations; We used the contractable implementations of BOSS and ST offered by $sktime$.
-These implementations allows passing a time parameter which controls the sampling space for BOSS and the shapelets searching time for ST
+These implementations allows passing a time parameter which controls the sampling space for BOSS and the shapelets searching time for ST,
 beside other performance enhancements.
 We set the value of the time contract for both to 60 minutes.
 We have discussed the literature details of these enhancements for ST in subsection \ref{SubsubsectionST} and for BOSS in subsection \ref{SubsubsectionBOSS}.
 
 We applied 2 adjustments to the PForest classifier.
-Firstly, we excluded ED from the pool of distance measures that PForest selects from; since the ED has previously proven not to be compatible with our early classification context when used with the KNN classifier.
-Secondly, we excluded TWE from the pool of distance measures when the size of the training data set exceeded 150 instances, which is the median of all data sets training sizes.
+First, we excluded ED from the pool of distance measures that PForest selects from; since the ED has previously proven not to be compatible with our early classification context when used with the KNN classifier.
+Second, we excluded TWE from the pool of distance measures when the size of the training data set exceeded 150 instances, which is the median of all data sets training sizes.
 TWE is a very slow distance measure. It has been reported by \cite{bagnall2017great} to be the slowest among all elastic distance measures. When measured on classifing 10 test instances from the
 StarlightCurves data set, it performed 10,000 times slower than ED.
 
-\subsection{Learning weights for the $F_{\beta}-measure$}
-\label{SubsectionLearningFBetaMeasure}
+Also we relaxed the time constraint for PForest; due to its quadratic complexity with length \cite{lucas2019proximity} which made it very slow as we used longer chunks.
+Since the other algorithms already had a bit of an advantage either for using simple tranformations or for using time contracts,
+we felt that it would be unfair for PForest to abide by the time constraint for the \nth{10} chunk.
+Our exception for PForest was if the first 3 chunks were able to finish within the time constraint, we would leave the \nth{10} chunk to run even if it exceceded it.
+More details about runtime durations is provided in our results.
+
+
+\subsubsection{Learning weights for the $F_{\beta}-measure$}
+\label{SubsubsectionLearningFBetaMeasure}
 We use the $F_{\beta}-measure$ as an objective score for the performance of the classifiers.
 The $F_{\beta}-measure$ has been a popular choice for evlauating eTSC algorithms \cite{schafer2020teaser} because of its
 capacity to combine both earliness and accuracy.
@@ -372,7 +390,7 @@ The harmonic mean over-compensates for the lower accuracy scores with very high 
 
 To decide which $\beta$ value is best to use, we carried out a sequence of experiments using $\beta$ = [0.1, 0.9].
 The value that gave the most reasonable results was 0.5.
-Figure shows the same comparison between the boxplots of $Balanced Accuracy$ and $F_{\beta}-measure$ for CBoss but with $\beta$ = 0.5.
+Figure \ref{fig:FBeta05} shows the same comparison between the boxplots of $Balanced Accuracy$ and $F_{\beta}-measure$ for CBoss but with $\beta$ = 0.5.
 Still $F_{1}$ allows for compensation between accuracy and earliness for the 10\% version, but it refines the values.
 The median value for the 10\% version became \textbf{0.705} while that of the 100\% is \textbf{0.795}.
 The distribution of values for the 10\% is spread more and the maximum value is falling near the median value of the 100\%.
@@ -382,7 +400,7 @@ The distribution of values for the 10\% is spread more and the maximum value is 
   \includegraphics[width=0.49\textwidth,keepaspectratio]{boxplot_accuracy_CBoss.png}
   \includegraphics[width=0.49\textwidth,keepaspectratio]{boxplot_f_score_05_CBoss.png}
   \caption{Comparison between Balanced Accuracy (left) and $F_{0.5}$ (right) for CBoss}
-  \label{fig:FBeta1}
+  \label{fig:FBeta05}
 \end{figure}
 
 We believe that selecting the best value of $\beta$ is not trivial.
@@ -391,4 +409,35 @@ For our experiments we decided to give earliness less priority than performance,
 but in other situations it might be the case that both of them contribute with the same importance or even earliness is more critical.
 
 
+\subsection{The Recommender Experimental Design}
+\label{SubsectionRecommenderExperiment}
+As previously discussed in the recommender design, we train one random forest regressor per chunk, which we call the chunk learner.
+Each chunk learner is trained on the results for a specific chunk and is responsible for predicting the performance score, $F_{\beta}-measure$, for all classifiers on unseen data sets for that specific chunk.
+
+% data sets used
+To train the chunk learners, we use the results of experiments from the testbed combined with metadata about the data set.
+Each training instance consists of metadata features from the table \ref{tab:long} in addition to 3 features from the testbed results in table \ref{TableAnalysisReport}; the classifier name, the revealed\% and the $F_{\beta}-measure$ value.
+The results of all data sets are included in the learning process, regardless of whether they were finished by all the classifiers and for all the chunks or not.
+We only exclude the three data sets PEMS-SF, DuckDuckGeese and FaceDetection; because they were only finished by one classifier. Which leaves us with 74 data sets.
+
+%  Overall description
+In the beginning, we randomly split the data into training and testing data sets.
+Then for each chunk learner, we start a grid search process, on the training data, for learning hyperparameters and model selection.
+In the end, the chunk learners are evaluated using the best selected model on the unseen testing data sets for the final evaluation.
+
+% detailed description of training and testing
+For the creation of training and testing data sets, we use an 80/20 split with random selection.
+A total of 59 data sets are used for the learning of chunk learners, while 15 data sets are left out for the final evaluation.
+
+For the training of the chunk learners we use a grid search; to select the best combination of hyperparameters for each chunk learner model for its designated chunk.
+During the grid search operation, a 10-fold cross validation process is carried out in which each training model is trained and evaluated 10 times.
+The final score for each model is represented by its average across all 10-folds.
+We define the hyperparameter space for 2 parameters of the random forests; the maximum depth of trees = \{3, 5, 10, $\infty$\} and the number of trees per forest = \{2, 3, 4, 5, 10, 50, 100, 250, 500\}.
+After the grid search is finished, the best performing model is selected to be used as the final chunk learner on the unseen testing data sets.
+To avoid biases in the results of the chunk learners from the selection of training and testing data sets, this whole process is repeated 50 times using random selection of the data sets for training and testing.
+We use the seeds = [0, 49] for the random selection of data sets and for the bootstrapping and sampling of features in the building for trees; to allow for reproducability of the results.
+
+% preprocessing (one hot encoding)
+Since we are using regression random forests, one mandatory preprocessing step has to be carried out; to transform the cateogrical features into numerical features.
+We do \emph{one-hot-encoding} on the the two features $classifier$ and $type$, which represent the name of the classifier that was used and the type of the data set respectively.
 

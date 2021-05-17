@@ -194,6 +194,10 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\tabu\tabu.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\tabu\tabu.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\varwidth\varwidth.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\varwidth\varwidth.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\multirow\multirow.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\pdflscape\pdflscape.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\pdflscape\pdflscape.sty
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
@@ -409,11 +413,6 @@ INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early class
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Problem_hist.JPG
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_accuracy_CBoss.png
@@ -433,6 +432,87 @@ INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early class
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\boxplot_f_score_05_CBoss.png
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\Results.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\Results.tex
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx5.tfm
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_10pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_10pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_10pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_10pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_10pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_20pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_20pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_20pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_20pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_20pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_30pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_30pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_30pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_30pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_30pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_100pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_100pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_100pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_100pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_across_100pct_with_dummy.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_cboss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_cboss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_cboss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_cboss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_cboss.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_pforest.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_pforest.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_pforest.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_pforest.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_pforest.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_st.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_st.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_st.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_st.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_st.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_tsf.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_tsf.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_tsf.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_tsf.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_tsf.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_weasel.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_weasel.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_weasel.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_weasel.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\cd_hm_within_weasel.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\hist_rmse.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\hist_rmse.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\hist_rmse.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\hist_rmse.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\hist_rmse.jpg
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\MAE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\MAE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\MAE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\MAE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\MAE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\RMSE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\RMSE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\RMSE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\RMSE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\RMSE_classifier.JPG
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_10pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_10pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_10pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_10pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_10pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_20pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_20pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_20pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_20pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_20pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_30pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_30pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_30pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_30pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_30pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_100pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_100pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_100pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_100pct.png
+INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\06 Results\mean_feature_imp_100pct.png
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\07 Findings Discussion\Findings Discussion.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\07 Findings Discussion\Findings Discussion.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\08 Summary and Outlook\Summary and Outlook.tex
@@ -452,6 +532,8 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx5.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
@@ -464,16 +546,12 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi12.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb

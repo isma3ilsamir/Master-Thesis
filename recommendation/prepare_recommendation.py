@@ -31,6 +31,7 @@ from sklearn.tree import export_graphviz
 from dtreeviz.trees import dtreeviz
 from subprocess import call
 from pickle import dump, load
+from sklearn.model_selection import GridSearchCV
 
 from prepare_analysis import rank_on_col, rank_relative_to_dummy, get_pivot
 
@@ -258,7 +259,7 @@ def preprocess_new_data(df_train, pct, ohe, std):
     return X_train
 
 
-def train_random_forest(df_train, df_test, pct, ohe, std):
+def train_random_forest(df_train, df_test, pct, ohe, std, random_state):
     X_train, X_test, y_train, y_test = preprocess_data(
         df_train, df_test, pct, ohe, std)
     # Fitting Random Forest Regression to the dataset
@@ -269,16 +270,13 @@ def train_random_forest(df_train, df_test, pct, ohe, std):
     res['y_train'] = y_train
     res['y_test'] = y_test
 
-    from sklearn.model_selection import GridSearchCV
     # Create the parameter grid based on the results of random search
     param_grid = {
-        'bootstrap': [True, False],
-        'max_depth': [2, 3, 5, 10, 50, 100, None],
-        'max_features': [2, 3, 'auto'],
-        'n_estimators': [2, 3, 4, 5, 10, 20, 50, 100]
+        'max_depth': [3, 5, 10, None],
+        'n_estimators': [2, 3, 4, 5, 10, 50, 100, 250, 500]
     }
     # Create a based model
-    rf = RandomForestRegressor()
+    rf = RandomForestRegressor(bootstrap= True, oob_score= True, max_features= 'auto', random_state= random_state)
 
     # Instantiate the grid search model
     grid_search = GridSearchCV(
@@ -536,101 +534,103 @@ if __name__ == '__main__':
         for x in range(50):
             seed_folder = os.path.join(curr_folder, f'recommendation_seed_{x}')
             seed_folders.append(seed_folder)
-        
-            df_train, df_test = get_train_test_ds(df, 15, x)
-            df_train.set_index(['dataset'], inplace=True)
-            # df_train.drop(['type'], axis= 1 , inplace= True)
-            df_test.set_index(['dataset'], inplace=True)
-            # df_test.drop(['type'], axis= 1 , inplace= True)
 
-        #     # plt.subplots(figsize=(20,15))
-        #     # sns.heatmap(df_10_full.corr(),annot=True,lw=1)
+        #     df_train, df_test = get_train_test_ds(df, 15, x)
+        #     df_train.set_index(['dataset'], inplace=True)
+        #     # df_train.drop(['type'], axis= 1 , inplace= True)
+        #     df_test.set_index(['dataset'], inplace=True)
+        #     # df_test.drop(['type'], axis= 1 , inplace= True)
 
-            ######### Fitting Random Forest Regression to the dataset ##########
-            res_list = []
-            res_diff_test_list = []
-            res_diff_train_list = []
-            res_pct_ranking_eval_list = []
-            res_pct_fscore_eval_list = []
+        # #     # plt.subplots(figsize=(20,15))
+        # #     # sns.heatmap(df_10_full.corr(),annot=True,lw=1)
 
-            for p in pcts:
-                # train random forests
-                res = train_random_forest(df_train, df_test, p, True, False)
-                res_list.append(res)
+        #     ######### Fitting Random Forest Regression to the dataset ##########
+        #     res_list = []
+        #     res_diff_test_list = []
+        #     res_diff_train_list = []
+        #     res_pct_ranking_eval_list = []
+        #     res_pct_fscore_eval_list = []
 
-                # get difference between actual and predicted test data sets
-                res_diff_test = get_diff_actual_pred(
-                    df_test, res[p]['f_score_pred'], p)
+        #     for p in pcts:
+        #         # train random forests
+        #         res = train_random_forest(df_train, df_test, p, True, False, x)
+        #         res_list.append(res)
 
-                # get difference between actual and predicted train data sets
-                res_diff_train = get_diff_actual_pred(
-                    df_train, res[p]['f_score_pred_train'], p)
+        #         # get difference between actual and predicted test data sets
+        #         res_diff_test = get_diff_actual_pred(
+        #             df_test, res[p]['f_score_pred'], p)
 
-                # draw actual vs predited plots
-                export_scatter_plot(
-                    df_test, res[p]['f_score_pred'], p, f'scatter_test_actual_vs_pred_{p}pct', False)
-                export_scatter_plot(
-                    df_train, res[p]['f_score_pred_train'], p, f'scatter_train_actual_vs_pred_{p}pct', True)
+        #         # get difference between actual and predicted train data sets
+        #         res_diff_train = get_diff_actual_pred(
+        #             df_train, res[p]['f_score_pred_train'], p)
 
-                # rank test ds
-                res_test_ranked = get_rank_by_col(res_diff_test[p], 'f_score')
-                res_test_ranked = get_rank_by_col(res_test_ranked, 'f_score_pred')
-                res_diff_test_list.append(res_test_ranked)
-                # results of ranking compared to actual
-                res_pct_ranking_eval_test = get_pct_ranking_eval(
-                    res_test_ranked, p, False)
-                res_pct_ranking_eval_list.append(res_pct_ranking_eval_test)
+        #         # draw actual vs predited plots
+        #         export_scatter_plot(
+        #             df_test, res[p]['f_score_pred'], p, f'scatter_test_actual_vs_pred_{p}pct', False)
+        #         export_scatter_plot(
+        #             df_train, res[p]['f_score_pred_train'], p, f'scatter_train_actual_vs_pred_{p}pct', True)
 
-                # rank train ds
-                res_train_ranked = get_rank_by_col(res_diff_train[p], 'f_score')
-                res_train_ranked = get_rank_by_col(
-                    res_train_ranked, 'f_score_pred')
-                res_diff_train_list.append(res_train_ranked)
-                # results of ranking compared to actual
-                res_pct_ranking_eval_train = get_pct_ranking_eval(
-                    res_train_ranked, p, True)
-                res_pct_ranking_eval_list.append(res_pct_ranking_eval_train)
+        #         # rank test ds
+        #         res_test_ranked = get_rank_by_col(res_diff_test[p], 'f_score')
+        #         res_test_ranked = get_rank_by_col(res_test_ranked, 'f_score_pred')
+        #         res_diff_test_list.append(res_test_ranked)
+        #         # results of ranking compared to actual
+        #         res_pct_ranking_eval_test = get_pct_ranking_eval(
+        #             res_test_ranked, p, False)
+        #         res_pct_ranking_eval_list.append(res_pct_ranking_eval_test)
 
-                # export model
-                export_model(res[p]['RF_Reg'], p)
+        #         # rank train ds
+        #         res_train_ranked = get_rank_by_col(res_diff_train[p], 'f_score')
+        #         res_train_ranked = get_rank_by_col(
+        #             res_train_ranked, 'f_score_pred')
+        #         res_diff_train_list.append(res_train_ranked)
+        #         # results of ranking compared to actual
+        #         res_pct_ranking_eval_train = get_pct_ranking_eval(
+        #             res_train_ranked, p, True)
+        #         res_pct_ranking_eval_list.append(res_pct_ranking_eval_train)
 
-                # export feature importance graph
-                export_feature_importance(res[p]['X_train'], res[p]['RF_Reg'], p)
+        #         # export model
+        #         export_model(res[p]['RF_Reg'], p)
 
-                # export trees
-                export_trees(res[p]['RF_Reg'], res[p]['X_train'], res[p]['y_train'], p)
+        #         # export feature importance graph
+        #         export_feature_importance(res[p]['X_train'], res[p]['RF_Reg'], p)
 
-                # model f-score evaluation
-                res_pct_fscore_eval = get_model_pct_eval(res[p]['train_prediction_df'], res[p]
-                                                        ['test_prediction_df'], p, res[p]['mae'], res[p]['mse'], res[p]['r_sq'], res[p]['rmse'])
-                res_pct_fscore_eval_list.append(res_pct_fscore_eval)
+        #         # export trees
+        #         # export_trees(res[p]['RF_Reg'], res[p]['X_train'], res[p]['y_train'], p)
 
-            # export fscore and ranking values
-            df_pct_res_train = pd.concat(res_diff_train_list, axis=0, sort=True)
-            df_pct_res_train['step'] = 'Training'
-            df_pct_res_test = pd.concat(res_diff_test_list, axis=0, sort=True)
-            df_pct_res_test['step'] = 'Testing'
-            df_pct_res_all = pd.concat(
-                [df_pct_res_train, df_pct_res_test], axis=0, sort=True)
-            df_pct_res_all['bad_results'] = df_pct_res_all.apply(get_bad_results, axis=1)
-            export_csv(df_pct_res_all, 'results',
-                    'trained_ds_fscore_ranking_values')
+        #         # model f-score evaluation
+        #         res_pct_fscore_eval = get_model_pct_eval(res[p]['train_prediction_df'], res[p]
+        #                                                 ['test_prediction_df'], p, res[p]['mae'], res[p]['mse'], res[p]['r_sq'], res[p]['rmse'])
+                # res_pct_fscore_eval_list.append(res_pct_fscore_eval)
 
-            # export evaluation metrics for f-score predictions
-            df_pct_fscore_eval = pd.concat(
-                res_pct_fscore_eval_list, axis=0, sort=True)
-            export_csv(df_pct_fscore_eval, 'results',
-                    'trained_ds_fscore_evaluation')
+            # # export fscore and ranking values
+            # df_pct_res_train = pd.concat(res_diff_train_list, axis=0, sort=True)
+            # df_pct_res_train['step'] = 'Training'
+            # df_pct_res_test = pd.concat(res_diff_test_list, axis=0, sort=True)
+            # df_pct_res_test['step'] = 'Testing'
+            # df_pct_res_all = pd.concat(
+            #     [df_pct_res_train, df_pct_res_test], axis=0, sort=True)
+            # df_pct_res_all['bad_results'] = df_pct_res_all.apply(get_bad_results, axis=1)
+            # export_csv(df_pct_res_all, 'results',
+            #         'trained_ds_fscore_ranking_values')
 
-            # export evaluation metrics for recommendations based on ranking
-            df_pct_ranking_eval = pd.concat(
-                res_pct_ranking_eval_list, axis=0, sort=True)
-            export_csv(df_pct_ranking_eval, 'results',
-                    'trained_ds_ranking_evaluation')
+            # # export evaluation metrics for f-score predictions
+            # df_pct_fscore_eval = pd.concat(
+            #     res_pct_fscore_eval_list, axis=0, sort=True)
+            # export_csv(df_pct_fscore_eval, 'results',
+            #         'trained_ds_fscore_evaluation')
+
+            # # export evaluation metrics for recommendations based on ranking
+            # df_pct_ranking_eval = pd.concat(
+            #     res_pct_ranking_eval_list, axis=0, sort=True)
+            # export_csv(df_pct_ranking_eval, 'results',
+            #         'trained_ds_ranking_evaluation')
 
         # compare the different models
         fscore_dfs = []
         ranking_dfs = []
+        values_dfs = []
+        feature_imp_dfs = []
         for i in seed_folders:
             fscore_path = os.path.join(i, 'results', 'trained_ds_fscore_evaluation.csv')
             df = pd.read_csv(fscore_path)
@@ -641,11 +641,101 @@ if __name__ == '__main__':
             df = pd.read_csv(ranking_path)
             df['model_seed'] = i.split('_')[-1]
             ranking_dfs.append(df)
-        
+
+            values_path = os.path.join(i, 'results', 'trained_ds_fscore_ranking_values.csv')
+            df = pd.read_csv(values_path)
+            df['model_seed'] = i.split('_')[-1]
+            values_dfs.append(df)
+
+            for p in pcts:
+                imp_path = os.path.join(i, 'feature_importance', f'feature_imp_{p}pct.csv')
+                df = pd.read_csv(imp_path)
+                df['model_seed'] = i.split('_')[-1]
+                df['pct'] = p
+                feature_imp_dfs.append(df)
+
         df_fscores_eval = pd.concat(fscore_dfs)
         df_fscores_eval.to_csv(os.path.join(curr_folder, 'fscore_comparison.csv'), index= False)
+        
         df_ranking_eval = pd.concat(ranking_dfs)
         df_ranking_eval.to_csv(os.path.join(curr_folder, 'ranking_comparison.csv'), index= False)
+        
+        df_values_eval = pd.concat(values_dfs)
+        df_values_eval.to_csv(os.path.join(curr_folder, 'values_comparison.csv'), index= False)
+        
+        df_fimp_eval = pd.concat(feature_imp_dfs)
+        df_fimp_eval.to_csv(os.path.join(curr_folder, 'feature_importance_comparison.csv'), index= False)
+        import IPython
+        IPython.embed()
+
+        sns.set(font_scale=3)  # crazy big
+        fig, axes = plt.subplots(2, 2, figsize=(20, 20), sharey=False)
+        fig.suptitle('Distribution of RMSE by Revealed%')
+        # 10
+        sns.histplot(ax=axes[0,0], data= df_fscores_eval[df_fscores_eval['pct'] == 10], x="rmse", kde=True)
+        axes[0,0].set_title('10% chunk learner')
+        axes[0,0].set(xlabel='RMSE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        # 20
+        sns.histplot(ax=axes[0,1], data= df_fscores_eval[df_fscores_eval['pct'] == 20], x="rmse", kde=True)
+        axes[0,1].set_title('20% chunk learner')
+        axes[0,1].set(xlabel='RMSE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        # 30
+        sns.histplot(ax=axes[1,0], data= df_fscores_eval[df_fscores_eval['pct'] == 30], x="rmse", kde=True)
+        axes[1,0].set_title('30% chunk learner')
+        axes[1,0].set(xlabel='RMSE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        # 100
+        sns.histplot(ax=axes[1,1], data= df_fscores_eval[df_fscores_eval['pct'] == 100], x="rmse", kde=True)
+        axes[1,1].set_title('100% chunk learner')
+        axes[1,1].set(xlabel='RMSE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        plt.subplots_adjust(hspace = 0.5)
+        plt.savefig(os.path.join(e, f'hist_rmse.jpg'),
+                        dpi=200, bbox_inches='tight')
+
+        plt.clf()
+        plt.cla()
+        plt.close()
+
+        for i in pcts:
+            print(f'Results of {i} percent')
+            q = df_fscores_eval[df_fscores_eval['pct'] == i]
+            w = df_ranking_eval[(df_ranking_eval['pct'] == i) & (df_ranking_eval['step'] == 'Testing')]
+            import IPython
+            IPython.embed()
+            
+            e = os.path.join(curr_folder, 'general charts')
+            if not os.path.exists(e):
+                os.makedirs(e)
+            print(q.describe())
+            q[['rmse']].boxplot()
+            plt.ylim(0, 1)
+            plt.savefig(os.path.join(e, f'boxplot_{i}pct_rmse.jpg'),
+                dpi=200, bbox_inches='tight')
+            plt.clf()
+            plt.cla()
+            plt.close()
+            q[['rmse']].hist()
+            plt.xlim(0, 1)
+            plt.savefig(os.path.join(e, f'hist_{i}pct_rmse.jpg'),
+                dpi=200, bbox_inches='tight')
+            plt.clf()
+            plt.cla()
+            plt.close()
+
+            print(w.describe())
+            w[['acc']].boxplot()
+            plt.ylim(0, 1)
+            plt.savefig(os.path.join(e, f'boxplot_{i}pct_acc.jpg'),
+                dpi=200, bbox_inches='tight')
+            plt.clf()
+            plt.cla()
+            plt.close()
+            w[['acc']].hist()
+            plt.xlim(0, 1)
+            plt.savefig(os.path.join(e, f'hist_{i}pct_acc.jpg'),
+                dpi=200, bbox_inches='tight')
+            plt.clf()
+            plt.cla()
+            plt.close()
 
 
     else:

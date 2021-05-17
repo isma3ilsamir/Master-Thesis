@@ -841,6 +841,46 @@
       \field{pages}{792\bibrangedash 803}
       \range{pages}{12}
     \endentry
+    \entry{couronne2018random}{article}{}
+      \name{author}{3}{}{%
+        {{hash=774a88d81869d915eb225a93fc81fc40}{%
+           family={Couronn{é}},
+           familyi={C\bibinitperiod},
+           given={Raphael},
+           giveni={R\bibinitperiod}}}%
+        {{hash=dddbccb2c1aa9404d8c9d71319c47f20}{%
+           family={Probst},
+           familyi={P\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod}}}%
+        {{hash=e0570ef8bfff680390d873f845ba8c95}{%
+           family={Boulesteix},
+           familyi={B\bibinitperiod},
+           given={Anne-Laure},
+           giveni={A\bibinithyphendelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{3bf68ec7cae39a4f8258e8b93e1f1b53}
+      \strng{fullhash}{3bf68ec7cae39a4f8258e8b93e1f1b53}
+      \strng{bibnamehash}{3bf68ec7cae39a4f8258e8b93e1f1b53}
+      \strng{authorbibnamehash}{3bf68ec7cae39a4f8258e8b93e1f1b53}
+      \strng{authornamehash}{3bf68ec7cae39a4f8258e8b93e1f1b53}
+      \strng{authorfullhash}{3bf68ec7cae39a4f8258e8b93e1f1b53}
+      \field{labelalpha}{CPB18}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{BMC bioinformatics}
+      \field{number}{1}
+      \field{title}{Random forest versus logistic regression: a large-scale benchmark experiment}
+      \field{volume}{19}
+      \field{year}{2018}
+      \field{pages}{1\bibrangedash 14}
+      \range{pages}{14}
+    \endentry
     \entry{UCRArchive2018}{misc}{}
       \name{author}{14}{}{%
         {{hash=c405e0c94297ac37d92350e926e0dc02}{%
@@ -1944,6 +1984,55 @@
       \field{year}{2011}
       \field{pages}{2231\bibrangedash 2240}
       \range{pages}{10}
+    \endentry
+    \entry{jog2017random}{article}{}
+      \name{author}{5}{}{%
+        {{hash=cfebbb51fa348de33b037ece53d11597}{%
+           family={Jog},
+           familyi={J\bibinitperiod},
+           given={Amod},
+           giveni={A\bibinitperiod}}}%
+        {{hash=704c30626a1ffbbb2784665228abc4e7}{%
+           family={Carass},
+           familyi={C\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod}}}%
+        {{hash=128f4838746acacef409b9cb6ef398a8}{%
+           family={Roy},
+           familyi={R\bibinitperiod},
+           given={Snehashis},
+           giveni={S\bibinitperiod}}}%
+        {{hash=d2f67f9f844b8752f05e751708099284}{%
+           family={Pham},
+           familyi={P\bibinitperiod},
+           given={Dzung\bibnamedelima L},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=8bfa40ef9412e1b582dfe0ab4e517639}{%
+           family={Prince},
+           familyi={P\bibinitperiod},
+           given={Jerry\bibnamedelima L},
+           giveni={J\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Elsevier}%
+      }
+      \strng{namehash}{96143b1177a9c1d3b5983079175d7f8b}
+      \strng{fullhash}{1c5d9e4f58975ac2fd12eeb5285f8301}
+      \strng{bibnamehash}{96143b1177a9c1d3b5983079175d7f8b}
+      \strng{authorbibnamehash}{96143b1177a9c1d3b5983079175d7f8b}
+      \strng{authornamehash}{96143b1177a9c1d3b5983079175d7f8b}
+      \strng{authorfullhash}{1c5d9e4f58975ac2fd12eeb5285f8301}
+      \field{labelalpha}{Jog+17}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Medical image analysis}
+      \field{title}{Random forest regression for magnetic resonance image synthesis}
+      \field{volume}{35}
+      \field{year}{2017}
+      \field{pages}{475\bibrangedash 488}
+      \range{pages}{14}
     \endentry
     \entry{10.1145/2611286.2611333}{inproceedings}{}
       \name{author}{2}{}{%
@@ -3902,6 +3991,46 @@
       \field{year}{2018}
       \field{pages}{120\bibrangedash 129}
       \range{pages}{10}
+    \endentry
+    \entry{singh2017modelling}{article}{}
+      \name{author}{3}{}{%
+        {{hash=27a48f4010411b335de96b1dbdac7e3a}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Balraj},
+           giveni={B\bibinitperiod}}}%
+        {{hash=1c94d22144d3377d4015a677fed394e0}{%
+           family={Sihag},
+           familyi={S\bibinitperiod},
+           given={Parveen},
+           giveni={P\bibinitperiod}}}%
+        {{hash=4bcb75e26ec9ddef02307fd9c2604b5e}{%
+           family={Singh},
+           familyi={S\bibinitperiod},
+           given={Karan},
+           giveni={K\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{a6d80c2d2541163e0c0040525fa1b15d}
+      \strng{fullhash}{a6d80c2d2541163e0c0040525fa1b15d}
+      \strng{bibnamehash}{a6d80c2d2541163e0c0040525fa1b15d}
+      \strng{authorbibnamehash}{a6d80c2d2541163e0c0040525fa1b15d}
+      \strng{authornamehash}{a6d80c2d2541163e0c0040525fa1b15d}
+      \strng{authorfullhash}{a6d80c2d2541163e0c0040525fa1b15d}
+      \field{labelalpha}{SSS17}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Modeling Earth Systems and Environment}
+      \field{number}{3}
+      \field{title}{Modelling of impact of water quality on infiltration rate of soil by random forest regression}
+      \field{volume}{3}
+      \field{year}{2017}
+      \field{pages}{999\bibrangedash 1004}
+      \range{pages}{6}
     \endentry
     \entry{scardapane2017randomness}{article}{}
       \name{author}{2}{}{%

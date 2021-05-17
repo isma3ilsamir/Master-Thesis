@@ -16,9 +16,13 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of the 77 data sets used in the experiments\relax }}{50}{table.5.1}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of the 77 data sets used in the experiments\relax }}{52}{table.5.1}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.1}{\ignorespaces $F_{\beta }$ scores for all 5 classifiers on 77 data sets for all chunks\relax }}{63}{table.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.3}{\ignorespaces Overall Performance of chunk learners over 50 runs\relax }}{71}{table.caption.55}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 

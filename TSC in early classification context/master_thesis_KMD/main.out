@@ -45,19 +45,22 @@
 \BOOKMARK [2][-]{subsection.5.1.1}{UCR Archive}{section.5.1}% 45
 \BOOKMARK [2][-]{subsection.5.1.2}{UEA Archive}{section.5.1}% 46
 \BOOKMARK [2][-]{subsection.5.1.3}{Used Data Sets}{section.5.1}% 47
-\BOOKMARK [1][-]{section.5.2}{Experiments}{chapter.5}% 48
-\BOOKMARK [2][-]{subsection.5.2.1}{Excluded Classifiers}{section.5.2}% 49
-\BOOKMARK [2][-]{subsection.5.2.2}{Included Classifiers and Adjustments}{section.5.2}% 50
-\BOOKMARK [2][-]{subsection.5.2.3}{Learning weights for the F-measure}{section.5.2}% 51
-\BOOKMARK [0][-]{chapter.6}{Results}{}% 52
-\BOOKMARK [1][-]{section.6.1}{Results Across Classifiers}{chapter.6}% 53
-\BOOKMARK [1][-]{section.6.2}{Data Set characteristics and performance in early classification context}{chapter.6}% 54
-\BOOKMARK [2][-]{subsection.6.2.1}{Length of Series}{section.6.2}% 55
-\BOOKMARK [2][-]{subsection.6.2.2}{Training Data Set Size}{section.6.2}% 56
-\BOOKMARK [2][-]{subsection.6.2.3}{Type of Problem}{section.6.2}% 57
-\BOOKMARK [2][-]{subsection.6.2.4}{Number of classes}{section.6.2}% 58
-\BOOKMARK [1][-]{section.6.3}{Results Within Classifier}{chapter.6}% 59
-\BOOKMARK [1][-]{section.6.4}{Results on Runtime Duration}{chapter.6}% 60
-\BOOKMARK [0][-]{chapter.7}{Findings Discussion}{}% 61
-\BOOKMARK [0][-]{chapter.8}{Summary and Outlook}{}% 62
-\BOOKMARK [1][-]{section.8.1}{Declaration of Authorship}{chapter.8}% 63
+\BOOKMARK [1][-]{section.5.2}{Experimental Design}{chapter.5}% 48
+\BOOKMARK [2][-]{subsection.5.2.1}{The Testbed Experimental Design}{section.5.2}% 49
+\BOOKMARK [2][-]{subsection.5.2.2}{The Recommender Experimental Design}{section.5.2}% 50
+\BOOKMARK [0][-]{chapter.6}{Results}{}% 51
+\BOOKMARK [1][-]{section.6.1}{Results Across Classifiers}{chapter.6}% 52
+\BOOKMARK [1][-]{section.6.2}{Data Set characteristics and performance in early classification context}{chapter.6}% 53
+\BOOKMARK [2][-]{subsection.6.2.1}{Length of Series}{section.6.2}% 54
+\BOOKMARK [2][-]{subsection.6.2.2}{Training Data Set Size}{section.6.2}% 55
+\BOOKMARK [2][-]{subsection.6.2.3}{Type of Problem}{section.6.2}% 56
+\BOOKMARK [2][-]{subsection.6.2.4}{Number of classes}{section.6.2}% 57
+\BOOKMARK [1][-]{section.6.3}{Results Within Classifier}{chapter.6}% 58
+\BOOKMARK [1][-]{section.6.4}{Results on Runtime Duration}{chapter.6}% 59
+\BOOKMARK [1][-]{section.6.5}{Recommender Results}{chapter.6}% 60
+\BOOKMARK [2][-]{subsection.6.5.1}{Are the chunk learners able to learn F-scores for the classifiers ?}{section.6.5}% 61
+\BOOKMARK [2][-]{subsection.6.5.2}{Which features contribute the most to the F-Score Prediction ?}{section.6.5}% 62
+\BOOKMARK [2][-]{subsection.6.5.3}{Are the final recommendations of the framework consistent with actual results ?}{section.6.5}% 63
+\BOOKMARK [0][-]{chapter.7}{Findings Discussion}{}% 64
+\BOOKMARK [0][-]{chapter.8}{Summary and Outlook}{}% 65
+\BOOKMARK [1][-]{section.8.1}{Declaration of Authorship}{chapter.8}% 66
