@@ -665,6 +665,37 @@ if __name__ == '__main__':
         
         df_fimp_eval = pd.concat(feature_imp_dfs)
         df_fimp_eval.to_csv(os.path.join(curr_folder, 'feature_importance_comparison.csv'), index= False)
+        
+        df_values_eval_testing = df_values_eval[df_values_eval['step'] == 'Testing']
+        df_agg_perf = pd.DataFrame(df_values_eval_testing.groupby(['classifier','dataset','revealed_pct','bad_results']).size())
+        df_agg_perf.reset_index(inplace=True)
+        df_agg_perf.rename(columns={0:'count', 'bad_results':'missclassified'}, inplace= True)
+        df_agg_perf['misclassification_pct'] = df_agg_perf['count'] / df_agg_perf.groupby(['classifier','dataset','revealed_pct'])['count'].transform('sum')
+
+        df_clf_missclassification = pd.DataFrame(df_agg_perf[df_agg_perf['missclassified'] == True].groupby(['classifier','revealed_pct'])['count'].sum())
+        df_clf_missclassification.rename(columns={'count':'misclassification_count'}, inplace= True)
+        df_clf_missclassification['Total'] =  df_agg_perf.groupby(['classifier','revealed_pct'])['count'].sum()
+        df_clf_missclassification['missclassification_pct'] = df_clf_missclassification['misclassification_count']/df_clf_missclassification['Total']
+        df_clf_missclassification.reset_index(inplace=True)
+        df_clf_missclassification.to_csv(os.path.join(curr_folder, 'classifier_misclassification.csv'), index= False)
+
+        df_clf_pct_all = pd.DataFrame(df_values_eval_testing.groupby(['classifier','revealed_pct']).size()).reset_index()
+        df_clf_pct_all.rename(columns={0:'Total'}, inplace= True)
+        df_clf_underestimated = df_values_eval_testing[df_values_eval_testing['ds_rank_f_score_calc'] > df_values_eval_testing['ds_rank_f_score_pred_calc']]
+        df_clf_underestimated_agg = pd.DataFrame(df_clf_underestimated.groupby(['classifier','revealed_pct']).size()).reset_index()
+        df_clf_underestimated_agg.rename(columns={0:'underestimated'}, inplace= True)
+        df_clf_overerestimated = df_values_eval_testing[df_values_eval_testing['ds_rank_f_score_calc'] < df_values_eval_testing['ds_rank_f_score_pred_calc']]
+        df_clf_overerestimated_agg = pd.DataFrame(df_clf_overerestimated.groupby(['classifier','revealed_pct']).size()).reset_index()
+        df_clf_overerestimated_agg.rename(columns={0:'overestimated'}, inplace= True)
+        df_clf_estimation = pd.merge(left=df_clf_pct_all, right=df_clf_overerestimated_agg, how='left')
+        df_clf_estimation = pd.merge(left=df_clf_estimation, right=df_clf_underestimated_agg, how='left')
+        df_clf_estimation = df_clf_estimation[df_clf_estimation['classifier'] != 'Dummy'].copy()
+        df_clf_estimation['overestimation_pct'] = df_clf_estimation['overestimated'] / df_clf_estimation['Total']
+        df_clf_estimation['underestimation_pct'] = df_clf_estimation['underestimated'] / df_clf_estimation['Total']
+        df_clf_estimation.fillna(0, inplace=True)
+        df_clf_estimation.to_csv(os.path.join(curr_folder, 'classifier_estimation.csv'), index= False)
+
+
         import IPython
         IPython.embed()
 
@@ -688,12 +719,45 @@ if __name__ == '__main__':
         axes[1,1].set_title('100% chunk learner')
         axes[1,1].set(xlabel='RMSE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
         plt.subplots_adjust(hspace = 0.5)
-        plt.savefig(os.path.join(e, f'hist_rmse.jpg'),
+        plt.savefig(os.path.join(curr_folder, f'hist_rmse.jpg'),
                         dpi=200, bbox_inches='tight')
 
         plt.clf()
         plt.cla()
         plt.close()
+
+
+
+        sns.set(font_scale=3)  # crazy big
+        fig, axes = plt.subplots(2, 2, figsize=(20, 20), sharey=False)
+        fig.suptitle('Distribution of MAE by Revealed%')
+        # 10
+        sns.histplot(ax=axes[0,0], data= df_fscores_eval[df_fscores_eval['pct'] == 10], x="mae", kde=True)
+        axes[0,0].set_title('10% chunk learner')
+        axes[0,0].set(xlabel='MAE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        # 20
+        sns.histplot(ax=axes[0,1], data= df_fscores_eval[df_fscores_eval['pct'] == 20], x="mae", kde=True)
+        axes[0,1].set_title('20% chunk learner')
+        axes[0,1].set(xlabel='MAE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        # 30
+        sns.histplot(ax=axes[1,0], data= df_fscores_eval[df_fscores_eval['pct'] == 30], x="mae", kde=True)
+        axes[1,0].set_title('30% chunk learner')
+        axes[1,0].set(xlabel='MAE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        # 100
+        sns.histplot(ax=axes[1,1], data= df_fscores_eval[df_fscores_eval['pct'] == 100], x="mae", kde=True)
+        axes[1,1].set_title('100% chunk learner')
+        axes[1,1].set(xlabel='MAE', ylabel='Frequency', ylim=(0, 20), xlim=(0, 0.3))
+        plt.subplots_adjust(hspace = 0.5)
+        plt.savefig(os.path.join(curr_folder, f'hist_mae.jpg'),
+                        dpi=200, bbox_inches='tight')
+
+        plt.clf()
+        plt.cla()
+        plt.close()
+
+
+        import IPython
+        IPython.embed()
 
         for i in pcts:
             print(f'Results of {i} percent')

@@ -1,0 +1,62 @@
+\chapter{Conclusion and Future Work}
+\label{ChapterConclusion}
+The primary goal of this thesis is to compare the performance of TSCAs in an early classification context.
+A context which is inpsired by the problem of eTSC. Our research questions investigated adapting workflows
+for the early classifiation context, how to evaluate the classifiers in the context while including earliness and performance
+and how to evaluate the proposed solution.
+
+We introduced a new framework that simulates the early classification context and compares TSCAs on the UCR/UEA data archive using a testbed.
+The framework is then evaluated by building a recommender which learns on the results and predicts for unseen data sets which are the best classifiers to use.
+
+Our proposed implementation of the context cannot be handled by all classifiers.
+They either have to be able to compare instances of different lengths or involve a feature extraction step that creates a fixed feature vector size.
+Classifiers that are bound by the shape of data fail to operate in the context.
+Our final experiment results included the classifiers CBoss, PForest, ST, TSF and WEASEL compared on chosen data sets from the UCR/UEA time series data archives.
+Along with a baseline classifier that predict majority class.
+
+We use the $F_{\beta}-measure$ as an overall performance metric; as it combines both performance of classifier and earliness.
+The value of $\beta$ plays a fundamental role in the results and should be adjusted according to the needs of the experiments.
+Using equal weights for performance and earliness, overemphasizes the importance of earliness, which consequently overcompensates for the lower performace scores.
+
+Overall, our testbed results for the across classifiers comparison show that TSF is, on average, better than the other 4 classifiers on early chunks of data.
+It is clearly superior on the 10\% chunk data, while the others are no better than the majority class baseline.
+As more data is revealed to learn on, the other classifiers; CBoss, WEASEL, ST and PForest, start to catch up with TSF.
+On the full length data, the 5 classifiers are not significantly different from each other and are all better than the baseline, yet WEASEL has the highest rank.
+
+For the within classifier comparison based on $F_{\beta}-measure$, our testbed results show that there is no statistical difference between the 10\% version of any of the classifiers and their respective 100\% versions.
+This contrasts with the within comparison based on balanced accuracy, where the 100\% versions are significantly for all the classifiers are better than the 10\% versions.
+This means that the earliness factor plays a big role in shaping the results; it gives an advantage to the lower chunks that compensates for the lower performance.
+A research interest that we couldn't infer useful insights for is the effect of the different data characteristics on the performance of classsifiers across the different chunks.
+
+To evaluate the created framework, we built a recommender that predicts the performance of TSCAs for unseen data sets in the early classification context.
+The recommender is better in predicting the $F_{\beta}-measure$ of classifiers for data sets on the lower chunks scoring an average 6.71\% RMSE error,
+but gets worse when predicting the scores on higher chunks till the RMSE reaches 19.52\%.
+The train size, test size, length and number of classes play an important role in predicting the chunk learners results.
+Other data set characteristics like; problem type and number of dimensions don't seem to have a preciptable relation with the results.
+
+For every chunk, the recommender is good at judging whether a classifier is a good performer or not, despite the residuals between the actual and predicted $F_{\beta}-measure$ values.
+This goes back to the central role that the baseline classifier plays in the recommendation part.
+The baseline classifier is generally worse than all TSCAs on all chunks, so it is easy to beat on many data sets.
+This causes our recall values to be very high, specially on the 100\% chunk data when the baseline classifier is significantly worse than all the others.
+
+There are multiple weaknesses in our study that we freely acknowledge.
+The selection criteria of the data set problem types is cherry picked to suit our motivating goal, the UCR/UEA data archives contains other problem types that we have not
+included which cover a variety of other time series problems.
+There are multiple components and parameters of the framework that have a great effect on the final results.
+For example, the evaluation metric to use for comparing the classifiers.
+We emphasize that $F_{\beta}-measure$ is not the only suitable measure for assessing classifiers performance.
+But if used, the choice of weights has a great effect that should be considered in interpreting the results.
+In handling multivariate data sets, our choice for the column ensembling technique by repeating the same classifier for each dimension
+might not be the best way for evaluating the real performance of the classifiers on these data sets.
+Our used configurations for the classifiers and the adaptations applied might not be fair for all of them.
+For example, we use the contratable versions of CBoss and ST and used a 1 hour time contract.
+This might have hindered their actual performance on the data sets and might have scored better if given more time.
+Also the exclusion of the TWE elastic distance metric from the PForest classifier to meet time contraints,
+might have introduced a bias in the results for PForest.
+
+We believe there are a lot of areas that are open for more research and improvement in the early classification context.
+Handling multivariate data sets is one of the areas.
+For instance, the inclusion of bespoke multivariate classifiers to learn on multivariate data sets while capturing relations between dimensions.
+Running experiments using multiple resampling of data instead of the default train/test split; to avoid uncertainity about the performance of classifiers on data sets.
+Deeper and more granular analysis of the features used by the classifiers; either as shapelets for ST or temporal importance curves for TSF.
+Using a different baseline in the recommender for example KNNDTW for deciding good and bad performing classifiers.

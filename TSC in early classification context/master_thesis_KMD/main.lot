@@ -16,14 +16,82 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of the 77 data sets used in the experiments\relax }}{52}{table.5.1}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of the 77 data sets used in the experiments\relax }}{54}{table.5.1}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \contentsline {table}{\numberline {6.1}{\ignorespaces $F_{\beta }$ scores for all 5 classifiers on 77 data sets for all chunks\relax }}{63}{table.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.3}{\ignorespaces Overall Performance of chunk learners over 50 runs\relax }}{71}{table.caption.55}%
+\contentsline {table}{\numberline {6.2}{\ignorespaces Performance of classifiers with respect to length in comparison to baseline on 10\% chunk data sets\relax }}{66}{table.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.3}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 10\% chunk data sets\relax }}{67}{table.6.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.4}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 20\% chunk data sets\relax }}{67}{table.6.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.5}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 30\% chunk data sets\relax }}{67}{table.6.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.6}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 100\% chunk data sets\relax }}{68}{table.6.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.7}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 10\% chunk data sets\relax }}{68}{table.6.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.8}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 20\% chunk data sets\relax }}{69}{table.6.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.9}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 30\% chunk data sets\relax }}{69}{table.6.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.10}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 100\% chunk data sets\relax }}{70}{table.6.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.11}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 10\% chunk data sets\relax }}{70}{table.6.11}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.12}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 20\% chunk data sets\relax }}{70}{table.6.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.13}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 30\% chunk data sets\relax }}{71}{table.6.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.14}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 100\% chunk data sets\relax }}{71}{table.6.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.15}{\ignorespaces Overall performance of chunk learners in predicting actual $F_{\beta }$ scores over 50 runs\relax }}{77}{table.6.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.16}{\ignorespaces Overall Performance of chunk learners in predicting good and bad performers over 50 runs\relax }}{81}{table.caption.79}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.17}{\ignorespaces Misestimation results per classifier per chunk learner over 50 runs\relax }}{83}{table.6.17}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.2}{\ignorespaces Performance of classifiers with respect to length in comparison to baseline on 20\% chunk data sets\relax }}{89}{table.caption.85}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.4}{\ignorespaces Performance of classifiers with respect to length in comparison to baseline on 30\% chunk data sets\relax }}{89}{table.caption.86}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.6}{\ignorespaces Performance of classifiers with respect to length in comparison to baseline on 100\% chunk data sets\relax }}{90}{table.caption.87}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.8}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 10\% chunk data sets\relax }}{90}{table.caption.88}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.10}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 20\% chunk data sets\relax }}{90}{table.caption.89}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.12}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 30\% chunk data sets\relax }}{91}{table.caption.90}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.14}{\ignorespaces Performance of classifiers with respect to train size in comparison to baseline on 100\% chunk data sets\relax }}{91}{table.caption.91}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.15}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 10\% chunk data sets\relax }}{91}{table.A.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.16}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 20\% chunk data sets\relax }}{92}{table.A.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.17}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 30\% chunk data sets\relax }}{92}{table.A.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.18}{\ignorespaces Performance of classifiers with respect to problem type in comparison to baseline on 100\% chunk data sets\relax }}{93}{table.A.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.19}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 10\% chunk data sets\relax }}{93}{table.A.19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.20}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 20\% chunk data sets\relax }}{93}{table.A.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.21}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 30\% chunk data sets\relax }}{94}{table.A.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.22}{\ignorespaces Performance of classifiers with respect to number of classes in comparison to baseline on 100\% chunk data sets\relax }}{94}{table.A.22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {A.23}{\ignorespaces Train Time (CPU Time) for all 5 classifiers on 77 data sets for all chunks\relax }}{98}{table.A.23}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {B.1}{\ignorespaces Performance of chunk learners in predicting $F_{\beta }$ per chunk over 50 runs\relax }}{113}{table.B.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {B.2}{\ignorespaces Confusion Matrix of chunk learners in predicting good and bad classifiers per chunk over 50 runs\relax }}{119}{table.B.2}%

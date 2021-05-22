@@ -8,7 +8,7 @@ or by combining a defined distance function with a classifier, KNN being the mos
 Whole time series algorithms are best suited for problems where the unique features can exist anywhere along the whole time series\cite{bagnall2017great}.
 
 One of the simplest forms of whole time series is 1-NN with Euclidean Distance \cite{faloutsos1994fast}, yet it can suprisingly attain high accuracy compared to other distance measures \cite{xing2010brief}.
-But Nearest Neighbor with Euclidean Distance (KNNED) is an easy to beat baseline, due to it's sensitivity for distortion and inability to handle time series of unequal lengths \cite{xing2010brief,kate2016using,lines2018time}.
+But Nearest Neighbor with Euclidean Distance (KNNED) is an easy to beat baseline, due to its sensitivity for distortion and inability to handle time series of unequal lengths \cite{xing2010brief,kate2016using,lines2018time}.
 This lead many of the researchers to focus on defining more advanced and elastic distance measures that can compensate for misalignment between time series \cite{abanda2019review}.
 The standard and most common baseline classifier utilizing elastic distance measures is 1-NN with Dynamic Time Warping (DTW) \cite{bagnall2017great}.
 In contrast to the idea that more powerful machine learning algorithms will be able to defeat the simple KNN and an elastic measure,
@@ -17,7 +17,7 @@ But there were also other distance metrics that have been introduced in literatu
 and Derivative Dynamic Time Warping (DDTW) \cite{keogh2001derivative,gorecki2013using} which uses derivatives of sequences as features rather than raw data to avoid singularities.
 On the other hand, Edit Distance with Real Penalty (ERP) \cite{chen2004marriage}, Time Warp Edit (TWE) \cite{marteau2008time}, Longest Common Subsequence (LCSS) \cite{das1997finding} and Move-Split-Merge (MSM) \cite{stefan2012move}
 are all alternatives for distance measures, yet multiple experiments have considered DTW to be relatively unbeatable \cite{bagnall2017great,abanda2019review,bostrom2017shapelet}.
-To the extend of our knowledge, the most powerful whole time series classifiers is Proximity Forest (PF) \cite{lucas2019proximity}.
+To the extent of our knowledge, the most powerful whole time series classifiers is Proximity Forest (PF) \cite{lucas2019proximity}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Nearest Neighbor with ED}
@@ -28,9 +28,9 @@ between them can be determined as:
 \begin{equation}
     ED(T_{1},T_{2})= \sqrt{\sum_{i=1}^{n} (t1_{i} - t2_{i})^{2}}
 \end{equation}
-Euclidean distnace has been preferred to other classifiers due to it's space and time efficiency, but it suffers from two main shortcomings \cite{baydogan2013bag, jeong2011weighted,kate2016using}.
+Euclidean distnace has been preferred to other classifiers due to its space and time efficiency, but it suffers from two main shortcomings \cite{baydogan2013bag, jeong2011weighted,kate2016using}.
 The first one is that it cannot handle comparisons between time series of different lengths.
-While the second one is it's sensitivity to minor discrepancies between time series; it would calculate large distance values for small shiftings or misalignments.
+While the second one is its sensitivity to minor discrepancies between time series; it would calculate large distance values for small shiftings or misalignments.
 Although other metrics have been introduced to overcome the drawbacks of euclidean distance,
 experimental proof showed that this is only the case for small datasets, but for larger datasets the accuracy of other elastic measures
 converge with euclidean distance \cite{hills2014classification,ding2008querying,bagnall2012transformation}.
@@ -74,7 +74,7 @@ For a path to be valid it must conform to three conditions:
 
 Finding an optimal path under DTW can be computationally expensive with complexity of $O(n^2)$ for a time series of length n \cite{schafer2017fast,petitjean2016faster}.
 Consequently it is usual to use a contraint with the path; to prevent comparison of points outside a certain window \cite{tan2020fastee}; like the famous Sakoe-Chiba Band \cite{sakoe1978dynamic}, Itakura Parallelogram \cite{itakura1975minimum} and Ratanamahatana-Keogh Band \cite{ratanamahatana2004making}.
-Typically DTW can make use of it's warping window to handle distortion in time series,
+Typically DTW can make use of its warping window to handle distortion in time series,
 but still it is vulnerable to cases where the difference in length between instances length is larger than the warping window \cite{tan2019time}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,7 +109,7 @@ The costs of split and merge are equal and they are set to a constant to satisfy
 \label{SubsubsectionPForest}
 Proximity forest was developed by \cite{lucas2019proximity}.
 It was introduced as an addition to scalable time series classification, offering a more scalable and accurate classifier than EE \cite{tan2020fastee}.
-On one side, EE was an accurate classifier being one the state of the art algorithms and the best among distnace based algorithms, as it combines 11 NN-algorithms each using a different elastic measure.
+On one side, EE was an accurate classifier being the state of the art algorithm and the best among distnace based algorithms, as it combines 11 NN-algorithms each using a different elastic measure.
 But on the other hand, EE's training process was very slow as it scales quadratically with the training size of the data set \cite{lines2015time,bagnall2017great}.
 This goes back to the leave-one-out-cross-validation (LOOCV) used to optimize the parameters for each used metric \cite{shifaz2020ts}.
 
@@ -128,11 +128,11 @@ Proximity forests can scale sublinearly with training data set size, but quadrat
 %\subsection{Learning a proximity forest}
 Proximity forests are based on a similar concept as Random Forests \cite{breiman2001random}, another tree-based ensemble, which learns only on a subset of the available features
 for building tree nodes. This process insinuates in a factor of variability between the trees that form the ensemble but each with a low bias.
-The collective classification accuracy of the ensemble then tends to provide better results than any if it's single classifiers \cite{lucas2019proximity}.
+The collective classification accuracy of the ensemble then tends to provide better results than any if its single classifiers \cite{lucas2019proximity}.
 
 The building unit of a proximity forest is called the proximity tree. A proximity tree and a decision tree are similar on all aspects,
 but they differ in the tests they apply in internal nodes.
-A conventional decision tree builds it's nodes using attributes. When an instance is being tested, it is compared to the value of the attribute
+A conventional decision tree builds its nodes using attributes. When an instance is being tested, it is compared to the value of the attribute
 and then follows the branch to which it conforms.
 
 Unlike conventional decision trees, that use feature values for their nodes, proximity trees build their nodes using randomly selected examplars.
@@ -146,25 +146,24 @@ Derivative dynamic time warping using the full window (DDTW); Derivative dynamic
 Weighted derivative dynamic time warping (WDDTW); Longest common subsequence (LCSS); Edit distance with real penalty (ERP);
 Time warp edit distance (TWE); and, Move-Split-Merge (MSM).
 Proximity Forest saves a lot of the computational cost by replacing parameter searches with random sampling \cite{fawaz2020inceptiontime,fawaz2019deepreview}.
-While branches is a vector of the possible branches to follow, each branch holding two attributes; \emph{examplar} and \emph{subtree}.
-\emph{examplar} is a time series instance to which a query instance is compared, and \emph{subtree} refers to the tree an instance should follow
-in case it is closest to a specific examplar.
+While \emph{branches} is a vector of the possible branches to follow, each branch holding two attributes; \emph{examplar} and \emph{subtree}.
+\emph{examplar} is a time series instance to which a query instance is compared, and \emph{subtree} refers to the tree (subtree) that the instance should follow based on its closest examplar.
 
 If all time series in a specific node share the same class, then a leaf node is created and the value of the class label is assigned to the \emph{class}
-attribute of this node. During classification, if a query instance is to reach this node, it is directly labeled with the value of it's \emph{class} attribute.
+attribute of this node. During classification, if a query instance is to reach this node, it is directly labeled with the value of its \emph{class} attribute.
 
 %\subsection{Classifying with a proximity forest}
 When a query time series is to be classified, it starts at the root node of a proximity tree.
 The distance between the query and each of the randomly selected examplars is calculated, using the randomly selected distance measure at the node.
 Then the query travels down the branch of the nearest examplar. This processes is repeated, passing through the internal nodes of the tree
 till the query reaches a leaf node, where it is assigned the class label of that node. This whole process is then repeated for all the trees
-constituting the forest. The final classification of the forest is made by majority voting between it's trees.
+constituting the forest. The final classification of the forest is made by majority voting between its trees.
 
 \begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[scale = 0.5]{PForest.JPG}
-    \caption{Visual depiction of the root node for the ‘Trace’ dataset (simplified to 2 classes). The top chart represents the data at the root node (one colour per class) while the data at the bottom left and right represent the data once split by the tree. The two time series in the middle left and right are the exemplars on which the tree is splitting. The scatter plot at the center represents the distance of each time series at the root node with respect to the left and right exemplars (resp. x- and y-axes) (Color figure online) \cite{lucas2019proximity}.}
+    \caption{Visual depiction of the root node for the \enquote{Trace} dataset (simplified to 2 classes). The top chart represents the data at the root node (one colour per class) while the data at the bottom left and right represent the data once split by the tree. The two time series in the middle left and right are the exemplars on which the tree is splitting. The scatter plot at the center represents the distance of each time series at the root node with respect to the left and right exemplars (resp. x- and y-axes) (Color figure online) \cite{lucas2019proximity}.}
     \label{Img:PForest}
 \end{figure}
 

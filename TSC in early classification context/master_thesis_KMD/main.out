@@ -61,6 +61,13 @@
 \BOOKMARK [2][-]{subsection.6.5.1}{Are the chunk learners able to learn F-scores for the classifiers ?}{section.6.5}% 61
 \BOOKMARK [2][-]{subsection.6.5.2}{Which features contribute the most to the F-Score Prediction ?}{section.6.5}% 62
 \BOOKMARK [2][-]{subsection.6.5.3}{Are the final recommendations of the framework consistent with actual results ?}{section.6.5}% 63
-\BOOKMARK [0][-]{chapter.7}{Findings Discussion}{}% 64
-\BOOKMARK [0][-]{chapter.8}{Summary and Outlook}{}% 65
-\BOOKMARK [1][-]{section.8.1}{Declaration of Authorship}{chapter.8}% 66
+\BOOKMARK [0][-]{chapter.7}{Conclusion and Future Work}{}% 64
+\BOOKMARK [0][-]{appendix.A}{Appendix - Testbed Results}{}% 65
+\BOOKMARK [1][-]{section.A.1}{Results Across Classifiers}{appendix.A}% 66
+\BOOKMARK [1][-]{section.A.2}{Data Set characteristics and performance in early classification context}{appendix.A}% 67
+\BOOKMARK [1][-]{section.A.3}{Results Within Classifier}{appendix.A}% 68
+\BOOKMARK [1][-]{section.A.4}{Results on Runtime Duration}{appendix.A}% 69
+\BOOKMARK [0][-]{appendix.B}{Recommender Results}{}% 70
+\BOOKMARK [1][-]{section.B.1}{Are the chunk learners able to learn F-scores for the classifiers ?}{appendix.B}% 71
+\BOOKMARK [1][-]{section.B.2}{Which features contribute the most to the F-Score Prediction ?}{appendix.B}% 72
+\BOOKMARK [1][-]{section.B.3}{Are the final recommendations of the framework consistent with actual results ?}{appendix.B}% 73
