@@ -1,0 +1,177 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{List of Figures}{i}{chapter*.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{List of Tables}{iv}{chapter*.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{List of Abbreviations}{vi}{chapter*.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Classification Algorithms}{4}{chapter.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}Time Series Data}{4}{section.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Definitions}{4}{subsection.2.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}Nature of Time Series Data}{5}{subsection.2.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}Time Series Classification}{5}{section.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Time Series Classification Algorithms}{6}{section.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.1}Whole Time Series Algorithms}{6}{subsection.2.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Nearest Neighbor with ED}{6}{section*.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Nearest Neighbor with DTW}{7}{section*.10}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Nearest Neighbor with MSM Distance}{8}{section*.12}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Proximity Forest}{8}{section*.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.2}Phase Dependent intervals Algorithms}{10}{subsection.2.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Time Series Forest}{11}{section*.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.3}Phase Independent intervals Algorithms}{12}{subsection.2.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Learned Shapelets}{13}{section*.18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Shapelet Transform}{13}{section*.19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.4}Dictionary Based Algorithms}{14}{subsection.2.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{BOSS}{15}{section*.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{WEASEL}{18}{section*.23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.3.5}Deep Learning Algorithms}{20}{subsection.2.3.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{InceptionTime}{21}{section*.26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Early Time Series Classification}{23}{section.2.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.5}Early Time Series Classification Algorithms}{24}{section.2.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.1}ECTS}{24}{subsection.2.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.2}Shapelet Based Algorithms}{25}{subsection.2.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.3}ECDIRE}{26}{subsection.2.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.5.4}TEASER}{26}{subsection.2.5.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}Related Work on Comparing Time Series Classification Algorithms}{28}{chapter.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}The great time series classification bake off}{28}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Inclusion Criteria}{28}{subsection.3.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Experimental Design}{29}{subsection.3.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Deep learning for time series classification: a review}{29}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.1}Inclusion Criteria}{29}{subsection.3.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.2.2}Experimental Design}{30}{subsection.3.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}The great multivariate time series classification bake off}{30}{section.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}Inclusion Criteria}{31}{subsection.3.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Experimental Design}{31}{subsection.3.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Evaluation Criteria}{32}{section.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Framework for Comparing Time Series Classification Algorithms in Early Classification Context}{33}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Early Classification Context}{33}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Conceptual Design}{34}{section.4.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.1}The Testbed}{34}{subsection.4.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.2.2}The Recommender}{36}{subsection.4.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Implementation}{36}{section.4.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}Design Protocol}{36}{subsection.4.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}Toolkits}{37}{subsection.4.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.3}The Testbed Implementation}{37}{subsection.4.3.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{The Testbed Management Console Implementation}{37}{section*.37}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.4}The Recommender Implementation}{45}{subsection.4.3.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Data Sets and Experimental Design}{48}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}UCR/UEA Archives}{48}{section.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.1}UCR Archive}{48}{subsection.5.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.2}UEA Archive}{48}{subsection.5.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1.3}Used Data Sets}{49}{subsection.5.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}Experimental Design}{55}{section.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.1}The Testbed Experimental Design}{55}{subsection.5.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Classifiers that failed the experiments}{55}{section*.48}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Adjustments applied to remaining classifiers}{56}{section*.49}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Learning weights for the $F_{\beta }-measure$}{57}{section*.50}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.2}The Recommender Experimental Design}{59}{subsection.5.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Results}{60}{chapter.6}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.1}Testbed Results}{60}{section.6.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.1}Results Across Classifiers}{64}{subsection.6.1.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.2}Data Set characteristics and performance in early classification context}{65}{subsection.6.1.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Length of Series}{66}{section*.54}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Training Data Set Size}{66}{section*.56}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Type of Problem}{68}{section*.61}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Number of classes}{68}{section*.66}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.3}Results Within Classifier}{69}{subsection.6.1.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1.4}Results on Runtime Duration}{72}{subsection.6.1.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6.2}Recommender Results}{76}{section.6.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2.1}Are the chunk learners able to learn F-scores for the classifiers ?}{76}{subsection.6.2.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2.2}Which features contribute the most to the F-Score Prediction ?}{77}{subsection.6.2.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2.3}Are the final recommendations of the framework consistent with actual results ?}{79}{subsection.6.2.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{84}{chapter.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {A}Appendix - Testbed Results}{86}{appendix.A}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.1}Results Across Classifiers}{86}{section.A.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.2}Data Set characteristics and performance in early classification context}{88}{section.A.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.3}Results Within Classifier}{94}{section.A.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {A.4}Results on Runtime Duration}{95}{section.A.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {B}Recommender Results}{108}{appendix.B}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.1}Are the chunk learners able to learn F-scores for the classifiers ?}{108}{section.B.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.2}Which features contribute the most to the F-Score Prediction ?}{113}{section.B.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.3}Are the final recommendations of the framework consistent with actual results ?}{114}{section.B.3}%

@@ -39,7 +39,7 @@ During each learning process the classifier gets to learn more information about
 Finally, to assess how good the performance of the classifiers that were exposed to less data points is, we compare their performance to that of a baseline.
 The baseline for each classifier is determined by its performance when exposed to full length training data.
 
-Our framework design can divided into two main components; the comparison testbed and the recommender.
+Our framework design can be divided into two main components; the comparison testbed and the recommender.
 Each of these components consists of smaller elements which are responsible for specialized tasks which we will discuss in more details.
 Figure \ref{Img:ConceptualDesign} shows the conceptual design of the framework and all its costituent components.
 
@@ -117,7 +117,7 @@ and how recommendations were chosen.
 
 \section{Implementation}
 \label{SectionImplementation}
-This section describes our implementation for the framework and all its components.
+This section describes our implementation for the framework and all of its components.
 In the beginning we discuss our design protocol for building the framework.
 Then we demonstrate our technical design for each of the components, the selected toolkits for building the components
 and the flow of information through communication channels that exist between the framework's units.
@@ -163,7 +163,7 @@ We prefer using $F_{\beta}$ to offer more flexibility in adjusting weights to su
 We implemented our framework in python language.
 For the implementation of the non-deep learning algorithms we used the open source libraires $sktime V. 0.5.3$ \cite{loning2019sktime} and $pyts V. 0.11.0$ \cite{JMLR:v21:19-763},
 while for the implementation of the deep learning algorithm InceptionTime we used the library $sktime\-dl V .0.2.0$ which provides an interface for the implementation provided
-in the study \cite{fawaz2020inceptiontime}. Finally, we used the library $Tslearn V. 0.5.0.5$ \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to it's
+in the study \cite{fawaz2020inceptiontime}. Finally, we used the library $Tslearn V. 0.5.0.5$ \cite{JMLR:v21:20-091} as a mediator between the different model implementations; due to its
 capacity to process raw data into the needed input format by any of the libraries, as well as converting data format between the different libraires.
 
 \subsection{The Testbed Implementation}
@@ -214,6 +214,7 @@ We design our model preparation agent to adjust the preparation of models to han
 
 As mentioned in section \ref{SectionTSCA}, we follow the grouping criteria by \cite{bagnall2017great} which arranges TSCAs into 5 main categories based on their techniques.
 We have included classifiers representing each of the 5 groups, in addition to a \nth{6} group which represents the family of deep learning time series algorithms.
+For each group, we have selected the state of the art classifier based on the results of previous comparison frameworks discussed in chapter \ref{ChapterRelatedWork}.
 We tried, as far as the implemented libraries allowed, to represent each group with 2 classifiers; one that is a non-ensebmle and another which is an ensemble.
 A total of 10 classifiers are included in the framework covering all 6 groups, these can be broken down into the following:
 \begin{itemize}
@@ -265,7 +266,7 @@ This special classifier is reffered to as $ColumnEnsembleClassifier$ in the $skt
 
 There are two assumptions that we make at this step in our framework.
 First, we assume that to extend a specific univariate classifier to a problem, we should fit the same type of the classifer on all dimensions of the data.
-This is goes back to our goal, that we want to compare classifiers from different groups and not to create an ensemble which makes use of different classifiers
+This goes back to our goal, that we want to compare classifiers from different groups and not to create an ensemble which makes use of different classifiers
 applying different techniques, like HIVE-COTE does.
 Second, we assume that we always have to fit one classifier per dimension, which have proved to be not a feasible solution for high dimensional data sets.
 We will discuss this in more details in our results.
@@ -306,7 +307,7 @@ The result of the algorithm is then used to create new copies of $T$; $[T_{1}, T
 which we call the chunk. A chunk is a sequence of $p$ data points starting from the beginning or the end of the instances in $T$ based on the value of the parameter $FromBeg$.
 Each data set copy $T_{i+1}$ reveals one more chunk than the previous data set $T_{i}$ and the data set $T_{s}$ represents the set with instances of the full length $L$.
 It should be noted that our algorithm tries to have an equal value for $p$ used for each chunk, but this is limited by the length of the time series and the provided number of splits.
-The resulting data sets are then passed to the training process, where each algorithm applies it's own technique to learn on the data set.
+The resulting data sets are then passed to the training process, where each algorithm applies its own technique to learn on the data set.
 
 \begin{algorithm}
     \caption{The Chopping Algorithm}\label{AlgorithmChopping}
@@ -357,7 +358,7 @@ Which is then used to create the different copies $T_{i}$ by selecting subsequen
 The values of $SplitIndexes$ are the indexes of the last time point that a specific chunk should read.
 We calculate these values by carrying out a cumulative sum over the values of $ChunksSizes$.
 For example, the list $ChunksSizes$ = [10, 10, 10, 10, 10, 10, 10, 10, 10, 10] is translated into the list $SplitIndexes$ = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].
-This means that the corresponding data set $T_{1}$ will contain all it's data instances represented by the subsequences from the \nth{1} time point till the \nth{10} time points,
+This means that the corresponding data set $T_{1}$ will contain all its data instances represented by the subsequences from the \nth{1} time point till the \nth{10} time points,
 and the data set $T_{3}$ will contain subsequence from the \nth{1} time point till the \nth{30} time point.
 When we apply the same translation to the list $ChunksSizes$ = [13, 13, 13, 13, 12, 12, 12, 12], it gets translated into $SplitIndexes$ = [13, 26, 39, 52, 64, 76, 88, 100].
 
@@ -382,7 +383,7 @@ The space of possible values for $ChunksToKeep$ is between [1, $s$]. The logic o
 
 If we consider the list $ChunksToKeep$ = [1, 3, 5] for our example $SplitIndexes$ = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].
 The resulting filtered list will be $FilteredSplitIndexes$ = [10, 30, 50], which will result in only 3 copies of $T$; $T_{1}$, $T_{3}$ and $T_{5}$,
-each represented by it's respective subsequence length.
+each represented by its respective subsequence length.
 
 % Relation between s and the earliness
 If we have a closer look at the parameter $s$, we can recognise that it contributes to the granularity of the earliness factor that we are calculating.
@@ -422,17 +423,17 @@ For the testing processes, the experiment executor allows the usage of any chose
 The chosen performance metric is utilized for the evaluation during both; the cross validation processes and for calculating performance on the test data set.
 For our implementation, we considered \enquote{balanced accuracy} as our default performance metric; to account for problems where data sets have imbalanced classes distribution.
 
-Our evaluation is not only dependent on the performance of classifiers on testing data sets, but also on considers the amount of data that was used for learning.
+Our evaluation is not only dependent on the performance of classifiers on testing data sets, but also considers the amount of data that was used for learning.
 To answer our research question \textbf{\textit{how to evaluate the classifiers in the early classification context ?}}
 We explain why we choose using the $F_{\beta}-measure$ as an evaluation mesure for the classifiers and how do we calculate its value.
 
-We previously defined the $F_{\beta}-measure$ in chapter \ref{EarlyTimeSeriesClassification}, it has been used, in the form of $F_{1}-Score$, by \cite{schafer2020teaser} as the objective function for evaluating their algorithm $TEASER$.
+We previously defined the $F_{\beta}-measure$ in section \ref{EarlyTimeSeriesClassification}, it has been used, in the form of $F_{1}-Score$, by \cite{schafer2020teaser} as the objective function for evaluating their algorithm $TEASER$.
 The $F_{\beta}-measure$ is a popular choice for calculating a score that combines 2 objectives at the same time, which are earliness and performance for eTSC problems.
-Likewise, we use $F_{\beta}-measure$ as the means of evaluating classifiers in our experiments; due to it's capacity to incorporate both objectives in one score.
+Likewise, we use $F_{\beta}-measure$ as the means of evaluating classifiers in our experiments; due to its capacity to incorporate both objectives in one score.
 Which allows us to compare the trained classifiers in terms of a one score value without worrying about fixing the value of either the earliness or the performance,
 as well as changing assigning different weights for the objectives if needed.
 
-On the other hand, the $F_{\beta}-measure$ equation that was discussed in chapter \ref{EarlyTimeSeriesClassification} doesn't fit directly into our evaluation framework.
+On the other hand, the $F_{\beta}-measure$ equation that was discussed in section \ref{EarlyTimeSeriesClassification} doesn't fit directly into our evaluation framework.
 If we try to substitute the results for a classifier trained on the full length data into this equation, we would always get a value of 0.
 The reason is that the equation is designed to do reverse scoring to the value or earliness, by re-coding its value so that the less seen data points, the higher the contribution of earliness in the equation.
 This is simply achieved by using (1 - earliness) instead of using the value of earliness directly.
@@ -460,8 +461,8 @@ Using $F_{\beta}-reversed$, if we consider the case of classifiers learning at f
 it would solve the problem of attaining a score of 0 and replace it with a real value.
 
 There are 2 special cases to be handled during this step.
-First, if the classifier doesn't predict anything correct but at the earliest point of time.
-Second, if the classifier doesn't predict anything correct while seeing the full length.
+First, if the classifier doesn't predict anything correctly but at the earliest point of time.
+Second, if the classifier doesn't predict anything correctly while seeing the full length.
 These two cases are then assigned the lowest value, which is 1.
 In the second step, we reverse score the value from the first step again; to math the expected input for generating critical difference diagrams.
 We feed these equation with the values of the features $Revealed \%$ and $Test score$, for the attibutes earliness and performance respectively.
@@ -509,9 +510,9 @@ and predict their performance for new data sets. For the recommender learning, w
 \subsubsection*{The Chunk Learners Implementation}
 \label{ChunkLearnersImplementation}
 The chunk learners are a group of regression algorithms that learn for each data set for each chunk for each classifier the $F-score$ value that was attained.
-We learn for each chunk a separate regressor, this means that we learn one regressor for each of the 10\%, 20\%, 30\% and 100\% chunks.
-The regressor that learns on the 10\% chunk results, will be used for predicting scores on the new data sets assuming that only 10\% of the training data length was provided.
-The regressor that learns on the 20\% chunk results predicts for the \nth{2} chunks and so on.
+We learn for each chunk a separate regressor, which will be used to predict the scores of the classifiers for that specific chunk.
+For example, the regressor that learns on the first chunk results, will be used for predicting $F-scores$ on the new data sets assuming that the classifiers were trained using only the first chunk of the data.
+The regressor that learns on the second chunk results predicts for the results assuming the classifiers were trained using the \nth{2} chunk and so on.
 When predicting for a new data set, each of the chunk learners predicts the $F-score$ for each of the 6 TSCA, including the dummy on this data set.
 Then these results are passed on to the classifier validator for the final prediction and for the insights extractor for getting insights.
 
@@ -547,4 +548,4 @@ The insights extractor is responsible for providing analysis results and insight
 If more than one learning process is started by the chunk learners, the insights extractor reports insights for each process in a separate folder.
 Then it aggregates the performance metrics scores across all the run experiments and provide a summary report on the overall performance of the recommender.
 Since we are using random forest regressors, it provides insights about the feature importance for each of the chunks.
-A specific feature which might be important for learning on the 10\% chunk data sets, might be less (more) important for the other chunks.
+A specific feature which might be important for learning on the \nth{1} chunk data sets, might be less (more) important for another chunk.

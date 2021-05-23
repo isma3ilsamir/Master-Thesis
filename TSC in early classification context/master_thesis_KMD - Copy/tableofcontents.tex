@@ -1,0 +1,59 @@
+% !TEX root = main.tex
+\renewcommand*\contentsname{Table of Contents}
+\tableofcontents
+\thispagestyle{empty}
+ 
+ \null\newpage
+\pagenumbering{roman} 
+\addcontentsline{toc}{section}{List of Figures} 
+%\section{List of Figures}
+\input{ListOfFigures.tex}
+
+\addcontentsline{toc}{section}{List of Tables} 
+\input{ListOfTable.tex}
+
+\addcontentsline{toc}{section}{List of Abbreviations} 
+\input{ListOfAbbreviations.tex}
+
+\thispagestyle{empty}
+\null\newpage
+\pagenumbering{arabic}
+\import{Chapters/01 Introduction}{Introduction}
+\null\newpage
+
+\import{Chapters/02 Classification Algorithms}{Classification Algorithms}
+\null\newpage
+
+\import{Chapters/03 Related Work}{Related Work}
+\null\newpage
+
+\import{Chapters/04 Adaptation Methodology}{Adaptation Methodology}
+\null\newpage
+
+\import{Chapters/05 Datasets}{Datasets}
+\null\newpage
+
+\import{Chapters/06 Results}{Results}
+\null\newpage
+
+\import{Chapters/07 Conclusion and Discussion}{Conclusion and Discussion}
+\null\newpage
+
+\import{Chapters/08 Appendix}{Appendix}
+\null\newpage
+
+%\section*{List of Cited Literature}
+% \input{List_of_Cited_Literature.bib}
+\printbibliography
+\newpage
+
+\chapter*{Declaration of Authorship}
+I hereby declare that I have written this thesis "A comparison of Time Series Classification Algorithms based on their ability to learn in an Early Classification Context"
+without any help from others and without the use of documents and aids
+other than those stated above. Furthermore, I have mentioned all used
+sources and have cited them correctly according to the citation rules.
+Moreover, I confirm that the paper at hand was not submitted in this or
+similar form at another examination office, nor has it been published
+before.
+\\
+Magdeburg, 25.05.2021

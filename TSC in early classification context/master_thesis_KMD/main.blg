@@ -1,20 +1,20 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'main.blg'
-[128] biber-MSWIN64:322> INFO - === 
-[164] Biber.pm:415> INFO - Reading 'main.bcf'
-[526] Biber.pm:943> INFO - Found 116 citekeys in bib section 0
-[557] Biber.pm:4256> INFO - Processing section 0
-[558] Utils.pm:75> INFO - Globbing data source 'List_of_Cited_Literature.bib'
-[575] Utils.pm:91> INFO - Globbed data source 'List_of_Cited_Literature.bib' to List_of_Cited_Literature.bib
-[609] Biber.pm:4455> INFO - Looking for bibtex format file 'List_of_Cited_Literature.bib' for section 0
-[627] bibtex.pm:1653> INFO - LaTeX decoding ...
-[1011] bibtex.pm:1471> INFO - Found BibTeX data source 'List_of_Cited_Literature.bib'
-[1301] Utils.pm:304> WARN - month field 'October' in entry 'UCRArchive2018' is not an integer - this will probably not sort properly.
-[2351] Utils.pm:304> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
-[2714] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[2714] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[2714] Biber.pm:4084> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
-[2714] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[2955] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[3109] bbl.pm:755> INFO - Output to main.bbl
-[3110] Biber.pm:128> INFO - WARNINGS: 2
+[88] biber-MSWIN64:322> INFO - === 
+[115] Biber.pm:415> INFO - Reading 'main.bcf'
+[346] Biber.pm:943> INFO - Found 116 citekeys in bib section 0
+[365] Biber.pm:4256> INFO - Processing section 0
+[366] Utils.pm:75> INFO - Globbing data source 'List_of_Cited_Literature.bib'
+[378] Utils.pm:91> INFO - Globbed data source 'List_of_Cited_Literature.bib' to List_of_Cited_Literature.bib
+[397] Biber.pm:4455> INFO - Looking for bibtex format file 'List_of_Cited_Literature.bib' for section 0
+[406] bibtex.pm:1653> INFO - LaTeX decoding ...
+[665] bibtex.pm:1471> INFO - Found BibTeX data source 'List_of_Cited_Literature.bib'
+[834] Utils.pm:304> WARN - month field 'October' in entry 'UCRArchive2018' is not an integer - this will probably not sort properly.
+[1488] Utils.pm:304> WARN - BibTeX subsystem: warning: comma(s) at end of name (removing)
+[1696] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1696] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1696] Biber.pm:4084> INFO - Sorting list 'anyt/global//global/global' of type 'entry' with template 'anyt' and locale 'en-US'
+[1696] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[1866] bbl.pm:652> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1970] bbl.pm:755> INFO - Output to main.bbl
+[1972] Biber.pm:128> INFO - WARNINGS: 2

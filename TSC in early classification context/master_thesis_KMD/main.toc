@@ -4,7 +4,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{List of Tables}{iv}{chapter*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{List of Abbreviations}{vi}{chapter*.5}%
+\contentsline {section}{List of Abbreviations}{vii}{chapter*.5}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \defcounter {refsection}{0}\relax 
@@ -130,46 +130,48 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {6}Results}{60}{chapter.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Results Across Classifiers}{64}{section.6.1}%
+\contentsline {section}{\numberline {6.1}Testbed Results}{60}{section.6.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Data Set characteristics and performance in early classification context}{65}{section.6.2}%
+\contentsline {subsection}{\numberline {6.1.1}Results Across Classifiers}{68}{subsection.6.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.1}Length of Series}{66}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.1.2}Data Set characteristics and performance in early classification context}{69}{subsection.6.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.2}Training Data Set Size}{66}{subsection.6.2.2}%
+\contentsline {subsubsection}{Length of Series}{70}{section*.54}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.3}Type of Problem}{68}{subsection.6.2.3}%
+\contentsline {subsubsection}{Training Data Set Size}{70}{section*.56}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2.4}Number of classes}{68}{subsection.6.2.4}%
+\contentsline {subsubsection}{Type of Problem}{72}{section*.61}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Results Within Classifier}{72}{section.6.3}%
+\contentsline {subsubsection}{Number of classes}{72}{section*.66}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}Results on Runtime Duration}{73}{section.6.4}%
+\contentsline {subsection}{\numberline {6.1.3}Results Within Classifier}{77}{subsection.6.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.5}Recommender Results}{77}{section.6.5}%
+\contentsline {subsection}{\numberline {6.1.4}Results on Runtime Duration}{78}{subsection.6.1.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5.1}Are the chunk learners able to learn F-scores for the classifiers ?}{77}{subsection.6.5.1}%
+\contentsline {section}{\numberline {6.2}Recommender Results}{82}{section.6.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5.2}Which features contribute the most to the F-Score Prediction ?}{78}{subsection.6.5.2}%
+\contentsline {subsection}{\numberline {6.2.1}Are the chunk learners able to learn F-scores for the classifiers ?}{82}{subsection.6.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5.3}Are the final recommendations of the framework consistent with actual results ?}{80}{subsection.6.5.3}%
+\contentsline {subsection}{\numberline {6.2.2}Which features contribute the most to the F-Score Prediction ?}{85}{subsection.6.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{85}{chapter.7}%
+\contentsline {subsection}{\numberline {6.2.3}Are the final recommendations of the framework consistent with actual results ?}{86}{subsection.6.2.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Appendix - Testbed Results}{87}{appendix.A}%
+\contentsline {chapter}{\numberline {7}Conclusion and Future Work}{90}{chapter.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.1}Results Across Classifiers}{87}{section.A.1}%
+\contentsline {chapter}{\numberline {A}Appendix - Testbed Results}{92}{appendix.A}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.2}Data Set characteristics and performance in early classification context}{89}{section.A.2}%
+\contentsline {section}{\numberline {A.1}Results Across Classifiers}{92}{section.A.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.3}Results Within Classifier}{95}{section.A.3}%
+\contentsline {section}{\numberline {A.2}Data Set characteristics and performance in early classification context}{94}{section.A.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.4}Results on Runtime Duration}{96}{section.A.4}%
+\contentsline {section}{\numberline {A.3}Results Within Classifier}{100}{section.A.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {B}Recommender Results}{109}{appendix.B}%
+\contentsline {section}{\numberline {A.4}Results on Runtime Duration}{101}{section.A.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.1}Are the chunk learners able to learn F-scores for the classifiers ?}{109}{section.B.1}%
+\contentsline {chapter}{\numberline {B}Recommender Results}{118}{appendix.B}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.2}Which features contribute the most to the F-Score Prediction ?}{114}{section.B.2}%
+\contentsline {section}{\numberline {B.1}Are the chunk learners able to learn F-scores for the classifiers ?}{118}{section.B.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.3}Are the final recommendations of the framework consistent with actual results ?}{115}{section.B.3}%
+\contentsline {section}{\numberline {B.2}Which features contribute the most to the F-Score Prediction ?}{123}{section.B.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.3}Are the final recommendations of the framework consistent with actual results ?}{124}{section.B.3}%

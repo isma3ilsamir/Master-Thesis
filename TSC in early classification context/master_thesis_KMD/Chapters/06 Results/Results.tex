@@ -1,6 +1,10 @@
 \chapter{Results}
 \label{ChapterResults}
 This chapter analyzes the results of our experiments.
+
+
+\section{Testbed Results}
+\label{SectionTestbedResults}
 We will divide our analysis as follows;
 analysis for the results of the same classifier across different revealed percentages of data (chunks),
 analysis for the results of different classifiers across the same revealed percentages of data (chunks)
@@ -33,175 +37,193 @@ Although PForest can attain quasi linear training times with the size of trainin
 This is why PForest hit the time contraint easily as the length of the time series increased.
 All 5 classifiers completed 36 common data sets. TSF, WEASEL and CBoss finished more than 72 data sets, ST finished 61 data sets and PForest finished 42 data sets.
 
-Table \ref{tab:longresults} presents the results of our experiments for the used 5 classifiers on all 77 data sets.
+Tables \ref{tab:longresults} and \ref{tab:longresults_1} present the results of our experiments for the used 5 classifiers on all 77 data sets.
 We display values for balanced accuracy, $F_{\beta}-measure$ value and revealed\% for each classifier.
 The default train/test split of the data sets was used for all data runs.
 
-\begin{tiny}
-    \begin{landscape}
-    {\setlength{\tabcolsep}{1pt}}
-    \begin{longtable}{|l|llll|llll|llll|llll|llll|}
-        \multirow{2}{*}{\textbf{Data set}} & 
-        \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} & \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
-        & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
-        \hline
-        \endfirsthead % <-- This denotes the end of the header, which will be shown on the first page only
-        \hline
-        \multirow{2}{*}{\textbf{Data set}} & 
-        \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} & \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
-        & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
-        \hline
-        \endhead % <-- Everything between \endfirsthead and \endhead will be shown as a header on every page
-        ACSF1 & 77.78 & 74.77 & 70.81 & 87.80 & 65.27 & 48.19 & 37.80 &   & 80.30 & 81.63 & 84.33 & 78.47 & 77.40 & 68.38 & 66.13 & 59.77 & 78.99 & 76.19 & 68.42 & 89.00  \\
-        \hline
-        AtrialFibrillation & 66.67 & 48.00 & 43.10 & 16.67 & 70.00 & 60.00 & 40.00 & 28.57 & 71.43 & 48.00 & 53.85 & 34.78 & 66.67 & 54.55 & 34.38 & 22.54 & 71.43 & 54.55 & 43.10 & 22.54  \\
-        \hline
-        BasicMotions & 71.05 & 84.21 & 100.00 & 100.00 & 67.39 & 61.54 & 55.88 & 70.59 &   &   &   &   & 82.00 & 96.97 & 100.00 & 100.00 & 75.00 & 100.00 & 100.00 & 100.00  \\
-        \hline
-        Beef & 67.65 & 50.00 & 58.00 & 76.19 & 67.14 & 51.06 & 37.10 & 25.53 & 66.67 & 55.81 & 53.85 & 76.19 & 78.57 & 72.73 & 72.73 & 65.12 & 65.79 & 51.06 & 50.00 & 76.19  \\
-        \hline
-        Car & 68.46 & 53.93 & 51.89 & 80.00 & 71.43 & 53.33 & 44.74 & 42.80 & 68.75 & 59.26 & 61.34 & 78.09 & 75.00 & 71.64 & 66.13 & 66.93 & 68.46 & 53.93 & 45.58 & 83.87  \\
-        \hline
-        Chinatown & 63.88 & 65.26 & 71.10 & 93.88 & 65.48 & 54.84 & 97.48 & 96.74 & 66.30 & 73.11 & 72.93 & 96.38 & 95.61 & 98.20 & 97.84 & 95.66 & 63.88 & 47.42 & 39.12 & 93.53  \\
-        \hline
-        CinCECGTorso & 68.54 & 54.33 & 45.28 & 75.78 &   &   &   &   & 67.52 & 55.62 & 56.06 & 89.88 & 72.35 & 67.48 & 73.58 & 88.76 & 76.16 & 81.60 & 68.91 & 95.16  \\
-        \hline
-        Coffee & 73.14 & 95.73 & 95.66 & 100.00 & 76.42 & 65.12 & 71.15 & 100.00 & 79.17 & 84.85 & 95.66 & 91.23 & 89.44 & 84.85 & 80.57 & 100.00 & 73.14 & 91.80 & 65.60 & 100.00  \\
-        \hline
-        Computers & 77.17 & 71.68 & 68.11 & 64.25 & 74.27 & 62.89 & 57.14 & 55.37 & 75.25 & 67.80 & 66.28 & 63.82 & 78.41 & 72.99 & 70.97 & 66.42 & 71.93 & 70.42 & 70.32 & 67.29  \\
-        \hline
-        Cricket & 65.69 & 74.23 & 81.71 & 100.00 &   &   &   &   &   &   &   &   & 84.45 & 85.21 & 91.79 & 89.80 & 71.56 & 65.75 & 77.81 & 98.27  \\
-        \hline
-        Earthquakes & 80.68 & 76.06 & 73.98 & 70.39 & 80.68 & 76.06 & 73.98 & 71.19 & 75.36 & 76.06 & 73.98 & 59.50 & 80.68 & 76.06 & 73.98 & 70.39 & 80.68 & 75.54 & 73.37 & 70.39  \\
-        \hline
-        ECG200 & 69.42 & 56.74 & 47.78 & 79.62 & 76.67 & 77.67 & 54.83 & 87.80 & 76.32 & 80.81 & 75.75 & 83.09 & 84.48 & 85.11 & 86.32 & 81.93 & 74.39 & 59.26 & 51.19 & 81.93  \\
-        \hline
-        ECG5000 & 69.12 & 67.39 & 81.34 & 92.83 & 74.69 & 65.85 & 61.37 & 55.33 & 81.47 & 87.15 & 89.73 & 92.48 & 92.19 & 91.23 & 90.26 & 92.18 & 74.10 & 80.70 & 74.52 & 92.64  \\
-        \hline
-        ECGFiveDays & 74.41 & 61.68 & 56.06 & 100.00 & 72.86 & 65.43 & 60.06 & 82.08 & 72.29 & 67.34 & 65.21 & 99.85 & 75.16 & 67.28 & 62.13 & 90.32 & 73.20 & 63.15 & 58.82 & 99.85  \\
-        \hline
-        ElectricDevices & 70.24 & 57.31 & 55.78 & 65.58 &   &   &   &   & 69.61 & 55.75 & 43.04 & 32.92 & 73.15 & 63.54 & 61.22 & 63.55 & 75.13 & 66.37 & 60.86 & 72.62  \\
-        \hline
-        EOGHorizontalSignal & 65.06 & 46.82 & 40.58 & 42.00 & 65.09 & 46.14 & 33.93 &   & 65.22 & 46.59 & 40.58 & 41.73 & 65.44 & 46.59 & 39.58 & 45.81 & 64.96 & 47.43 & 36.72 & 42.27  \\
-        \hline
-        EOGVerticalSignal & 65.38 & 47.04 & 37.77 & 36.93 &   &   &   &   & 65.06 & 46.74 & 40.95 & 33.53 & 65.25 & 46.82 & 40.45 & 39.85 & 64.90 & 46.74 & 35.13 & 27.14  \\
-        \hline
-        Epilepsy & 96.62 & 100.00 & 100.00 & 100.00 &   &   &   &   & 79.93 & 79.20 & 86.78 & 98.19 & 91.69 & 97.35 & 97.33 & 96.40 & 98.25 & 100.00 & 100.00 & 100.00  \\
-        \hline
-        ERing & 68.00 & 53.40 & 51.35 & 87.36 & 66.17 & 50.15 & 40.61 & 45.18 &   &   &   &   & 75.47 & 76.89 & 82.66 & 94.05 & 68.56 & 58.20 & 58.76 & 94.05  \\
-        \hline
-        EthanolConcentration & 67.41 & 51.27 & 42.35 & 35.79 &   &   &   &   & 69.54 & 55.90 & 47.29 & 55.41 & 70.45 & 58.38 & 49.96 & 36.88 & 67.70 & 51.77 & 46.49 & 50.73  \\
-        \hline
-        EthanolLevel & 67.79 & 51.81 & 43.46 & 39.37 &   &   &   &   & 68.66 & 56.18 & 47.19 & 30.85 & 69.42 & 54.64 & 45.54 & 39.37 & 67.42 & 51.68 & 42.40 & 43.85  \\
-        \hline
-        FingerMovements & 71.05 & 62.02 & 55.26 & 51.47 &   &   &   &   &   &   &   &   & 70.62 & 62.50 & 55.88 & 44.44 & 72.47 & 62.02 & 55.88 & 53.51  \\
-        \hline
-        FordA & 80.03 & 83.41 & 82.37 & 68.33 &   &   &   &   & 70.87 & 61.50 & 59.44 & 49.67 & 79.40 & 75.70 & 75.85 & 77.74 & 83.29 & 79.70 & 91.60 & 95.77  \\
-        \hline
-        FordB & 77.65 & 74.65 & 72.32 & 56.72 &   &   &   &   & 72.85 & 60.17 & 60.37 & 48.13 & 74.88 & 67.22 & 64.00 & 63.52 & 76.30 & 76.96 & 64.17 & 78.30  \\
-        \hline
-        FreezerRegularTrain & 72.22 & 97.15 & 99.87 & 99.56 & 78.90 & 62.50 & 89.63 & 90.49 & 72.37 & 94.33 & 99.87 & 99.87 & 96.45 & 99.82 & 99.82 & 98.91 & 72.22 & 92.87 & 73.29 & 97.51  \\
-        \hline
-        FreezerSmallTrain & 72.26 & 94.57 & 99.74 & 96.56 & 75.18 & 63.60 & 72.00 & 66.11 & 71.91 & 91.27 & 99.82 & 99.96 & 88.93 & 97.98 & 99.78 & 80.85 & 72.22 & 89.55 & 64.56 & 95.05  \\
-        \hline
-        Fungi & 65.16 & 45.53 & 33.24 &   & 64.92 & 47.57 & 43.73 & 89.47 &   &   &   &   & 65.54 & 52.80 & 54.89 & 93.37 & 64.86 & 45.95 & 34.29 & 94.68  \\
-        \hline
-        Ham & 71.88 & 61.31 & 55.00 & 61.54 & 72.11 & 62.69 & 55.59 & 65.63 & 71.88 & 60.87 & 58.00 & 71.91 & 74.71 & 76.36 & 72.73 & 74.04 & 72.58 & 62.22 & 55.00 & 59.52  \\
-        \hline
-        HandMovementDirection & 68.14 & 50.08 & 43.28 & 31.49 & 66.70 & 51.84 & 47.37 & 32.75 &   &   &   &   & 67.70 & 54.21 & 43.94 & 49.85 & 67.29 & 50.08 & 38.92 & 31.49  \\
-        \hline
-        Handwriting & 64.69 & 44.49 & 37.53 & 41.10 &   &   &   &   & 64.69 & 44.65 & 35.96 & 31.14 & 65.70 & 49.52 & 43.41 & 26.49 & 64.71 & 44.16 & 33.38 & 26.39  \\
-        \hline
-        HouseTwenty & 71.72 & 78.55 & 84.89 & 96.87 & 81.90 & 75.44 & 71.84 & 87.70 & 76.27 & 77.91 & 82.39 & 80.81 & 86.28 & 92.25 & 89.27 & 77.91 & 88.64 & 94.07 & 92.04 & 95.83  \\
-        \hline
-        InsectEPGRegularTrain & 96.72 & 94.32 & 100.00 & 100.00 & 100.00 & 99.50 & 100.00 & 100.00 & 69.18 & 55.92 & 48.55 & 98.50 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00  \\
-        \hline
-        InsectEPGSmallTrain & 91.29 & 100.00 & 94.67 & 100.00 & 99.50 & 90.05 & 98.51 & 100.00 & 69.18 & 55.77 & 48.33 & 96.51 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00  \\
-        \hline
-        InsectWingbeatSound & 65.22 & 48.98 & 45.17 & 49.64 &   &   &   &   & 65.21 & 48.51 & 39.14 & 56.54 & 71.15 & 64.89 & 63.83 & 56.33 & 65.66 & 53.33 & 48.13 & 58.39  \\
-        \hline
-        ItalyPowerDemand & 69.43 & 57.66 & 78.91 & 86.41 & 70.71 & 71.06 & 58.02 & 94.95 & 68.66 & 58.52 & 69.13 & 94.47 & 75.92 & 71.42 & 76.09 & 95.31 & 69.43 & 58.41 & 55.66 & 91.17  \\
-        \hline
-        LargeKitchenAppliances & 72.73 & 61.86 & 57.14 & 72.89 & 69.79 & 56.07 & 50.45 & 37.83 & 69.04 & 54.95 & 47.26 & 61.54 & 72.12 & 60.61 & 54.17 & 51.54 & 68.16 & 54.05 & 46.29 & 63.82  \\
-        \hline
-        Libras & 62.41 & 44.04 & 41.36 & 79.36 & 62.69 & 42.74 & 32.38 & 5.41 & 62.99 & 45.24 & 39.66 & 83.87 & 67.90 & 64.65 & 68.53 & 76.82 & 63.52 & 48.98 & 50.78 & 83.87  \\
-        \hline
-        Lightning2 & 73.28 & 64.38 & 58.50 & 69.23 & 70.89 & 66.12 & 58.50 & 80.31 & 73.28 & 59.66 & 55.37 & 65.65 & 73.28 & 68.93 & 70.39 & 65.65 & 73.28 & 66.12 & 64.14 & 62.12  \\
-        \hline
-        Lightning7 & 69.41 & 55.41 & 52.18 & 69.45 & 66.19 & 49.74 & 39.63 & 25.66 & 65.84 & 47.71 & 42.80 & 64.97 & 67.55 & 61.86 & 58.96 & 69.45 & 68.67 & 52.42 & 41.50 & 67.95  \\
-        \hline
-        LSST & 62.41 & 51.74 & 45.33 & 45.29 &   &   &   &   &   &   &   &   & 68.85 & 57.77 & 52.68 & 44.89 & 68.23 & 58.44 & 51.08 & 53.18  \\
-        \hline
-        Meat & 86.36 & 70.59 & 85.00 & 85.83 & 73.53 & 57.14 & 46.43 & 59.77 & 80.77 & 92.31 & 80.12 & 95.87 & 83.33 & 82.76 & 83.33 & 91.80 & 76.09 & 61.54 & 46.43 & 81.93  \\
-        \hline
-        MoteStrain & 71.39 & 74.58 & 63.24 & 93.20 & 70.60 & 78.17 & 76.93 & 86.88 & 73.41 & 59.66 & 71.72 & 89.92 & 87.89 & 86.66 & 86.98 & 84.52 & 77.16 & 78.17 & 79.46 & 94.18  \\
-        \hline
-        NATOPS & 64.69 & 51.86 & 46.40 & 80.00 & 63.76 & 47.53 & 37.95 & 18.60 &   &   &   &   & 64.43 & 52.07 & 51.71 & 76.82 & 64.26 & 52.69 & 54.07 & 80.00  \\
-        \hline
-        NonInvasiveFetalECGThorax1 & 71.16 & 56.47 & 63.73 & 78.51 &   &   &   &   & 72.98 & 70.56 & 62.04 & 28.48 & 83.62 & 79.59 & 78.29 & 84.53 & 64.54 & 49.42 & 40.60 &    \\
-        \hline
-        NonInvasiveFetalECGThorax2 & 68.38 & 70.68 & 57.54 & 82.27 &   &   &   &   & 67.95 & 74.08 & 75.43 & 51.36 & 86.97 & 83.53 & 80.52 & 87.84 & 64.53 & 46.37 & 36.14 & 90.45  \\
-        \hline
-        OliveOil & 69.35 & 85.71 & 92.11 & 83.87 & 66.67 & 50.00 & 50.00 & 51.13 & 77.27 & 92.31 & 88.46 & 87.80 & 80.00 & 80.00 & 88.46 & 83.87 & 65.79 & 48.98 & 44.74 & 87.80  \\
-        \hline
-        Phoneme & 66.27 & 50.61 & 42.38 & 26.83 & 64.43 & 44.79 & 32.33 & 1.35 & 66.47 & 50.18 & 41.30 & 23.45 & 65.76 & 49.36 & 39.78 & 16.52 & 66.84 & 51.35 & 43.60 & 25.78  \\
-        \hline
-        PigAirwayPressure & 66.05 & 50.82 & 41.85 & 91.15 &   &   &   &   & 65.81 & 50.06 & 51.30 & 75.43 & 65.34 & 47.22 & 35.17 & 18.51 & 68.07 & 57.30 & 49.68 & 58.65  \\
-        \hline
-        PigArtPressure & 97.71 & 99.40 & 98.22 & 97.61 &   &   &   &   & 88.81 & 90.73 & 95.34 & 95.24 & 66.24 & 50.67 & 43.69 & 35.15 & 93.70 & 96.52 & 95.91 & 100.00  \\
-        \hline
-        PigCVP & 80.77 & 87.86 & 92.57 & 94.06 & 64.43 & 45.29 &   &   & 68.81 & 58.92 & 72.51 & 72.19 & 65.99 & 49.03 & 38.80 & 23.63 & 71.42 & 68.09 & 81.55 & 91.73  \\
-        \hline
-        Plane & 67.21 & 48.84 & 52.23 & 100.00 & 69.09 & 53.16 & 56.37 & 100.00 & 67.36 & 63.16 & 63.57 & 100.00 & 91.18 & 97.67 & 95.38 & 98.81 & 66.15 & 48.84 & 86.92 & 100.00  \\
-        \hline
-        PowerCons & 74.32 & 71.64 & 75.95 & 90.46 & 76.47 & 67.92 & 68.47 & 99.31 & 73.68 & 61.80 & 66.73 & 92.48 & 81.03 & 77.42 & 77.96 & 99.31 & 73.23 & 64.57 & 62.59 & 95.19  \\
-        \hline
-        RacketSports & 67.49 & 50.96 & 43.89 & 77.24 & 69.14 & 53.19 & 46.54 & 38.04 &   &   &   &   & 75.17 & 72.55 & 78.21 & 87.96 & 69.14 & 55.88 & 52.32 & 84.85  \\
-        \hline
-        RefrigerationDevices & 72.80 & 60.00 & 56.47 & 48.83 & 70.00 & 58.48 & 55.30 & 40.66 & 72.46 & 60.36 & 57.14 & 50.45 & 72.94 & 63.29 & 58.00 & 53.17 & 69.69 & 57.92 & 52.90 & 44.84  \\
-        \hline
-        Rock & 70.83 & 58.82 & 61.11 & 87.80 & 68.18 & 53.33 & 42.78 & 40.53 & 67.54 & 51.28 & 44.74 & 85.44 & 71.74 & 64.52 & 63.92 & 69.48 & 67.24 & 57.97 & 39.11 & 76.19  \\
-        \hline
-        ScreenType & 70.16 & 58.59 & 52.12 & 43.79 & 69.33 & 54.05 &   &   & 69.08 & 56.82 & 50.45 & 43.00 & 69.89 & 57.80 & 52.58 & 38.08 & 71.01 & 57.58 & 52.27 & 47.76  \\
-        \hline
-        SelfRegulationSCP1 & 76.14 & 70.52 & 68.62 & 74.49 &   &   &   &   &   &   &   &   & 80.97 & 83.89 & 82.65 & 76.04 & 76.73 & 86.37 & 78.45 & 76.04  \\
-        \hline
-        SelfRegulationSCP2 & 72.09 & 64.00 & 62.11 & 47.20 & 70.81 &   &   &   &   &   &   &   & 72.93 & 63.16 & 58.36 & 42.26 & 72.09 & 63.16 & 61.72 & 55.12  \\
-        \hline
-        SemgHandGenderCh2 & 78.10 & 69.57 & 76.02 & 85.63 &   &   &   &   & 69.11 & 70.90 & 82.35 & 77.52 & 81.50 & 89.05 & 87.58 & 91.20 & 76.67 & 70.07 & 66.25 & 74.87  \\
-        \hline
-        SemgHandMovementCh2 & 66.33 & 48.98 & 39.21 & 59.18 &   &   &   &   & 66.89 & 55.73 & 47.47 & 41.83 & 73.56 & 67.92 & 71.26 & 81.28 & 66.33 & 48.98 & 39.60 & 25.13  \\
-        \hline
-        SemgHandSubjectCh2 & 67.89 & 51.65 & 49.14 & 70.96 &   &   &   &   & 68.37 & 62.18 & 61.72 & 52.72 & 75.86 & 78.26 & 76.96 & 89.40 & 66.67 & 50.00 & 45.29 & 58.72  \\
-        \hline
-        SmallKitchenAppliances & 79.64 & 73.53 & 68.42 & 73.78 & 69.38 & 58.37 & 48.54 &   & 71.13 & 55.35 & 53.21 & 74.08 & 77.27 & 70.59 & 66.38 & 79.54 & 74.35 & 70.26 & 58.70 & 67.29  \\
-        \hline
-        SonyAIBORobotSurface1 & 72.28 & 80.16 & 52.72 & 41.26 & 81.68 & 83.07 & 84.85 & 79.08 & 70.60 & 71.04 & 70.17 & 92.02 & 78.73 & 77.20 & 74.60 & 64.45 & 72.12 & 88.41 & 86.21 & 80.03  \\
-        \hline
-        SonyAIBORobotSurface2 & 70.00 & 66.69 & 85.02 & 89.47 & 75.47 & 66.44 & 73.24 & 85.48 & 75.54 & 67.12 & 64.01 & 89.47 & 80.88 & 79.26 & 77.85 & 74.13 & 79.73 & 77.04 & 89.81 & 93.40  \\
-        \hline
-        StandWalkJump & 70.00 & 50.00 & 46.43 & 28.57 & 68.75 & 52.17 & 46.43 &   & 68.75 & 57.14 & 46.43 & 28.57 & 71.43 & 54.55 & 53.85 & 34.78 & 71.43 & 57.14 & 58.00 & 28.57  \\
-        \hline
-        StarlightCurves & 68.05 & 52.71 & 45.23 & 96.88 &   &   &   &   & 74.31 & 69.86 & 79.00 & 91.51 & 92.50 & 94.13 & 95.21 & 95.28 & 69.11 & 52.94 & 43.76 & 93.75  \\
-        \hline
-        Strawberry & 76.43 & 69.16 & 95.73 & 96.98 & 76.43 & 69.16 & 65.63 & 90.39 & 80.33 & 77.69 & 76.86 & 92.68 & 89.57 & 90.24 & 94.78 & 93.66 & 76.43 & 69.16 & 65.63 & 95.65  \\
-        \hline
-        Trace & 68.35 & 57.55 & 70.00 & 100.00 & 72.73 & 61.54 & 54.65 & 47.43 & 68.18 & 50.63 & 39.55 & 100.00 & 77.40 & 73.39 & 68.42 & 98.75 & 67.24 & 54.42 & 50.00 & 100.00  \\
-        \hline
-        TwoLeadECG & 72.36 & 60.84 & 65.52 & 99.56 & 75.81 & 70.10 & 67.14 & 93.07 & 72.23 & 61.76 & 63.57 & 99.78 & 80.11 & 82.76 & 93.48 & 70.18 & 72.23 & 62.30 & 64.93 & 99.78  \\
-        \hline
-        UWaveGestureLibrary & 65.46 & 48.39 & 39.30 & 81.57 &   &   &   &   & 65.69 & 47.76 & 36.88 & 85.95 & 70.06 & 67.72 & 71.01 & 81.93 & 65.24 & 49.71 & 42.90 & 77.61  \\
-        \hline
-        Wafer & 92.71 & 98.07 & 98.47 & 99.61 & 93.19 & 95.00 & 89.55 & 99.35 & 94.50 & 100.00 & 99.49 & 100.00 & 99.48 & 99.06 & 99.31 & 99.31 & 99.32 & 88.10 & 87.63 & 99.96  \\
-        \hline
-        Wine & 75.96 & 63.34 & 71.80 & 69.57 & 71.77 & 64.29 & 70.30 & 53.78 & 74.77 & 65.26 & 65.99 & 71.62 & 77.27 & 66.26 & 61.98 & 67.53 & 72.22 & 61.54 & 60.71 & 75.77  \\
-        \hline
-    %\end{longtabu}
-    \caption{$F_{\beta}$ scores for all 5 classifiers on 77 data sets for all chunks}
+\begin{landscape}
+    \begin{longtable}{|l|llll|llll|llll|}
+      \caption{$F_{\beta}$ scores for CBoss, PForest and ST on 77 data sets for all chunks}\\
+      \hline
+      \multirow{2}{*}{\textbf{Data set}} & 
+      \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} \\
+      & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+      \hline
+      \endfirsthead % <-- This denotes the end of the header, which will be shown on the first page only
+      \caption{$F_{\beta}$ scores for CBoss, PForest and ST on 77 data sets for all chunks (continued)}\\
+      \hline
+      \multirow{2}{*}{\textbf{Data set}} & 
+      \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} \\
+      & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+      \hline
+      \endhead % <-- Everything between \endfirsthead and \endhead will be shown as a header on every page
+      ACSF1 & 77.78 & 74.77 & 70.81 & 87.80 & 65.27 & 48.19 & 37.80 &   & 80.30 & 81.63 & 84.33 & 78.47 \\ \hline
+      AtrialFibrillation & 66.67 & 48.00 & 43.10 & 16.67 & 70.00 & 60.00 & 40.00 & 28.57 & 71.43 & 48.00 & 53.85 & 34.78 \\ \hline
+      BasicMotions & 71.05 & 84.21 & 100.00 & 100.00 & 67.39 & 61.54 & 55.88 & 70.59 &   &   &   &   \\ \hline
+      Beef & 67.65 & 50.00 & 58.00 & 76.19 & 67.14 & 51.06 & 37.10 & 25.53 & 66.67 & 55.81 & 53.85 & 76.19 \\ \hline
+      Car & 68.46 & 53.93 & 51.89 & 80.00 & 71.43 & 53.33 & 44.74 & 42.80 & 68.75 & 59.26 & 61.34 & 78.09 \\ \hline
+      Chinatown & 63.88 & 65.26 & 71.10 & 93.88 & 65.48 & 54.84 & 97.48 & 96.74 & 66.30 & 73.11 & 72.93 & 96.38 \\ \hline
+      CinCECGTorso & 68.54 & 54.33 & 45.28 & 75.78 &   &   &   &   & 67.52 & 55.62 & 56.06 & 89.88 \\ \hline
+      Coffee & 73.14 & 95.73 & 95.66 & 100.00 & 76.42 & 65.12 & 71.15 & 100.00 & 79.17 & 84.85 & 95.66 & 91.23 \\ \hline
+      Computers & 77.17 & 71.68 & 68.11 & 64.25 & 74.27 & 62.89 & 57.14 & 55.37 & 75.25 & 67.80 & 66.28 & 63.82 \\ \hline
+      Cricket & 65.69 & 74.23 & 81.71 & 100.00 &   &   &   &   &   &   &   &   \\ \hline
+      Earthquakes & 80.68 & 76.06 & 73.98 & 70.39 & 80.68 & 76.06 & 73.98 & 71.19 & 75.36 & 76.06 & 73.98 & 59.50 \\ \hline
+      ECG200 & 69.42 & 56.74 & 47.78 & 79.62 & 76.67 & 77.67 & 54.83 & 87.80 & 76.32 & 80.81 & 75.75 & 83.09 \\ \hline
+      ECG5000 & 69.12 & 67.39 & 81.34 & 92.83 & 74.69 & 65.85 & 61.37 & 55.33 & 81.47 & 87.15 & 89.73 & 92.48 \\ \hline
+      ECGFiveDays & 74.41 & 61.68 & 56.06 & 100.00 & 72.86 & 65.43 & 60.06 & 82.08 & 72.29 & 67.34 & 65.21 & 99.85 \\ \hline
+      ElectricDevices & 70.24 & 57.31 & 55.78 & 65.58 &   &   &   &   & 69.61 & 55.75 & 43.04 & 32.92 \\ \hline
+      EOGHorizontalSignal & 65.06 & 46.82 & 40.58 & 42.00 & 65.09 & 46.14 & 33.93 &   & 65.22 & 46.59 & 40.58 & 41.73 \\ \hline
+      EOGVerticalSignal & 65.38 & 47.04 & 37.77 & 36.93 &   &   &   &   & 65.06 & 46.74 & 40.95 & 33.53 \\ \hline
+      Epilepsy & 96.62 & 100.00 & 100.00 & 100.00 &   &   &   &   & 79.93 & 79.20 & 86.78 & 98.19 \\ \hline
+      ERing & 68.00 & 53.40 & 51.35 & 87.36 & 66.17 & 50.15 & 40.61 & 45.18 &   &   &   &   \\ \hline
+      EthanolConcentration & 67.41 & 51.27 & 42.35 & 35.79 &   &   &   &   & 69.54 & 55.90 & 47.29 & 55.41 \\ \hline
+      EthanolLevel & 67.79 & 51.81 & 43.46 & 39.37 &   &   &   &   & 68.66 & 56.18 & 47.19 & 30.85 \\ \hline
+      FingerMovements & 71.05 & 62.02 & 55.26 & 51.47 &   &   &   &   &   &   &   &   \\ \hline
+      FordA & 80.03 & 83.41 & 82.37 & 68.33 &   &   &   &   & 70.87 & 61.50 & 59.44 & 49.67 \\ \hline
+      FordB & 77.65 & 74.65 & 72.32 & 56.72 &   &   &   &   & 72.85 & 60.17 & 60.37 & 48.13 \\ \hline
+      FreezerRegularTrain & 72.22 & 97.15 & 99.87 & 99.56 & 78.90 & 62.50 & 89.63 & 90.49 & 72.37 & 94.33 & 99.87 & 99.87 \\ \hline
+      FreezerSmallTrain & 72.26 & 94.57 & 99.74 & 96.56 & 75.18 & 63.60 & 72.00 & 66.11 & 71.91 & 91.27 & 99.82 & 99.96 \\ \hline
+      Fungi & 65.16 & 45.53 & 33.24 &   & 64.92 & 47.57 & 43.73 & 89.47 &   &   &   &   \\ \hline
+      Ham & 71.88 & 61.31 & 55.00 & 61.54 & 72.11 & 62.69 & 55.59 & 65.63 & 71.88 & 60.87 & 58.00 & 71.91 \\ \hline
+      HandMovementDirection & 68.14 & 50.08 & 43.28 & 31.49 & 66.70 & 51.84 & 47.37 & 32.75 &   &   &   &   \\ \hline
+      Handwriting & 64.69 & 44.49 & 37.53 & 41.10 &   &   &   &   & 64.69 & 44.65 & 35.96 & 31.14 \\ \hline
+      HouseTwenty & 71.72 & 78.55 & 84.89 & 96.87 & 81.90 & 75.44 & 71.84 & 87.70 & 76.27 & 77.91 & 82.39 & 80.81 \\ \hline
+      InsectEPGRegularTrain & 96.72 & 94.32 & 100.00 & 100.00 & 100.00 & 99.50 & 100.00 & 100.00 & 69.18 & 55.92 & 48.55 & 98.50 \\ \hline
+      InsectEPGSmallTrain & 91.29 & 100.00 & 94.67 & 100.00 & 99.50 & 90.05 & 98.51 & 100.00 & 69.18 & 55.77 & 48.33 & 96.51 \\ \hline
+      InsectWingbeatSound & 65.22 & 48.98 & 45.17 & 49.64 &   &   &   &   & 65.21 & 48.51 & 39.14 & 56.54 \\ \hline
+      ItalyPowerDemand & 69.43 & 57.66 & 78.91 & 86.41 & 70.71 & 71.06 & 58.02 & 94.95 & 68.66 & 58.52 & 69.13 & 94.47 \\ \hline
+      LargeKitchenAppliances & 72.73 & 61.86 & 57.14 & 72.89 & 69.79 & 56.07 & 50.45 & 37.83 & 69.04 & 54.95 & 47.26 & 61.54 \\ \hline
+      Libras & 62.41 & 44.04 & 41.36 & 79.36 & 62.69 & 42.74 & 32.38 & 5.41 & 62.99 & 45.24 & 39.66 & 83.87 \\ \hline
+      Lightning2 & 73.28 & 64.38 & 58.50 & 69.23 & 70.89 & 66.12 & 58.50 & 80.31 & 73.28 & 59.66 & 55.37 & 65.65 \\ \hline
+      Lightning7 & 69.41 & 55.41 & 52.18 & 69.45 & 66.19 & 49.74 & 39.63 & 25.66 & 65.84 & 47.71 & 42.80 & 64.97 \\ \hline
+      LSST & 62.41 & 51.74 & 45.33 & 45.29 &   &   &   &   &   &   &   &   \\ \hline
+      Meat & 86.36 & 70.59 & 85.00 & 85.83 & 73.53 & 57.14 & 46.43 & 59.77 & 80.77 & 92.31 & 80.12 & 95.87 \\ \hline
+      MoteStrain & 71.39 & 74.58 & 63.24 & 93.20 & 70.60 & 78.17 & 76.93 & 86.88 & 73.41 & 59.66 & 71.72 & 89.92 \\ \hline
+      NATOPS & 64.69 & 51.86 & 46.40 & 80.00 & 63.76 & 47.53 & 37.95 & 18.60 &   &   &   &   \\ \hline
+      NonInvasiveFetalECGThorax1 & 71.16 & 56.47 & 63.73 & 78.51 &   &   &   &   & 72.98 & 70.56 & 62.04 & 28.48 \\ \hline
+      NonInvasiveFetalECGThorax2 & 68.38 & 70.68 & 57.54 & 82.27 &   &   &   &   & 67.95 & 74.08 & 75.43 & 51.36 \\ \hline
+      OliveOil & 69.35 & 85.71 & 92.11 & 83.87 & 66.67 & 50.00 & 50.00 & 51.13 & 77.27 & 92.31 & 88.46 & 87.80 \\ \hline
+      Phoneme & 66.27 & 50.61 & 42.38 & 26.83 & 64.43 & 44.79 & 32.33 & 1.35 & 66.47 & 50.18 & 41.30 & 23.45 \\ \hline
+      PigAirwayPressure & 66.05 & 50.82 & 41.85 & 91.15 &   &   &   &   & 65.81 & 50.06 & 51.30 & 75.43 \\ \hline
+      PigArtPressure & 97.71 & 99.40 & 98.22 & 97.61 &   &   &   &   & 88.81 & 90.73 & 95.34 & 95.24 \\ \hline
+      PigCVP & 80.77 & 87.86 & 92.57 & 94.06 & 64.43 & 45.29 &   &   & 68.81 & 58.92 & 72.51 & 72.19 \\ \hline
+      Plane & 67.21 & 48.84 & 52.23 & 100.00 & 69.09 & 53.16 & 56.37 & 100.00 & 67.36 & 63.16 & 63.57 & 100.00 \\ \hline
+      PowerCons & 74.32 & 71.64 & 75.95 & 90.46 & 76.47 & 67.92 & 68.47 & 99.31 & 73.68 & 61.80 & 66.73 & 92.48 \\ \hline
+      RacketSports & 67.49 & 50.96 & 43.89 & 77.24 & 69.14 & 53.19 & 46.54 & 38.04 &   &   &   &   \\ \hline
+      RefrigerationDevices & 72.80 & 60.00 & 56.47 & 48.83 & 70.00 & 58.48 & 55.30 & 40.66 & 72.46 & 60.36 & 57.14 & 50.45 \\ \hline
+      Rock & 70.83 & 58.82 & 61.11 & 87.80 & 68.18 & 53.33 & 42.78 & 40.53 & 67.54 & 51.28 & 44.74 & 85.44 \\ \hline
+      ScreenType & 70.16 & 58.59 & 52.12 & 43.79 & 69.33 & 54.05 &   &   & 69.08 & 56.82 & 50.45 & 43.00 \\ \hline
+      SelfRegulationSCP1 & 76.14 & 70.52 & 68.62 & 74.49 &   &   &   &   &   &   &   &   \\ \hline
+      SelfRegulationSCP2 & 72.09 & 64.00 & 62.11 & 47.20 & 70.81 &   &   &   &   &   &   &   \\ \hline
+      SemgHandGenderCh2 & 78.10 & 69.57 & 76.02 & 85.63 &   &   &   &   & 69.11 & 70.90 & 82.35 & 77.52 \\ \hline
+      SemgHandMovementCh2 & 66.33 & 48.98 & 39.21 & 59.18 &   &   &   &   & 66.89 & 55.73 & 47.47 & 41.83 \\ \hline
+      SemgHandSubjectCh2 & 67.89 & 51.65 & 49.14 & 70.96 &   &   &   &   & 68.37 & 62.18 & 61.72 & 52.72 \\ \hline
+      SmallKitchenAppliances & 79.64 & 73.53 & 68.42 & 73.78 & 69.38 & 58.37 & 48.54 &   & 71.13 & 55.35 & 53.21 & 74.08 \\ \hline
+      SonyAIBORobotSurface1 & 72.28 & 80.16 & 52.72 & 41.26 & 81.68 & 83.07 & 84.85 & 79.08 & 70.60 & 71.04 & 70.17 & 92.02 \\ \hline
+      SonyAIBORobotSurface2 & 70.00 & 66.69 & 85.02 & 89.47 & 75.47 & 66.44 & 73.24 & 85.48 & 75.54 & 67.12 & 64.01 & 89.47 \\ \hline
+      StandWalkJump & 70.00 & 50.00 & 46.43 & 28.57 & 68.75 & 52.17 & 46.43 &   & 68.75 & 57.14 & 46.43 & 28.57 \\ \hline
+      StarlightCurves & 68.05 & 52.71 & 45.23 & 96.88 &   &   &   &   & 74.31 & 69.86 & 79.00 & 91.51 \\ \hline
+      Strawberry & 76.43 & 69.16 & 95.73 & 96.98 & 76.43 & 69.16 & 65.63 & 90.39 & 80.33 & 77.69 & 76.86 & 92.68 \\ \hline
+      Trace & 68.35 & 57.55 & 70.00 & 100.00 & 72.73 & 61.54 & 54.65 & 47.43 & 68.18 & 50.63 & 39.55 & 100.00 \\ \hline
+      TwoLeadECG & 72.36 & 60.84 & 65.52 & 99.56 & 75.81 & 70.10 & 67.14 & 93.07 & 72.23 & 61.76 & 63.57 & 99.78 \\ \hline
+      UWaveGestureLibrary & 65.46 & 48.39 & 39.30 & 81.57 &   &   &   &   & 65.69 & 47.76 & 36.88 & 85.95 \\ \hline
+      Wafer & 92.71 & 98.07 & 98.47 & 99.61 & 93.19 & 95.00 & 89.55 & 99.35 & 94.50 & 100.00 & 99.49 & 100.00 \\ \hline
+      Wine & 75.96 & 63.34 & 71.80 & 69.57 & 71.77 & 64.29 & 70.30 & 53.78 & 74.77 & 65.26 & 65.99 & 71.62 \\ \hline
     \label{tab:longresults}
     \end{longtable}
-    \end{landscape}
-  \end{tiny}
+\end{landscape}
+
+\begin{landscape}
+  \begin{longtable}{|l|llll|llll|}
+    \caption{$F_{\beta}$ scores for TSF and WEASEL on 77 data sets for all chunks}\\
+    \hline
+    \multirow{2}{*}{\textbf{Data set}} & 
+    \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
+    & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+    \hline
+    \endfirsthead % <-- This denotes the end of the header, which will be shown on the first page only
+    \caption{$F_{\beta}$ scores for TSF and WEASEL on 77 data sets for all chunks (continued)}\\
+    \hline
+    \multirow{2}{*}{\textbf{Data set}} & 
+    \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
+    & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+    \hline
+    \endhead % <-- Everything between \endfirsthead and \endhead will be shown as a header on every page
+    ACSF1 & 77.40 & 68.38 & 66.13 & 59.77 & 78.99 & 76.19 & 68.42 & 89.00 \\ \hline
+    AtrialFibrillation & 66.67 & 54.55 & 34.38 & 22.54 & 71.43 & 54.55 & 43.10 & 22.54 \\ \hline
+    BasicMotions & 82.00 & 96.97 & 100.00 & 100.00 & 75.00 & 100.00 & 100.00 & 100.00 \\ \hline
+    Beef & 78.57 & 72.73 & 72.73 & 65.12 & 65.79 & 51.06 & 50.00 & 76.19 \\ \hline
+    Car & 75.00 & 71.64 & 66.13 & 66.93 & 68.46 & 53.93 & 45.58 & 83.87 \\ \hline
+    Chinatown & 95.61 & 98.20 & 97.84 & 95.66 & 63.88 & 47.42 & 39.12 & 93.53 \\ \hline
+    CinCECGTorso & 72.35 & 67.48 & 73.58 & 88.76 & 76.16 & 81.60 & 68.91 & 95.16 \\ \hline
+    Coffee & 89.44 & 84.85 & 80.57 & 100.00 & 73.14 & 91.80 & 65.60 & 100.00 \\ \hline
+    Computers & 78.41 & 72.99 & 70.97 & 66.42 & 71.93 & 70.42 & 70.32 & 67.29 \\ \hline
+    Cricket & 84.45 & 85.21 & 91.79 & 89.80 & 71.56 & 65.75 & 77.81 & 98.27 \\ \hline
+    Earthquakes & 80.68 & 76.06 & 73.98 & 70.39 & 80.68 & 75.54 & 73.37 & 70.39 \\ \hline
+    ECG200 & 84.48 & 85.11 & 86.32 & 81.93 & 74.39 & 59.26 & 51.19 & 81.93 \\ \hline
+    ECG5000 & 92.19 & 91.23 & 90.26 & 92.18 & 74.10 & 80.70 & 74.52 & 92.64 \\ \hline
+    ECGFiveDays & 75.16 & 67.28 & 62.13 & 90.32 & 73.20 & 63.15 & 58.82 & 99.85 \\ \hline
+    ElectricDevices & 73.15 & 63.54 & 61.22 & 63.55 & 75.13 & 66.37 & 60.86 & 72.62 \\ \hline
+    EOGHorizontalSignal & 65.44 & 46.59 & 39.58 & 45.81 & 64.96 & 47.43 & 36.72 & 42.27 \\ \hline
+    EOGVerticalSignal & 65.25 & 46.82 & 40.45 & 39.85 & 64.90 & 46.74 & 35.13 & 27.14 \\ \hline
+    Epilepsy & 91.69 & 97.35 & 97.33 & 96.40 & 98.25 & 100.00 & 100.00 & 100.00 \\ \hline
+    ERing & 75.47 & 76.89 & 82.66 & 94.05 & 68.56 & 58.20 & 58.76 & 94.05 \\ \hline
+    EthanolConcentration & 70.45 & 58.38 & 49.96 & 36.88 & 67.70 & 51.77 & 46.49 & 50.73 \\ \hline
+    EthanolLevel & 69.42 & 54.64 & 45.54 & 39.37 & 67.42 & 51.68 & 42.40 & 43.85 \\ \hline
+    FingerMovements & 70.62 & 62.50 & 55.88 & 44.44 & 72.47 & 62.02 & 55.88 & 53.51 \\ \hline
+    FordA & 79.40 & 75.70 & 75.85 & 77.74 & 83.29 & 79.70 & 91.60 & 95.77 \\ \hline
+    FordB & 74.88 & 67.22 & 64.00 & 63.52 & 76.30 & 76.96 & 64.17 & 78.30 \\ \hline
+    FreezerRegularTrain & 96.45 & 99.82 & 99.82 & 98.91 & 72.22 & 92.87 & 73.29 & 97.51 \\ \hline
+    FreezerSmallTrain & 88.93 & 97.98 & 99.78 & 80.85 & 72.22 & 89.55 & 64.56 & 95.05 \\ \hline
+    Fungi & 65.54 & 52.80 & 54.89 & 93.37 & 64.86 & 45.95 & 34.29 & 94.68 \\ \hline
+    Ham & 74.71 & 76.36 & 72.73 & 74.04 & 72.58 & 62.22 & 55.00 & 59.52 \\ \hline
+    HandMovementDirection & 67.70 & 54.21 & 43.94 & 49.85 & 67.29 & 50.08 & 38.92 & 31.49 \\ \hline
+    Handwriting & 65.70 & 49.52 & 43.41 & 26.49 & 64.71 & 44.16 & 33.38 & 26.39 \\ \hline
+    HouseTwenty & 86.28 & 92.25 & 89.27 & 77.91 & 88.64 & 94.07 & 92.04 & 95.83 \\ \hline
+    InsectEPGRegularTrain & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 \\ \hline
+    InsectEPGSmallTrain & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 & 100.00 \\ \hline
+    InsectWingbeatSound & 71.15 & 64.89 & 63.83 & 56.33 & 65.66 & 53.33 & 48.13 & 58.39 \\ \hline
+    ItalyPowerDemand & 75.92 & 71.42 & 76.09 & 95.31 & 69.43 & 58.41 & 55.66 & 91.17 \\ \hline
+    LargeKitchenAppliances & 72.12 & 60.61 & 54.17 & 51.54 & 68.16 & 54.05 & 46.29 & 63.82 \\ \hline
+    Libras & 67.90 & 64.65 & 68.53 & 76.82 & 63.52 & 48.98 & 50.78 & 83.87 \\ \hline
+    Lightning2 & 73.28 & 68.93 & 70.39 & 65.65 & 73.28 & 66.12 & 64.14 & 62.12 \\ \hline
+    Lightning7 & 67.55 & 61.86 & 58.96 & 69.45 & 68.67 & 52.42 & 41.50 & 67.95 \\ \hline
+    LSST & 68.85 & 57.77 & 52.68 & 44.89 & 68.23 & 58.44 & 51.08 & 53.18 \\ \hline
+    Meat & 83.33 & 82.76 & 83.33 & 91.80 & 76.09 & 61.54 & 46.43 & 81.93 \\ \hline
+    MoteStrain & 87.89 & 86.66 & 86.98 & 84.52 & 77.16 & 78.17 & 79.46 & 94.18 \\ \hline
+    NATOPS & 64.43 & 52.07 & 51.71 & 76.82 & 64.26 & 52.69 & 54.07 & 80.00 \\ \hline
+    NonInvasiveFetalECGThorax1 & 83.62 & 79.59 & 78.29 & 84.53 & 64.54 & 49.42 & 40.60 &   \\ \hline
+    NonInvasiveFetalECGThorax2 & 86.97 & 83.53 & 80.52 & 87.84 & 64.53 & 46.37 & 36.14 & 90.45 \\ \hline
+    OliveOil & 80.00 & 80.00 & 88.46 & 83.87 & 65.79 & 48.98 & 44.74 & 87.80 \\ \hline
+    Phoneme & 65.76 & 49.36 & 39.78 & 16.52 & 66.84 & 51.35 & 43.60 & 25.78 \\ \hline
+    PigAirwayPressure & 65.34 & 47.22 & 35.17 & 18.51 & 68.07 & 57.30 & 49.68 & 58.65 \\ \hline
+    PigArtPressure & 66.24 & 50.67 & 43.69 & 35.15 & 93.70 & 96.52 & 95.91 & 100.00 \\ \hline
+    PigCVP & 65.99 & 49.03 & 38.80 & 23.63 & 71.42 & 68.09 & 81.55 & 91.73 \\ \hline
+    Plane & 91.18 & 97.67 & 95.38 & 98.81 & 66.15 & 48.84 & 86.92 & 100.00 \\ \hline
+    PowerCons & 81.03 & 77.42 & 77.96 & 99.31 & 73.23 & 64.57 & 62.59 & 95.19 \\ \hline
+    RacketSports & 75.17 & 72.55 & 78.21 & 87.96 & 69.14 & 55.88 & 52.32 & 84.85 \\ \hline
+    RefrigerationDevices & 72.94 & 63.29 & 58.00 & 53.17 & 69.69 & 57.92 & 52.90 & 44.84 \\ \hline
+    Rock & 71.74 & 64.52 & 63.92 & 69.48 & 67.24 & 57.97 & 39.11 & 76.19 \\ \hline
+    ScreenType & 69.89 & 57.80 & 52.58 & 38.08 & 71.01 & 57.58 & 52.27 & 47.76 \\ \hline
+    SelfRegulationSCP1 & 80.97 & 83.89 & 82.65 & 76.04 & 76.73 & 86.37 & 78.45 & 76.04 \\ \hline
+    SelfRegulationSCP2 & 72.93 & 63.16 & 58.36 & 42.26 & 72.09 & 63.16 & 61.72 & 55.12 \\ \hline
+    SemgHandGenderCh2 & 81.50 & 89.05 & 87.58 & 91.20 & 76.67 & 70.07 & 66.25 & 74.87 \\ \hline
+    SemgHandMovementCh2 & 73.56 & 67.92 & 71.26 & 81.28 & 66.33 & 48.98 & 39.60 & 25.13 \\ \hline
+    SemgHandSubjectCh2 & 75.86 & 78.26 & 76.96 & 89.40 & 66.67 & 50.00 & 45.29 & 58.72 \\ \hline
+    SmallKitchenAppliances & 77.27 & 70.59 & 66.38 & 79.54 & 74.35 & 70.26 & 58.70 & 67.29 \\ \hline
+    SonyAIBORobotSurface1 & 78.73 & 77.20 & 74.60 & 64.45 & 72.12 & 88.41 & 86.21 & 80.03 \\ \hline
+    SonyAIBORobotSurface2 & 80.88 & 79.26 & 77.85 & 74.13 & 79.73 & 77.04 & 89.81 & 93.40 \\ \hline
+    StandWalkJump & 71.43 & 54.55 & 53.85 & 34.78 & 71.43 & 57.14 & 58.00 & 28.57 \\ \hline
+    StarlightCurves & 92.50 & 94.13 & 95.21 & 95.28 & 69.11 & 52.94 & 43.76 & 93.75 \\ \hline
+    Strawberry & 89.57 & 90.24 & 94.78 & 93.66 & 76.43 & 69.16 & 65.63 & 95.65 \\ \hline
+    Trace & 77.40 & 73.39 & 68.42 & 98.75 & 67.24 & 54.42 & 50.00 & 100.00 \\ \hline
+    TwoLeadECG & 80.11 & 82.76 & 93.48 & 70.18 & 72.23 & 62.30 & 64.93 & 99.78 \\ \hline
+    UWaveGestureLibrary & 70.06 & 67.72 & 71.01 & 81.93 & 65.24 & 49.71 & 42.90 & 77.61 \\ \hline
+    Wafer & 99.48 & 99.06 & 99.31 & 99.31 & 99.32 & 88.10 & 87.63 & 99.96 \\ \hline
+    Wine & 77.27 & 66.26 & 61.98 & 67.53 & 72.22 & 61.54 & 60.71 & 75.77 \\ \hline
+  \label{tab:longresults_1}
+  \end{longtable}
+\end{landscape}
 
 We divide our analysis into three parts: a comparison of the effect of data chopping within the same classifier,
 comparison on the effect of data chopping across different classifiers and unified comparison between all classifiers
@@ -212,8 +234,8 @@ and the second part refers to the percentage of data used to train the classifie
 This naming convention helps clarify the type of the classifier and the context of comparison regardless of the type of analysis being discussed.
 
 
-\section{Results Across Classifiers}
-\label{SectionAcrossComparison}
+\subsection{Results Across Classifiers}
+\label{SubsectionAcrossComparison}
 An aspect to investigate within the early classification context is the relative performance of classifiers to each other while more data becomes available to train on.
 We fix the percentage of data revealed, revealed\%, and compare the performance of classifiers, which is represented by their ranking based on the value of $F_{\beta}-measure$.
 We will dig deeper into the properties of the data sets, to explore the relation between the characteristics of the data and the best performing algorithm.
@@ -265,8 +287,8 @@ to find better and more distinctive features in the data; which helps them be mo
 Also PForest is able to score get better performances; because its elastic distance measure do not have to compensate for the big difference in length.
 
 
-\section{Data Set characteristics and performance in early classification context}
-\label{SectionDataCharacteristicsandPerformance}
+\subsection{Data Set characteristics and performance in early classification context}
+\label{SubsectionDataCharacteristicsandPerformance}
 The goal of our reasearch is to learn a recommender which can suggest the best classifiers to unseen data sets.
 The recommender analyzes the characteristics of the data set and then based on the performance from previous experiments, it suggests the most suitable classifiers.
 Thus it could be very convenient if the characteristics of the data sets we used; like length of series, number of classes and train size are able to provide insights about the best algorithm for a data set.
@@ -274,7 +296,7 @@ These comparison aspects were first defined in \cite{bagnall2017great} and have 
 The group of data sets we use for this analysis is very small and for some analysis we break them down by certain criteria.
 We believe that our results should be interpreted carefully and not generalized for all data sets.
 
-\subsection{Length of Series}
+\subsubsection{Length of Series}
 The first feature of the data sets we investigate is the length of the time series.
 Like the findings of \cite{bagnall2017great} on univariate data sets and the results of \cite{fawaz2019deepreview} on multivariate data sets,
 our results in the early classification context, didn't show information about the performance of the classifiers in accordance with the length of time series.
@@ -282,7 +304,7 @@ We show the results of the 5 classifiers on data sets grouped by their time seri
 The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
 In the case where multiple classifiers are able to score higher than the baseline on one data set, then the score of this data set is counted for each one of them.
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -314,12 +336,12 @@ The results for the other chunks are in appendix \ref{AppendixDataCharacteristis
 %TFS dominates all other classifiers on all length groups, except for the group with the longest length where WEASEL shows more competence.
 
 
-\subsection{Training Data Set Size}
-The second feature of the data sets we investigate is the training size, and how the number of instances affects the performance of classifiers in our introduced context.
+\subsubsection{Training Data Set Size}
+The second feature of the data sets we investigate is the size of the training data set, and how the number of instances affects the performance of classifiers in our introduced context.
 We show the results of the 5 classifiers on data sets grouped by their train size in table \ref{TableSize10} for the 10\% chunk, table \ref{TableSize20} for the 20\% chunk, table \ref{TableSize30} for the 30\% chunk and table \ref{TableSize100} for the 100\% chunk.
 The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -334,7 +356,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -349,7 +371,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -364,7 +386,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -391,13 +413,13 @@ There is also no significant pattern for the performance of the same classifiers
 %This pattern is consistent on all the chunks.
 
 
-\subsection{Type of Problem}
+\subsubsection{Type of Problem}
 The third feature of the data sets we investigate is the type of problem.
 The intention is to try to find an evidence if there is a classifier which is suitable for certain types of problems.
 We display the results of the 5 classifiers on data sets grouped by problem type in table \ref{TableType10} for the 10\% chunk, table \ref{TableType20} for the 20\% chunk, table \ref{TableType30} for the 30\% chunk and table \ref{TableType100} for the 100\% chunk.
 The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -415,7 +437,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -433,7 +455,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -451,7 +473,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -477,14 +499,14 @@ However, since both types consist only of one data set, we cannot conclude that 
 During the full length experiment, all the classifiers are able to beat the baseline classifier on all the data sets for the groups; SPECTRO, Traffic, DEVICE and EPG.
 
 
-\subsection{Number of classes}
+\subsubsection{Number of classes}
 The fourth feature of the data sets we investigate is the number of classes.
 The goal is to try to find a connection between the number of classes of data sets and if it has an impact on the performance of certain classifiers.
 
 We display our results for the number of classes feature in table \ref{TableNumClass10} for the 10\% chunk, table \ref{TableNumClass10} for the 20\% chunk, table \ref{TableNumClass10} for the 30\% chunk and table \ref{TableNumClass10} for the 100\% chunk.
 The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -499,7 +521,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -514,7 +536,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -529,7 +551,7 @@ The table display for each classifier in percentage how many times it was able t
   \end{tabularx}
 \end{table}
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
 	\begin{tabularx}{\textwidth}{|X|X|X|X|X|X|X|}
 	\hline
@@ -551,8 +573,8 @@ WEASEL and CBoss on the contrary learn better on the data sets with larger numbe
 PForest cannot beat the baseline classifier on the group of (11+) across all chunks. Since the group consists of only two data sets, we cannot generalize this conclusion.
 
 
-\section{Results Within Classifier}
-\label{SectionWithinComparison}
+\subsection{Results Within Classifier}
+\label{SubsectionWithinComparison}
 In our first experiment, we carry out a comparison between copies of the same classifier but trained using different chunks of data;
 to explore how their performances evolve in the early classification context. We combine results that are based on both $F_{\beta}-measure$ and balanced accuracy.
 We exclude the baseline classifier from this comparison.
@@ -621,11 +643,11 @@ This conforms with the concept of eTSC that as more data becomes available the b
 and also demonstrates the role that earliness plays in the scores of $F_{\beta}-measure$.
 
 
-\section{Results on Runtime Duration}
-\label{SectionRuntime}
+\subsection{Results on Runtime Duration}
+\label{SubsectionRuntime}
 Another aspect we investigate for our experiments is the runtime of the classifiers.
 It is not possible to carry out a comparison between the different algorithms we have used; because of the different adaptations we have applied to them.
-For some classifiers, have used an enhanced version which allows setting a contract time for feature extraction phases; like in the case of CBoss and ST.
+For some classifiers, we have used an enhanced version which allows setting a contract time for feature extraction phases; like in the case of CBoss and ST.
 This parameter allows us to restrict the amount of time given for the classifier.
 For PForest, we have excluded two distance measures; euclidean distance because it cannot handle the early classifcation context
 and TWE distance because it is the slowest elastic distance measure.
@@ -693,7 +715,7 @@ As evident from the results, there is an inverse relation between the performanc
 The chunk learner that trains on the 10\% data is able to score the best scores across all the chunk learners.
 The more revealed data, the harder it becomes for the chunk learners to accurately predict performance of classifiers.
 
-\begin{table}[hbt!]
+\begin{table}[hp!]
     \setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
     \begin{tabularx}{\textwidth}{|X|X|X|}
     \hline
@@ -712,7 +734,7 @@ It is clear that not only the curves of the higher chunk learner shift towards h
 This indicates that few of the predictions made by the lower chunk learner are significantly worse than their actual values.
 While the higher chunk learner is generally worse and makes larger mistakes by predicting values that are clearly worse than the actual performance of the classifiers.
 
-  \begin{figure}[hbt!]
+  \begin{figure}[hp!]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[width=\textwidth]{hist_rmse.jpg}
@@ -726,7 +748,7 @@ It is evident from the results that for CBoss, ST and WEASEL; the chunk learners
 It is the opposite scenario for PForest. The first 3 chunk learners score the least errors for PForest, but on the 100\% dara the errors significantly increase to be the worst among all.
 This explains the the long tail that appears in the 100\% chunk learner RMSE histogram due to the large differences between the actual and predicted F-scores for PForest on the 100\% data.
 
-  \begin{figure}[hbt!]
+  \begin{figure}[hp!]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[width=\textwidth]{MAE_classifier.JPG}
@@ -735,7 +757,7 @@ This explains the the long tail that appears in the 100\% chunk learner RMSE his
     \label{Img:MAEClassifier}
   \end{figure}
 
-  \begin{figure}[hbt!]
+  \begin{figure}[hp!]
     \captionsetup{justification=raggedright}
     \centering
     \includegraphics[width=\textwidth]{RMSE_classifier.JPG}
@@ -755,7 +777,7 @@ The feature importance is calculated using the default method from the $sklearn$
 For each selected feature in the internal nodes of the regression trees, the impurity of the split is calculated using variance reduction.
 After the whole forest is built, the mean variance reduction for each feature is calculated over all the trees.
 
-\begin{figure}[hbt!]
+\begin{figure}[hp!]
     \captionsetup{justification=raggedright}
     \includegraphics[width=0.49\textwidth,keepaspectratio]{mean_feature_imp_10pct.png}
     \includegraphics[width=0.49\textwidth,keepaspectratio]{mean_feature_imp_20pct.png}
@@ -829,7 +851,7 @@ This can obviously be recognized in Figure \ref{Img:ActualvsPredScatter} by comp
 TSF is the least misestimated classifier; it is the least overestimated classifier and almost never underestimated.
 ST is the second least overestimated classifier, while PForest is the most overestimated.
 
-\begin{figure}[hbt!]
+\begin{figure}[hp!]
     \captionsetup{justification=raggedright}
     \includegraphics[width=0.49\textwidth,keepaspectratio]{scatter_test_actual_vs_pred_10pct.png}
     \includegraphics[width=0.49\textwidth,keepaspectratio]{scatter_test_actual_vs_pred_20pct.png}
@@ -841,7 +863,7 @@ ST is the second least overestimated classifier, while PForest is the most overe
 \end{figure}
 
 \begin{landscape}
-  \begin{table}[hbt!]
+  \begin{table}[hp!]
     \setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
     \begin{tabularx}{\hsize}{|X|X|X|X|X|X|X|X|X|}
     \hline

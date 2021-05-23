@@ -301,103 +301,200 @@
 
 \section{Results on Runtime Duration}
 \label{AppendixDuration}
-  \begin{tiny}
-    \begin{landscape}
-    {\setlength{\tabcolsep}{1pt}}
-    \begin{longtable}{|l|llll|llll|llll|llll|llll|}
-        \multirow{2}{*}{\textbf{Data set}} & 
-        \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} & \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
-        & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
-        \hline
-        \endfirsthead % <-- This denotes the end of the header, which will be shown on the first page only
-        \hline
-        \multirow{2}{*}{\textbf{Data set}} & 
-        \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} & \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
-        & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
-        \hline
-        \endhead % <-- Everything between \endfirsthead and \endhead will be shown as a header on every page
-          ACSF1 & 175 & 428 & 779 & 3601 & 15972 & 63002 & 137622 &  & 3969 & 3991 & 4044 & 3919 & 47 & 50 & 58 & 74 & 2 & 11 & 16 & 29 \\ \hline
-          AtrialFibrillation & 6 & 18 & 33 & 207 & 506 & 1515 & 3381 & 34266 & 7205 & 7214 & 7213 & 7248 & 75 & 81 & 77 & 98 & 4 & 3 & 4 & 18 \\ \hline
-          BasicMotions & 2 & 7 & 16 & 88 & 894 & 993 & 1346 & 8063 &  &  &  &  & 126 & 128 & 131 & 143 & 3 & 6 & 10 & 21 \\ \hline
-          Beef & 4 & 12 & 23 & 173 & 350 & 1178 & 2413 & 23595 & 3606 & 3630 & 3641 & 3715 & 27 & 29 & 35 & 44 & 2 & 3 & 3 & 5 \\ \hline
-          Car & 7 & 33 & 63 & 559 & 1209 & 3762 & 8142 & 83360 & 3647 & 3662 & 3676 & 3723 & 28 & 34 & 29 & 42 & 4 & 3 & 3 & 14 \\ \hline
-          Chinatown & 0 & 0 & 0 & 1 & 18 & 17 & 19 & 51 & 3603 & 3603 & 3603 & 3603 & 39 & 40 & 42 & 43 & 0 & 0 & 0 & 1 \\ \hline
-          CinCECGTorso & 18 & 51 & 93 & 596 &  &  &  &  & 3629 & 3654 & 3712 & 3804 & 29 & 32 & 22 & 49 & 1 & 6 & 12 & 23 \\ \hline
-          Coffee & 4 & 6 & 19 & 91 & 152 & 303 & 693 & 3456 & 3604 & 3606 & 3607 & 3628 & 36 & 35 & 36 & 40 & 1 & 2 & 4 & 4 \\ \hline
-          Computers & 159 & 407 & 334 & 3532 & 3071 & 7870 & 16136 & 146384 & 4242 & 3948 & 3852 & 3883 & 38 & 31 & 41 & 62 & 12 & 15 & 18 & 69 \\ \hline
-          Cricket & 433 & 1350 & 1387 & 8110 &  &  &  &  &  &  &  &  & 293 & 308 & 337 & 450 & 61 & 98 & 167 & 623 \\ \hline
-          DuckDuckGeese &  &  &  &  &  &  &  &  &  &  &  &  & 8780 & 8996 & 9323 & 10706 &  &  &  &  \\ \hline
-          Earthquakes & 112 & 261 & 1006 & 3603 & 5893 & 12552 & 22818 & 198829 & 4182 & 3982 & 3862 & 3750 & 52 & 41 & 48 & 59 & 12 & 12 & 17 & 71 \\ \hline
-          ECG200 & 1 & 3 & 17 & 38 & 388 & 517 & 713 & 4431 & 3608 & 3611 & 3613 & 3626 & 32 & 28 & 41 & 21 & 1 & 2 & 3 & 10 \\ \hline
-          ECG5000 & 38 & 70 & 85 & 1519 & 1911 & 2200 & 2594 & 11566 & 3638 & 3642 & 3637 & 3687 & 61 & 69 & 67 & 74 & 6 & 14 & 26 & 33 \\ \hline
-          ECGFiveDays & 0 & 1 & 3 & 8 & 69 & 109 & 165 & 1240 & 3602 & 3603 & 3605 & 3608 & 23 & 28 & 36 & 40 & 0 & 1 & 2 & 3 \\ \hline
-          ElectricDevices & 2622 & 3642 & 3634 & 3749 &  &  &  &  & 4257 & 4697 & 4830 & 3789 & 557 & 567 & 590 & 622 & 87 & 524 & 836 & 3201 \\ \hline
-          EOGHorizontalSignal & 661 & 2487 & 3604 & 3618 & 17477 & 60769 & 112039 &  & 3608 & 3604 & 3673 & 3707 & 65 & 69 & 112 & 164 & 36 & 74 & 127 & 786 \\ \hline
-          EOGVerticalSignal & 317 & 3114 & 3604 & 3606 &  &  &  &  & 3609 & 3609 & 3670 & 3704 & 47 & 50 & 57 & 151 & 37 & 57 & 109 & 611 \\ \hline
-          Epilepsy & 15 & 63 & 126 & 826 &  &  &  &  & 10869 & 10916 & 10988 & 12083 & 135 & 114 & 135 & 157 & 9 & 23 & 39 & 61 \\ \hline
-          ERing & 1 & 1 & 3 & 24 & 456 & 534 & 648 & 2436 &  &  &  &  & 145 & 123 & 149 & 146 & 1 & 2 & 4 & 15 \\ \hline
-          EthanolConcentration & 1154 & 3376 & 6188 & 10786 &  &  &  &  & 10985 & 11051 & 11105 & 11134 & 241 & 271 & 287 & 566 & 80 & 202 & 355 & 844 \\ \hline
-          EthanolLevel & 2774 & 3604 & 3606 & 3631 &  &  &  &  & 3691 & 3701 & 3775 & 3702 & 61 & 65 & 83 & 350 & 33 & 93 & 126 & 679 \\ \hline
-          FaceDetection &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  &  & 83 & 321 & 806 &  \\ \hline
-          FingerMovements & 27 & 124 & 293 & 1662 &  &  &  &  &  &  &  &  & 323 & 321 & 330 & 341 & 23 & 63 & 114 & 583 \\ \hline
-          FordA & 3611 & 3607 & 3643 & 3832 &  &  &  &  & 3760 & 3816 & 3707 & 3841 & 242 & 232 & 326 & 571 & 206 & 210 & 379 & 1425 \\ \hline
-          FordB & 3636 & 3711 & 3675 & 3810 &  &  &  &  & 3829 & 3800 & 3771 & 3733 & 188 & 118 & 342 & 527 & 250 & 195 & 480 & 1884 \\ \hline
-          FreezerRegularTrain & 15 & 27 & 90 & 592 & 755 & 816 & 1379 & 12258 & 3715 & 3698 & 3661 & 3739 & 35 & 32 & 33 & 39 & 3 & 7 & 7 & 15 \\ \hline
-          FreezerSmallTrain & 2 & 3 & 11 & 28 & 131 & 296 & 627 & 5683 & 3605 & 3605 & 3604 & 3610 & 25 & 25 & 26 & 30 & 1 & 3 & 4 & 4 \\ \hline
-          Fungi & 1 & 3 & 2 &  & 133 & 297 & 564 & 5261 &  &  &  &  & 30 & 24 & 32 & 37 & 0 & 1 & 2 & 2 \\ \hline
-          Ham & 31 & 105 & 211 & 1505 & 1772 & 5044 & 10404 & 104283 & 3665 & 3740 & 3765 & 3909 & 42 & 35 & 32 & 52 & 4 & 6 & 5 & 14 \\ \hline
-          HandMovementDirection & 177 & 593 & 889 & 6823 & 11414 & 21094 & 37411 & 321914 &  &  &  &  & 384 & 486 & 502 & 593 & 81 & 203 & 129 & 412 \\ \hline
-          Handwriting & 12 & 40 & 67 & 595 &  &  &  &  & 10858 & 10932 & 10987 & 11578 & 134 & 140 & 138 & 153 & 8 & 18 & 30 & 60 \\ \hline
-          Heartbeat & 1257 & 3866 & 7667 & 52348 &  &  &  &  &  &  &  &  & 1343 & 1384 & 1409 & 1606 & 21 & 55 & 45 & 189 \\ \hline
-          HouseTwenty & 28 & 152 & 134 & 1897 & 5564 & 20665 & 50006 & 435853 & 3697 & 3706 & 3680 & 3761 & 30 & 33 & 35 & 55 & 3 & 7 & 8 & 30 \\ \hline
-          InsectEPGRegularTrain & 16 & 46 & 83 & 514 & 524 & 1736 & 3818 & 41925 & 3674 & 3697 & 3696 & 3767 & 40 & 42 & 42 & 52 & 5 & 5 & 7 & 25 \\ \hline
-          InsectEPGSmallTrain & 3 & 10 & 17 & 122 & 126 & 426 & 956 & 9921 & 3607 & 3608 & 3614 & 3629 & 24 & 28 & 26 & 33 & 2 & 2 & 2 & 7 \\ \hline
-          InsectWingbeatSound & 24 & 33 & 64 & 382 &  &  &  &  & 3650 & 3678 & 3678 & 3714 & 50 & 49 & 51 & 59 & 4 & 8 & 16 & 21 \\ \hline
-          ItalyPowerDemand & 0 & 0 & 1 & 2 & 223 & 227 & 211 & 206 & 3604 & 3603 & 3602 & 3608 & 25 & 32 & 32 & 35 & 0 & 0 & 1 & 2 \\ \hline
-          LargeKitchenAppliances & 310 & 824 & 1544 & 3604 & 4433 & 12251 & 24973 & 270857 & 4106 & 4014 & 4038 & 4027 & 46 & 45 & 50 & 84 & 22 & 22 & 38 & 164 \\ \hline
-          Libras & 1 & 1 & 6 & 60 & 2340 & 2382 & 2390 & 3495 & 7211 & 7235 & 7259 & 7363 & 85 & 88 & 88 & 92 & 1 & 3 & 5 & 23 \\ \hline
-          Lightning2 & 8 & 38 & 40 & 593 & 1478 & 5459 & 11789 & 111426 & 3665 & 3721 & 3792 & 3997 & 40 & 28 & 23 & 38 & 5 & 5 & 7 & 21 \\ \hline
-          Lightning7 & 6 & 20 & 33 & 110 & 780 & 2058 & 4271 & 42482 & 3636 & 3672 & 3723 & 3757 & 28 & 37 & 40 & 44 & 2 & 4 & 5 & 10 \\ \hline
-          LSST & 0 & 956 & 1247 & 7538 &  &  &  &  &  &  &  &  & 698 & 698 & 709 & 733 & 25 & 78 & 152 & 826 \\ \hline
-          Meat & 5 & 13 & 24 & 219 & 608 & 1428 & 2924 & 29454 & 3616 & 3626 & 3640 & 3781 & 39 & 28 & 35 & 37 & 3 & 4 & 3 & 9 \\ \hline
-          MoteStrain & 1 & 1 & 2 & 10 & 54 & 65 & 88 & 441 & 3602 & 3602 & 3604 & 3616 & 34 & 23 & 23 & 25 & 0 & 0 & 1 & 3 \\ \hline
-          MotorImagery & 65994 &  &  &  &  &  &  &  &  &  &  &  & 1874 & 2115 & 2391 & 4483 & 217 & 533 & 806 & 2208 \\ \hline
-          NATOPS & 49 & 52 & 114 & 851 & 24792 & 24483 & 24704 & 36247 &  &  &  &  & 1103 & 1108 & 1125 & 1178 & 16 & 39 & 67 & 316 \\ \hline
-          NonInvasiveFetalECGThorax1 & 1538 & 6368 & 15200 & 51086 &  &  &  &  & 3645 & 3678 & 3707 & 3812 & 121 & 131 & 146 & 404 & 408 & 477 & 842 & 2395 \\ \hline
-          NonInvasiveFetalECGThorax2 & 1479 & 5761 & 13591 & 45878 &  &  &  &  & 3649 & 3679 & 3680 & 3846 & 118 & 130 & 150 & 402 & 272 & 372 & 991 & 2539 \\ \hline
-          OliveOil & 5 & 16 & 29 & 180 & 425 & 1389 & 2940 & 24060 & 3613 & 3615 & 3630 & 3674 & 34 & 38 & 41 & 46 & 2 & 1 & 2 & 4 \\ \hline
-          PEMS-SF &  &  &  &  &  &  &  &  &  &  &  &  & 9541 & 9759 & 9849 & 10541 &  &  &  &  \\ \hline
-          Phoneme & 207 & 1134 & 969 & 3602 & 12344 & 42219 & 91768 & 915733 & 3760 & 3811 & 3815 & 3741 & 56 & 29 & 72 & 91 & 15 & 14 & 48 & 326 \\ \hline
-          PigAirwayPressure & 283 & 688 & 1338 & 3601 &  &  &  &  & 3830 & 3967 & 3869 & 3777 & 34 & 38 & 43 & 80 & 17 & 35 & 51 & 741 \\ \hline
-          PigArtPressure & 181 & 1049 & 1033 & 3601 &  &  &  &  & 3798 & 3936 & 4020 & 3964 & 39 & 58 & 53 & 102 & 16 & 34 & 57 & 203 \\ \hline
-          PigCVP & 197 & 1405 & 1831 & 3601 & 96143 & 380569 &  &  & 3843 & 4007 & 3940 & 3886 & 50 & 39 & 42 & 81 & 13 & 35 & 60 & 261 \\ \hline
-          Plane & 5 & 16 & 30 & 143 & 447 & 800 & 1248 & 8822 & 3606 & 3617 & 3632 & 3781 & 37 & 40 & 42 & 42 & 1 & 3 & 4 & 7 \\ \hline
-          PowerCons & 5 & 17 & 36 & 138 & 1014 & 1218 & 1361 & 2969 & 3657 & 3792 & 3774 & 3712 & 49 & 39 & 33 & 50 & 1 & 4 & 4 & 12 \\ \hline
-          RacketSports & 6 & 10 & 8 & 76 & 4296 & 4130 & 4072 & 4806 &  &  &  &  & 208 & 230 & 266 & 276 & 1 & 3 & 6 & 32 \\ \hline
-          RefrigerationDevices & 239 & 410 & 1608 & 3605 & 4721 & 12419 & 25695 & 239726 & 4054 & 4148 & 4046 & 3972 & 56 & 49 & 56 & 61 & 27 & 27 & 47 & 106 \\ \hline
-          Rock & 44 & 59 & 237 & 1678 & 4424 & 17372 & 41005 & 475073 & 3648 & 3649 & 3689 & 3789 & 43 & 46 & 54 & 74 & 4 & 4 & 6 & 17 \\ \hline
-          ScreenType & 269 & 283 & 1025 & 3606 & 4964 & 13757 &  &  & 4149 & 4072 & 4118 & 4110 & 53 & 65 & 34 & 101 & 20 & 24 & 37 & 288 \\ \hline
-          SelfRegulationSCP1 & 1424 & 2340 & 4519 & 21574 &  &  &  &  &  &  &  &  & 342 & 373 & 272 & 589 & 181 & 136 & 192 & 755 \\ \hline
-          SelfRegulationSCP2 & 825 & 2693 & 5369 & 25174 & 29494 &  &  &  &  &  &  &  & 419 & 405 & 433 & 524 & 71 & 149 & 238 & 591 \\ \hline
-          SemgHandGenderCh2 & 367 & 1331 & 2429 & 3605 &  &  &  &  & 3695 & 3789 & 3774 & 3833 & 58 & 70 & 75 & 163 & 19 & 28 & 72 & 184 \\ \hline
-          SemgHandMovementCh2 & 963 & 2976 & 3605 & 3598 &  &  &  &  & 3647 & 3687 & 3731 & 3681 & 114 & 62 & 69 & 246 & 37 & 61 & 76 & 338 \\ \hline
-          SemgHandSubjectCh2 & 1900 & 3603 & 3611 & 3610 &  &  &  &  & 3648 & 3802 & 3742 & 3753 & 61 & 73 & 78 & 256 & 28 & 45 & 94 & 529 \\ \hline
-          SmallKitchenAppliances & 175 & 941 & 525 & 3602 & 9800 & 27216 & 59998 &  & 3934 & 4007 & 3996 & 4022 & 74 & 46 & 49 & 84 & 16 & 29 & 32 & 393 \\ \hline
-          SonyAIBORobotSurface1 & 0 & 1 & 1 & 9 & 43 & 43 & 54 & 260 & 3603 & 3603 & 3604 & 3607 & 32 & 31 & 35 & 35 & 0 & 0 & 0 & 2 \\ \hline
-          SonyAIBORobotSurface2 & 0 & 1 & 1 & 6 & 55 & 56 & 72 & 292 & 3603 & 3605 & 3603 & 3607 & 33 & 23 & 24 & 25 & 0 & 0 & 1 & 3 \\ \hline
-          StandWalkJump & 69 & 169 & 318 & 2246 & 7699 & 31252 & 69596 &  & 14443 & 14471 & 14491 & 14539 & 170 & 187 & 190 & 274 & 8 & 18 & 25 & 73 \\ \hline
-          StarlightCurves & 478 & 1542 & 3258 & 24151 &  &  &  &  & 3676 & 3750 & 3752 & 3792 & 78 & 86 & 99 & 332 & 21 & 31 & 43 & 119 \\ \hline
-          Strawberry & 112 & 453 & 448 & 3601 & 4020 & 4948 & 6687 & 41484 & 3649 & 3683 & 3741 & 3781 & 75 & 52 & 53 & 65 & 9 & 19 & 38 & 53 \\ \hline
-          Trace & 7 & 27 & 42 & 284 & 977 & 1472 & 2405 & 13619 & 3654 & 3690 & 3657 & 3679 & 31 & 38 & 41 & 33 & 2 & 4 & 5 & 13 \\ \hline
-          TwoLeadECG & 0 & 1 & 1 & 7 & 76 & 90 & 104 & 394 & 3602 & 3602 & 3602 & 3604 & 23 & 25 & 24 & 29 & 0 & 1 & 1 & 3 \\ \hline
-          UWaveGestureLibrary & 22 & 77 & 129 & 698 &  &  &  &  & 11015 & 11399 & 11599 & 11477 & 126 & 90 & 138 & 145 & 17 & 38 & 61 & 76 \\ \hline
-          Wafer & 82 & 235 & 466 & 3605 & 8088 & 9642 & 10263 & 43869 & 3643 & 3696 & 3711 & 3707 & 68 & 67 & 69 & 77 & 6 & 23 & 30 & 47 \\ \hline
-          Wine & 2 & 6 & 19 & 120 & 305 & 725 & 1470 & 12827 & 3604 & 3620 & 3630 & 3676 & 26 & 26 & 27 & 34 & 1 & 2 & 2 & 4 \\ \hline
-    \caption{Train Time (CPU Time) for all 5 classifiers on 77 data sets for all chunks}
+\begin{landscape}
+  \begin{longtable}{|l|llll|llll|llll|}
+    \caption{Train Time (CPU Time) for CBoss, PForest and ST on 77 data sets for all chunks}\\
+    \hline
+    \multirow{2}{*}{\textbf{Data set}} & 
+    \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} \\
+    & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+    \hline
+    \endfirsthead % <-- This denotes the end of the header, which will be shown on the first page only
+    \caption{Train Time (CPU Time) for CBoss, PForest and ST on 77 data sets for all chunks (continued)}\\
+    \hline
+    \multirow{2}{*}{\textbf{Data set}} & 
+    \multicolumn{4}{c}{\textbf{CBoss}} & \multicolumn{4}{c}{\textbf{PForest}} & \multicolumn{4}{c}{\textbf{ST}} \\
+    & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+    \hline
+    \endhead % <-- Everything between \endfirsthead and \endhead will be shown as a header on every page
+      ACSF1 & 175 & 428 & 779 & 3601 & 15972 & 63002 & 137622 &  & 3969 & 3991 & 4044 & 3919 \\ \hline
+      AtrialFibrillation & 6 & 18 & 33 & 207 & 506 & 1515 & 3381 & 34266 & 7205 & 7214 & 7213 & 7248 \\ \hline
+      BasicMotions & 2 & 7 & 16 & 88 & 894 & 993 & 1346 & 8063 &  &  &  &  \\ \hline
+      Beef & 4 & 12 & 23 & 173 & 350 & 1178 & 2413 & 23595 & 3606 & 3630 & 3641 & 3715 \\ \hline
+      Car & 7 & 33 & 63 & 559 & 1209 & 3762 & 8142 & 83360 & 3647 & 3662 & 3676 & 3723 \\ \hline
+      Chinatown & 0 & 0 & 0 & 1 & 18 & 17 & 19 & 51 & 3603 & 3603 & 3603 & 3603 \\ \hline
+      CinCECGTorso & 18 & 51 & 93 & 596 &  &  &  &  & 3629 & 3654 & 3712 & 3804 \\ \hline
+      Coffee & 4 & 6 & 19 & 91 & 152 & 303 & 693 & 3456 & 3604 & 3606 & 3607 & 3628 \\ \hline
+      Computers & 159 & 407 & 334 & 3532 & 3071 & 7870 & 16136 & 146384 & 4242 & 3948 & 3852 & 3883 \\ \hline
+      Cricket & 433 & 1350 & 1387 & 8110 &  &  &  &  &  &  &  &  \\ \hline
+      DuckDuckGeese &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+      Earthquakes & 112 & 261 & 1006 & 3603 & 5893 & 12552 & 22818 & 198829 & 4182 & 3982 & 3862 & 3750 \\ \hline
+      ECG200 & 1 & 3 & 17 & 38 & 388 & 517 & 713 & 4431 & 3608 & 3611 & 3613 & 3626 \\ \hline
+      ECG5000 & 38 & 70 & 85 & 1519 & 1911 & 2200 & 2594 & 11566 & 3638 & 3642 & 3637 & 3687 \\ \hline
+      ECGFiveDays & 0 & 1 & 3 & 8 & 69 & 109 & 165 & 1240 & 3602 & 3603 & 3605 & 3608 \\ \hline
+      ElectricDevices & 2622 & 3642 & 3634 & 3749 &  &  &  &  & 4257 & 4697 & 4830 & 3789 \\ \hline
+      EOGHorizontalSignal & 661 & 2487 & 3604 & 3618 & 17477 & 60769 & 112039 &  & 3608 & 3604 & 3673 & 3707 \\ \hline
+      EOGVerticalSignal & 317 & 3114 & 3604 & 3606 &  &  &  &  & 3609 & 3609 & 3670 & 3704 \\ \hline
+      Epilepsy & 15 & 63 & 126 & 826 &  &  &  &  & 10869 & 10916 & 10988 & 12083 \\ \hline
+      ERing & 1 & 1 & 3 & 24 & 456 & 534 & 648 & 2436 &  &  &  &  \\ \hline
+      EthanolConcentration & 1154 & 3376 & 6188 & 10786 &  &  &  &  & 10985 & 11051 & 11105 & 11134 \\ \hline
+      EthanolLevel & 2774 & 3604 & 3606 & 3631 &  &  &  &  & 3691 & 3701 & 3775 & 3702 \\ \hline
+      FaceDetection &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+      FingerMovements & 27 & 124 & 293 & 1662 &  &  &  &  &  &  &  &  \\ \hline
+      FordA & 3611 & 3607 & 3643 & 3832 &  &  &  &  & 3760 & 3816 & 3707 & 3841 \\ \hline
+      FordB & 3636 & 3711 & 3675 & 3810 &  &  &  &  & 3829 & 3800 & 3771 & 3733 \\ \hline
+      FreezerRegularTrain & 15 & 27 & 90 & 592 & 755 & 816 & 1379 & 12258 & 3715 & 3698 & 3661 & 3739 \\ \hline
+      FreezerSmallTrain & 2 & 3 & 11 & 28 & 131 & 296 & 627 & 5683 & 3605 & 3605 & 3604 & 3610 \\ \hline
+      Fungi & 1 & 3 & 2 &  & 133 & 297 & 564 & 5261 &  &  &  &  \\ \hline
+      Ham & 31 & 105 & 211 & 1505 & 1772 & 5044 & 10404 & 104283 & 3665 & 3740 & 3765 & 3909 \\ \hline
+      HandMovementDirection & 177 & 593 & 889 & 6823 & 11414 & 21094 & 37411 & 321914 &  &  &  &  \\ \hline
+      Handwriting & 12 & 40 & 67 & 595 &  &  &  &  & 10858 & 10932 & 10987 & 11578 \\ \hline
+      Heartbeat & 1257 & 3866 & 7667 & 52348 &  &  &  &  &  &  &  &  \\ \hline
+      HouseTwenty & 28 & 152 & 134 & 1897 & 5564 & 20665 & 50006 & 435853 & 3697 & 3706 & 3680 & 3761 \\ \hline
+      InsectEPGRegularTrain & 16 & 46 & 83 & 514 & 524 & 1736 & 3818 & 41925 & 3674 & 3697 & 3696 & 3767 \\ \hline
+      InsectEPGSmallTrain & 3 & 10 & 17 & 122 & 126 & 426 & 956 & 9921 & 3607 & 3608 & 3614 & 3629 \\ \hline
+      InsectWingbeatSound & 24 & 33 & 64 & 382 &  &  &  &  & 3650 & 3678 & 3678 & 3714 \\ \hline
+      ItalyPowerDemand & 0 & 0 & 1 & 2 & 223 & 227 & 211 & 206 & 3604 & 3603 & 3602 & 3608 \\ \hline
+      LargeKitchenAppliances & 310 & 824 & 1544 & 3604 & 4433 & 12251 & 24973 & 270857 & 4106 & 4014 & 4038 & 4027 \\ \hline
+      Libras & 1 & 1 & 6 & 60 & 2340 & 2382 & 2390 & 3495 & 7211 & 7235 & 7259 & 7363 \\ \hline
+      Lightning2 & 8 & 38 & 40 & 593 & 1478 & 5459 & 11789 & 111426 & 3665 & 3721 & 3792 & 3997 \\ \hline
+      Lightning7 & 6 & 20 & 33 & 110 & 780 & 2058 & 4271 & 42482 & 3636 & 3672 & 3723 & 3757 \\ \hline
+      LSST & 0 & 956 & 1247 & 7538 &  &  &  &  &  &  &  &  \\ \hline
+      Meat & 5 & 13 & 24 & 219 & 608 & 1428 & 2924 & 29454 & 3616 & 3626 & 3640 & 3781 \\ \hline
+      MoteStrain & 1 & 1 & 2 & 10 & 54 & 65 & 88 & 441 & 3602 & 3602 & 3604 & 3616 \\ \hline
+      MotorImagery & 65994 &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+      NATOPS & 49 & 52 & 114 & 851 & 24792 & 24483 & 24704 & 36247 &  &  &  &  \\ \hline
+      NonInvasiveFetalECGThorax1 & 1538 & 6368 & 15200 & 51086 &  &  &  &  & 3645 & 3678 & 3707 & 3812 \\ \hline
+      NonInvasiveFetalECGThorax2 & 1479 & 5761 & 13591 & 45878 &  &  &  &  & 3649 & 3679 & 3680 & 3846 \\ \hline
+      OliveOil & 5 & 16 & 29 & 180 & 425 & 1389 & 2940 & 24060 & 3613 & 3615 & 3630 & 3674 \\ \hline
+      PEMS-SF &  &  &  &  &  &  &  &  &  &  &  &  \\ \hline
+      Phoneme & 207 & 1134 & 969 & 3602 & 12344 & 42219 & 91768 & 915733 & 3760 & 3811 & 3815 & 3741 \\ \hline
+      PigAirwayPressure & 283 & 688 & 1338 & 3601 &  &  &  &  & 3830 & 3967 & 3869 & 3777 \\ \hline
+      PigArtPressure & 181 & 1049 & 1033 & 3601 &  &  &  &  & 3798 & 3936 & 4020 & 3964 \\ \hline
+      PigCVP & 197 & 1405 & 1831 & 3601 & 96143 & 380569 &  &  & 3843 & 4007 & 3940 & 3886 \\ \hline
+      Plane & 5 & 16 & 30 & 143 & 447 & 800 & 1248 & 8822 & 3606 & 3617 & 3632 & 3781 \\ \hline
+      PowerCons & 5 & 17 & 36 & 138 & 1014 & 1218 & 1361 & 2969 & 3657 & 3792 & 3774 & 3712 \\ \hline
+      RacketSports & 6 & 10 & 8 & 76 & 4296 & 4130 & 4072 & 4806 &  &  &  &  \\ \hline
+      RefrigerationDevices & 239 & 410 & 1608 & 3605 & 4721 & 12419 & 25695 & 239726 & 4054 & 4148 & 4046 & 3972 \\ \hline
+      Rock & 44 & 59 & 237 & 1678 & 4424 & 17372 & 41005 & 475073 & 3648 & 3649 & 3689 & 3789 \\ \hline
+      ScreenType & 269 & 283 & 1025 & 3606 & 4964 & 13757 &  &  & 4149 & 4072 & 4118 & 4110 \\ \hline
+      SelfRegulationSCP1 & 1424 & 2340 & 4519 & 21574 &  &  &  &  &  &  &  &  \\ \hline
+      SelfRegulationSCP2 & 825 & 2693 & 5369 & 25174 & 29494 &  &  &  &  &  &  &  \\ \hline
+      SemgHandGenderCh2 & 367 & 1331 & 2429 & 3605 &  &  &  &  & 3695 & 3789 & 3774 & 3833 \\ \hline
+      SemgHandMovementCh2 & 963 & 2976 & 3605 & 3598 &  &  &  &  & 3647 & 3687 & 3731 & 3681 \\ \hline
+      SemgHandSubjectCh2 & 1900 & 3603 & 3611 & 3610 &  &  &  &  & 3648 & 3802 & 3742 & 3753 \\ \hline
+      SmallKitchenAppliances & 175 & 941 & 525 & 3602 & 9800 & 27216 & 59998 &  & 3934 & 4007 & 3996 & 4022 \\ \hline
+      SonyAIBORobotSurface1 & 0 & 1 & 1 & 9 & 43 & 43 & 54 & 260 & 3603 & 3603 & 3604 & 3607 \\ \hline
+      SonyAIBORobotSurface2 & 0 & 1 & 1 & 6 & 55 & 56 & 72 & 292 & 3603 & 3605 & 3603 & 3607 \\ \hline
+      StandWalkJump & 69 & 169 & 318 & 2246 & 7699 & 31252 & 69596 &  & 14443 & 14471 & 14491 & 14539 \\ \hline
+      StarlightCurves & 478 & 1542 & 3258 & 24151 &  &  &  &  & 3676 & 3750 & 3752 & 3792 \\ \hline
+      Strawberry & 112 & 453 & 448 & 3601 & 4020 & 4948 & 6687 & 41484 & 3649 & 3683 & 3741 & 3781 \\ \hline
+      Trace & 7 & 27 & 42 & 284 & 977 & 1472 & 2405 & 13619 & 3654 & 3690 & 3657 & 3679 \\ \hline
+      TwoLeadECG & 0 & 1 & 1 & 7 & 76 & 90 & 104 & 394 & 3602 & 3602 & 3602 & 3604 \\ \hline
+      UWaveGestureLibrary & 22 & 77 & 129 & 698 &  &  &  &  & 11015 & 11399 & 11599 & 11477 \\ \hline
+      Wafer & 82 & 235 & 466 & 3605 & 8088 & 9642 & 10263 & 43869 & 3643 & 3696 & 3711 & 3707 \\ \hline
+      Wine & 2 & 6 & 19 & 120 & 305 & 725 & 1470 & 12827 & 3604 & 3620 & 3630 & 3676 \\ \hline
     \label{tab:longduration}
     \end{longtable}
-    \end{landscape}
-  \end{tiny}
+\end{landscape}
+
+\begin{landscape}
+  \begin{longtable}{|l|llll|llll|}
+    \caption{Train Time (CPU Time) for TSF and WEASEL on 77 data sets for all chunks}\\
+    \hline
+    \multirow{2}{*}{\textbf{Data set}} & 
+    \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
+    & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+    \hline
+    \endfirsthead % <-- This denotes the end of the header, which will be shown on the first page only
+    \caption{Train Time (CPU Time) for TSF and WEASEL on 77 data sets for all chunks (continued)}\\
+    \hline
+    \multirow{2}{*}{\textbf{Data set}} & 
+    \multicolumn{4}{c}{\textbf{TSF}} & \multicolumn{4}{c}{\textbf{WEASEL}} \\
+    & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} & \textbf{10\%} & \textbf{20\%} & \textbf{30\%} & \textbf{100\%} \\ [0.5ex]
+    \hline
+    \endhead % <-- Everything between \endfirsthead and \endhead will be shown as a header on every page
+      ACSF1 & 47 & 50 & 58 & 74 & 2 & 11 & 16 & 29 \\ \hline
+      AtrialFibrillation & 75 & 81 & 77 & 98 & 4 & 3 & 4 & 18 \\ \hline
+      BasicMotions & 126 & 128 & 131 & 143 & 3 & 6 & 10 & 21 \\ \hline
+      Beef & 27 & 29 & 35 & 44 & 2 & 3 & 3 & 5 \\ \hline
+      Car & 28 & 34 & 29 & 42 & 4 & 3 & 3 & 14 \\ \hline
+      Chinatown & 39 & 40 & 42 & 43 & 0 & 0 & 0 & 1 \\ \hline
+      CinCECGTorso & 29 & 32 & 22 & 49 & 1 & 6 & 12 & 23 \\ \hline
+      Coffee & 36 & 35 & 36 & 40 & 1 & 2 & 4 & 4 \\ \hline
+      Computers & 38 & 31 & 41 & 62 & 12 & 15 & 18 & 69 \\ \hline
+      Cricket & 293 & 308 & 337 & 450 & 61 & 98 & 167 & 623 \\ \hline
+      DuckDuckGeese & 8780 & 8996 & 9323 & 10706 &  &  &  &  \\ \hline
+      Earthquakes & 52 & 41 & 48 & 59 & 12 & 12 & 17 & 71 \\ \hline
+      ECG200 & 32 & 28 & 41 & 21 & 1 & 2 & 3 & 10 \\ \hline
+      ECG5000 & 61 & 69 & 67 & 74 & 6 & 14 & 26 & 33 \\ \hline
+      ECGFiveDays & 23 & 28 & 36 & 40 & 0 & 1 & 2 & 3 \\ \hline
+      ElectricDevices & 557 & 567 & 590 & 622 & 87 & 524 & 836 & 3201 \\ \hline
+      EOGHorizontalSignal & 65 & 69 & 112 & 164 & 36 & 74 & 127 & 786 \\ \hline
+      EOGVerticalSignal & 47 & 50 & 57 & 151 & 37 & 57 & 109 & 611 \\ \hline
+      Epilepsy & 135 & 114 & 135 & 157 & 9 & 23 & 39 & 61 \\ \hline
+      ERing & 145 & 123 & 149 & 146 & 1 & 2 & 4 & 15 \\ \hline
+      EthanolConcentration & 241 & 271 & 287 & 566 & 80 & 202 & 355 & 844 \\ \hline
+      EthanolLevel & 61 & 65 & 83 & 350 & 33 & 93 & 126 & 679 \\ \hline
+      FaceDetection &  &  &  &  & 83 & 321 & 806 &  \\ \hline
+      FingerMovements & 323 & 321 & 330 & 341 & 23 & 63 & 114 & 583 \\ \hline
+      FordA & 242 & 232 & 326 & 571 & 206 & 210 & 379 & 1425 \\ \hline
+      FordB & 188 & 118 & 342 & 527 & 250 & 195 & 480 & 1884 \\ \hline
+      FreezerRegularTrain & 35 & 32 & 33 & 39 & 3 & 7 & 7 & 15 \\ \hline
+      FreezerSmallTrain & 25 & 25 & 26 & 30 & 1 & 3 & 4 & 4 \\ \hline
+      Fungi & 30 & 24 & 32 & 37 & 0 & 1 & 2 & 2 \\ \hline
+      Ham & 42 & 35 & 32 & 52 & 4 & 6 & 5 & 14 \\ \hline
+      HandMovementDirection & 384 & 486 & 502 & 593 & 81 & 203 & 129 & 412 \\ \hline
+      Handwriting & 134 & 140 & 138 & 153 & 8 & 18 & 30 & 60 \\ \hline
+      Heartbeat & 1343 & 1384 & 1409 & 1606 & 21 & 55 & 45 & 189 \\ \hline
+      HouseTwenty & 30 & 33 & 35 & 55 & 3 & 7 & 8 & 30 \\ \hline
+      InsectEPGRegularTrain & 40 & 42 & 42 & 52 & 5 & 5 & 7 & 25 \\ \hline
+      InsectEPGSmallTrain & 24 & 28 & 26 & 33 & 2 & 2 & 2 & 7 \\ \hline
+      InsectWingbeatSound & 50 & 49 & 51 & 59 & 4 & 8 & 16 & 21 \\ \hline
+      ItalyPowerDemand & 25 & 32 & 32 & 35 & 0 & 0 & 1 & 2 \\ \hline
+      LargeKitchenAppliances & 46 & 45 & 50 & 84 & 22 & 22 & 38 & 164 \\ \hline
+      Libras & 85 & 88 & 88 & 92 & 1 & 3 & 5 & 23 \\ \hline
+      Lightning2 & 40 & 28 & 23 & 38 & 5 & 5 & 7 & 21 \\ \hline
+      Lightning7 & 28 & 37 & 40 & 44 & 2 & 4 & 5 & 10 \\ \hline
+      LSST & 698 & 698 & 709 & 733 & 25 & 78 & 152 & 826 \\ \hline
+      Meat & 39 & 28 & 35 & 37 & 3 & 4 & 3 & 9 \\ \hline
+      MoteStrain & 34 & 23 & 23 & 25 & 0 & 0 & 1 & 3 \\ \hline
+      MotorImagery & 1874 & 2115 & 2391 & 4483 & 217 & 533 & 806 & 2208 \\ \hline
+      NATOPS & 1103 & 1108 & 1125 & 1178 & 16 & 39 & 67 & 316 \\ \hline
+      NonInvasiveFetalECGThorax1 & 121 & 131 & 146 & 404 & 408 & 477 & 842 & 2395 \\ \hline
+      NonInvasiveFetalECGThorax2 & 118 & 130 & 150 & 402 & 272 & 372 & 991 & 2539 \\ \hline
+      OliveOil & 34 & 38 & 41 & 46 & 2 & 1 & 2 & 4 \\ \hline
+      PEMS-SF & 9541 & 9759 & 9849 & 10541 &  &  &  &  \\ \hline
+      Phoneme & 56 & 29 & 72 & 91 & 15 & 14 & 48 & 326 \\ \hline
+      PigAirwayPressure & 34 & 38 & 43 & 80 & 17 & 35 & 51 & 741 \\ \hline
+      PigArtPressure & 39 & 58 & 53 & 102 & 16 & 34 & 57 & 203 \\ \hline
+      PigCVP & 50 & 39 & 42 & 81 & 13 & 35 & 60 & 261 \\ \hline
+      Plane & 37 & 40 & 42 & 42 & 1 & 3 & 4 & 7 \\ \hline
+      PowerCons & 49 & 39 & 33 & 50 & 1 & 4 & 4 & 12 \\ \hline
+      RacketSports & 208 & 230 & 266 & 276 & 1 & 3 & 6 & 32 \\ \hline
+      RefrigerationDevices & 56 & 49 & 56 & 61 & 27 & 27 & 47 & 106 \\ \hline
+      Rock & 43 & 46 & 54 & 74 & 4 & 4 & 6 & 17 \\ \hline
+      ScreenType & 53 & 65 & 34 & 101 & 20 & 24 & 37 & 288 \\ \hline
+      SelfRegulationSCP1 & 342 & 373 & 272 & 589 & 181 & 136 & 192 & 755 \\ \hline
+      SelfRegulationSCP2 & 419 & 405 & 433 & 524 & 71 & 149 & 238 & 591 \\ \hline
+      SemgHandGenderCh2 & 58 & 70 & 75 & 163 & 19 & 28 & 72 & 184 \\ \hline
+      SemgHandMovementCh2 & 114 & 62 & 69 & 246 & 37 & 61 & 76 & 338 \\ \hline
+      SemgHandSubjectCh2 & 61 & 73 & 78 & 256 & 28 & 45 & 94 & 529 \\ \hline
+      SmallKitchenAppliances & 74 & 46 & 49 & 84 & 16 & 29 & 32 & 393 \\ \hline
+      SonyAIBORobotSurface1 & 32 & 31 & 35 & 35 & 0 & 0 & 0 & 2 \\ \hline
+      SonyAIBORobotSurface2 & 33 & 23 & 24 & 25 & 0 & 0 & 1 & 3 \\ \hline
+      StandWalkJump & 170 & 187 & 190 & 274 & 8 & 18 & 25 & 73 \\ \hline
+      StarlightCurves & 78 & 86 & 99 & 332 & 21 & 31 & 43 & 119 \\ \hline
+      Strawberry & 75 & 52 & 53 & 65 & 9 & 19 & 38 & 53 \\ \hline
+      Trace & 31 & 38 & 41 & 33 & 2 & 4 & 5 & 13 \\ \hline
+      TwoLeadECG & 23 & 25 & 24 & 29 & 0 & 1 & 1 & 3 \\ \hline
+      UWaveGestureLibrary & 126 & 90 & 138 & 145 & 17 & 38 & 61 & 76 \\ \hline
+      Wafer & 68 & 67 & 69 & 77 & 6 & 23 & 30 & 47 \\ \hline
+      Wine & 26 & 26 & 27 & 34 & 1 & 2 & 2 & 4 \\ \hline
+      \label{tab:longduration_1}
+    \end{longtable}
+\end{landscape}
+
 %%%%%%%%%%%%%
   %durations
 %%%%%%%%%%%%%

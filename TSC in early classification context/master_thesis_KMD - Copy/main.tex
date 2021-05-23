@@ -1,0 +1,41 @@
+\documentclass{report}
+\usepackage{import}
+\usepackage{load_preamp}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=Blue,
+    citecolor=OliveGreen
+}
+\urlstyle{same}
+
+\DeclareUnicodeCharacter{2212}{-}
+\newtheorem{definition}{Definition}
+\graphicspath{{figures/}}
+\addbibresource{List_of_Cited_Literature.bib}
+
+\begin{document}
+\input{title_page.tex}
+%\pagenumbering{gobble}
+\small
+\vspace*{\fill}
+{\raggedright
+Wahba, Ismail:\\
+A comparison of Time Series Classification Algorithms based on their
+ability to learn in an Early Classification Context \\ Master Thesis, Otto-von-Guericke-University Magdeburg, 2021. 
+}
+
+\thispagestyle{empty}
+\null\newpage
+\input{abstract.tex}
+\null\newpage
+%\import{./}{tableofcontents}
+\input{tableofcontents.tex}
+\null\newpage
+
+
+%\mainmatter
+
+
+
+
+\end{document}
