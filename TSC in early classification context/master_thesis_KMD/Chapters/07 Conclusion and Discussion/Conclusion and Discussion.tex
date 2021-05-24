@@ -14,7 +14,7 @@ Classifiers that are bound by the shape of data fail to operate in the context.
 Our final experiment results included the classifiers CBoss, PForest, ST, TSF and WEASEL compared on chosen data sets from the UCR/UEA time series data archives.
 Along with a baseline classifier that predict majority class.
 
-We use the $F_{\beta}-measure$ as an overall performance metric; as it combines both performance of classifier and earliness.
+We use the $F_{\beta}$ score as an overall performance metric; as it combines both performance of classifier and earliness.
 The value of $\beta$ plays a fundamental role in the results and should be adjusted according to the needs of the experiments.
 Using equal weights for performance and earliness, overemphasizes the importance of earliness, which consequently overcompensates for the lower performace scores.
 
@@ -23,18 +23,18 @@ It is clearly superior on the 10\% chunk data, while the others are no better th
 As more data is revealed to learn on, the other classifiers; CBoss, WEASEL, ST and PForest, start to catch up with TSF.
 On the full length data, the 5 classifiers are not significantly different from each other and are all better than the baseline, yet WEASEL has the highest rank.
 
-For the within classifier comparison based on $F_{\beta}-measure$, our testbed results show that there is no statistical difference between the 10\% version of any of the classifiers and their respective 100\% versions.
+For the within classifier comparison based on $F_{\beta}$ score, our testbed results show that there is no statistical difference between the 10\% version of any of the classifiers and their respective 100\% versions.
 This contrasts with the within comparison based on balanced accuracy, where the 100\% versions are significantly better than the 10\% versions for the classifiers.
 This means that the earliness factor plays a big role in shaping the results; it gives an advantage to the lower chunks that compensates for the lower performance.
 A research interest that we couldn't infer useful insights for is the effect of the different data characteristics on the performance of classsifiers across the different chunks.
 
 To evaluate the created framework, we built a recommender that predicts the performance of TSCAs for unseen data sets in the early classification context.
-The recommender is better in predicting the $F_{\beta}-measure$ of classifiers for data sets on the lower chunks scoring an average 6.71\% RMSE error,
+The recommender is better in predicting the $F_{\beta}$ score of classifiers for data sets on the lower chunks scoring an average 6.71\% RMSE error,
 but gets worse when predicting the scores on higher chunks till the RMSE reaches 19.52\%.
 The train size, test size, length and number of classes play an important role in predicting the chunk learners results.
 Other data set characteristics like; problem type and number of dimensions don't seem to have a preciptable relation with the results.
 
-For every chunk, the recommender is good at judging whether a classifier is a good performer or not, despite the residuals between the actual and predicted $F_{\beta}-measure$ values.
+For every chunk, the recommender is good at judging whether a classifier is a good performer or not, despite the residuals between the actual and predicted $F_{\beta}$ score values.
 This goes back to the central role that the baseline classifier plays in the recommendation part.
 The baseline classifier is generally worse than all TSCAs on all chunks, so it is easy to beat on many data sets.
 This causes our recall values to be very high, specially on the 100\% chunk data when the baseline classifier is significantly worse than all the others.
@@ -44,7 +44,7 @@ Our selection criteria of the data set problem types is cherry picked to suit ou
 Experiments that cover all problem types might give a broader view of results on time series problems of different natures.
 There are multiple components and parameters of the framework that have a great effect on the final results.
 For example, the evaluation metric to use for comparing the classifiers in the testbed.
-We emphasize that $F_{\beta}-measure$ is not the only suitable measure for assessing classifiers performance.
+We emphasize that $F_{\beta}$ score is not the only suitable measure for assessing classifiers performance.
 But if used, the choice of weights has a great effect that should be considered when interpreting the results.
 Also the baseline classifier in the recommender has a great effect on deciding good and bad performing classifiers.
 Tho use of a time series specific classifier as a baseline, for example KNNDTW, is highly desirable.

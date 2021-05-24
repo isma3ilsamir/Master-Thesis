@@ -1,6 +1,6 @@
 \subsection{Phase Dependent intervals Algorithms}
 \label{SubsectionPhaseDependent}
-Phase dependent algorithms is a group of algorithms that extract temporal features from intervals of time series.
+Phase dependent algorithms (also referred to as interval based algorithm) is a group of algorithms that extract temporal features from intervals of time series.
 These temporal features help with the interpretibility of the model; as they give insights about the temporal characteristics of the data \cite{baydogan2016time},
 unlike whole time series algorithms that base their decisions solely on the similarities between instances.
 Another advantage of phase dependent algorithms is that they can also handle distortions and misalignments of time series data \cite{deng2013time}.
@@ -11,7 +11,7 @@ Like the case with the SmallKitchenAppliances dataset, in which the usage of thr
 Not only the pattern of usage is discrimanatory in such case, but also the time of usage.
 
 Typically using interval features requires a two phase process; first by extracting the temporal features and then training a classifier using the extracted features \cite{deng2013time}.
-There are n(n-1)/2 possible intervals,for a time series of length n \cite{bagnall2017great}.
+There are n(n-1)/2 possible intervals, for a time series of length n \cite{bagnall2017great}.
 There is also a wide variety of features, also called literals, to extract for each interval. These cover simple statistical measures as well as local and global temporal features \cite{santos2016literature,rodriguez2004support,deng2013time}.
 This wide space of features represents one of the main challenges that phase dependent algorithms face.
 \cite{rodriguez2004support} proposed a solution for this by only considering intervals with lengths equal to powers of two \cite{bagnall2017great} in the features extraction step.
@@ -19,9 +19,11 @@ This wide space of features represents one of the main challenges that phase dep
 \subsubsection{Time Series Forest}
 \label{SubsubsectionTimeSeriesForest}
 Time Series Forest (TSF) is an algorithm that was introduced in 2013 by \cite{deng2013time}.
-They motivated their model with two main criteria; contributing to interpretable time series classification through
+The model was motivated with two main criteria; contributing to interpretable time series classification through
 the use of simple statistical temporal features and reaching this goal by creating an efficient and effective classifier.
 
+Building the TSF classifier is a two fold process. In the beginning, TSF starts a features extraction step.
+Then based on the extracted features, it starts building the trees and creating the forest.
 TSF considers three types of interval features; mean, standard deviation and slope.
 If we were to consider an interval with starting point $t\textsubscript{1}$ and with ending point $t\textsubscript{2}$.
 Let $v\textsubscript{i}$ be the value at a specific point $t\textsubscript{i}$.
@@ -49,10 +51,12 @@ Then the three features can be denoted as:
 \end{equation}
 Where m denotes the slope of the least squares regression line for the training dataset.
 
-For building the trees, TSF introduced a new splitting criteria at the tree nodes, which they called the Entrace. A combination of
-Entropy and distance; to break the ties between features of equal entropy gain by preferring splits that have the furthest distance
-to the nearest instance. They also use a specific number of evaluation points rather than checking all split points for the highest
-information gain. In their experiment \cite{bagnall2017great} found these two criteria to have negative effect on accuracy.
+Like conventional decision trees, TSF uses a splitting criteria for its internal nodes.
+The splitting criteria involves comparing the feature values to some threshold, then based on the comparison data instances are passed down the paths of the tree.
+Instead of the costly process of finding the best threshold by checking values from all instances, TSF selects a value from a fixed number of candidates per feature.
+The pool of candidates is formed by dividing the range of values for the feature into equal-width intervals.
+TSF introduced a new splitting criteria at the tree nodes, which they called the Entrace. A combination of Entropy and distance; to break the ties between features of equal entropy gain by preferring splits that have the furthest distance to the nearest instance.
+In their experiment, \cite{bagnall2017great} found these two criteria to have negative effect on accuracy.
 
 As mentioned earlier the feature space for creating interval features is huge, TSF adopts the same random sampling technique that Random Forests use
 reducing the feature space from $O(M^{2})$ to only $O(M)$, by considering only $O(\sqrt{M})$ random interval sizes and $O(\sqrt{M})$

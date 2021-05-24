@@ -43,6 +43,7 @@ Dynamic Time Warping was a very strong baseline for time series classification f
 It was first introduced as a technique to recognize spoken words that can deal with misallignments between time series
 that Euclidean Distance couldn't handle \cite{tan2020fastee}.
 Figure \ref{Img:ED_vs_DTW} shows a comparison between ED and DTW while computing the distance between two time series instances.
+DTW is able to compensate between the misalignments of the two curves while ED can only compare points of the same index.
 
 \begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
@@ -65,7 +66,7 @@ For a path to be valid it must conform to three conditions:
 \begin{itemize}
     \item $p_{1} = (t1_{1},t2_{1})$
     \item $p_{p} = (t1_{n},t2_{n})$
-    \item for all i \textless m :
+    \item for all i \textless p :
         \begin{itemize}
             \item $0 \leq t1_{i+1} - t1_{i} \leq 1$
             \item $0 \leq t2_{i+1} - t2_{i} \leq 1$
@@ -75,7 +76,7 @@ For a path to be valid it must conform to three conditions:
 Finding an optimal path under DTW can be computationally expensive with complexity of $O(n^2)$ for a time series of length n \cite{schafer2017fast,petitjean2016faster}.
 Consequently it is usual to use a contraint with the path; to prevent comparison of points outside a certain window \cite{tan2020fastee}; like the famous Sakoe-Chiba Band \cite{sakoe1978dynamic}, Itakura Parallelogram \cite{itakura1975minimum} and Ratanamahatana-Keogh Band \cite{ratanamahatana2004making}.
 Typically DTW can make use of its warping window to handle distortion in time series,
-but still it is vulnerable to cases where the difference in length between instances length is larger than the warping window \cite{tan2019time}.
+but still it is vulnerable to cases where the difference in length between the instances is larger than the warping window \cite{tan2019time}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Nearest Neighbor with MSM Distance}
@@ -86,7 +87,7 @@ These are; robustness to misalignments between time series instances, being an a
 assure translation invariance and achieve quadratic run-time \cite{lines2015time}.
 
 The way MSM works is pretty much like other edit distance methods; it determines the similarity between two instances
-through the usage of a set of operations to transform one of them to the other. These operations, as the name indicates, are; move, split and merge \cite{bagnall2017great}.
+through the usage of a set of operations to transform one of them to the other. These operations, as the name indicates, are; MOVE, Split and Merge \cite{bagnall2017great}.
 
 Move is the substitution of one single time point of a series with another.
 Split divides a single time point of a series into two consecutive time points holding the same value as the originial time point.
@@ -107,45 +108,46 @@ The costs of split and merge are equal and they are set to a constant to satisfy
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Proximity Forest}
 \label{SubsubsectionPForest}
-Proximity forest was developed by \cite{lucas2019proximity}.
-It was introduced as an addition to scalable time series classification, offering a more scalable and accurate classifier than EE \cite{tan2020fastee}.
-On one side, EE was an accurate classifier being the state of the art algorithm and the best among distance based algorithms, as it combines 11 NN-algorithms each using a different elastic measure.
-But on the other hand, EE's training process was very slow as it scales quadratically with the training size of the data set \cite{lines2015time,bagnall2017great}.
+Proximity Forest (PF) was developed by \cite{lucas2019proximity}.
+It was introduced as an addition to scalable time series classification, offering a more scalable and accurate classifier than Elasitc Ensemble (EE) \cite{tan2020fastee}.
+EE was an accurate classifier and had been the state of the art algorithm among the distance based algorithms group. It combines 11 NN-algorithms each using a different elastic measure.
+But on the other side, EE's training process was very slow; due to its quadratic scaling with the training size of the data set \cite{lines2015time,bagnall2017great}.
 This goes back to the leave-one-out-cross-validation (LOOCV) used to optimize the parameters for each used metric \cite{shifaz2020ts}.
 
-Proximity Forest wanted to achieve two main goals. The first was to offer an adaptable algorithm that can scale with huge data sets consisting of millions of time series instances.
+PF wanted to achieve two main goals. The first was to offer an adaptable algorithm that can scale with huge data sets consisting of millions of time series instances.
 Beating EE, by orders of maginute, and other state of the art algorithms in terms of training and testing run time complexity.
 While the other goal was to develop a competitive algorithm on the UCR data sets archive without the need to sacrifice accuracy for scalability as is the case with BOSS-VS \cite{lucas2019proximity}.
 
 
 Capitalizing on the previous research that has been put in developing specialized time series distance measures and inspired by the existing EE \cite{fawaz2020inceptiontime,fawaz2019deep}.
-Proximity forests combine the the eleven elastic distances from EE along with a tree-based algorithms to form an ensemble of decision trees.
+PFs combine the the eleven elastic distances from EE along with a tree-based algorithms to form an ensemble of decision trees.
 The reason behind using tree-based algorithms lies in the divide-and-conquer strategy that they adopt, which makes them scalable for large data sets.
 Also a stochastic process is used for the selection of distance measures and their hyper-parameters, which usually hinders the performance of other algorithms,
-like KNN, that need to learn the hyper-parameters of the utilized distance measure for each data set before using it \cite{lucas2019proximity}.
-Proximity forests can scale sublinearly with training data set size, but quadratically with the length of the time series \cite{shifaz2020ts}.
+like KNN, that needs to learn the hyper-parameters of the utilized distance measure for each data set before using it \cite{lucas2019proximity}.
+PFs can scale sublinearly with training data set size, but quadratically with the length of the time series \cite{shifaz2020ts}.
 
 %\subsection{Learning a proximity forest}
-Proximity forests are based on a similar concept as Random Forests \cite{breiman2001random}, another tree-based ensemble, which learns only on a subset of the available features
-for building tree nodes. This process insinuates in a factor of variability between the trees that form the ensemble but each with a low bias.
+PFs are based on a similar concept as Random Forests \cite{breiman2001random}, another tree-based ensemble, which learns only on a subset of the available features
+for building tree nodes. This process insinuates in a factor of variability between the trees which form the ensemble, but each with a low bias.
 The collective classification accuracy of the ensemble then tends to provide better results than any if its single classifiers \cite{lucas2019proximity}.
 
-The building unit of a proximity forest is called the proximity tree. A proximity tree and a decision tree are similar on all aspects,
+The building unit of a PF is called the proximity tree. A proximity tree and a decision tree are similar on all aspects,
 but they differ in the tests they apply in internal nodes.
 A conventional decision tree builds its nodes using attributes. When an instance is being tested, it is compared to the value of the attribute
 and then follows the branch to which it conforms.
 
 Unlike conventional decision trees, that use feature values for their nodes, proximity trees build their nodes using randomly selected examplars.
-When an instance to be tested, an elastic distance measure is calculated and then it follows the branch of the nearest examplar.
+When an instance is to be tested, an elastic distance measure is calculated and then it follows the branch of the nearest examplar.
 
 An internal node in the tree holds two attributes; \emph{measure} and \emph{branches}.
-As noted in \cite{lucas2019proximity}, a measure is function \emph{object} $\times$ \emph{object} $\rightarrow\mathbb{R}$.
-Proximity Forest uses the same 11 distance measures used by EE; Euclidean distance (ED) Dynamic time warping using the full window (DTW);
+As noted in \cite{lucas2019proximity}, \emph{measure} is a function \emph{object} $\times$ \emph{object} $\rightarrow\mathbb{R}$ that calculates a value given two objects.
+In this case, the value represents the distance between the two objects.
+PF uses the same 11 distance measures used by EE; Euclidean distance (ED) Dynamic time warping using the full window (DTW);
 Dynamic time warping with a restricted warping window (DTW-R); Weighted dynamic time warping (WDTW);
 Derivative dynamic time warping using the full window (DDTW); Derivative dynamic time warping with a restricted warping window (DDTW-R);
 Weighted derivative dynamic time warping (WDDTW); Longest common subsequence (LCSS); Edit distance with real penalty (ERP);
 Time warp edit distance (TWE); and, Move-Split-Merge (MSM).
-Proximity Forest saves a lot of the computational cost by replacing parameter searches with random sampling \cite{fawaz2020inceptiontime,fawaz2019deepreview}.
+PF saves a lot of the computational cost by replacing parameter searches with random sampling \cite{fawaz2020inceptiontime,fawaz2019deepreview}.
 While \emph{branches} is a vector of the possible branches to follow, each branch holding two attributes; \emph{examplar} and \emph{subtree}.
 \emph{examplar} is a time series instance to which a query instance is compared, and \emph{subtree} refers to the tree (subtree) that the instance should follow based on its closest examplar.
 

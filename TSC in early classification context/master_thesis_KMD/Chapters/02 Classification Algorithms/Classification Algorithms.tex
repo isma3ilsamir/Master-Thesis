@@ -51,7 +51,7 @@ The same goes for multivariate time series, individual univariate observations a
 
 \subsection{Nature of Time Series Data}
 \label{NatureOfTimeSeriesData}
-Having discussed the dependency assumptions in time the different forms of time series data.
+Having discussed the dependency assumptions and the different forms of time series data.
 It is this dependency that makes time series data challenging for conventional machine learning algorithms, which are used for tabular and cross-sectional data.
 Tabular and cross-sectional data assume observations to be  i.i.d \cite{loning2019sktime}.
 
@@ -83,7 +83,7 @@ as the percentage of correctly classified instances for a given dataset D, eithe
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Time Series Classification Algorithms}
 \label{SectionTSCA}
-This chapter will introduce different types of TSCAs and discuss the various techniques that each type apply.
+This section introduces different types of TSCAs and discuss the various techniques that each type apply.
 There are multiple ways to divide TSCAs in order to better understand them.
 In this thesis we follow the grouping defined by \cite{bagnall2017great}.
 \subimport{./}{Whole}
@@ -114,19 +114,19 @@ For earliness, we follow the definition mentioned by \cite{schafer2020teaser}; a
 There are multiple ways to compare algorithms for eTSC based on the two objectives accuracy and earliness.
 For instance, one could fix the value of earliness and compare accuracies of algorithms at a defined early point of time,
 fix a certain accuracy value to be achieved and compare how early classifiers can reach it, or combine both accuracy and earliness in one score \cite{schafer2020teaser}.
-The $F_{\beta}-measure$ is an evaluation measure which combines both accuracy and earliness in one equation.
+The $F_{\beta}$ score is an evaluation measure which combines both accuracy and earliness in one equation.
 It is the calculation of the weighted average between earliness and accuracy.
 The value of $\beta$ is the weighting variable; it can be used to give higher importance to either of the aspects over the other.
-$F_{\beta}-measure$ definition is:
+$F_{\beta}$ score definition is:
 \begin{definition}
     \label{DefinitionHM}
     $F_{\beta} = (1 + \beta^2)\frac{\text{accuracy (1 - earliness)}}{\beta^2 \text{accuracy + (1 - earliness)}}$
 \end{definition}
 
-A special case of the $F_{\beta}$$-$$measure$ is the Harmonic mean (HM) or the $F_{1}\-score$.
+A special case of the $F_{\beta}$ score is the Harmonic mean (HM) or the $F_{1}\-score$.
 The HM assigns equal weights for earliness and accuracy by assigning the value of $\beta$ to 1.
 It is a popular choice of evaluation for eTSC problems and has been previously used by \cite{ghalwash2012early} and \cite{schafer2020teaser}.
-For the scope of our framework, we will also consider the weighted average $F_{\beta}-measure$ to evaluate our classifiers.
+For the scope of our framework, we will also consider the weighted average $F_{\beta}$ score to evaluate our classifiers.
 
 eTSC is needed in situations in which waiting for more data to arrive can be costly or
 when making late decisions can cause unfavorable results \cite{mori2017early,parrish2013classifying,lin2015reliable}.

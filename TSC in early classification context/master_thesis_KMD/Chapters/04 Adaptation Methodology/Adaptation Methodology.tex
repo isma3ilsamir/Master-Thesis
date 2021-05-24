@@ -106,7 +106,7 @@ The prediction results are then passed to the classifier validator and the insig
 \label{ClassifierValidator}
 The classifier validator is a component which assesses the prediction results from the chunk learners.
 Its main objective is to decide if the predicted performance results for the classifiers on a data set qualify as good recommendations or not.
-The classifier validator should exclude classifiers from the recommendations if it evaluates thier performances as weak and not competent.
+The classifier validator should exclude classifiers from the recommendations if it evaluates their performances as weak and not competent.
 The result from the classifier validator is the actual final recommendations of the framework.
 
 \subsubsection*{The Insights Extractor}
@@ -136,10 +136,16 @@ yet combining classifiers in an ensemble have proven to outperform all of its in
 
 The other aspect of the framework is to choose an evaluation criteria for assessing the performance of classifiers.
 Since our framework is inspired by the problem of eTSC; we are interested in evaluating classifiers based on their performance in predicting correct class labels, as well as considering how early they make the prediction.
-Previous eTSC research have used the harmonic mean of accuracy and earliness as an evaluator for classifiers \cite{schafer2020teaser}; because it is allows combining both in a single score.
+Previous eTSC research have used the harmonic mean of accuracy and earliness as an evaluator for classifiers \cite{schafer2020teaser}; because it allows combining both in a single score.
 The harmonic mean considers both earliness and accuracy to be equally important.
 In our framework we use $F_{\beta}$; a generalized form of the harmonic mean which allows the assignment of different weights to earliness and accuracy using the parameter $\beta$.
 We prefer using $F_{\beta}$ to offer more flexibility in adjusting weights to suit cases where either of the objectives is more important than the other.
+
+We also use a baseline classifier, which is a non-time series classification algorithm.
+It is a simple classifier which always predicts the majority class of a given data set.
+We include this classifier not as a competing algorithm, but as a basic standard; to better understand the actual performance of the other classifiers on the data sets and assess the quality of their results.
+We use the results from this baseline classifier in the testbed and the recommender; as a threshold that we can compare other classifiers to and define a notion of goodness and badness for performance.
+We name the classifier \emph{dummy}; as an indication of its role in the comparisons and will refer to it using that name.
 
 %The testbed is the engine responsible for comparing the implemented algorithms on the data sets provided.
 %The testbed mainly collects user input about the experiment configuration, preprocesses the data in preparation for the learning process
@@ -215,7 +221,7 @@ We design our model preparation agent to adjust the preparation of models to han
 As mentioned in section \ref{SectionTSCA}, we follow the grouping criteria by \cite{bagnall2017great} which arranges TSCAs into 5 main categories based on their techniques.
 We have included classifiers representing each of the 5 groups, in addition to a \nth{6} group which represents the family of deep learning time series algorithms.
 For each group, we have selected the state of the art classifier based on the results of previous comparison frameworks discussed in chapter \ref{ChapterRelatedWork}.
-We tried, as far as the implemented libraries allowed, to represent each group with 2 classifiers; one that is a non-ensebmle and another which is an ensemble.
+We tried, as far as the implemented libraries allowed, to represent each group with 2 classifiers; one that is a non-ensemble and another which is an ensemble.
 A total of 10 classifiers are included in the framework covering all 6 groups, these can be broken down into the following:
 \begin{itemize}
   \item Distance based : 1NN using MSM distance and PForest
@@ -425,22 +431,22 @@ For our implementation, we considered \enquote{balanced accuracy} as our default
 
 Our evaluation is not only dependent on the performance of classifiers on testing data sets, but also considers the amount of data that was used for learning.
 To answer our research question \textbf{\textit{how to evaluate the classifiers in the early classification context ?}}
-We explain why we choose using the $F_{\beta}-measure$ as an evaluation mesure for the classifiers and how do we calculate its value.
+We explain why we choose using the $F_{\beta}$ score as an evaluation mesure for the classifiers and how do we calculate its value.
 
-We previously defined the $F_{\beta}-measure$ in section \ref{EarlyTimeSeriesClassification}, it has been used, in the form of $F_{1}-Score$, by \cite{schafer2020teaser} as the objective function for evaluating their algorithm $TEASER$.
-The $F_{\beta}-measure$ is a popular choice for calculating a score that combines 2 objectives at the same time, which are earliness and performance for eTSC problems.
-Likewise, we use $F_{\beta}-measure$ as the means of evaluating classifiers in our experiments; due to its capacity to incorporate both objectives in one score.
+We previously defined the $F_{\beta}$ score in section \ref{EarlyTimeSeriesClassification}, it has been used, in the form of $F_{1}-Score$, by \cite{schafer2020teaser} as the objective function for evaluating their algorithm $TEASER$.
+The $F_{\beta}$ score is a popular choice for calculating a score that combines 2 objectives at the same time, which are earliness and performance for eTSC problems.
+Likewise, we use $F_{\beta}$ score as the means of evaluating classifiers in our experiments; due to its capacity to incorporate both objectives in one score.
 Which allows us to compare the trained classifiers in terms of a one score value without worrying about fixing the value of either the earliness or the performance,
 as well as changing assigning different weights for the objectives if needed.
 
-On the other hand, the $F_{\beta}-measure$ equation that was discussed in section \ref{EarlyTimeSeriesClassification} doesn't fit directly into our evaluation framework.
+On the other hand, the $F_{\beta}$ score equation that was discussed in section \ref{EarlyTimeSeriesClassification} doesn't fit directly into our evaluation framework.
 If we try to substitute the results for a classifier trained on the full length data into this equation, we would always get a value of 0.
 The reason is that the equation is designed to do reverse scoring to the value or earliness, by re-coding its value so that the less seen data points, the higher the contribution of earliness in the equation.
 This is simply achieved by using (1 - earliness) instead of using the value of earliness directly.
 In case of calculating scores at full length, this would yield a value of 0 regardless of the performance of the classifier;
 since the earliness value at full length is 1, then the equation (1 - earliness) would always give a 0 score causing the numerator to be 0.
 
-Our modification to the $F_{\beta}-measure$ is a two fold procedure.
+Our modification to the $F_{\beta}$ score is a two fold procedure.
 First, we reverse its scale, so that the lower the value the better. Then we reverse score the result again so that it returns to the original scale.
 We represent our 2 steps modification in equations \ref{Equation:HMNew1} and \ref{Equation:HMNew2}.
 
@@ -454,7 +460,7 @@ We represent our 2 steps modification in equations \ref{Equation:HMNew1} and \re
     & F_{\beta} \text{ = 1 - } F_{\beta}-reversed \label{Equation:HMNew2}
 \end{align}
 
-In the first step, we reverse the scale of the original $F_{\beta}-measure$ equation by changing its equation.
+In the first step, we reverse the scale of the original $F_{\beta}$ score equation by changing its equation.
 Instead of reverse scoring earliness and using the actual performance score value, we use the actual earliness value and reverse the performance metric score.
 We name this measure the $F_{\beta}-reversed$, to clarify that it represents a reversed value of the $F_{\beta}$ used in other papers.
 Using $F_{\beta}-reversed$, if we consider the case of classifiers learning at full length, 
@@ -484,7 +490,7 @@ Table \ref{TableAnalysisReport} shows the structure of the output for the analys
     Test score                 & Performance score on testing data set                           \\ \hline
     Params                     & List of hyperparameters used and their values                   \\ \hline
     Revealed\%                 & Percent of data points used for training from the total length  \\ \hline
-    F-score                    & $F_{\beta}-measure$ combining test score and revealed\%         \\ \hline
+    F-score                    & $F_{\beta}$ score combining test score and revealed\%         \\ \hline
     Data set                   & The name of the data set                                        \\ \hline
   \end{tabularx}
   \caption{Analysis collected for each experiment}
@@ -494,7 +500,7 @@ Table \ref{TableAnalysisReport} shows the structure of the output for the analys
 Most of these information are already available before the learning process starts; because they are metadata about the process which is already known like the $Classifier$, $Data set$ and $Revealed \%$.
 While other information are available once the testing process finishes. For example $Train time$ and $Test time$ represent the total duration of the learning and testing processes.
 The $Test score$ represents performance of the classifier on testing data set.
-The last measure to calculate is the $F-score$; that's because it needs the testing process to be completely finished and the $Test score$ to be calculated.
+The last measure to calculate is the $F-score$; because it needs the testing process to be completely finished and the $Test score$ to be calculated.
 In the end, all of these information are used to compare the classifiers in the early classification context and used as an input for the recommender.
 
 \subsection{The Recommender Implementation}
@@ -513,7 +519,7 @@ The chunk learners are a group of regression algorithms that learn for each data
 We learn for each chunk a separate regressor, which will be used to predict the scores of the classifiers for that specific chunk.
 For example, the regressor that learns on the first chunk results, will be used for predicting $F-scores$ on the new data sets assuming that the classifiers were trained using only the first chunk of the data.
 The regressor that learns on the second chunk results predicts for the results assuming the classifiers were trained using the \nth{2} chunk and so on.
-When predicting for a new data set, each of the chunk learners predicts the $F-score$ for each of the 6 TSCA, including the dummy on this data set.
+When predicting for a new data set, each of the chunk learners predicts the $F-score$ for each of the TSCAs, including the \emph{dummy} on this data set.
 Then these results are passed on to the classifier validator for the final prediction and for the insights extractor for getting insights.
 
 For the implementation of the chunk learners, we have chosen random forests as our regression models.
@@ -534,12 +540,12 @@ Finally, random forests have been applied in many scientific fields and have pro
 \label{ClassifierValidatorImplementation}
 The classifier validator is the module that produces the final recommendations. It processes the results from the chunk learners to compare classifiers performances and give the final decision.
 It applies a logic for deciding which are the good performing classifiers on the data sets for each of the early classification chunks, as well as the full length chunk.
-We define a good classifier based on its performance in comparison to the dummy classifer on a specific data set.
+We define a good classifier based on its performance in comparison to the \emph{dummy} classifer on a specific data set.
 After the caluclation of all the results for all data sets is finished, a ranking procedure is carried out for each data set separately.
 The classifier with the highest $F-score$ is given the lowest (best) rank on the data set, while the classifier with the lowest $F-score$ is given the highest (worst) rank.
 If two, or more, classifiers have equal scores, they are given the minimum rank. For example if the second and third classifiers are equal they are both given the rank 2.
-Then the ranking of each of the classifiers is compared to that of the dummy classifier.
-All the classifiers with ranks equal to or more (worse) than the dummy classifier are flagged as bad performing classifiers, while the others are considered good performing classifiers.
+Then the ranking of each of the classifiers is compared to that of the \emph{dummy} classifier.
+All the classifiers with ranks equal to or more (worse) than the \emph{dummy} classifier are flagged as bad performing classifiers, while the others are considered good performing classifiers.
 In the end, the bad performing classifiers are filtered for each data set and the final recommendation is presented.
 
 \subsubsection*{The Insights Extractor Implementation}

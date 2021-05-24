@@ -268,7 +268,7 @@ of $C_{2}$ and $C_{3}$. We denote this feature with the parameter $Balanced$, wh
 % Experiments
 In this section we discuss the design of the experiments for the 2 components of our framework; the testbed and the recommender.
 The experiments for the testbed include running the implemented TSCAs on the data archives using different data chunks and calculating their performance using
-our implementation for the $F_{\beta}-measure$ previously discussed in subsection \ref{ExperimentExecutorImplementation}.
+our implementation for the $F_{\beta}$ score previously discussed in subsection \ref{ExperimentExecutorImplementation}.
 While the experiments for the recommender include learning classifiers on the results of the testbed to predict the best performing
 classifiers for unseen data sets.
 
@@ -296,39 +296,9 @@ The selected performance metric for our experiments was $Balanced Accuracy$.
 Balanced accuracy is a performance metric which can handle data sets with skewed class distributions by avoiding inflated performance estimates.
 To calculate balanced accuracy, the $Recall$ value is computed for each class then averaged over the total number of classes.
 
-\subsubsection{Classifiers that failed the experiments}
-\label{SubsubsectionExcludedClassifiers}
-Some of the included classifiers in the framework were excluded from our experiments; either because they couldn't operate in the early classification context
-or because they couldn't attain comparable results to the published performances by previously published frameworks.
-
-% Models excluded due not handling the context
-For example, KNNED and InceptionTime were excluded due to the nature of their techniques which couldn't handle our created context.
-Both algorithms are clearly able to learn on chopped training data sets.
-However once the testing phase is reached, they would fail to classify instances of the testing data,
-showing errors related to mismatches between the expeccted length of instances and the provided length.
-Yet they would finish the last chunk where the data is provided in it's original full length.
-The reason why KNNED fails such scenario, is that it uses ED which is a point-wise comparison distance measure that cannot compare time series of unequal lengths \cite{tan2019time}.
-On the other hand, InceptionTime is a deep learning model whose input layer architecture, represented by number of nodes, depends on the length of the input time series \cite{fawaz2019deepreview}.
-Since we use full length instances for testing, this caused an overflow of input data than what the model structure was expecting.
-There have been literature discussing adapting TSCAs to unequal time series, but this is out of the scope of our experiments.
-For more details refer to \cite{caiado2009comparison, tan2019time, fawaz2019deepreview}
-
-
-% Models excluded due to implementation error
-Although KNNDTW has been a competent time series classifier for decades; thanks to the exploitation of the elastic distance measure DTW.
-We couldn't get either implementation of KNNDTW from $sktime$ and $pyts$ to work on the chopped data; due to errors in the data representation needed by lower level internal libraries.
-KNNDTW would have been able to operate in the early classification context if used with a full warping window; which would have been successful in handling extreme classification cases like classifying full length data
-even when learning on the 10\% chunk data set.
-
-
-% Models excluded due to performance
-Two classifiers were excluded because they attained significantly inferior results compared to the published scores; these are KNNMSM and LS.
-Specially on the InsectWingbeatSound data set, for which we attained a difference in performance of -45.71\% for KNNMSM and -20.71\% for LS than the results published by \cite{bagnall2017great}
-
-\subsubsection{Adjustments applied to remaining classifiers}
+\subsubsection{Adjustments applied to classifiers}
 \label{SubsectionIncludedClassifiers}
 % Models used
-Our experiments proceeded with the remaining 5 classifiers; PForest, TSF, ST, CBOSS and WEASEL.
 To focus only on the comparison of performance between classifiers and not preprocessing, we consider only data sets where all instances have the same length and no attributes have missing data.
 We also focus our interest on data which is originally a timeseries data. This means that it is a collection of specific measurements across a span of time.
 Which lead us to exclude some data set types from taking part in the experiment, more details are presented in subsection \ref{used data sets}.
@@ -358,20 +328,20 @@ Our exception for PForest was if the first 3 chunks were able to finish within t
 More details about runtime durations is provided in our results.
 
 
-\subsubsection{Learning weights for the $F_{\beta}-measure$}
+\subsubsection{Learning weights for the $F_{\beta}$ score}
 \label{SubsubsectionLearningFBetaMeasure}
-We use the $F_{\beta}-measure$ as an objective score for the performance of the classifiers.
-The $F_{\beta}-measure$ has been a popular choice for evlauating eTSC algorithms \cite{schafer2020teaser} because of its
+We use the $F_{\beta}$ score as an objective score for the performance of the classifiers.
+The $F_{\beta}$ score has been a popular choice for evlauating eTSC algorithms \cite{schafer2020teaser} because of its
 capacity to combine both earliness and accuracy.
 Previous literature has always considered using a special case of the scoring function in which both earliness and accuracy contribute with the same weights.
 This case is referred to as the Harmonic mean or the F-1 score and can be simply achieved by assigning the value of $\beta$ to 1.
 
 For our experiments we conducted some experiments to decide if the use of equal weights for accuracy and earliness best suits our newly created context.
-We experimented with the harmonic mean (i.e. $\beta$ = 1) like the previous papers and plotted the distribution of values for $F_{\beta}-measure$.
+We experimented with the harmonic mean (i.e. $\beta$ = 1) like the previous papers and plotted the distribution of values for $F_{\beta}$ score.
 Figures \ref{fig:FBeta1} show a comparison between the distribution of values of $F_{1}$ and the distribution values of $Balanced Accuracy$ for CBoss.
 The boxplots from the accuracy image shows that CBoss on the full length of the data has a median value of \textbf{0.829}, while on the 10\% data it shows a median value of \textbf{0.44}.
 The two boxes do not overlap which means that there is a significant difference in the scores of the two versions.
-What we would like for the $F_{\beta}-measure$ in this scenario, is to give a privilege for the 10\% version of the classifier as it learns on less training data, such that it would have
+What we would like for the $F_{\beta}$ score in this scenario, is to give a privilege for the 10\% version of the classifier as it learns on less training data, such that it would have
 a high score if it can score a balanced accuracy close to that of the 100\% version.
 
 
@@ -390,7 +360,7 @@ The harmonic mean over-compensates for the lower accuracy scores with very high 
 
 To decide which $\beta$ value is best to use, we carried out a sequence of experiments using $\beta$ = [0.1, 0.9].
 The value that gave the most reasonable results was 0.5.
-Figure \ref{fig:FBeta05} shows the same comparison between the boxplots of $Balanced Accuracy$ and $F_{\beta}-measure$ for CBoss but with $\beta$ = 0.5.
+Figure \ref{fig:FBeta05} shows the same comparison between the boxplots of $Balanced Accuracy$ and $F_{\beta}$ score for CBoss but with $\beta$ = 0.5.
 Still $F_{1}$ allows for compensation between accuracy and earliness for the 10\% version, but it refines the values.
 The median value for the 10\% version became \textbf{0.705} while that of the 100\% is \textbf{0.795}.
 The distribution of values for the 10\% is spread more and the maximum value is falling near the median value of the 100\%.
@@ -412,11 +382,11 @@ but in other situations it might be the case that both of them contribute with t
 \subsection{The Recommender Experimental Design}
 \label{SubsectionRecommenderExperiment}
 As previously discussed in the recommender design, we train one random forest regressor per chunk, which we call the chunk learner.
-Each chunk learner is trained on the results for a specific chunk and is responsible for predicting the performance score, $F_{\beta}-measure$, for all classifiers on unseen data sets for that specific chunk.
+Each chunk learner is trained on the results for a specific chunk and is responsible for predicting the performance score, $F_{\beta}$ score, for all classifiers on unseen data sets for that specific chunk.
 
 % data sets used
 To train the chunk learners, we use the results of experiments from the testbed combined with metadata about the data set.
-Each training instance consists of metadata features from the table \ref{tab:long} in addition to 3 features from the testbed results in table \ref{TableAnalysisReport}; the classifier name, the revealed\% and the $F_{\beta}-measure$ value.
+Each training instance consists of metadata features from the table \ref{tab:long} in addition to 3 features from the testbed results in table \ref{TableAnalysisReport}; the classifier name, the revealed\% and the $F_{\beta}$ score value.
 The results of all data sets are included in the learning process, regardless of whether they were finished by all the classifiers and for all the chunks or not.
 We only exclude the three data sets PEMS-SF, DuckDuckGeese and FaceDetection; because they were only finished by one classifier. Which leaves us with 74 data sets.
 

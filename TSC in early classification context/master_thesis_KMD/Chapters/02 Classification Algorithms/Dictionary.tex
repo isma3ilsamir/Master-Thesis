@@ -3,7 +3,7 @@
 As previously discussed, shapelet algorithms are very good at identifying unique subseries which can be related to class labels either by their presence or absence.
 This technique although very helpful for some problems, but it can deceived if the class labels are defined by the relative frequency of some patterns and not just the a single match \cite{large2018bop,bagnall2017great}.
 Dictionary based algorithms is a family of algorithms that uses the frequency of words as the foundation of finding discriminatory features of classes \cite{middlehurst2019scalable}.
-They can address this type of problems by tracking the frequency counts of repeating patterns, which makes same resilient to noisy data \cite{shifaz2020ts}.
+They can address this type of problems by tracking the frequency counts of repeating patterns, which makes them resilient to noisy data \cite{shifaz2020ts}.
 To achieve this, dictionary based algorithms transform time series data into words; to reduce their dimensionality and approximate their values.
 Then based on the distribution of the words they measure similarity between instances \cite{lin2012rotation,schafer2015boss}.
 
@@ -16,8 +16,8 @@ In the end, similarity between instances is calculated based on similarity betwe
 Differrent dictionary based algorithms apply different approximation and discretization techniques.
 For example two of the older algorithms; Bag of Patterns (BoP) \cite{lin2012rotation} and Symbolic Aggregate Approximation-Vector Space Model (SAX-VSM) \cite{senin2013sax}
 use an approximation method called Symbolic Aggregate Approximation (SAX) \cite{lin2007experiencing}.
-SAX extends Piecewise Aggregate Approximation (PAA), a method that divides a time series into equal consecutive segments and concatenates their means \cite{shifaz2020ts}
-Then to transform the series to words, it creates break points using quantiles from the normal distribution.
+SAX extends Piecewise Aggregate Approximation (PAA), a method that divides a time series into equal consecutive segments and concatenates their means \cite{shifaz2020ts}.
+Then to transform the series into words, it creates break points using quantiles from the normal distribution.
 In addition to using SAX, SAX-VSM merges it with the vector space model from the Information Retrieval domain.
 The major difference between BOP and SAX-VSM, is that SAX-VSM calcualtes its frequencies on the class level rather than on the series level.
 Then applies weighting using inverse document frequency \cite{bagnall2017great}.
@@ -37,15 +37,16 @@ either using raw data directly or handling noise in a preprocessing stage. The g
 robust for existence of noise in the data and competitive with existing TSCA.
 
 % General description of BOSS Model
-The BOSS model is divided into several steps. In the beginning, it passes a window of size w over the time series to extract substructures.
-Each of the extracted windows is then normalized to obtain amplitude invariance, while obtaining offset invariance by subtracting the mean value
-for each window is data set specific and can be decided upon based on a parameter.
-Then the substructures are quantized using SFA transformations which transforms the data into unordered words;
-this helps further reduce the noise in the data by making it phase shift invariant and makes it possible to apply string matching algorithms on the data.
+The BOSS model is divided into several steps, figure \ref{Img:BossFlow} shows these steps.
+In the beginning, it passes a window of size w over the time series to extract substructures.
+Each of the extracted windows is then normalized; to obtain amplitude invariance.
+While obtaining offset invariance by subtracting the mean value for each window is data set specific and can be decided upon based on a parameter.
+Then the substructures are quantized using SFA transformations; which transforms the data into unordered words.
+This helps further reduce the noise in the data by making it phase shift invariant and makes it possible to apply string matching algorithms on the data.
 Since some data sets might happen to have long constant signals, this will lead to SFA transformations of their windows to produce the same words multiple times
 and cause higher weights to be assigned for them. BOSS applies a numerosity reduction technique adopted from \cite{lin2007experiencing,lin2012rotation}
 that ignores multiple sequential occurences of the same word.
-Finally time series instances can be compared for differences, using the noise reduced substructures using a customized distance measure inspired by Euclidean distance.
+Finally, time series instances can be compared for differences using the noise reduced substructures by applying a customized distance measure inspired by Euclidean distance.
 We will, briefly, discuss the main components that are used for each of the previously mentioned steps.
 
 \begin{figure}[!htbp]
@@ -86,7 +87,7 @@ BOSS utilizes Multiple Coefficient Binning (MCB), an adaptive technique that min
 After the approximation step, a matrix is built from the Fourier transformations of the training data set using only the first $\frac{l}{2}$ coefficients,
 including both the real and imaginary values for each coefficient. Then using an alphabet $\Sigma$ of size c, MCB creates for each columm of the matrix c+1 break points
 using equi-depth binning. During classification, to acquire the SFA word for a Fourier transformed time series, a lookup is done on the precomputed MCB bins and
-a word is assigned if the value falls within it bin's boundaries.
+a word is assigned if the value falls within it bin's boundaries. Figure \ref{Img:BOSS_SFA} demonstrates the approximation and quantization processes in BOSS.
 
 % BOSS distance
 After the transformation of instances to SFA words, BOSS uses a customized distnace measure referred to as BOSS distance; to measure the similarity between the transformed instances.
@@ -172,6 +173,7 @@ Then the kept coefficients are discretized into words, based on alphabet of size
 binning technique; which further more helps separating instances of classes.
 In the end, a histogram is built using all the windows lengths and the extracted features, uni-grams and bi-grams.
 Irrelevant features are then filtered out using a Chi-squared test. The final highly discriminative feature vector produced is then used to learn a logistic regression classifier.
+Figure \ref{Img:WEASELFlow} shows the steps of building WEASEL.
 
 \begin{figure}[!htbp]
     \captionsetup{justification=raggedright}
@@ -210,6 +212,7 @@ Discretization involves a binning process, where each Fourier value is divided i
 Each bin is represented by an upper and a lower boundary, and assigned a letter from an alphabet $c$.
 Previous quantization techniques used equi-depth or equi-width binning, but these techniques are solely based on values and ignore the distribution of classes.
 WEASEL applies a binning technique based on IG; assuring that for each partition the majority of the values would belong to the same class.
+Figure \ref{Img:WEASEL_FEATURE} demonstrates the feature selection and quantization processes for WEASEL.
 
 \begin{figure}[!htbp]
     \captionsetup{justification=raggedright}

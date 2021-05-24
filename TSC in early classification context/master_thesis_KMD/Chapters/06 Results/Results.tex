@@ -8,17 +8,39 @@ This chapter analyzes the results of our experiments.
 We will divide our analysis as follows;
 analysis for the results of the same classifier across different revealed percentages of data (chunks),
 analysis for the results of different classifiers across the same revealed percentages of data (chunks)
-and analysis for different classifiers and different percentages all together using the $F_{\beta}-measure$.
-% could also be reorganized as results for testbed and results for recommender
+and analysis for different classifiers and different percentages all together using the $F_{\beta}$ score.
+
+
+Some of the included classifiers in the framework were excluded from our results; either because they couldn't operate in the early classification context
+or because they couldn't attain comparable results to the published performances by previously published frameworks.
+
+% Models excluded due not handling the context
+For example, KNNED and InceptionTime were excluded due to the nature of their techniques which couldn't handle our created context.
+Both algorithms are clearly able to learn on chopped training data sets.
+However once the testing phase is reached, they would fail to classify instances of the testing data,
+showing errors related to mismatches between the expeccted length of instances and the provided length.
+Yet they would finish the last chunk where the data is provided in its original full length.
+The reason why KNNED fails such scenario, is that it uses ED which is a point-wise comparison distance measure that cannot compare time series of unequal lengths \cite{tan2019time}.
+On the other hand, InceptionTime is a deep learning model whose input layer architecture, represented by number of nodes, depends on the length of the input time series \cite{fawaz2019deepreview}.
+Since we use full length instances for testing, this caused an overflow of input data than what the model structure was expecting.
+There have been literature discussing adapting TSCAs to unequal time series, but this is out of the scope of our experiments.
+For more details refer to \cite{caiado2009comparison, tan2019time, fawaz2019deepreview}
+
+
+% Models excluded due to implementation error
+Although KNNDTW has been a competent time series classifier for decades; thanks to the exploitation of the elastic distance measure DTW.
+We couldn't get either implementation of KNNDTW from $sktime$ and $pyts$ to work on the chopped data; due to errors in the data representation needed by lower level internal libraries.
+KNNDTW would have been able to operate in the early classification context if used with a full warping window; which would have been successful in handling extreme classification cases like classifying full length data
+even when learning on the 10\% chunk data set.
 
 
 % Models excluded due to performance
-There were two classifiers that we excluded because they attained significantly inferior results compared to their published scores; these are KNNMSM and LS.
-Specially on the InsectWingbeatSound data set, for which we attained a difference in performance of -45.71\% for KNNMSM and -20.71\% for LS than the results published by \cite{bagnall2017great}.
+Two classifiers were excluded because they attained significantly inferior results compared to the published scores; these are KNNMSM and LS.
+Specially on the InsectWingbeatSound data set, for which we attained a difference in performance of -45.71\% for KNNMSM and -20.71\% for LS than the results published by \cite{bagnall2017great}
 
 
 % Data sets that were not finished for remaining classifiers
-For the remaining classifiers, not all of them were able to finish on all data sets within the time constraint.
+For the remaining 5 classifiers; CBoss, PForest, ST, TSF and WEASEL, not all of them were able to finish on all data sets within the time constraint.
 Specially the multivariate archive, which was challenging for most of the algorithms in terms of memory and time complexity.
 Our choice of adapting univariate classifiers for multivariate problems using column ensembling might have made things even more challenging;
 because this technique fits for each dimension in the data sets a classifier, which is a memory and space extensive solution.
@@ -38,7 +60,7 @@ This is why PForest hit the time contraint easily as the length of the time seri
 All 5 classifiers completed 36 common data sets. TSF, WEASEL and CBoss finished more than 72 data sets, ST finished 61 data sets and PForest finished 42 data sets.
 
 Tables \ref{tab:longresults} and \ref{tab:longresults_1} present the results of our experiments for the used 5 classifiers on all 77 data sets.
-We display values for balanced accuracy, $F_{\beta}-measure$ value and revealed\% for each classifier.
+We display values for balanced accuracy, $F_{\beta}$ score value and revealed\% for each classifier.
 The default train/test split of the data sets was used for all data runs.
 
 \begin{landscape}
@@ -237,14 +259,8 @@ This naming convention helps clarify the type of the classifier and the context 
 \subsection{Results Across Classifiers}
 \label{SubsectionAcrossComparison}
 An aspect to investigate within the early classification context is the relative performance of classifiers to each other while more data becomes available to train on.
-We fix the percentage of data revealed, revealed\%, and compare the performance of classifiers, which is represented by their ranking based on the value of $F_{\beta}-measure$.
+We fix the percentage of data revealed, revealed\%, and compare the performance of classifiers, which is represented by their ranking based on the value of $F_{\beta}$ score.
 We will dig deeper into the properties of the data sets, to explore the relation between the characteristics of the data and the best performing algorithm.
-
-To better understand the actual performance of the classifiers on the data sets and assess the quality of their results, we introduce a new baseline classifier to the comparison.
-The baseline classifier always predicts the majority class of a given data set.
-We name the classifier \emph{dummy}; as an indication of its role in the comparisons.
-To ensure the integrity of our comparisons, we calculate balanced accuracy and $F_{\beta}-measure$ for the dummy classifier on all data sets and for the same 4 chunks.
-Although the dummy classifier will always predict the majority class and thus score the same balanced accuracy, but its $F_{\beta}-measure$ will differ based on the revealed\%.
 
 Figure \ref{fig:CDAcross} shows the critical difference diagram across all the classifiers and for a fixed revealed percentage of data.
 In the beginning when only 10\% of the data is revevaled, TSF is significantly better than all the other classifiers.
@@ -301,7 +317,7 @@ The first feature of the data sets we investigate is the length of the time seri
 Like the findings of \cite{bagnall2017great} on univariate data sets and the results of \cite{fawaz2019deepreview} on multivariate data sets,
 our results in the early classification context, didn't show information about the performance of the classifiers in accordance with the length of time series.
 We show the results of the 5 classifiers on data sets grouped by their time series length in table \ref{TableLength10} for the 10\% length.
-The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
+The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}$ score than the baseline classifier.
 In the case where multiple classifiers are able to score higher than the baseline on one data set, then the score of this data set is counted for each one of them.
 
 \begin{table}[hp!]
@@ -339,7 +355,7 @@ The results for the other chunks are in appendix \ref{AppendixDataCharacteristis
 \subsubsection{Training Data Set Size}
 The second feature of the data sets we investigate is the size of the training data set, and how the number of instances affects the performance of classifiers in our introduced context.
 We show the results of the 5 classifiers on data sets grouped by their train size in table \ref{TableSize10} for the 10\% chunk, table \ref{TableSize20} for the 20\% chunk, table \ref{TableSize30} for the 30\% chunk and table \ref{TableSize100} for the 100\% chunk.
-The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
+The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}$ score than the baseline classifier.
 
 \begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
@@ -417,7 +433,7 @@ There is also no significant pattern for the performance of the same classifiers
 The third feature of the data sets we investigate is the type of problem.
 The intention is to try to find an evidence if there is a classifier which is suitable for certain types of problems.
 We display the results of the 5 classifiers on data sets grouped by problem type in table \ref{TableType10} for the 10\% chunk, table \ref{TableType20} for the 20\% chunk, table \ref{TableType30} for the 30\% chunk and table \ref{TableType100} for the 100\% chunk.
-The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
+The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}$ score than the baseline classifier.
 
 \begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
@@ -504,7 +520,7 @@ The fourth feature of the data sets we investigate is the number of classes.
 The goal is to try to find a connection between the number of classes of data sets and if it has an impact on the performance of certain classifiers.
 
 We display our results for the number of classes feature in table \ref{TableNumClass10} for the 10\% chunk, table \ref{TableNumClass10} for the 20\% chunk, table \ref{TableNumClass10} for the 30\% chunk and table \ref{TableNumClass10} for the 100\% chunk.
-The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}-measure$ than the baseline classifier.
+The table display for each classifier in percentage how many times it was able to score higher $F_{\beta}$ score than the baseline classifier.
 
 \begin{table}[hp!]
 	\setlength\extrarowheight{2pt} % for a bit of visual "breathing space"
@@ -576,7 +592,7 @@ PForest cannot beat the baseline classifier on the group of (11+) across all chu
 \subsection{Results Within Classifier}
 \label{SubsectionWithinComparison}
 In our first experiment, we carry out a comparison between copies of the same classifier but trained using different chunks of data;
-to explore how their performances evolve in the early classification context. We combine results that are based on both $F_{\beta}-measure$ and balanced accuracy.
+to explore how their performances evolve in the early classification context. We combine results that are based on both $F_{\beta}$ score and balanced accuracy.
 We exclude the baseline classifier from this comparison.
 
 
@@ -607,7 +623,7 @@ We compare each classifier on all the data sets that it finished across all the 
 The best performing algorithms lie on the right side of the diagram and the worse performing algorithms on the left side.
 A bar is used to connect a clique of classifiers which are not significantly different based on their ranking. 
 
-All classifiers show no significant difference between their 100\% classifier version and the 10\% version based on their $F_{\beta}-measure$ scores.
+All classifiers show no significant difference between their 100\% classifier version and the 10\% version based on their $F_{\beta}$ score scores.
 For CBoss, CBoss\_100 comes in the first place and CBoss\_10 comes in the second place. While for PForest, ST and WEASEL;
 their respective 10\% versions; ST\_10, PForest\_10 and WEASEL\_10 rank first.
 Although TSF shows no significant difference as well, but its 100\% version TSF\_100 comes in the third place.
@@ -640,7 +656,7 @@ For all the classifiers, the 100\% and the 10\% version are always significantly
 WEASEL\_100, CBoss\_100 and PForest\_100 are all significantly better than any of their other versions.
 TSF\_100 and ST\_100 are ranked better than their 30\% versions TSF\_30 and ST\_30, but they are not significantly different.
 This conforms with the concept of eTSC that as more data becomes available the better a classifier performs
-and also demonstrates the role that earliness plays in the scores of $F_{\beta}-measure$.
+and also demonstrates the role that earliness plays in the scores of $F_{\beta}$ score.
 
 
 \subsection{Results on Runtime Duration}
