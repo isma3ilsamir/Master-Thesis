@@ -1,10 +1,10 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{List of Figures}{i}{chapter*.3}%
+\contentsline {section}{List of Figures}{iv}{chapter*.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{List of Tables}{iv}{chapter*.4}%
+\contentsline {section}{List of Tables}{vii}{chapter*.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{List of Abbreviations}{vii}{chapter*.5}%
+\contentsline {section}{List of Abbreviations}{viii}{table.caption.7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
 \defcounter {refsection}{0}\relax 
@@ -22,33 +22,33 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.1}Whole Time Series Algorithms}{6}{subsection.2.3.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Nearest Neighbor with ED}{6}{section*.9}%
+\contentsline {subsubsection}{Nearest Neighbor with ED}{6}{section*.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Nearest Neighbor with DTW}{7}{section*.10}%
+\contentsline {subsubsection}{Nearest Neighbor with DTW}{7}{section*.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Nearest Neighbor with MSM Distance}{8}{section*.12}%
+\contentsline {subsubsection}{Nearest Neighbor with MSM Distance}{8}{section*.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Proximity Forest}{8}{section*.14}%
+\contentsline {subsubsection}{Proximity Forest}{8}{section*.15}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.2}Phase Dependent intervals Algorithms}{10}{subsection.2.3.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Time Series Forest}{11}{section*.16}%
+\contentsline {subsubsection}{Time Series Forest}{11}{section*.17}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.3}Phase Independent intervals Algorithms}{12}{subsection.2.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Learned Shapelets}{13}{section*.18}%
+\contentsline {subsubsection}{Learned Shapelets}{13}{section*.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Shapelet Transform}{13}{section*.19}%
+\contentsline {subsubsection}{Shapelet Transform}{13}{section*.20}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.4}Dictionary Based Algorithms}{14}{subsection.2.3.4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{BOSS}{15}{section*.20}%
+\contentsline {subsubsection}{BOSS}{15}{section*.21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{WEASEL}{18}{section*.23}%
+\contentsline {subsubsection}{WEASEL}{18}{section*.24}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.5}Deep Learning Algorithms}{20}{subsection.2.3.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{InceptionTime}{21}{section*.26}%
+\contentsline {subsubsection}{InceptionTime}{21}{section*.27}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}Early Time Series Classification}{23}{section.2.4}%
 \defcounter {refsection}{0}\relax 
@@ -102,7 +102,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3.3}The Testbed Implementation}{37}{subsection.4.3.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{The Testbed Management Console Implementation}{37}{section*.37}%
+\contentsline {subsubsection}{The Testbed Management Console Implementation}{37}{section*.38}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.3.4}The Recommender Implementation}{45}{subsection.4.3.4}%
 \defcounter {refsection}{0}\relax 
@@ -120,11 +120,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.2.1}The Testbed Experimental Design}{55}{subsection.5.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Classifiers that failed the experiments}{55}{section*.48}%
+\contentsline {subsubsection}{Classifiers that failed the experiments}{55}{section*.49}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Adjustments applied to remaining classifiers}{56}{section*.49}%
+\contentsline {subsubsection}{Adjustments applied to remaining classifiers}{56}{section*.50}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Learning weights for the $F_{\beta }-measure$}{57}{section*.50}%
+\contentsline {subsubsection}{Learning weights for the $F_{\beta }-measure$}{57}{section*.51}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.2.2}The Recommender Experimental Design}{59}{subsection.5.2.2}%
 \defcounter {refsection}{0}\relax 
@@ -136,13 +136,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.1.2}Data Set characteristics and performance in early classification context}{69}{subsection.6.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Length of Series}{70}{section*.54}%
+\contentsline {subsubsection}{Length of Series}{70}{section*.55}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Training Data Set Size}{70}{section*.56}%
+\contentsline {subsubsection}{Training Data Set Size}{70}{section*.57}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Type of Problem}{72}{section*.61}%
+\contentsline {subsubsection}{Type of Problem}{72}{section*.62}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Number of classes}{72}{section*.66}%
+\contentsline {subsubsection}{Number of classes}{72}{section*.67}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {6.1.3}Results Within Classifier}{77}{subsection.6.1.3}%
 \defcounter {refsection}{0}\relax 

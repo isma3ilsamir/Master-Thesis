@@ -39,24 +39,20 @@ This goes back to the central role that the baseline classifier plays in the rec
 The baseline classifier is generally worse than all TSCAs on all chunks, so it is easy to beat on many data sets.
 This causes our recall values to be very high, specially on the 100\% chunk data when the baseline classifier is significantly worse than all the others.
 
-There are multiple weaknesses in our study that we freely acknowledge.
-The selection criteria of the data set problem types is cherry picked to suit our motivating goal, the UCR/UEA data archives contains other problem types that we have not
-included which cover a variety of other time series problems.
+There are multiple areas in the early classification context that are open for improvements and more research.
+Our selection criteria of the data set problem types is cherry picked to suit our motivating goal, the UCR/UEA data archives contains other problem types that we have not included which cover a variety of other time series problems.
+Experiments that cover all problem types might give a broader view of results on time series problems of different natures.
 There are multiple components and parameters of the framework that have a great effect on the final results.
-For example, the evaluation metric to use for comparing the classifiers.
+For example, the evaluation metric to use for comparing the classifiers in the testbed.
 We emphasize that $F_{\beta}-measure$ is not the only suitable measure for assessing classifiers performance.
-But if used, the choice of weights has a great effect that should be considered in interpreting the results.
-In handling multivariate data sets, our choice for the column ensembling technique by repeating the same classifier for each dimension
-might not be the best way for evaluating the real performance of the classifiers on these data sets.
-Our used configurations for the classifiers and the adaptations applied might not be fair for all of them.
-For example, we use the contratable versions of CBoss and ST and used a 1 hour time contract.
-This might have hindered their actual performance on the data sets and might have scored better if given more time.
-Also the exclusion of the TWE elastic distance metric from the PForest classifier to meet time contraints,
-might have introduced a bias in the results for PForest.
-
-We believe there are a lot of areas that are open for more research and improvement in the early classification context.
-Handling multivariate data sets is one of the areas.
-For instance, the inclusion of bespoke multivariate classifiers to learn on multivariate data sets while capturing relations between dimensions.
-Running experiments using multiple resampling of data instead of the default train/test split; to avoid uncertainity about the performance of classifiers on data sets.
-Deeper and more granular analysis of the features used by the classifiers; either as shapelets for ST or temporal importance curves for TSF.
-Using a different baseline in the recommender for example KNNDTW for deciding good and bad performing classifiers.
+But if used, the choice of weights has a great effect that should be considered when interpreting the results.
+Also the baseline classifier in the recommender has a great effect on deciding good and bad performing classifiers.
+Tho use of a time series specific classifier as a baseline, for example KNNDTW, is highly desirable.
+In handling multivariate data sets, our choice for the column ensembling technique might not be the best way for evaluating the real performance of the classifiers on data sets.
+The inclusion of bespoke multivariate classifiers to learn on multivariate data sets while capturing relations between dimensions would be of great added value.
+Time plays an important role in shaping the results as well.
+Our used configurations and adaptations for the used classifiers were regulated based on the availability of time to train classifiers.
+We used the contratable versions of CBoss and ST and set their time contract to 1 hour, also we excluded of the TWE elastic distance metric from the PForest classifier; to meet time contraints.
+Future work can provide more time for PForest; to use all of its distance measures and for CBoss and ST; to extract more features.
+Finally, understandability under the early classification context is an open area for investigation.
+Deeper and more granular analysis of the features used by the classifiers; either as shapelets for ST or temporal importance curves for TSF can be very helpful.

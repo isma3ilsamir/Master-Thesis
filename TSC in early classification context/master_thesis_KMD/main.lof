@@ -4,122 +4,122 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Mapping of Euclidean distance (lock-step measure) versus mapping of DTW distance (elastic measure) \cite {abanda2019review}.\relax }}{7}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Mapping of Euclidean distance (lock-step measure) versus mapping of DTW distance (elastic measure) \cite {abanda2019review}.\relax }}{7}{figure.caption.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Examples of the Move, Split, Merge operations \cite {stefan2012move}.\relax }}{8}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Examples of the Move, Split, Merge operations \cite {stefan2012move}.\relax }}{8}{figure.caption.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Visual depiction of the root node for the \enquote {Trace} dataset (simplified to 2 classes). The top chart represents the data at the root node (one colour per class) while the data at the bottom left and right represent the data once split by the tree. The two time series in the middle left and right are the exemplars on which the tree is splitting. The scatter plot at the center represents the distance of each time series at the root node with respect to the left and right exemplars (resp. x- and y-axes) (Color figure online) \cite {lucas2019proximity}.\relax }}{10}{figure.caption.15}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Visual depiction of the root node for the \enquote {Trace} dataset (simplified to 2 classes). The top chart represents the data at the root node (one colour per class) while the data at the bottom left and right represent the data once split by the tree. The two time series in the middle left and right are the exemplars on which the tree is splitting. The scatter plot at the center represents the distance of each time series at the root node with respect to the left and right exemplars (resp. x- and y-axes) (Color figure online) \cite {lucas2019proximity}.\relax }}{10}{figure.caption.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.4}{\ignorespaces An illustration of two shapelets S1, S2 (leftmost plots) learned on the Coffee dataset. Series’ distances to shapelets can optimally project the series into a 2-dimensional space, called the shapelet-transformed representation \cite {lines2012shapelet} (rightmost plot). The middle plots show the closest matches of the shapelets on series of two classes having light-blue and black colors \cite {grabocka2014learning}.\relax }}{12}{figure.caption.17}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces An illustration of two shapelets S1, S2 (leftmost plots) learned on the Coffee dataset. Series’ distances to shapelets can optimally project the series into a 2-dimensional space, called the shapelet-transformed representation \cite {lines2012shapelet} (rightmost plot). The middle plots show the closest matches of the shapelets on series of two classes having light-blue and black colors \cite {grabocka2014learning}.\relax }}{12}{figure.caption.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.5}{\ignorespaces The BOSS workflow \cite {schafer2015boss}\relax }}{16}{figure.caption.21}%
+\contentsline {figure}{\numberline {2.5}{\ignorespaces The BOSS workflow \cite {schafer2015boss}\relax }}{16}{figure.caption.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.6}{\ignorespaces A time series is (a) approximated (low pass filtered) using DFT and (b) quantised using MCB resulting in the SFA word DAAC \cite {schafer2015boss}\relax }}{17}{figure.caption.22}%
+\contentsline {figure}{\numberline {2.6}{\ignorespaces A time series is (a) approximated (low pass filtered) using DFT and (b) quantised using MCB resulting in the SFA word DAAC \cite {schafer2015boss}\relax }}{17}{figure.caption.23}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.7}{\ignorespaces WEASEL Pipeline: Feature extraction using a novel supervised symbolic representation, and a novel bag-of-patterns model \cite {schafer2017fast}\relax }}{19}{figure.caption.24}%
+\contentsline {figure}{\numberline {2.7}{\ignorespaces WEASEL Pipeline: Feature extraction using a novel supervised symbolic representation, and a novel bag-of-patterns model \cite {schafer2017fast}\relax }}{19}{figure.caption.25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.8}{\ignorespaces On the left: Distribution of Fourier coefficients for a sample dataset. The high F-values on imag3 and real0 (red text at bottom) should be selected to best separate the samples from class labels ’A’ and ’B’. On the right: Zoom in on imag3. Information gain splitting is applied to find the best bins for the subsequent quantization. High information gain (IG) indicates pure (good) split points \cite {schafer2017fast}\relax }}{20}{figure.caption.25}%
+\contentsline {figure}{\numberline {2.8}{\ignorespaces On the left: Distribution of Fourier coefficients for a sample dataset. The high F-values on imag3 and real0 (red text at bottom) should be selected to best separate the samples from class labels ’A’ and ’B’. On the right: Zoom in on imag3. Information gain splitting is applied to find the best bins for the subsequent quantization. High information gain (IG) indicates pure (good) split points \cite {schafer2017fast}\relax }}{20}{figure.caption.26}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Inside Inception module for time series classification. For simplicity a bottleneck layer of size m = 1 is used \cite {fawaz2020inceptiontime}\relax }}{23}{figure.caption.27}%
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Inside Inception module for time series classification. For simplicity a bottleneck layer of size m = 1 is used \cite {fawaz2020inceptiontime}\relax }}{23}{figure.caption.28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.10}{\ignorespaces TEASER is given a snapshot of an energy consumption time series. After seeing the first s measurements, the first slave classifier $sc_{1}$ performs a prediction which the master classifier $mc_{1}$ rejects due to low class probabilities. After observing the i-th interval which includes a characteristic energy burst, the slave classifier $sc_{i}$ (correctly) predicts RECEIVER, and the master classifier $mc_{i}$ eventually accepts this prediction. When the prediction of RECEIVER has been consistently derived v times, it is output as final prediction \cite {schafer2020teaser}\relax }}{27}{figure.caption.28}%
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Conceptual design of the proposed framework\relax }}{35}{figure.caption.29}%
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Metadata of the used data sets\relax }}{50}{figure.caption.47}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{1}$ (right) for CBoss\relax }}{58}{figure.caption.51}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{0.5}$ (right) for CBoss\relax }}{58}{figure.caption.52}%
-\defcounter {refsection}{0}\relax 
-\addvspace {10\p@ }
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Critical Difference diagrams per chunk across all classifiers\relax }}{69}{figure.caption.53}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks ($F_{\beta }$)\relax }}{77}{figure.caption.71}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks (balanced accuracy)\relax }}{78}{figure.caption.72}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Train Time (CPU Time in Log Scale) for CBoss across all chunks\relax }}{79}{figure.caption.73}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest across all chunks\relax }}{79}{figure.caption.74}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Train Time (CPU Time in Log Scale) for ST across all chunks\relax }}{80}{figure.caption.75}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF across all chunks\relax }}{80}{figure.caption.76}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL across all chunks\relax }}{81}{figure.caption.77}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Histograms for distribution of RMSE per chunk over 50 runs\relax }}{83}{figure.caption.79}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Avg MAE for classifiers per chunk over 50 runs\relax }}{84}{figure.caption.80}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Avg RMSE for classifiers per chunk over 50 runs\relax }}{84}{figure.caption.81}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Mean Feature Importance per chunk across 50 runs\relax }}{85}{figure.caption.82}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Actual vs. Predicted F-score for chunk learners (experiment seed = 22)\relax }}{87}{figure.caption.84}%
+\contentsline {figure}{\numberline {2.10}{\ignorespaces TEASER is given a snapshot of an energy consumption time series. After seeing the first s measurements, the first slave classifier $sc_{1}$ performs a prediction which the master classifier $mc_{1}$ rejects due to low class probabilities. After observing the i-th interval which includes a characteristic energy burst, the slave classifier $sc_{i}$ (correctly) predicts RECEIVER, and the master classifier $mc_{i}$ eventually accepts this prediction. When the prediction of RECEIVER has been consistently derived v times, it is output as final prediction \cite {schafer2020teaser}\relax }}{27}{figure.caption.29}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Critical Difference diagrams per chunk across all classifiers\relax }}{92}{figure.caption.86}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Critical Difference diagram for all classifiers and all chunks ($F_{\beta }$)\relax }}{93}{figure.caption.87}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Critical Difference diagram for all classifiers and all chunks (balanced accuracy)\relax }}{93}{figure.caption.88}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.4}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks ($F_{\beta }$)\relax }}{100}{figure.caption.104}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.5}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks (balanced accuracy)\relax }}{100}{figure.caption.105}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.6}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 10\% chunk\relax }}{108}{figure.caption.106}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.7}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 20\% chunk\relax }}{108}{figure.caption.107}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.8}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 30\% chunk\relax }}{109}{figure.caption.108}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.9}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 100\% chunk\relax }}{109}{figure.caption.109}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.10}{\ignorespaces Train Time (CPU Time in Log Scale) for CBOss per series length\relax }}{110}{figure.caption.110}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.11}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest per series length\relax }}{110}{figure.caption.111}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.12}{\ignorespaces Train Time (CPU Time in Log Scale) for ST per series length\relax }}{111}{figure.caption.112}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.13}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF per series length\relax }}{111}{figure.caption.113}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.14}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL per series length\relax }}{112}{figure.caption.114}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.15}{\ignorespaces Train Time (CPU Time in Log Scale) for CBOss per train size\relax }}{112}{figure.caption.115}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.16}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest per train size\relax }}{113}{figure.caption.116}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.17}{\ignorespaces Train Time (CPU Time in Log Scale) for ST per train size\relax }}{113}{figure.caption.117}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.18}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF per train size\relax }}{114}{figure.caption.118}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.19}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL per train size\relax }}{114}{figure.caption.119}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.20}{\ignorespaces Train Time (CPU Time in Log Scale) for CBOss per number of dimensions\relax }}{115}{figure.caption.120}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.21}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest per number of dimensions\relax }}{115}{figure.caption.121}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.22}{\ignorespaces Train Time (CPU Time in Log Scale) for ST per number of dimensions\relax }}{116}{figure.caption.122}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.23}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF per number of dimensions\relax }}{116}{figure.caption.123}%
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {A.24}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL per number of dimensions\relax }}{117}{figure.caption.124}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Conceptual design of the proposed framework\relax }}{35}{figure.caption.30}%
 \defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Histograms for distribution of MAE per chunk over 50 runs\relax }}{123}{figure.caption.125}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Metadata of the used data sets\relax }}{50}{figure.caption.48}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Mean Feature Importance stacked by chunk\relax }}{124}{figure.caption.126}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{1}$ (right) for CBoss\relax }}{58}{figure.caption.52}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Comparison between Balanced Accuracy (left) and $F_{0.5}$ (right) for CBoss\relax }}{58}{figure.caption.53}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Critical Difference diagrams per chunk across all classifiers\relax }}{69}{figure.caption.54}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks ($F_{\beta }$)\relax }}{77}{figure.caption.72}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks (balanced accuracy)\relax }}{78}{figure.caption.73}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Train Time (CPU Time in Log Scale) for CBoss across all chunks\relax }}{79}{figure.caption.74}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest across all chunks\relax }}{79}{figure.caption.75}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Train Time (CPU Time in Log Scale) for ST across all chunks\relax }}{80}{figure.caption.76}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF across all chunks\relax }}{80}{figure.caption.77}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL across all chunks\relax }}{81}{figure.caption.78}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Histograms for distribution of RMSE per chunk over 50 runs\relax }}{83}{figure.caption.80}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Avg MAE for classifiers per chunk over 50 runs\relax }}{84}{figure.caption.81}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Avg RMSE for classifiers per chunk over 50 runs\relax }}{84}{figure.caption.82}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Mean Feature Importance per chunk across 50 runs\relax }}{85}{figure.caption.83}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Actual vs. Predicted F-score for chunk learners (experiment seed = 22)\relax }}{87}{figure.caption.85}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Critical Difference diagrams per chunk across all classifiers\relax }}{92}{figure.caption.87}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Critical Difference diagram for all classifiers and all chunks ($F_{\beta }$)\relax }}{93}{figure.caption.88}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Critical Difference diagram for all classifiers and all chunks (balanced accuracy)\relax }}{93}{figure.caption.89}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.4}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks ($F_{\beta }$)\relax }}{100}{figure.caption.105}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.5}{\ignorespaces Crtitical difference diagrams between versions of the same classifier trained on different chunks (balanced accuracy)\relax }}{100}{figure.caption.106}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.6}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 10\% chunk\relax }}{108}{figure.caption.107}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.7}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 20\% chunk\relax }}{108}{figure.caption.108}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.8}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 30\% chunk\relax }}{109}{figure.caption.109}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.9}{\ignorespaces Train Time (CPU Time in Log Scale) for all 5 classifiers for 100\% chunk\relax }}{109}{figure.caption.110}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.10}{\ignorespaces Train Time (CPU Time in Log Scale) for CBOss per series length\relax }}{110}{figure.caption.111}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.11}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest per series length\relax }}{110}{figure.caption.112}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.12}{\ignorespaces Train Time (CPU Time in Log Scale) for ST per series length\relax }}{111}{figure.caption.113}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.13}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF per series length\relax }}{111}{figure.caption.114}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.14}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL per series length\relax }}{112}{figure.caption.115}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.15}{\ignorespaces Train Time (CPU Time in Log Scale) for CBOss per train size\relax }}{112}{figure.caption.116}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.16}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest per train size\relax }}{113}{figure.caption.117}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.17}{\ignorespaces Train Time (CPU Time in Log Scale) for ST per train size\relax }}{113}{figure.caption.118}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.18}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF per train size\relax }}{114}{figure.caption.119}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.19}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL per train size\relax }}{114}{figure.caption.120}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.20}{\ignorespaces Train Time (CPU Time in Log Scale) for CBOss per number of dimensions\relax }}{115}{figure.caption.121}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.21}{\ignorespaces Train Time (CPU Time in Log Scale) for PForest per number of dimensions\relax }}{115}{figure.caption.122}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.22}{\ignorespaces Train Time (CPU Time in Log Scale) for ST per number of dimensions\relax }}{116}{figure.caption.123}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.23}{\ignorespaces Train Time (CPU Time in Log Scale) for TSF per number of dimensions\relax }}{116}{figure.caption.124}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {A.24}{\ignorespaces Train Time (CPU Time in Log Scale) for WEASEL per number of dimensions\relax }}{117}{figure.caption.125}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Histograms for distribution of MAE per chunk over 50 runs\relax }}{123}{figure.caption.126}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Mean Feature Importance stacked by chunk\relax }}{124}{figure.caption.127}%

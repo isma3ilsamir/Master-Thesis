@@ -28,7 +28,7 @@ between them can be determined as:
 \begin{equation}
     ED(T_{1},T_{2})= \sqrt{\sum_{i=1}^{n} (t1_{i} - t2_{i})^{2}}
 \end{equation}
-Euclidean distnace has been preferred to other classifiers due to its space and time efficiency, but it suffers from two main shortcomings \cite{baydogan2013bag, jeong2011weighted,kate2016using}.
+Euclidean distance has been preferred to other classifiers due to its space and time efficiency, but it suffers from two main shortcomings \cite{baydogan2013bag, jeong2011weighted,kate2016using}.
 The first one is that it cannot handle comparisons between time series of different lengths.
 While the second one is its sensitivity to minor discrepancies between time series; it would calculate large distance values for small shiftings or misalignments.
 Although other metrics have been introduced to overcome the drawbacks of euclidean distance,
@@ -109,7 +109,7 @@ The costs of split and merge are equal and they are set to a constant to satisfy
 \label{SubsubsectionPForest}
 Proximity forest was developed by \cite{lucas2019proximity}.
 It was introduced as an addition to scalable time series classification, offering a more scalable and accurate classifier than EE \cite{tan2020fastee}.
-On one side, EE was an accurate classifier being the state of the art algorithm and the best among distnace based algorithms, as it combines 11 NN-algorithms each using a different elastic measure.
+On one side, EE was an accurate classifier being the state of the art algorithm and the best among distance based algorithms, as it combines 11 NN-algorithms each using a different elastic measure.
 But on the other hand, EE's training process was very slow as it scales quadratically with the training size of the data set \cite{lines2015time,bagnall2017great}.
 This goes back to the leave-one-out-cross-validation (LOOCV) used to optimize the parameters for each used metric \cite{shifaz2020ts}.
 
