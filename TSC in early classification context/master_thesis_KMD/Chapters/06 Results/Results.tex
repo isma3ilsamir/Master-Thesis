@@ -263,7 +263,7 @@ We fix the percentage of data revealed, revealed\%, and compare the performance 
 We will dig deeper into the properties of the data sets, to explore the relation between the characteristics of the data and the best performing algorithm.
 
 Figure \ref{fig:CDAcross} shows the critical difference diagram across all the classifiers and for a fixed revealed percentage of data.
-In the beginning when only 10\% of the data is revevaled, TSF is significantly better than all the other classifiers.
+In the beginning when only 10\% of the data is revealed, TSF is significantly better than all the other classifiers.
 The remaining four classifiers form a clique together and are not significantly different from the dummy classifier.
 Inside that clique, CBoss is the best classifier, WEASEL is the second best and both PForest and ST are almost identical in their ranking.
 
@@ -331,7 +331,7 @@ In the case where multiple classifiers are able to score higher than the baselin
 		251-500 & 8 & 62.50\% & 75.00\% & 50.00\% & 87.50\% & 37.50\% \\ \hline
 		501-1000 & 10 & 60.00\% & 70.00\% & 60.00\% & 70.00\% & 50.00\% \\ \hline
 		1001+ & 3 & 66.67\% & 33.33\% & 66.67\% & 100.00\% & 66.67\% \\ \hline
-	\caption{Performance of classifiers with respect to length in comparison to baseline on 10\% chunk data sets}
+	\caption{Performance of classifiers with respect to length in comparison to dummy baseline on 10\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
 	\label{TableLength10}
   \end{tabularx}
 \end{table}
@@ -367,7 +367,7 @@ The table display for each classifier in percentage how many times it was able t
 		101-250 & 7 & 57.14\% & 57.14\% & 71.43\% & 100.00\% & 42.86\% \\ \hline
 		251-500 & 4 & 50.00\% & 75.00\% & 75.00\% & 75.00\% & 25.00\% \\ \hline
 		501-1000 & 2 &50.00\% & 50.00\% & 100.00\% & 100.00\% & 50.00\% \\ \hline
-	\caption{Performance of classifiers with respect to train size in comparison to baseline on 10\% chunk data sets}
+	\caption{Performance of classifiers with respect to train size in comparison to dummy baseline on 10\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
 	\label{TableSize10}
   \end{tabularx}
 \end{table}
@@ -382,7 +382,7 @@ The table display for each classifier in percentage how many times it was able t
 		101-250 & 7 & 71.43\% & 71.43\% & 71.43\% & 100.00\% & 85.71\% \\ \hline
 		251-500 & 4 & 75.00\% & 75.00\% & 75.00\% & 75.00\% & 50.00\% \\ \hline
 		501-1000 & 2 &50.00\% & 50.00\% & 100.00\% & 100.00\% & 0.00\% \\ \hline
-	\caption{Performance of classifiers with respect to train size in comparison to baseline on 20\% chunk data sets}
+	\caption{Performance of classifiers with respect to train size in comparison to dummy baseline on 20\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
 	\label{TableSize20}
   \end{tabularx}
 \end{table}
@@ -397,7 +397,7 @@ The table display for each classifier in percentage how many times it was able t
 		101-250 & 7 & 85.71\% & 57.14\% & 100.00\% & 100.00\% & 85.71\% \\ \hline
 		251-500 & 4 & 75.00\% & 50.00\% & 75.00\% & 75.00\% & 50.00\% \\ \hline
 		501-1000 & 2 &100.00\% & 50.00\% & 100.00\% & 100.00\% & 0.00\% \\ \hline
-	\caption{Performance of classifiers with respect to train size in comparison to baseline on 30\% chunk data sets}
+	\caption{Performance of classifiers with respect to train size in comparison to dummy baseline on 30\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
 	\label{TableSize30}
   \end{tabularx}
 \end{table}
@@ -412,7 +412,7 @@ The table display for each classifier in percentage how many times it was able t
 		101-250 & 7 & 100.00\% & 71.43\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
 		251-500 & 4 & 75.00\% & 100.00\% & 75.00\% & 75.00\% & 75.00\% \\ \hline
 		501-1000 & 2 &100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to train size in comparison to baseline on 100\% chunk data sets}
+  \caption{Performance of classifiers with respect to train size in comparison to dummy baseline on 100\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableSize100}
   \end{tabularx}
 \end{table}
@@ -448,7 +448,7 @@ The table display for each classifier in percentage how many times it was able t
 		EPG & 2 & 100.00\% & 100.00\% & 0.00\% & 100.00\% & 100.00\% \\ \hline
 		HAR & 1 & 0.00\% & 0.00\% & 0.00\% & 100.00\% & 0.00\% \\ \hline
 		SOUND & 1 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to problem type in comparison to baseline on 10\% chunk data sets}
+  \caption{Performance of classifiers with respect to problem type in comparison to dummy baseline on 10\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableType10}
   \end{tabularx}
 \end{table}
@@ -466,7 +466,7 @@ The table display for each classifier in percentage how many times it was able t
 		EPG & 2 & 100.00\% & 100.00\% & 0.00\% & 100.00\% & 100.00\% \\ \hline
 		HAR & 1 & 0.00\% & 0.00\% & 0.00\% & 100.00\% & 100.00\% \\ \hline
 		SOUND & 1 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to problem type in comparison to baseline on 20\% chunk data sets}
+  \caption{Performance of classifiers with respect to problem type in comparison to dummy baseline on 20\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableType20}
   \end{tabularx}
 \end{table}
@@ -484,7 +484,7 @@ The table display for each classifier in percentage how many times it was able t
 		EPG & 2 & 100.00\% & 100.00\% & 0.00\% & 100.00\% & 100.00\% \\ \hline
 		HAR & 1 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
 		SOUND & 1 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to problem type in comparison to baseline on 30\% chunk data sets}
+  \caption{Performance of classifiers with respect to problem type in comparison to dummy baseline on 30\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableType30}
   \end{tabularx}
 \end{table}
@@ -502,7 +502,7 @@ The table display for each classifier in percentage how many times it was able t
 		EPG & 2 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
 		HAR & 1 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
 		SOUND & 1 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to problem type in comparison to baseline on 100\% chunk data sets}
+  \caption{Performance of classifiers with respect to problem type in comparison to dummy baseline on 100\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableType100}
   \end{tabularx}
 \end{table}
@@ -532,7 +532,7 @@ The table display for each classifier in percentage how many times it was able t
 		4-5 & 6 & 66.67\% & 66.67\% & 66.67\% & 100.00\% & 33.33\% \\ \hline
 		6-10 & 2 & 100.00\% & 50.00\% & 50.00\% & 50.00\% & 100.00\% \\ \hline
 		11+ & 2 & 50.00\% & 0.00\% & 50.00\% & 100.00\% & 50.00\% \\ \hline
-  \caption{Performance of classifiers with respect to number of classes in comparison to baseline on 10\% chunk data sets}
+  \caption{Performance of classifiers with respect to number of classes in comparison to dummy baseline on 10\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableNumClass10}
   \end{tabularx}
 \end{table}
@@ -547,7 +547,7 @@ The table display for each classifier in percentage how many times it was able t
 		4-5 & 6 & 83.33\% & 66.67\% & 83.33\% & 100.00\% & 66.67\% \\ \hline
 		6-10 & 2 & 100.00\% & 50.00\% & 50.00\% & 100.00\% & 100.00\% \\ \hline
 		11+ & 2 & 50.00\% & 0.00\% & 50.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to number of classes in comparison to baseline on 20\% chunk data sets}
+  \caption{Performance of classifiers with respect to number of classes in comparison to dummy baseline on 20\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableNumClass20}
   \end{tabularx}
 \end{table}
@@ -562,7 +562,7 @@ The table display for each classifier in percentage how many times it was able t
 		4-5 & 6 & 100.00\% & 33.33\% & 66.67\% & 100.00\% & 66.67\% \\ \hline
 		6-10 & 2 & 100.00\% & 50.00\% & 50.00\% & 100.00\% & 50.00\% \\ \hline
 		11+ & 2 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to number of classes in comparison to baseline on 30\% chunk data sets}
+  \caption{Performance of classifiers with respect to number of classes in comparison to dummy baseline on 30\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableNumClass30}
   \end{tabularx}
 \end{table}
@@ -577,7 +577,7 @@ The table display for each classifier in percentage how many times it was able t
 		4-5 & 6 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
 		6-10 & 2 & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
 		11+ & 2 & 100.00\% & 0.00\% & 100.00\% & 100.00\% & 100.00\% \\ \hline
-  \caption{Performance of classifiers with respect to number of classes in comparison to baseline on 100\% chunk data sets}
+  \caption{Performance of classifiers with respect to number of classes in comparison to dummy baseline on 100\% chunk data sets. Each entry is the percentage from toal data sets which the classifier beat the dummy classifier.}
   \label{TableNumClass100}
   \end{tabularx}
 \end{table}
