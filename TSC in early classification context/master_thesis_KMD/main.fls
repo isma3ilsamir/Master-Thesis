@@ -4,8 +4,9 @@ INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early class
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.log
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\report.cls
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\size10.clo
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\size10.clo
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\size11.clo
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\base\size11.clo
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\import\import.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\import\import.sty
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\load_preamp.sty
@@ -204,6 +205,12 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\appendix\appendix.
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\appendix\appendix.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\booktabs\booktabs.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\geometry\geometry.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\geometry\geometry.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\iftex\ifvtex.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\generic\iftex\ifvtex.sty
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\geometry\geometry.cfg
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\geometry\geometry.cfg
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
@@ -248,7 +255,6 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.t
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmcsc10.tfm
 INPUT C:\Users\Ismail\AppData\Local\MiKTeX\pdftex\config\pdftex.map
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr9.tfm
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\abstract.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\abstract.tex
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr12.tfm
@@ -259,12 +265,6 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tf
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.toc
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.toc
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsa.fd
@@ -277,11 +277,23 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\amsfonts\umsb.fd
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm5.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsl10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmex10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex7.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam7.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm7.tfm
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.toc
@@ -300,9 +312,9 @@ INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early class
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\01 Introduction\Introduction.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\01 Introduction\Introduction.tex
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm0900.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\02 Classification Algorithms\Classification Algorithms.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\02 Classification Algorithms\Classification Algorithms.tex
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti7.tfm
@@ -375,10 +387,10 @@ INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early class
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\02 Classification Algorithms\.\TEASER.JPG
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Related Work\Related Work.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\03 Related Work\Related Work.tex
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex8.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\cmextra\cmex9.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msam10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\amsfonts\symbols\msbm10.tfm
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\04 Adaptation Methodology\Adaptation Methodology.tex
@@ -395,7 +407,7 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang2.
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang2.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang3.sty
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\tex\latex\listings\lstlang3.sty
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt9.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Datasets.tex
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\Chapters\05 Datasets\Datasets.tex
@@ -772,40 +784,36 @@ INPUT .\Chapters\06 Results\Feature_Importance_stacked.jpg
 INPUT .\Chapters\06 Results\Feature_Importance_stacked.jpg
 INPUT .\Chapters\06 Results\Feature_Importance_stacked.jpg
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcti1000.tfm
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcti1095.tfm
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.aux
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.out
 INPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.run.xml
 OUTPUT c:\Users\Ismail\Desktop\OVGU\DKE Subjects\Master-Thesis\TSC in early classification context\master_thesis_KMD\main.run.xml
-INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcti1000.pk
-INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcti1000.pk
-INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm0900.pk
-INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm0900.pk
+INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcti1095.pk
+INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcti1095.pk
+INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
+INPUT C:\Users\Ismail\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\tcrm1000.pk
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbxti10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmcsc10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmex10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex7.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cmextra\cmex9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi6.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi8.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
@@ -826,22 +834,16 @@ INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy5.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy6.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy9.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
+INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy8.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti7.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti7.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt9.pfb
-INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt9.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msam10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msam10.pfb
 INPUT C:\Users\Ismail\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\symbols\msbm10.pfb
